@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0B1030; --navy-2:#1B2247; --blue:#1F4FD8; --blue-d:#173DAA;
+  --navy:#0B1030; --navy-2:#1B2247; --blue:#1F4FD8; --blue-d:#173DAA; --blue-pale:#EEF2FD;
   --ground:#F3F2ED; --surface:#ffffff; --border:#E2E1DA; --rule:#EEEDE7; --control:#C9C8C1;
   --text:#0B1030; --muted:#5A5F70;
   --font:"IBM Plex Sans KR","IBM Plex Sans",system-ui,sans-serif;
@@ -18,6 +18,7 @@ html,body{height:100%}
 body{word-break:keep-all;font-family:var(--font);color:var(--text);background:var(--ground);font-size:14px;line-height:20px;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
 :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .num{font-variant-numeric:tabular-nums}
 
@@ -29,6 +30,7 @@ a{color:inherit;text-decoration:none}
 .dev{display:flex;flex-direction:column;align-items:center;gap:24px}
 .scr{overflow:hidden;background:#fff;text-align:left}
 .scr>.app{transform:scale(var(--s));transform-origin:0 0;pointer-events:none}
+/* 세로 키오스크 기계 */
 .kiosk{--s:.5;display:flex;flex-direction:column;align-items:center}
 .k-head{position:relative;background:#15171C;border-radius:20px;padding:10px 10px 34px}
 .k-head::after{content:"";position:absolute;left:50%;bottom:13px;width:64px;height:7px;margin-left:-32px;border-radius:4px;background:#30333C}
@@ -36,13 +38,12 @@ a{color:inherit;text-decoration:none}
 .k-base{width:74%;height:10px;border-radius:6px 6px 2px 2px;background:#15171C}
 .kiosk .scr{width:calc(430px*var(--s));height:calc(780px*var(--s));border-radius:6px}
 .kiosk .scr>.app{width:430px;height:780px}
-.laptop{--s:.5}
-.laptop .lid{background:#CDD0D6;border-radius:16px 16px 0 0;padding:3px 3px 0}
-.laptop .bezel{background:#111318;border-radius:13px 13px 0 0;padding:12px}
-.laptop .scr{width:calc(1200px*var(--s));height:calc(700px*var(--s));border-radius:3px}
-.laptop .scr>.app{width:1200px;height:700px}
-.laptop .base{position:relative;height:14px;background:#D9DBE0;border-radius:0 0 14px 14px;margin:0 -30px}
-.laptop .base::after{content:"";position:absolute;left:50%;top:0;width:90px;height:5px;margin-left:-45px;border-radius:0 0 6px 6px;background:#B4B7BF}
+/* 식당 테이블 태블릿 */
+.tablet{--s:.5}
+.t-body{position:relative;background:#EDE6D8;border-radius:26px;padding:20px 18px 18px}
+.t-body::after{content:"";position:absolute;left:50%;top:7px;width:7px;height:7px;margin-left:-3px;border-radius:50%;background:#3C3A36}
+.tablet .scr{width:calc(1200px*var(--s));height:calc(750px*var(--s));border-radius:3px}
+.tablet .scr>.app{width:1200px;height:750px}
 .go{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 32px;border-radius:999px;background:var(--navy);color:#fff;font-weight:600;font-size:18px;transition:background .15s,transform .1s}
 .go:hover{background:var(--navy-2)}
 .go:active{transform:scale(.97)}
@@ -51,60 +52,65 @@ a{color:inherit;text-decoration:none}
   #landing{padding:40px 16px}
   #landing h1{font-size:28px}
   .devices{flex-direction:column;align-items:center;gap:40px}
-  .laptop{--s:.26}
-  .laptop .base{margin:0 -14px}
+  .tablet{--s:.27}
+  .t-body{border-radius:16px;padding:12px 10px 10px}
+  .t-body::after{top:4px;width:5px;height:5px}
 }
 
 /* ================= 보기 화면 틀 ================= */
 #stage{position:fixed;inset:0;display:none;place-items:center;background:var(--ground)}
 body[data-mode="mob"] #stage,body[data-mode="pc"] #stage{display:grid}
 #frame{background:#fff;overflow:hidden}
+/* 모바일: 키오스크 기계 */
 body[data-mode="mob"] #frame{width:430px;height:min(780px,calc(100vh - 130px));border-radius:8px}
 body[data-mode="mob"] #kiosk .k-head{padding:14px 14px 48px;border-radius:26px}
 body[data-mode="mob"] #kiosk .k-head::after{bottom:19px;width:90px;height:9px;margin-left:-45px}
 body[data-mode="mob"] #kiosk .k-neck{height:30px}
 body[data-mode="mob"] #kiosk .k-base{height:14px}
-body[data-mode="pc"] #frame{width:100vw;height:100vh}
-body[data-mode="pc"] #kiosk .k-head{padding:0;border-radius:0;background:none}
-body[data-mode="pc"] #kiosk .k-head::after,body[data-mode="pc"] #kiosk .k-neck,body[data-mode="pc"] #kiosk .k-base{display:none}
+/* PC: 크림색 테이블 태블릿 */
+body[data-mode="pc"] #frame{width:min(calc(100vw - 120px),calc((100vh - 110px)*1.6));aspect-ratio:16/10;border-radius:6px}
+body[data-mode="pc"] #kiosk .k-head{background:#EDE6D8;padding:38px 34px 32px;border-radius:48px}
+body[data-mode="pc"] #kiosk .k-head::after{left:50%;top:14px;bottom:auto;width:11px;height:11px;margin-left:-5px;border-radius:50%;background:#3C3A36}
+body[data-mode="pc"] #kiosk .k-neck,body[data-mode="pc"] #kiosk .k-base{display:none}
+@media (max-width:1000px){   /* 좁은 창에서 PC 보기: 태블릿 틀 없이 화면 전체 */
+  body[data-mode="pc"] #frame{width:100vw;height:100vh;aspect-ratio:auto;border-radius:0}
+  body[data-mode="pc"] #kiosk .k-head{padding:0;border-radius:0;background:none}
+  body[data-mode="pc"] #kiosk .k-head::after{display:none}
+}
 @media (max-width:760px){   /* 실제 휴대폰: 기계 틀 없이 화면 전체 */
-  body[data-mode="mob"] #frame{width:100vw;height:100vh;border-radius:0}
-  body[data-mode="mob"] #kiosk .k-head{padding:0;border-radius:0;background:none}
-  body[data-mode="mob"] #kiosk .k-head::after,body[data-mode="mob"] #kiosk .k-neck,body[data-mode="mob"] #kiosk .k-base{display:none}
+  body[data-mode] #frame{width:100vw;height:100vh;aspect-ratio:auto;border-radius:0}
+  body[data-mode] #kiosk .k-head{padding:0;border-radius:0;background:none}
+  body[data-mode] #kiosk .k-head::after,body[data-mode] #kiosk .k-neck,body[data-mode] #kiosk .k-base{display:none}
 }
 
-/* ================= 앱: 좁으면 키오스크 배치, 넓으면 PC 배치 ================= */
-.app{container:app/inline-size;height:100%;display:flex;flex-direction:column;background:#fff;color:var(--text);font-size:14px;line-height:20px}
+/* ================= 앱: 좁으면 키오스크 배치, 넓으면 테이블 태블릿 배치 ================= */
+.app{container:app/inline-size;height:100%}
+.shell{--prim:var(--navy);--prim-h:var(--navy-2);position:relative;height:100%;display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-rows:88px minmax(0,1fr) auto;grid-template-areas:"bar bar" "nav main" "dock dock";background:#fff;color:var(--text);font-size:14px;line-height:20px}
 
-/* --- 키오스크(모바일) 배치: 위 배너 · 왼쪽 분류 줄 · 오른쪽 메뉴 · 아래 버튼 --- */
-.bar{flex:none;height:88px;background:var(--navy);color:#fff;display:flex;align-items:center;gap:12px;padding:0 20px}
+/* --- 키오스크(모바일): 위 배너 · 왼쪽 분류 줄 · 오른쪽 메뉴 · 아래 버튼 --- */
+.bar{grid-area:bar;background:var(--navy);color:#fff;display:flex;align-items:center;gap:12px;padding:0 20px}
 .brand{display:flex;align-items:center;gap:12px}
 .brand svg{width:32px;height:32px}
 .brand b{display:block;font-size:20px;line-height:26px;font-weight:700}
 .brand span span{display:block;font-size:13px;line-height:18px;color:#C9CDE0}
 .sp{flex:1}
+.only-wide{display:none!important}
 .btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 16px;border-radius:999px;font-weight:600;font-size:14px;white-space:nowrap;transition:background .15s,transform .1s}
 .btn:active{transform:scale(.97)}
 .btn svg{width:16px;height:16px}
-.btn.white{background:#fff;color:var(--navy)}
-.btn.white:hover{background:#E6E8F2}
-.btn.navy{background:var(--navy);color:#fff}
-.btn.navy:hover{background:var(--navy-2)}
+.btn.prim{background:var(--prim);color:#fff}
+.btn.prim:hover{background:var(--prim-h)}
 .btn.ghost{background:#fff;color:var(--text);border:1px solid var(--control)}
 .btn.ghost:hover{background:var(--ground)}
-.btn.onnavy{color:#fff;border:1px solid #8E94B5}
-.btn.onnavy:hover{background:var(--navy-2)}
-.only-wide{display:none}
 
-.body{flex:1;min-height:0;display:grid;grid-template-columns:96px minmax(0,1fr)}
-.nav{display:flex;flex-direction:column;gap:4px;overflow-y:auto;padding:8px;background:var(--ground);border-right:1px solid var(--border);scrollbar-width:none}
+.nav{grid-area:nav;display:flex;flex-direction:column;gap:4px;overflow-y:auto;padding:8px;background:var(--ground);border-right:1px solid var(--border);scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
 .nav button{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:76px;padding:8px 2px;border-radius:12px;font-size:13px;line-height:16px;font-weight:500;color:var(--muted);text-align:center;border:2px solid transparent;transition:background .15s,color .15s}
 .nav button svg{width:26px;height:26px}
 .nav button:hover{background:#E9E8E1;color:var(--text)}
 .nav button[aria-current="true"]{background:#fff;color:var(--text);font-weight:700;border-color:var(--navy)}
-.main{min-height:0;overflow:auto;padding:16px}
-.dock{flex:none;display:grid;grid-template-columns:1fr 1.7fr;gap:8px;padding:12px 16px;background:#fff;border-top:1px solid var(--border)}
+.main{grid-area:main;min-height:0;overflow:auto;padding:16px}
+.dock{grid-area:dock;display:grid;grid-template-columns:1fr 1.7fr;gap:8px;padding:12px 16px;background:#fff;border-top:1px solid var(--border)}
 .dock .btn{height:52px;font-size:16px}
 .dock .btn svg{width:20px;height:20px}
 
@@ -112,31 +118,22 @@ body[data-mode="pc"] #kiosk .k-head::after,body[data-mode="pc"] #kiosk .k-neck,b
 .title{font-size:20px;line-height:28px;font-weight:600;letter-spacing:-.01em}
 .cnt{color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}
-.card{display:flex;flex-direction:column;gap:8px;min-width:0}
+.card{display:flex;flex-direction:column;gap:8px;min-width:0;cursor:pointer}
+.card.off{cursor:default}
 .thumb{position:relative;display:flex;align-items:flex-end;width:100%;aspect-ratio:16/9;overflow:hidden;padding:8px 10px;text-align:left;color:#C9CDE0;font-weight:500;font-size:13px;line-height:18px}
 .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .thumb .pl{position:absolute;left:50%;top:50%;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center;transition:transform .15s}
 .thumb .pl svg{width:14px;height:14px;margin-left:2px}
-button.thumb:hover .pl{transform:scale(1.12)}
+.card:hover .pl,button.thumb:hover .pl{transform:scale(1.12)}
 .thumb[disabled]{cursor:default}
-.info{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"t t" "m m" "b b";align-items:center;gap:4px 8px}
-.info h3{grid-area:t}
-.info .more{grid-area:b;justify-self:start;margin-top:2px}
-.info .meta{grid-area:m;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bdg{position:absolute;left:0;top:0;padding:3px 8px;background:#fff;color:var(--navy);font-size:12px;line-height:16px;font-weight:600}
+.info{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
 .card h3{min-width:0;font-size:15px;line-height:22px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.more{flex:none;height:26px;padding:0 10px;border-radius:999px;background:var(--blue);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;transition:background .15s}
+.meta{font-size:13px;line-height:18px;color:var(--muted)}
+.more{justify-self:start;margin-top:2px;height:26px;padding:0 10px;border-radius:999px;background:var(--blue);color:#fff;font-size:13px;font-weight:600;white-space:nowrap;transition:background .15s}
 .more:hover{background:var(--blue-d)}
 .more[disabled]{background:var(--rule);color:var(--muted);cursor:default}
-.meta{font-size:13px;line-height:18px;color:var(--muted)}
 
-.hello{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;padding:14px;margin-bottom:20px;border-radius:12px;background:var(--ground)}
-.hp{width:56px;height:56px;border-radius:50%;background:#fff;color:var(--muted);display:grid;place-items:center;overflow:hidden}
-.hp img{width:100%;height:100%;object-fit:cover}
-.hp svg{width:28px;height:28px}
-.ht b{font-size:16px;line-height:22px;font-weight:600}
-.ht span{margin-left:8px;color:var(--muted)}
-.ht p{margin-top:4px;font-size:13px;line-height:20px}
-.hello .btn{grid-column:1/-1}
 /* 분류마다 맨 위에 들어가는 가로 꽉 찬 영상 배너 */
 .banner{position:relative;margin:-16px -16px 16px;aspect-ratio:16/9;background:var(--navy);color:#C9CDE0;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:14px}
 .banner iframe{position:absolute;left:0;top:50%;width:100%;aspect-ratio:16/9;transform:translateY(-50%);border:0;pointer-events:none}
@@ -144,33 +141,8 @@ button.thumb:hover .pl{transform:scale(1.12)}
 .banner .bp svg{width:18px;height:18px;margin-left:3px}
 .bigphoto{margin:-16px -16px 20px;aspect-ratio:4/5;background:var(--ground);color:var(--muted);display:grid;place-items:center;font-weight:500;overflow:hidden}
 .bigphoto img{width:100%;height:100%;object-fit:cover}
-.yt{display:flex;align-items:center;gap:12px;margin-top:8px;padding:14px 16px;border:1px solid var(--border);transition:background .15s,border-color .15s}
-.yt:hover{background:var(--ground);border-color:var(--control)}
-.yt svg{flex:none;width:28px;height:28px}
-.yt b{display:block;font-weight:600;font-size:15px}
-.yt span{font-size:13px;color:var(--muted)}
-/* 상세 */
-.player{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--navy);margin-top:12px}
-.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.player .thumb{height:100%;aspect-ratio:auto;border-radius:0;font-size:16px;line-height:22px;padding:16px 20px}
-.player .thumb .pl{width:64px;height:64px;margin:-32px 0 0 -32px}
-.player .thumb .pl svg{width:24px;height:24px;margin-left:4px}
-.dh{margin-top:16px}
-.dh .meta{font-size:13px;line-height:20px;margin-top:4px}
-.tabs{display:flex;gap:20px;border-bottom:1px solid var(--border);margin-top:16px}
-.tabs button{height:40px;color:var(--muted);font-weight:500;border-bottom:2px solid transparent;margin-bottom:-1px}
-.tabs button:hover{color:var(--text)}
-.tabs button[aria-selected="true"]{color:var(--text);font-weight:600;border-bottom-color:var(--blue)}
-.pane{padding-top:16px;font-size:15px;line-height:24px;max-width:68ch}
-.steps{padding-left:20px}
-.steps li{margin-bottom:12px}
-.steps b{display:block;font-weight:600}
-.ask{margin-top:24px;height:44px;width:100%}
 
 /* 소개 */
-.profile{display:block}
-.photo{aspect-ratio:4/3;border-radius:12px;background:var(--ground);color:var(--muted);display:grid;place-items:center;font-weight:500;overflow:hidden}
-.photo img{width:100%;height:100%;object-fit:cover}
 .profile .role{color:var(--muted);margin-top:4px}
 .profile p.intro{font-size:15px;line-height:24px;margin-top:12px;max-width:60ch}
 .profile h2{font-size:16px;line-height:24px;font-weight:600;margin-top:24px}
@@ -179,39 +151,77 @@ button.thumb:hover .pl{transform:scale(1.12)}
 .hist td:first-child{width:88px;color:var(--muted)}
 .tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .tools span{height:28px;padding:0 12px;border-radius:999px;border:1px solid var(--border);display:inline-flex;align-items:center;font-size:13px}
+.yt{display:flex;align-items:center;gap:12px;margin-top:8px;padding:14px 16px;border:1px solid var(--border);transition:background .15s,border-color .15s}
+.yt:hover{background:var(--ground);border-color:var(--control)}
+.yt svg{flex:none;width:28px;height:28px}
+.yt b{display:block;font-weight:600;font-size:15px}
+.yt span{font-size:13px;color:var(--muted)}
 
-/* --- PC 배치: 위 탭 · 3열 작품 (본문 최대 1136px, 3 x 360 + 2 x 28 = 1136) --- */
+/* 영상 상세 (메뉴를 눌렀을 때 뜨는 창) */
+.modal{grid-row:2;grid-column:1/-1;z-index:2;background:#fff;overflow:auto;padding:16px}
+.dtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.player{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--navy)}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.player .thumb{height:100%;aspect-ratio:auto;font-size:16px;line-height:22px;padding:16px 20px}
+.player .thumb .pl{width:64px;height:64px;margin:-32px 0 0 -32px}
+.player .thumb .pl svg{width:24px;height:24px;margin-left:4px}
+.dr{margin-top:16px}
+.dr h2{font-size:22px;line-height:28px;font-weight:600}
+.dr .meta{font-size:13px;line-height:20px;margin-top:4px}
+.tabs{display:flex;gap:20px;border-bottom:1px solid var(--border);margin-top:16px}
+.tabs button{height:40px;color:var(--muted);font-weight:500;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button:hover{color:var(--text)}
+.tabs button[aria-selected="true"]{color:var(--text);font-weight:600;border-bottom-color:var(--blue)}
+.pane{padding-top:16px;font-size:15px;line-height:24px;min-height:120px}
+.steps{padding-left:20px}
+.steps li{margin-bottom:12px}
+.steps b{display:block;font-weight:600}
+.ask{margin-top:16px;height:48px;width:100%;font-size:15px}
+
+/* --- 테이블 태블릿(PC): 위 줄 · 왼쪽 글자 메뉴 · 3열 사진 · 오른쪽 아래 버튼
+       가로 합계: 200(메뉴) + 본문 = 화면 폭, 본문 3열 = 3칸 + 간격 20 x 2 --- */
 @container app (min-width:900px){
-  .bar{height:56px;padding:0 32px}
-  .brand svg{width:24px;height:24px}
-  .brand b{font-size:16px;line-height:24px}
+  .shell{--prim:var(--blue);--prim-h:var(--blue-d);grid-template-columns:200px minmax(0,1fr);grid-template-rows:64px minmax(0,1fr) 72px;grid-template-areas:"bar bar" "nav main" "nav dock"}
+  .only-wide{display:flex!important}
+  .only-narrow{display:none!important}
+  .bar{background:#fff;color:var(--text);border-bottom:1px solid var(--border);padding:0 24px;gap:0}
+  .brand{width:176px;gap:8px;color:var(--blue)}
+  .brand svg{width:26px;height:26px}
+  .brand b{font-size:18px;line-height:24px;color:var(--text)}
   .brand span span{display:none}
-  .only-wide{display:inline-flex}
-  .body{display:flex;flex-direction:column}
-  .nav{flex:none;flex-direction:row;justify-content:center;gap:32px;overflow:visible;padding:0 32px;background:#fff;border-right:0;border-bottom:1px solid var(--border)}
-  .nav button{flex-direction:row;min-height:0;height:56px;padding:0 2px;border:0;border-bottom:3px solid transparent;border-radius:0;font-size:15px;line-height:22px}
+  .here{flex-direction:column}
+  .here .hname{font-size:16px;line-height:22px;font-weight:600}
+  .here span{font-size:13px;line-height:18px;color:var(--muted)}
+  .tbl{flex-direction:column;align-items:center;min-width:72px;padding:4px 14px;border:1px solid var(--border);border-radius:8px}
+  .tbl span{font-size:12px;line-height:16px;color:var(--muted)}
+  .tbl b{font-size:18px;line-height:22px;font-weight:700}
+  .nav{gap:2px;padding:16px 12px;background:#fff}
+  .nav button{flex-direction:row;justify-content:flex-start;min-height:0;height:52px;padding:0 16px;border:0;border-radius:8px;font-size:17px;line-height:24px;font-weight:600;color:var(--text);text-align:left}
   .nav button svg{display:none}
-  .nav button:hover{background:none}
-  .nav button[aria-current="true"]{border-bottom-color:var(--blue);background:none}
-  .main{flex:1;padding:32px}
-  .wrap{max-width:1136px;margin:0 auto}
-  .wrap.narrow{max-width:880px}
-  .dock{display:none}
-  .title{font-size:22px}
-  .banner{margin:-32px -32px 32px;aspect-ratio:auto;height:420px;font-size:15px}
-  .bigphoto{margin:-32px -32px 32px;aspect-ratio:auto;height:520px}
-  .hello{grid-template-columns:auto minmax(0,1fr) auto;gap:20px;padding:20px 24px;margin-bottom:32px}
-  .hp{width:72px;height:72px}
-  .ht p{font-size:14px;line-height:22px}
-  .hello .btn{grid-column:auto}
-  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 28px}
-  .thumb{font-size:13px;padding:10px 12px}
+  .nav button:hover{background:var(--ground)}
+  .nav button[aria-current="true"]{background:var(--blue-pale);color:var(--blue)}
+  .nav .line{flex:none;height:1px;margin:10px 16px;background:var(--border)}
+  .main{padding:24px}
+  .trow{display:none}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 20px}
   .thumb .pl{width:44px;height:44px;margin:-22px 0 0 -22px}
-  .card h3{font-size:16px}
-  .info{grid-template-areas:"t b" "m m"}
-  .info .more{justify-self:auto;margin-top:0}
-  .photo{aspect-ratio:4/5}
-  .ask{width:auto;padding:0 28px}
+  .card h3{font-size:16px;line-height:24px;font-weight:500}
+  .meta{font-size:15px;line-height:22px;font-weight:600;color:var(--blue)}
+  .more{display:none}
+  .banner{margin:-24px -24px 24px;aspect-ratio:auto;height:260px;font-size:15px}
+  .bigphoto{margin:-24px -24px 24px;aspect-ratio:auto;height:400px}
+  .profile{max-width:760px}
+  .profile .title{display:block;font-size:22px}
+  .dock{display:flex;justify-content:flex-end;align-items:center;gap:20px;padding:0 24px}
+  .dock .seen{align-items:baseline;gap:6px;font-size:15px;color:var(--muted)}
+  .dock .seen b{font-size:20px;font-weight:700;color:var(--text)}
+  .dock .btn{height:48px;width:260px;border-radius:8px;font-size:17px}
+  .modal{grid-row:1/-1;z-index:5;display:grid;place-items:center;padding:32px;background:rgba(11,16,48,.55)}
+  .dlg{width:min(1040px,100%);max-height:100%;overflow:auto;background:#fff;border-radius:12px;padding:20px 24px 24px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:0 24px;align-content:start}
+  .dtop{grid-column:1/-1}
+  .dr{margin-top:0;display:flex;flex-direction:column}
+  .pane{flex:1}
+  .ask{border-radius:8px}
 }
 
 /* 문의 창 */
@@ -235,15 +245,15 @@ dialog .btn{width:100%;margin-top:16px}
 <!-- 첫 화면: 보는 방식 고르기 -->
 <section id="landing">
   <h1>영상 포트폴리오를 둘러보세요</h1>
-  <p class="lead">모션 디자이너 YOUR NAME의 작업이에요. 키오스크 화면이나 넓은 PC 화면 중에 편한 쪽을 고르세요.</p>
+  <p class="lead">모션 디자이너 YOUR NAME의 작업이에요. 키오스크 화면이나 테이블 태블릿 화면 중에 편한 쪽을 고르세요.</p>
   <div class="devices">
     <div class="dev">
       <div class="kiosk" aria-hidden="true"><div class="k-head"><div class="scr"><div class="app" id="mockKiosk" inert></div></div></div><div class="k-neck"></div><div class="k-base"></div></div>
       <button class="go" onclick="setMode('mob')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>모바일로 보기</button>
     </div>
     <div class="dev">
-      <div class="laptop" aria-hidden="true"><div class="lid"><div class="bezel"><div class="scr"><div class="app" id="mockPc" inert></div></div></div></div><div class="base"></div></div>
-      <button class="go" onclick="setMode('pc')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>PC로 보기</button>
+      <div class="tablet" aria-hidden="true"><div class="t-body"><div class="scr"><div class="app" id="mockPc" inert></div></div></div></div>
+      <button class="go" onclick="setMode('pc')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M12 8v0"/></svg>PC로 보기</button>
     </div>
   </div>
 </section>
@@ -280,11 +290,11 @@ const PROFILE={
 const CATS=[
   {id:'all',   name:'전체',        icon:'grid', banner:''},
   {id:'intro', name:'소개',        icon:'user', banner:''},
-  {id:'ad',    name:'광고 제작물',  icon:'ad', banner:''},
+  {id:'ad',    name:'광고 제작물',  icon:'ad',   banner:''},
   {id:'book',  name:'북트레일러',   icon:'book', banner:''},
   {id:'ani',   name:'애니메이션',   icon:'film', banner:''},
   {id:'team',  name:'팀 프로젝트',  icon:'team', banner:''},
-  {id:'school',name:'학원 제작물',  icon:'cap', banner:''},
+  {id:'school',name:'학원 제작물',  icon:'cap',  banner:''},
 ];
 
 // 4) 작품 — yt: 유튜브 영상 ID (youtube.com/watch?v=이부분). 넣으면 썸네일과 재생이 연결돼요
@@ -321,11 +331,11 @@ const ICON={
   cap:svg('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 3 9 3 12 0v-5"/>'),
   user:svg('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'),
 };
-const metaOf=w=>[w.year,w.time,w.team,w.state==='wip'&&'제작 중',w.state==='soon'&&'준비 중'].filter(Boolean).join(' · ');
-function thumb(w,tag='button',attrs=''){
+const metaOf=w=>[w.year,w.time,w.team].filter(Boolean).join(' · ');
+const badge=w=>w.state==='wip'?'<span class="bdg">제작 중</span>':w.state==='soon'?'<span class="bdg">준비 중</span>':'';
+function thumb(w,tag='div',attrs=''){
   const img=w.yt?`<img src="https://img.youtube.com/vi/${w.yt}/hqdefault.jpg" alt="">`:`<span>${w.en}</span>`;
-  const off=w.state==='soon';
-  return `<${tag} class="thumb" ${attrs} ${off&&tag==='button'?'disabled':''} style="background:${w.bg}" ${tag==='button'?`aria-label="${w.title} 영상 보기"`:''}>${img}${off?'':`<span class="pl">${PLAY}</span>`}</${tag}>`;
+  return `<${tag} class="thumb" ${attrs} style="background:${w.bg}">${img}${badge(w)}${w.state==='soon'?'':`<span class="pl">${PLAY}</span>`}</${tag}>`;
 }
 
 /* 문의 창 */
@@ -341,69 +351,90 @@ dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
 
 /* 앱 만들기 — 첫 화면의 미리보기(live:false)와 실제 화면(live:true)이 같은 코드를 써요 */
 function buildApp(root,opt){
-  const st={cat:opt.cat||'all',cur:null,tab:'story'};
-  const H=opt.live?'h1':'div';
-  root.innerHTML=`
-    <header class="bar"><span class="brand">${ICON.mark}<span><b>${CONTACT.name}</b><span>영상 포트폴리오</span></span></span><span class="sp"></span>
-      <button class="btn onnavy only-wide" data-act="home">${ICON.home}처음으로</button>
-      <button class="btn white only-wide" data-act="contact">${ICON.mail}연락 문의하기</button></header>
-    <div class="body"><nav class="nav" aria-label="분류"></nav><main class="main"></main></div>
-    <div class="dock"><button class="btn ghost" data-act="home">${ICON.home}처음으로</button><button class="btn navy" data-act="contact">${ICON.mail}연락 문의하기</button></div>`;
+  const st={cat:opt.cat||'all',cur:null,tab:'story',seen:[]};
+  let wide=false, H='div';   // 화면 제목(h1)은 지금 보이는 배치에 하나만 둬요
+  const pick=()=>{wide=root.offsetWidth>=900;H=opt.live&&!wide?'h1':'div'};
+  root.innerHTML=`<div class="shell">
+    <header class="bar"><span class="brand">${ICON.mark}<span><b>${CONTACT.name}</b><span>영상 포트폴리오</span></span></span>
+      <span class="here only-wide"></span><span class="sp"></span>
+      <span class="tbl only-wide"><span>영상</span><b class="num">${WORKS.length}</b></span></header>
+    <nav class="nav" aria-label="분류"></nav>
+    <main class="main"></main>
+    <div class="dock"><button class="btn ghost only-narrow" data-act="home">${ICON.home}처음으로</button>
+      <span class="seen only-wide">본 영상 <b class="num">0</b>편</span>
+      <button class="btn prim" data-act="contact">${ICON.mail}연락 문의하기</button></div>
+    <div class="modal" hidden></div></div>`;
   const $=s=>root.querySelector(s);
 
   function nav(){
-    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" aria-current="${c.id===st.cat&&!st.cur||c.id===st.cat}">${ICON[c.icon]}<span>${c.name}</span></button>`).join('');
-  }
-  function list(){
-    const c=CATS.find(x=>x.id===st.cat), ws=inCat(st.cat);
-    return `${banner(c)}<div class="wrap"><div class="trow"><${H} class="title">${c.name}</${H}><span class="cnt num">${ws.length}편</span></div>
-      <div class="grid">${ws.map(w=>{const off=w.state==='soon';return `<article class="card">
-        ${thumb(w,'button',`data-act="open" data-id="${w.id}"`)}
-        <div class="info"><h3>${w.title}</h3><button class="more" data-act="open" data-id="${w.id}" ${off?'disabled':''}>${off?'준비 중':'설명 보기'}</button><p class="meta num">${metaOf(w)}</p></div></article>`}).join('')}</div></div>`;
+    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" aria-current="${c.id===st.cat}">${ICON[c.icon]}<span>${c.name}</span></button>`).join('')
+      +`<span class="line only-wide"></span><button class="only-wide" data-act="contact">연락 문의</button><button class="only-wide" data-act="home">처음으로</button>`;
+    const c=CATS.find(x=>x.id===st.cat);
+    const HH=opt.live&&wide&&c.id!=='intro'?'h1':'div';
+    $('.here').innerHTML=`<${HH} class="hname">${c.name}</${HH}><span>${c.id==='intro'?CONTACT.role:'영상 '+inCat(c.id).length+'편'}</span>`;
   }
   function banner(c){
     const label=c.id==='all'?'소개 영상':c.name+' 배너 영상';
     return `<div class="banner">${c.banner?`<iframe src="https://www.youtube.com/embed/${c.banner}?autoplay=1&mute=1&loop=1&playlist=${c.banner}&controls=0&rel=0" title="${label}" allow="autoplay"></iframe>`
       :`<span class="bp">${PLAY}</span><span>${label}이 들어갈 자리</span>`}</div>`;
   }
+  function list(){
+    const c=CATS.find(x=>x.id===st.cat), ws=inCat(st.cat);
+    return `${banner(c)}<div class="trow"><${H} class="title">${c.name}</${H}><span class="cnt num">${ws.length}편</span></div>
+      <div class="grid">${ws.map(w=>{const off=w.state==='soon';return `<article class="card ${off?'off':''}" ${off?'':`data-act="open" data-id="${w.id}"`}>
+        ${thumb(w)}
+        <div class="info"><h3>${w.title}</h3><p class="meta num">${metaOf(w)}</p>
+        <button class="more" ${off?'disabled':''} ${off?'':`aria-label="${w.title} 설명 보기"`}>${off?'준비 중':'설명 보기'}</button></div></article>`}).join('')}</div>`;
+  }
   function intro(){
     const y=PROFILE.youtube;
     return `<div class="bigphoto">${PROFILE.photo?`<img src="${PROFILE.photo}" alt="${CONTACT.name}">`:'프로필 사진이 들어갈 자리'}</div>
-      <div class="wrap narrow profile"><${H} class="title">${CONTACT.name}</${H}><p class="role">${CONTACT.role}</p>
+      <div class="profile"><${opt.live?'h1':'div'} class="title">${CONTACT.name}</${opt.live?'h1':'div'}><p class="role">${CONTACT.role}</p>
         <p class="intro">${PROFILE.intro}</p>
         <h2>자격증</h2><table class="hist"><tbody>${PROFILE.certs.map(h=>`<tr><td class="num">${h[0]}</td><td>${h[1]}</td></tr>`).join('')}</tbody></table>
         <h2>유튜브 채널</h2><a class="yt" ${y.url?`href="${y.url}" target="_blank" rel="noopener"`:''}>${ICON.mark}<div><b>${y.name}</b><span>${y.url||'채널 주소를 넣으면 연결돼요'}</span></div></a>
         <h2>사용 툴</h2><div class="tools">${PROFILE.tools.map(t=>`<span>${t}</span>`).join('')}</div></div>`;
   }
-  function detail(){
-    const w=st.cur, tabs=[['story','영상 내용'],['intent','기획 의도'],['process','제작 과정']];
-    let pane;
-    if(st.tab==='process') pane=w.process?`<ol class="steps">${w.process.map(s=>`<li><b>${s[0]}</b>${s[1]}</li>`).join('')}</ol>`:'제작 과정을 정리하고 있어요.';
-    else pane=w[st.tab]||(st.tab==='story'?'영상 내용을 정리하고 있어요.':'기획 의도를 정리하고 있어요.');
-    return `<div class="wrap narrow"><button class="btn ghost" data-act="back">${ICON.back}${CATS.find(c=>c.id===st.cat).name}</button>
-      <div class="player">${thumb(w,w.yt?'button':'div',w.yt?'data-act="play"':'')}</div>
-      <div class="dh"><${H} class="title">${w.title}</${H}><p class="meta num">${[metaOf(w),w.role&&'내 역할 '+w.role,w.tools].filter(Boolean).join(' · ')}</p></div>
-      <div class="tabs" role="tablist">${tabs.map(t=>`<button role="tab" data-act="tab" data-id="${t[0]}" aria-selected="${t[0]===st.tab}">${t[1]}</button>`).join('')}</div>
-      <div class="pane">${pane}</div>
-      <button class="btn navy ask" data-act="contact" data-about="${w.title}">${ICON.mail}이 영상으로 문의하기</button></div>`;
+  function pane(){
+    const w=st.cur;
+    root.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.id===st.tab));
+    $('.pane').innerHTML=st.tab==='process'
+      ?(w.process?`<ol class="steps">${w.process.map(s=>`<li><b>${s[0]}</b>${s[1]}</li>`).join('')}</ol>`:'제작 과정을 정리하고 있어요.')
+      :(w[st.tab]||(st.tab==='story'?'영상 내용을 정리하고 있어요.':'기획 의도를 정리하고 있어요.'));
   }
+  function openWork(w){
+    st.cur=w; st.tab='story'; st.seen=[w.id,...st.seen.filter(x=>x!==w.id)];
+    $('.seen b').textContent=st.seen.length;
+    const m=$('.modal'); m.hidden=false;
+    m.innerHTML=`<div class="dlg" role="dialog" aria-label="${w.title}">
+      <div class="dtop"><button class="btn ghost" data-act="back">${ICON.back}목록으로</button></div>
+      <div class="player">${thumb(w,w.yt?'button':'div',w.yt?`data-act="play" aria-label="${w.title} 재생"`:'')}</div>
+      <div class="dr"><h2>${w.title}</h2><p class="meta num">${[metaOf(w),w.role&&'내 역할 '+w.role,w.tools].filter(Boolean).join(' · ')}</p>
+        <div class="tabs" role="tablist">${[['story','영상 내용'],['intent','기획 의도'],['process','제작 과정']].map(t=>`<button role="tab" data-act="tab" data-id="${t[0]}">${t[1]}</button>`).join('')}</div>
+        <div class="pane"></div>
+        <button class="btn prim ask" data-act="contact" data-about="${w.title}">${ICON.mail}이 영상으로 문의하기</button></div></div>`;
+    pane();
+  }
+  function closeWork(){st.cur=null;const m=$('.modal');m.hidden=true;m.innerHTML=''}
   function render(){
-    nav();
-    $('.main').innerHTML=st.cur?detail():st.cat==='intro'?intro():list();
+    pick(); nav();
+    $('.main').innerHTML=st.cat==='intro'?intro():list();
     $('.main').scrollTop=0;
   }
   root.addEventListener('click',e=>{
+    if(e.target.classList.contains('modal')){closeWork();return}
     const b=e.target.closest('[data-act]'); if(!b||b.disabled)return;
     const a=b.dataset.act, id=b.dataset.id;
-    if(a==='cat'){st.cat=id;st.cur=null}
-    else if(a==='open'){st.cur=byId(id);st.tab='story'}
-    else if(a==='back'){st.cur=null}
-    else if(a==='tab'){st.tab=id}
-    else if(a==='play'){$('.player').innerHTML=`<iframe src="https://www.youtube.com/embed/${st.cur.yt}?autoplay=1&rel=0" title="${st.cur.title}" allow="autoplay;encrypted-media;fullscreen" allowfullscreen></iframe>`;return}
-    else if(a==='contact'){openContact(b.dataset.about||(st.cur?st.cur.title:''));return}
-    else if(a==='home'){setMode('landing');return}
-    render();
+    if(a==='cat'){closeWork();st.cat=id;render()}
+    else if(a==='open'){openWork(byId(id))}
+    else if(a==='back'){closeWork()}
+    else if(a==='tab'){st.tab=id;pane()}
+    else if(a==='play'){$('.player').innerHTML=`<iframe src="https://www.youtube.com/embed/${st.cur.yt}?autoplay=1&rel=0" title="${st.cur.title}" allow="autoplay;encrypted-media;fullscreen" allowfullscreen></iframe>`}
+    else if(a==='contact'){openContact(b.dataset.about||'')}
+    else if(a==='home'){closeWork();setMode('landing')}
   });
+  if(opt.live)new ResizeObserver(()=>{const was=wide;pick();if(was!==wide)render()}).observe(root);
+  if(opt.live)addEventListener('keydown',e=>{if(e.key==='Escape'&&st.cur&&!dlg.open)closeWork()});
   render();
 }
 
@@ -413,8 +444,8 @@ function setMode(m){   // 보이는 화면에만 제목(h1)이 하나 있도록,
   if(m==='landing'){document.body.insertBefore(landingEl,stageEl)} else landingEl.remove();
   scrollTo(0,0);
 }
-buildApp(document.getElementById('mockKiosk'),{live:false,cat:'all'});
-buildApp(document.getElementById('mockPc'),{live:false,cat:'all'});
+buildApp(document.getElementById('mockKiosk'),{live:false,cat:'ad'});
+buildApp(document.getElementById('mockPc'),{live:false,cat:'ad'});
 const Q=new URLSearchParams(location.search);   // 주소 뒤에 ?mode=pc 또는 ?mode=mob 을 붙이면 그 화면으로 바로 열려요
 buildApp(document.getElementById('app'),{live:true,cat:CATS.some(c=>c.id===Q.get('cat'))?Q.get('cat'):'all'});
 if(['mob','pc'].includes(Q.get('mode')))setMode(Q.get('mode'));
