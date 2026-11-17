@@ -4,25 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>KIM SO YEON 영상 포트폴리오</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..700&family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 /* =====================================================================
-   디자인 기준
-   색   : 미드나이트 네이비(바탕 글자·머리줄) / 코발트 블루(누르는 것·재생 시간) / 흰 종이 / 옅은 회청색(구분)
-   글자 : 이름·제목 = Bodoni Moda + Noto Serif KR (세리프) / 그 밖의 모든 글자 = Pretendard (고딕)
+   디자인 기준 (이탈리아 모더니즘 포스터 방식)
+   글자 : Pretendard 한 가지만. 크기와 굵기 차이로만 위아래를 나눠요 (가는 획이 없어서 화면에서 깨지지 않아요)
+   색   : 네이비(글자·머리줄) / 코발트 블루(지금 고른 것·누르는 것·재생 시간) / 흰 바탕 / 옅은 회청색(구분)
+   선   : 굵은 네이비 선(3px)이 구역을 나누고, 글자는 그 선 아래에 왼쪽 맞춤으로 매달려요
    모양 : 영상은 모서리 각지게, 버튼만 살짝 둥글게
 ===================================================================== */
 :root{
-  --ink:#0A1238; --ink-2:#1A2456; --cobalt:#1E47E6; --cobalt-d:#1638BD; --cobalt-pale:#EDF1FE;
+  --ink:#0A1238; --ink-2:#1A2456; --cobalt:#1E47E6; --cobalt-d:#1638BD;
   --paper:#ffffff; --mist:#F1F3F8; --line:#DFE3EC; --control:#C3C9D6; --slate:#5A6079;
-  --display:"Bodoni Moda","Noto Serif KR","Nanum Myeongjo",serif;
   --ui:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --rule:3px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{word-break:keep-all;font-family:var(--ui);color:var(--ink);background:var(--mist);font-size:14px;line-height:20px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{word-break:keep-all;font-family:var(--ui);color:var(--ink);background:var(--mist);font-size:14px;line-height:20px;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:inherit;text-decoration:none}
 [hidden]{display:none!important}
@@ -37,28 +37,28 @@ a{color:inherit;text-decoration:none}
 body[data-mode="mob"] #app{width:min(430px,100%);box-shadow:0 0 0 1px var(--line)}
 body[data-mode="pc"] #app{margin:0;width:calc(100%/var(--s,1));height:calc(100%/var(--s,1));transform:scale(var(--s,1));transform-origin:0 0}
 /* 휴대폰에서 PC 보기일 때: 화면 아래에 원래 크기로 뜨는 돌아가기 버튼 */
-#backMob{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:none;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:10px;background:var(--ink);color:#fff;font-weight:600;font-size:15px;white-space:nowrap;box-shadow:0 8px 24px rgba(10,18,56,.32)}
+#backMob{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:none;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:10px;background:var(--ink);color:#fff;font-weight:700;font-size:15px;white-space:nowrap;box-shadow:0 8px 24px rgba(10,18,56,.32)}
 #backMob svg{width:18px;height:18px}
 body[data-mode="pc"][data-small] #backMob{display:inline-flex}
 
 /* ================= 앱: 좁으면 키오스크 배치, 넓으면 테이블 태블릿 배치 ================= */
 .app{container:app/inline-size;height:100%}
-.shell{position:relative;height:100%;display:grid;grid-template-columns:84px minmax(0,1fr);grid-template-rows:76px minmax(0,1fr) auto;grid-template-areas:"bar bar" "nav main" "dock dock";background:var(--paper);color:var(--ink);font-size:14px;line-height:20px}
+.shell{position:relative;height:100%;display:grid;grid-template-columns:92px minmax(0,1fr);grid-template-rows:72px minmax(0,1fr) auto;grid-template-areas:"bar bar" "nav main" "dock dock";background:var(--paper);color:var(--ink);font-size:14px;line-height:20px}
 
-/* --- 키오스크(모바일): 네이비 머리줄 · 왼쪽 분류 줄 · 오른쪽 메뉴 · 아래 큰 버튼 --- */
-.bar{grid-area:bar;background:var(--ink);color:#fff;display:flex;align-items:center;gap:12px;padding:0 16px 0 20px}
-.brand{display:flex;flex-direction:column;gap:7px;min-width:0}
-.brand b{font-family:var(--display);font-size:21px;line-height:1;font-weight:600;letter-spacing:.06em;white-space:nowrap}
-.brand small{font-size:12px;line-height:1;font-weight:500;color:rgba(255,255,255,.66);letter-spacing:.02em}
+/* --- 키오스크(모바일): 네이비 머리줄 · 왼쪽 글자 분류 줄 · 오른쪽 메뉴 · 아래 큰 버튼 --- */
+.bar{grid-area:bar;background:var(--ink);color:#fff;display:flex;align-items:center;gap:12px;padding:0 14px 0 16px}
+.brand{display:flex;flex-direction:column;gap:6px;min-width:0}
+.brand b{font-size:20px;line-height:1;font-weight:800;letter-spacing:-.015em;white-space:nowrap}
+.brand small{font-size:12px;line-height:1;font-weight:500;color:rgba(255,255,255,.7)}
 .sp{flex:1}
 /* 보기 바꾸기 버튼: PC 보기 ↔ 모바일 보기 */
-.view{flex:none;display:inline-flex;align-items:center;height:40px;padding:0 13px;border-radius:6px;border:1px solid rgba(255,255,255,.38);color:#fff;font-weight:600;font-size:13.5px;white-space:nowrap;transition:background .15s,border-color .15s}
+.view{flex:none;display:inline-flex;align-items:center;height:40px;padding:0 13px;border-radius:6px;border:1px solid rgba(255,255,255,.4);color:#fff;font-weight:600;font-size:13.5px;white-space:nowrap;transition:background .15s,border-color .15s}
 .view:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.7)}
 .view svg{width:17px;height:17px}
 .view span{display:inline-flex;align-items:center;gap:6px}
 body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:none}
 .only-wide{display:none!important}
-.btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:8px;font-weight:600;font-size:14px;white-space:nowrap;transition:background .15s,border-color .15s,transform .1s}
+.btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:8px;font-weight:700;font-size:14px;white-space:nowrap;transition:background .15s,border-color .15s,transform .1s}
 .btn:active{transform:scale(.98)}
 .btn svg{width:17px;height:17px}
 .btn.prim{background:var(--cobalt);color:#fff}
@@ -66,12 +66,12 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
 .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--control)}
 .btn.ghost:hover{background:var(--mist);border-color:var(--slate)}
 
+/* 왼쪽 분류 줄: 아이콘 없이 글자만. 지금 고른 분류는 코발트 블록으로 채워요 */
 .nav{grid-area:nav;display:flex;flex-direction:column;overflow-y:auto;background:#fff;border-right:1px solid var(--line);scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
-.nav button{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:78px;padding:8px 2px;font-size:12.5px;line-height:16px;font-weight:500;color:var(--slate);text-align:center;border-bottom:1px solid var(--line);transition:background .15s,color .15s}
-.nav button svg{width:25px;height:25px;stroke-width:1.5}
-.nav button:hover{background:var(--mist);color:var(--ink)}
-.nav button[aria-current="true"]{background:var(--cobalt);color:#fff;font-weight:600;border-bottom-color:var(--cobalt)}
+.nav button{flex:none;display:flex;align-items:center;min-height:62px;padding:10px 8px 10px 16px;font-size:14px;line-height:18px;font-weight:600;letter-spacing:-.01em;color:var(--ink);text-align:left;border-bottom:1px solid var(--line);transition:background .15s,color .15s}
+.nav button:hover{background:var(--mist)}
+.nav button[aria-current="true"]{background:var(--cobalt);color:#fff;font-weight:700;border-bottom-color:var(--cobalt)}
 .nav button:focus-visible{outline-offset:-3px}
 .nav .n{display:none}
 .main{grid-area:main;min-height:0;overflow:auto;padding:16px 16px 28px}
@@ -79,9 +79,10 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
 .dock .btn{height:56px;border-radius:10px;font-size:16.5px}
 .dock .btn svg{width:20px;height:20px}
 
-.trow{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:2px 0 16px}
-.title{font-family:var(--display);font-size:25px;line-height:32px;font-weight:600;letter-spacing:-.01em}
-.cnt{color:var(--slate);font-size:13.5px}
+/* 분류 제목: 굵은 선 아래에 매달린 큰 글자 */
+.trow{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0 0 16px;padding-top:12px;border-top:var(--rule) solid var(--ink)}
+.title{font-size:23px;line-height:28px;font-weight:800;letter-spacing:-.03em}
+.cnt{color:var(--slate);font-size:13.5px;font-weight:600}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
 .card{display:flex;flex-direction:column;gap:10px;min-width:0;cursor:pointer;animation:show .4s both;animation-delay:calc(var(--i,0)*35ms)}
 .card.off{cursor:default}
@@ -89,7 +90,7 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
 .thumb{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;color:#fff}
 .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .thumb .bgi{display:none}
-.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:15px;font-weight:500;letter-spacing:.08em;color:rgba(255,255,255,.62)}
+.thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:14px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.6)}
 /* 재생 표시: 영상 왼쪽 아래 모서리에 붙는 작은 네모 */
 .thumb .pl{position:absolute;left:0;bottom:0;width:30px;height:30px;background:var(--ink);color:#fff;display:grid;place-items:center;transition:background .2s}
 .thumb .pl svg{width:10px;height:10px;margin-left:1px}
@@ -98,45 +99,46 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
   .card:hover .pl,a.thumb:hover .pl{background:var(--cobalt)}
   .card:not(.off):hover h3{color:var(--cobalt)}
 }
-.bdg{position:absolute;left:0;top:0;padding:4px 9px;background:#fff;color:var(--ink);font-size:12px;line-height:16px;font-weight:600}
+.bdg{position:absolute;left:0;top:0;padding:4px 9px;background:#fff;color:var(--ink);font-size:12px;line-height:16px;font-weight:700}
 .info{display:grid;grid-template-columns:minmax(0,1fr);gap:5px}
-.card h3{min-width:0;font-size:15px;line-height:21px;font-weight:600;letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .15s}
+.card h3{min-width:0;font-size:15px;line-height:21px;font-weight:700;letter-spacing:-.015em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .15s}
 /* 제목 아래 줄: 왼쪽에 지은이·연도, 오른쪽에 재생 시간(메뉴판의 가격 자리) */
 .sub{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:18px}
 .meta{display:flex;align-items:center;min-width:0;overflow:hidden;font-size:12.5px;line-height:1;color:var(--slate)}
 .meta span{white-space:nowrap;line-height:13px}
 .meta span+span{margin-left:8px;padding-left:8px;border-left:1px solid var(--control)}
-.time{flex:none;font-size:13.5px;line-height:1;font-weight:600;color:var(--cobalt)}
+.time{flex:none;font-size:13.5px;line-height:1;font-weight:700;color:var(--cobalt)}
 .time.wait{font-weight:500;color:var(--slate)}
 /* 세로 영상(9:16) 카드: 두 줄 높이를 차지해서 옆의 가로 영상 두 개와 키가 맞아요 */
 .card.tall{grid-row:span 2}
 .card.tall .thumb{flex:1 1 auto;aspect-ratio:9/16}
 
-/* 분류마다 맨 위에 들어가는 16:9 배너. 영상을 넣기 전에는 제목 화면이 떠 있어요 */
+/* 분류마다 맨 위에 들어가는 배너(메인은 16:9). 영상을 넣기 전에는 제목 화면이 떠 있어요 */
 .banner{position:relative;container-type:inline-size;margin:-16px -16px 20px;aspect-ratio:16/9;background:var(--ink);color:#fff;overflow:hidden}
 .banner iframe{position:absolute;left:0;top:50%;width:100%;aspect-ratio:16/9;transform:translateY(-50%);border:0;pointer-events:none}
-.tc{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:6.5cqw 7cqw 6cqw}
-.tc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:clamp(11.5px,1.45cqw,18px);line-height:1.2;font-weight:500;color:rgba(255,255,255,.72)}
-.tc-top b{font-weight:600;color:#fff}
-.tc-top i{font-family:var(--display);font-style:normal;letter-spacing:.08em}
-.tc-name{font-family:var(--display);font-size:var(--fs,11cqw);line-height:.96;font-weight:500;letter-spacing:.015em;white-space:nowrap}
+/* 제목 화면: 위에 굵은 흰 선과 작은 글자 한 줄, 아래에 왼쪽 맞춤 큰 글자 */
+.tc{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:6cqw 6cqw 5cqw}
+.tc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:max(8px,1.3cqw);border-top:max(2px,.4cqw) solid #fff;font-size:clamp(11.5px,1.5cqw,19px);line-height:1.2;font-weight:500;color:rgba(255,255,255,.78)}
+.tc-top b{font-weight:700;color:#fff}
+.tc-top i{font-style:normal;font-weight:600}
+.tc-name{margin-left:-.05em;font-size:var(--fs,12cqw);line-height:.9;font-weight:800;letter-spacing:-.045em;white-space:nowrap}
 .bigphoto{margin:-16px -16px 24px;aspect-ratio:4/5;background:var(--mist);color:var(--slate);display:grid;place-items:center;font-weight:500;overflow:hidden}
 .bigphoto img{width:100%;height:100%;object-fit:cover}
 
 /* 소개 */
-.profile .title{font-size:30px;line-height:36px;font-weight:500;letter-spacing:.04em}
-.profile .role{color:var(--slate);font-size:15px;margin-top:6px}
+.profile .title{font-size:32px;line-height:34px;letter-spacing:-.035em}
+.profile .role{color:var(--slate);font-size:15px;font-weight:500;margin-top:8px}
 .profile p.intro{font-size:15.5px;line-height:27px;margin-top:18px;max-width:34em}
-.profile h2{font-size:14px;line-height:20px;font-weight:600;color:var(--slate);margin-top:32px;padding-top:16px;border-top:1px solid var(--ink)}
+.profile h2{font-size:15px;line-height:20px;font-weight:800;letter-spacing:-.01em;margin-top:36px;padding-top:12px;border-top:var(--rule) solid var(--ink)}
 .hist{width:100%;border-collapse:collapse;margin-top:6px}
 .hist td{padding:12px 0;border-bottom:1px solid var(--line);vertical-align:top;font-size:15px}
 .hist td:first-child{width:96px;color:var(--slate)}
 .tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.tools span{height:32px;padding:0 13px;border-radius:6px;border:1px solid var(--line);display:inline-flex;align-items:center;font-size:14px;font-weight:500}
-.yt{display:flex;align-items:center;gap:14px;margin-top:14px;padding:16px 18px;border:1px solid var(--line);border-radius:8px;transition:background .15s,border-color .15s}
-.yt:hover{background:var(--mist);border-color:var(--control)}
+.tools span{height:32px;padding:0 13px;border-radius:6px;border:1px solid var(--control);display:inline-flex;align-items:center;font-size:14px;font-weight:600}
+.yt{display:flex;align-items:center;gap:14px;margin-top:14px;padding:16px 18px;border:1px solid var(--control);border-radius:8px;transition:background .15s,border-color .15s}
+.yt:hover{background:var(--mist);border-color:var(--slate)}
 .yt svg{flex:none;width:28px;height:28px;color:var(--cobalt)}
-.yt b{display:block;font-weight:600;font-size:15.5px;line-height:22px}
+.yt b{display:block;font-weight:700;font-size:15.5px;line-height:22px}
 .yt span{font-size:13px;color:var(--slate)}
 
 /* 영상 상세 (메뉴를 눌렀을 때 뜨는 창) */
@@ -146,22 +148,22 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
 .player{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--ink)}
 .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .player .thumb{height:100%;aspect-ratio:auto}
-.player .thumb .ph{font-size:26px}
+.player .thumb .ph{font-size:24px}
 .player .thumb .pl{left:50%;top:50%;bottom:auto;width:64px;height:64px;margin:-32px 0 0 -32px}
 .player .thumb .pl svg{width:20px;height:20px;margin-left:3px}
 .player.tall{aspect-ratio:9/16;width:62%;margin:0 auto}   /* 세로 영상은 세로 화면으로 재생 */
 .ytnote{margin-top:10px;font-size:13px;line-height:19px;color:var(--slate)}
-.dr{margin-top:20px}
-.dr h2{font-family:var(--display);font-size:25px;line-height:32px;font-weight:600;letter-spacing:-.01em}
+.dr{margin-top:20px;padding-top:14px;border-top:var(--rule) solid var(--ink)}
+.dr h2{font-size:24px;line-height:30px;font-weight:800;letter-spacing:-.03em}
 .dr .meta{flex-wrap:wrap;row-gap:8px;margin-top:10px;font-size:13.5px}
 .tabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-top:22px}
 .tabs button{height:42px;color:var(--slate);font-weight:500;font-size:14.5px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s}
 .tabs button:hover{color:var(--ink)}
-.tabs button[aria-selected="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--cobalt)}
+.tabs button[aria-selected="true"]{color:var(--ink);font-weight:700;border-bottom-color:var(--cobalt)}
 .pane{padding-top:18px;font-size:15px;line-height:26px;min-height:120px}
 .steps{padding-left:20px}
 .steps li{margin-bottom:14px}
-.steps b{display:block;font-weight:600}
+.steps b{display:block;font-weight:700}
 .ask{margin-top:20px;height:52px;width:100%;font-size:15.5px;border-radius:10px}
 
 /* --- 테이블 태블릿(PC): 흰 머리줄 · 왼쪽 글자 메뉴 · 3열 사진 · 오른쪽 아래 버튼 --- */
@@ -169,31 +171,32 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
   .shell{grid-template-columns:240px minmax(0,1fr);grid-template-rows:76px minmax(0,1fr) 80px;grid-template-areas:"bar bar" "nav main" "nav dock"}
   .only-wide{display:flex!important}
   .only-narrow{display:none!important}
-  .bar{background:#fff;color:var(--ink);border-bottom:1px solid var(--line);padding:0 32px 0 0;gap:0}
+  .bar{background:#fff;color:var(--ink);border-bottom:var(--rule) solid var(--ink);padding:0 32px 0 0;gap:0}
   .brand{width:240px;padding-left:28px}
-  .brand b{font-size:22px;letter-spacing:.07em}
+  .brand b{font-size:22px;letter-spacing:-.02em}
   .brand small{display:none}
   .here{flex-direction:column;gap:3px;padding-left:32px}
-  .here .hname{font-size:18px;line-height:24px;font-weight:600;letter-spacing:-.01em}
+  .here .hname{font-size:18px;line-height:24px;font-weight:700;letter-spacing:-.02em}
   .here span{font-size:13px;line-height:16px;color:var(--slate)}
   .view{margin-right:12px;height:44px;padding:0 16px;border-color:var(--control);color:var(--ink);font-size:14px}
   .view:hover{background:var(--mist);border-color:var(--slate)}
   .tbl{flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:76px;height:44px;border:1px solid var(--control);border-radius:6px}
   .tbl span{font-size:11.5px;line-height:13px;color:var(--slate)}
-  .tbl b{font-size:17px;line-height:19px;font-weight:700}
-  .nav{padding:18px 0}
-  .nav button{flex-direction:row;justify-content:space-between;min-height:0;height:54px;padding:0 24px 0 28px;border-bottom:0;font-size:17px;line-height:24px;font-weight:500;color:var(--slate);text-align:left}
-  .nav button svg{display:none}
-  .nav button:hover{background:none;color:var(--ink)}
-  .nav button[aria-current="true"]{background:var(--mist);color:var(--ink);font-weight:700;box-shadow:inset 3px 0 0 var(--cobalt)}
-  .nav .n{display:inline;font-size:13px;font-weight:500;color:var(--slate)}
-  .nav .line{flex:none;height:1px;margin:14px 28px;background:var(--line)}
-  .nav .line~button{height:46px;font-size:15px}
+  .tbl b{font-size:17px;line-height:19px;font-weight:800}
+  .nav{padding:0}
+  .nav button{justify-content:space-between;min-height:0;height:58px;padding:0 24px 0 28px;font-size:17px;line-height:24px;font-weight:600}
+  .nav button:hover{background:var(--mist)}
+  .nav button[aria-current="true"]{background:var(--cobalt);color:#fff;font-weight:700}
+  .nav .n{display:inline;font-size:13px;font-weight:600;color:var(--slate)}
+  .nav button[aria-current="true"] .n{color:rgba(255,255,255,.8)}
+  .nav .line{flex:none;height:20px}
+  .nav .line~button{height:46px;border-bottom:0;font-size:15px;font-weight:500;color:var(--slate)}
+  .nav .line~button:hover{background:none;color:var(--ink)}
   .main{padding:32px 32px 48px}
   .trow{display:none}
   .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 24px}
   .card{gap:14px}
-  .thumb .ph{font-size:22px}
+  .thumb .ph{font-size:19px}
   .thumb .pl{width:38px;height:38px}
   .thumb .pl svg{width:12px;height:12px}
   .card.tall .thumb{aspect-ratio:3/4}          /* 넓은 화면: 가로 카드 두 줄 높이에 맞추고 */
@@ -207,36 +210,36 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
   .time{font-size:15.5px}
   .banner{margin:-32px -32px 40px}
   .banner.strip{aspect-ratio:3/1}            /* 분류 배너는 낮게: 아래 영상이 바로 보이도록 */
-  .banner.strip .tc{padding-top:4cqw;padding-bottom:3.6cqw}
+  .banner.strip .tc{padding-top:3.4cqw;padding-bottom:3cqw}
   .bigphoto{margin:-32px -32px 36px;aspect-ratio:auto;height:440px}
   .profile{max-width:720px}
-  .profile .title{font-size:44px;line-height:48px}
-  .profile .role{font-size:16px;margin-top:10px}
+  .profile .title{font-size:52px;line-height:52px}
+  .profile .role{font-size:16px;margin-top:12px}
   .profile p.intro{font-size:17px;line-height:30px}
   .dock{display:flex;justify-content:flex-end;align-items:center;gap:24px;padding:0 32px}
   .dock .seen{font-size:15px;color:var(--slate)}
-  .dock .seen b{margin:0 2px 0 5px;font-size:20px;font-weight:700;color:var(--ink)}
+  .dock .seen b{margin:0 2px 0 5px;font-size:20px;font-weight:800;color:var(--ink)}
   .dock .btn{height:52px;width:280px;border-radius:8px;font-size:17px}
   .modal{grid-row:1/-1;z-index:5;display:grid;place-items:center;padding:36px;background:rgba(10,18,56,.78);backdrop-filter:blur(3px)}
   .dlg{width:min(1120px,100%);max-height:100%;overflow:auto;background:#fff;border-radius:10px;padding:20px 28px 28px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:0 32px;align-content:start}
   .dtop{grid-column:1/-1;margin-bottom:18px}
   .dr{margin-top:0;display:flex;flex-direction:column}
-  .dr h2{font-size:30px;line-height:38px}
+  .dr h2{font-size:30px;line-height:36px}
   .pane{flex:1}
   .ask{border-radius:8px}
 }
 
 /* 문의 창 */
 dialog{margin:auto;border:0;border-radius:14px;padding:26px 24px 24px;width:min(372px,calc(100vw - 32px));color:var(--ink);box-shadow:0 20px 60px rgba(10,18,56,.3)}
-dialog::backdrop{background:rgba(10,18,56,.55)}
-dialog h2{font-family:var(--display);font-size:24px;line-height:30px;font-weight:600}
+dialog::backdrop{background:rgba(10,18,56,.6)}
+dialog h2{font-size:23px;line-height:30px;font-weight:800;letter-spacing:-.03em}
 dialog .about{color:var(--slate);margin-top:6px}
-.way{display:flex;align-items:center;gap:14px;margin-top:10px;padding:15px 18px;border-radius:10px;border:1px solid var(--line);transition:background .15s,border-color .15s}
-.way:hover{background:var(--mist);border-color:var(--control)}
+.way{display:flex;align-items:center;gap:14px;margin-top:10px;padding:15px 18px;border-radius:10px;border:1px solid var(--control);transition:background .15s,border-color .15s}
+.way:hover{background:var(--mist);border-color:var(--slate)}
 .way.first{margin-top:22px;background:var(--cobalt);border-color:var(--cobalt);color:#fff}
 .way.first:hover{background:var(--cobalt-d);border-color:var(--cobalt-d)}
 .way svg{flex:none;width:24px;height:24px}
-.way b{display:block;font-weight:600;font-size:15.5px;line-height:22px}
+.way b{display:block;font-weight:700;font-size:15.5px;line-height:22px}
 .way span{font-size:13.5px}
 dialog .btn{width:100%;height:46px;margin-top:16px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -373,7 +376,7 @@ function buildApp(root,opt){
   const $=s=>root.querySelector(s);
 
   function nav(){
-    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" aria-current="${c.id===st.cat}">${ICON[c.icon]}<span>${c.name}</span>${c.id==='intro'?'':`<span class="n num" aria-hidden="true">${inCat(c.id).length}</span>`}</button>`).join('')
+    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" aria-current="${c.id===st.cat}"><span>${c.name}</span>${c.id==='intro'?'':`<span class="n num" aria-hidden="true">${inCat(c.id).length}</span>`}</button>`).join('')
       +`<span class="line only-wide"></span><button class="only-wide" data-act="contact">연락 문의</button><button class="only-wide" data-act="home">처음으로</button>`;
     const c=CATS.find(x=>x.id===st.cat);
     const HH=opt.live&&wide&&c.id!=='intro'?'h1':'div';
@@ -384,7 +387,7 @@ function buildApp(root,opt){
     // 배너 영상이 아직 없으면 제목 화면: 왼쪽 위 분류 이름, 오른쪽 위 영상 수, 아래에 큰 이름
     return `<div class="banner ${c.id==='all'?'':'strip'}">${c.banner&&CAN_EMBED?ytFrame(c.banner,`autoplay=1&mute=1&loop=1&playlist=${c.banner}&controls=0&rel=0&playsinline=1`,label)
       :`<div class="tc"><div class="tc-top"><b>${c.id==='all'?CONTACT.role:c.name}</b>${c.id==='all'?'<span>영상 포트폴리오</span>':`<i>${CONTACT.name}</i>`}</div>
-        <div class="tc-name" ${c.id==='all'?'style="--fs:12.9cqw"':''}>${c.id==='all'?CONTACT.name:c.en||c.name}</div></div>`}</div>`;
+        <div class="tc-name" ${c.id==='all'?'style="--fs:14.6cqw"':''}>${c.id==='all'?CONTACT.name:c.en||c.name}</div></div>`}</div>`;
   }
   function list(){
     const c=CATS.find(x=>x.id===st.cat), ws=inCat(st.cat);
