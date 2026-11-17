@@ -144,7 +144,9 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
 .tc-top i{font-style:normal;font-weight:600}
 .tc-name{margin-left:-.05em;font-size:var(--fs,12cqw);line-height:.9;font-weight:800;letter-spacing:-.045em;white-space:nowrap}
 .bigphoto{margin:-16px -16px 24px;aspect-ratio:4/5;background:var(--mist);color:var(--slate);display:grid;place-items:center;font-weight:500;overflow:hidden}
-.bigphoto img{width:100%;height:100%;object-fit:cover}
+.bigphoto{position:relative;background:#EEF2FD}
+.bigphoto img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.bigphoto .cap{display:none}
 
 /* 소개 */
 .profile .title{font-size:32px;line-height:34px;letter-spacing:-.035em}
@@ -233,6 +235,14 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
   .banner.strip{aspect-ratio:3/1}            /* 분류 배너는 낮게: 아래 영상이 바로 보이도록 */
   .banner.strip .tc{padding-top:3.4cqw;padding-bottom:3cqw}
   .bigphoto{margin:-32px -32px 36px;aspect-ratio:auto;height:440px}
+  .bigphoto{display:grid;grid-template-columns:minmax(0,1fr) 360px;grid-template-rows:100%;place-items:stretch;background:var(--ink)}
+  .bigphoto img{min-height:0}
+  .bigphoto img{grid-column:2;grid-row:1;object-position:center 22%}
+  .bigphoto .cap{display:block;grid-column:1;grid-row:1;align-self:end;padding:0 56px 52px;color:#fff;text-align:left}
+  .bigphoto .cap b{display:block;font-size:56px;line-height:56px;font-weight:800;letter-spacing:-.035em}
+  .bigphoto .cap span{display:block;margin-top:12px;font-size:17px;color:#AFC0F5;font-weight:500}
+  .bigphoto:has(.cap)+.profile>.title,.bigphoto:has(.cap)+.profile>.role{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}   /* PC는 사진 위 이름이 제목 역할 */
+  .bigphoto:has(.cap)+.profile>.intro{margin-top:0}
   .profile{max-width:720px}
   .profile .title{font-size:52px;line-height:52px}
   .profile .role{font-size:16px;margin-top:12px}
@@ -303,7 +313,7 @@ const OPENING={ banner:'' };
 
 // 2) 소개
 const PROFILE={
-  photo:'',   // 큰 프로필 사진 파일 경로 (예: 'img/me.jpg')
+  photo:'img/me-blue.jpg',   // 프로필 사진 (사이트 파랑 톤)
   intro:'움직임으로 이야기를 전하는 모션 디자이너입니다. 광고, 북트레일러, 애니메이션을 기획부터 편집까지 만듭니다.',
   certs:[['취득 연도','자격증 이름을 적어 주세요'],['취득 연도','자격증 이름을 적어 주세요']],   // 자격증: [연도, 이름]
   youtube:{name:'유튜브 채널 이름', url:''},   // 유튜브 채널 주소 (예: 'https://www.youtube.com/@채널')
@@ -432,7 +442,7 @@ function buildApp(root,opt){
   }
   function intro(){
     const y=PROFILE.youtube;
-    return `<div class="bigphoto">${PROFILE.photo?`<img src="${PROFILE.photo}" alt="${CONTACT.name}">`:'프로필 사진이 들어갈 자리'}</div>
+    return `<div class="bigphoto">${PROFILE.photo?`<img src="${PROFILE.photo}" alt="${CONTACT.name} 프로필 사진"><div class="cap" aria-hidden="true"><b>${CONTACT.name}</b><span>${CONTACT.role}</span></div>`:'프로필 사진이 들어갈 자리'}</div>
       <div class="profile"><${opt.live?'h1':'div'} class="title">${CONTACT.name}</${opt.live?'h1':'div'}><p class="role">${CONTACT.role}</p>
         <p class="intro">${PROFILE.intro}</p>
         <h2>자격증</h2><table class="hist"><tbody>${PROFILE.certs.map(h=>`<tr><td class="num">${h[0]}</td><td>${h[1]}</td></tr>`).join('')}</tbody></table>
