@@ -43,13 +43,14 @@ body[data-mode="pc"][data-small] #backMob{display:inline-flex}
 
 /* ================= 오프닝 화면 =================
    처음 들어오면 뜨는 화면. 위는 배너(16:9 그림·영상이 잘리지 않고 통째로), 아래는 버튼 두 개 */
-#opening{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;justify-content:center;gap:clamp(18px,3.2vh,36px);padding:clamp(24px,6vh,72px) clamp(20px,5.6vw,96px);background:#0b1434;color:#f6ecd9}
+#opening{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;justify-content:center;align-items:center;gap:clamp(18px,3.2vh,36px);padding:clamp(24px,6vh,72px) clamp(20px,5.6vw,96px);background:#0b1434;color:#f6ecd9}
 .op-name{flex:none;margin:0;font-size:clamp(40px,6.4vw,104px);line-height:1;font-weight:800;letter-spacing:-.01em;color:#f6ecd9}
 body[data-open] #opening{display:flex}
-.op-banner{position:relative;flex:1 1 auto;width:100%;min-height:0;max-height:calc(100vw*9/16);container-type:inline-size;overflow:hidden;background:#000}
+.op-banner{position:relative;flex:0 1 auto;width:100%;max-height:62vh;aspect-ratio:16/9;margin:0 auto;container-type:inline-size;overflow:hidden;background:#000}
+@media (min-aspect-ratio:16/10){.op-banner{width:auto;height:62vh}}
 .op-banner img,.op-banner video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .op-banner iframe{position:absolute;left:50%;top:50%;width:min(100%,calc((100vh - 110px)*16/9));aspect-ratio:16/9;transform:translate(-50%,-50%);border:0;pointer-events:none}
-.op-go{flex:none;display:flex;gap:20px;padding-bottom:env(safe-area-inset-bottom)}
+.op-go{flex:none;display:flex;gap:20px;justify-content:center;width:100%;padding-bottom:env(safe-area-inset-bottom)}
 .op-go button{flex:0 1 220px;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:62px;border-radius:4px;background:transparent;color:#f6ecd9;border:1.5px solid #f6ecd9;font-size:17px;font-weight:700;white-space:nowrap;transition:background .15s,color .15s,transform .1s}
 .op-go button:hover{background:rgba(246,236,217,.12)}
 .op-go button:active{transform:scale(.98)}
