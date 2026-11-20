@@ -43,21 +43,24 @@ body[data-mode="pc"][data-small] #backMob{display:inline-flex}
 
 /* ================= 오프닝 화면 =================
    처음 들어오면 뜨는 화면. 위는 배너(16:9 그림·영상이 잘리지 않고 통째로), 아래는 버튼 두 개 */
-#opening{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;background:var(--ink);color:#fff}
+#opening{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;justify-content:center;gap:clamp(18px,3.2vh,36px);padding:clamp(24px,6vh,72px) clamp(20px,5.6vw,96px);background:#0b1434;color:#f6ecd9}
+.op-name{flex:none;margin:0;font-size:clamp(40px,6.4vw,104px);line-height:1;font-weight:800;letter-spacing:-.01em;color:#f6ecd9}
 body[data-open] #opening{display:flex}
-.op-banner{position:relative;flex:1;min-height:0;container-type:inline-size;overflow:hidden}
-.op-banner img,.op-banner video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.op-banner{position:relative;flex:0 1 auto;width:100%;max-height:62vh;aspect-ratio:16/9;margin:0 auto 0 0;container-type:inline-size;overflow:hidden;background:#000}
+@media (min-aspect-ratio:16/10){.op-banner{width:auto;height:62vh}}
+.op-banner img,.op-banner video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .op-banner iframe{position:absolute;left:50%;top:50%;width:min(100%,calc((100vh - 110px)*16/9));aspect-ratio:16/9;transform:translate(-50%,-50%);border:0;pointer-events:none}
-.op-go{flex:none;display:flex;gap:12px;padding:0 6vw calc(28px + env(safe-area-inset-bottom))}
-.op-go button{flex:1 1 0;max-width:300px;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:60px;border-radius:8px;background:#fff;color:var(--ink);font-size:17px;font-weight:700;white-space:nowrap;transition:background .15s,transform .1s}
-.op-go button:hover{background:var(--mist)}
+.op-go{flex:none;display:flex;gap:20px;padding-bottom:env(safe-area-inset-bottom)}
+.op-go button{flex:0 1 220px;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:62px;border-radius:4px;background:transparent;color:#f6ecd9;border:1.5px solid #f6ecd9;font-size:17px;font-weight:700;white-space:nowrap;transition:background .15s,color .15s,transform .1s}
+.op-go button:hover{background:rgba(246,236,217,.12)}
 .op-go button:active{transform:scale(.98)}
-.op-go button.rec{background:var(--cobalt);color:#fff}   /* 지금 기기에 맞는 쪽 */
-.op-go button.rec:hover{background:var(--cobalt-d)}
+.op-go button.rec{background:#f6ecd9;color:#0b1434}   /* 지금 기기에 맞는 쪽 */
+.op-go button.rec:hover{background:#fff}
 .op-go button:focus-visible{outline-color:#fff}
 .op-go svg{width:21px;height:21px}
 @media (max-width:520px){
-  .op-go{gap:10px;padding-left:20px;padding-right:20px}
+  .op-go{gap:10px}
+  .op-go button{flex:1 1 0}
   .op-go button{height:56px;font-size:15.5px;gap:7px}
   .op-go svg{width:18px;height:18px}
 }
@@ -286,6 +289,7 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 
 <!-- 오프닝 화면: 배너 + 버튼 두 개. 누르면 그 보기로 들어가요 -->
 <section id="opening" aria-label="시작 화면">
+  <h1 class="op-name">KIM SO YEON</h1>
   <div class="op-banner" id="opBanner"></div>
   <div class="op-go">
     <button id="goPc" onclick="enter('pc')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>PC로 보기</button>
@@ -315,7 +319,7 @@ const CONTACT={ name:'KIM SO YEON', role:'모션 디자이너', email:'ksy880426
 
 // 1-2) 오프닝 화면 배너 — 그림 파일(예: 'img/opening.jpg'), 영상 파일(예: 'img/opening.mp4'), 유튜브 영상 ID 중 하나
 //      비워 두면 이름이 크게 들어간 제목 화면이 떠요
-const OPENING={ banner:'' };
+const OPENING={ banner:'video/main-banner.mp4' };
 
 // 2) 소개
 const PROFILE={
@@ -335,7 +339,7 @@ const CATS=[
   {id:'book',  name:'북트레일러',   en:'Book Trailer', icon:'book', banner:''},
   {id:'ani',   name:'애니메이션',   en:'Animation',    icon:'film', banner:''},
   {id:'team',  name:'팀 프로젝트',  en:'Team Project', icon:'team', banner:''},
-  {id:'school',name:'학원 제작물',  en:'Class Work',   icon:'cap',  banner:''},
+  {id:'school',name:'학원 제작물',  en:'Class Work',   icon:'cap',  banner:'video/class-timeline.mp4'},
 ];
 
 // 4) 작품 — yt: 유튜브 영상 ID (youtube.com/watch?v=이부분). 넣으면 썸네일과 재생이 연결돼요
@@ -442,6 +446,7 @@ function buildApp(root,opt){
   function banner(c){
     const label=c.id==='all'?'소개 영상':c.name+' 배너 영상';
     // 배너 영상이 아직 없으면 제목 화면: 왼쪽 위 분류 이름, 오른쪽 위 영상 수, 아래에 큰 이름
+    if(/\.(mp4|webm)$/i.test(c.banner)) return `<div class="banner"><video src="${c.banner}" autoplay muted loop playsinline aria-label="${label}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video></div>`;
     return `<div class="banner ${c.id==='all'?'':'strip'}">${c.banner&&CAN_EMBED?ytFrame(c.banner,`autoplay=1&mute=1&loop=1&playlist=${c.banner}&controls=0&rel=0&playsinline=1`,label)
       :`<div class="tc"><div class="tc-top"><b>${c.id==='all'?CONTACT.role:c.name}</b>${c.id==='all'?'<span>영상 포트폴리오</span>':`<i>${CONTACT.name}</i>`}</div>
         <div class="tc-name" ${c.id==='all'?'style="--fs:14.6cqw"':''}>${c.id==='all'?CONTACT.name:c.en||c.name}</div></div>`}</div>`;
