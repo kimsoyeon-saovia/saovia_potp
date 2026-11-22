@@ -339,6 +339,18 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf-tools ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
 .pf-tools li{background:#f0f0f0;padding:12px 18px;font-size:17px;line-height:1}
 .pf-end{height:clamp(80px,10vh,140px)}
+.pf-hero h1.ko-name,.pf-hero div.ko-name{font-size:clamp(72px,10vw,160px);line-height:1;letter-spacing:-.02em}
+/* 영상 카드: 아래 글자 없이, 마우스를 올리면 영상 위에 제목이 떠요 */
+.v2 .card{position:relative;gap:0}
+.v2 .card .info{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:18px 18px 16px;
+  background:rgba(0,0,0,.62);color:#fff;opacity:0;transition:opacity .2s;pointer-events:none}
+.v2 .card:hover .info,.v2 .card:focus-visible .info{opacity:1}
+.v2 .card .info h3{color:#fff;white-space:normal;font-size:18px;line-height:1.35}
+.v2 .card .info .meta,.v2 .card .info .time{color:#fff}
+.v2 .card:not(.off):hover h3{color:#fff}
+.ch-v a{position:relative}
+.ch-v .t{position:absolute;left:0;right:0;bottom:0;top:0;margin:0!important;display:flex!important;align-items:flex-end;padding:14px;background:rgba(0,0,0,.62);color:#fff;opacity:0;transition:opacity .2s;-webkit-line-clamp:unset!important}
+.ch-v a:hover .t,.ch-v a:focus-visible .t{opacity:1}
 /* 분류 페이지: 소개처럼 가운데 적당한 폭 */
 .v2 .lst{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
 .v2 .lst .banner{margin:0 0 28px}
@@ -544,7 +556,7 @@ function buildApp(root,opt){
     return `<div class="pf">
       <div class="pf-in"><section class="pf-hero">
         <img src="${P.photo}" alt="${P.nameKo} 프로필 사진">
-        <div><${NM}>KIM<br>SO YEON</${NM}><p class="ko"><b>${P.nameKo}</b>${P.tagline}</p></div>
+        <div><${NM} class="ko-name">${P.nameKo}</${NM}><p class="ko">${P.tagline}</p></div>
       </section>
       <section class="pf-sec pf-career"><h2>경력</h2><div>
         ${P.careers.map(c=>`<div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul>`).join('')}</div></section>
