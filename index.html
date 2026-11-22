@@ -43,13 +43,13 @@ body[data-mode="pc"][data-small] #backMob{display:inline-flex}
 
 /* ================= 오프닝 화면 =================
    처음 들어오면 뜨는 화면. 위는 배너(16:9 그림·영상이 잘리지 않고 통째로), 아래는 버튼 두 개 */
-#opening{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;align-items:center;justify-content:center;padding:clamp(28px,7vh,90px) clamp(20px,6vw,120px) 0;background:#fff;color:#111}
+#opening{position:fixed;inset:0;z-index:30;display:none;flex-direction:column;align-items:center;justify-content:center;padding:0 clamp(20px,6vw,120px);background:#fff;color:#111}
 body[data-open] #opening{display:flex}
-.op-banner{position:relative;flex:none;width:min(100%,calc((100vh - clamp(28px,7vh,90px) - clamp(96px,20vh,200px))*16/9));aspect-ratio:16/9;overflow:hidden;background:#fff}
+.op-banner{position:relative;flex:none;width:calc(min(100%,calc((100vh - clamp(28px,7vh,90px) - clamp(96px,20vh,200px))*16/9))*.5);aspect-ratio:16/9;overflow:hidden;background:#fff}
 .op-banner img,.op-banner video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .op-banner iframe{position:absolute;left:50%;top:50%;width:max(100%,calc((100vh - 22vh)*16/9));aspect-ratio:16/9;transform:translate(-50%,-50%);border:0;pointer-events:none}
 /* 아래: 이름(휴먼아미체 글자 그림) 가운데, 재생 버튼 오른쪽 */
-.op-foot{position:relative;flex:none;width:min(100%,calc((100vh - clamp(28px,7vh,90px) - clamp(96px,20vh,200px))*16/9));height:clamp(96px,20vh,200px);display:flex;align-items:center;justify-content:center;padding:0 clamp(80px,9vw,160px) env(safe-area-inset-bottom)}
+.op-foot{position:relative;flex:none;width:calc(min(100%,calc((100vh - clamp(28px,7vh,90px) - clamp(96px,20vh,200px))*16/9))*.5);height:clamp(96px,20vh,200px);display:flex;align-items:center;justify-content:center;padding:0 clamp(80px,9vw,160px) env(safe-area-inset-bottom)}
 .op-name{display:block;height:clamp(30px,6.4vh,64px);width:auto;max-width:100%}
 .op-play{position:absolute;right:0;top:50%;transform:translateY(-50%);width:clamp(52px,7vh,72px);aspect-ratio:1;border-radius:50%;border:3px solid #111;background:#fff;color:#111;display:grid;place-items:center;transition:background .15s,color .15s,transform .1s}
 .op-play:hover{background:#111;color:#fff}
