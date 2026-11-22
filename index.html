@@ -276,6 +276,46 @@ dialog .about{color:var(--slate);margin-top:6px}
 .way span{font-size:13.5px}
 dialog .btn{width:100%;height:46px;margin-top:16px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ================= 새 디자인 (v2): 민트 바탕, 위 메뉴 상자, 왼쪽 현재 분류 검은 상자 =================
+   선택된 것 = 검은 상자 + 바탕색 글자 */
+:root{--bg2:#f2ffe8}
+#stage{background:var(--bg2)}
+.shell.v2{display:grid;grid-template-columns:clamp(110px,15.4vw,300px) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);grid-template-areas:"top top" "side main";
+  height:100%;background:var(--bg2);color:#111;font-size:14px;line-height:1.6}
+.v2 .top{grid-area:top;padding:clamp(14px,1.6vw,30px) 0 0 clamp(16px,8vw,153px)}
+.v2 .nav{all:unset;display:flex;flex-wrap:wrap;gap:clamp(8px,.85vw,16px)}
+.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;place-items:center;width:clamp(96px,7.9vw,152px);height:clamp(34px,2.1vw,42px);
+  border:1.5px solid #111;background:transparent;color:#111;font-size:clamp(12.5px,.75vw,15px);letter-spacing:.08em;transition:background .15s,color .15s}
+.v2 .nav button:hover{background:rgba(17,17,17,.08)}
+.v2 .nav button[aria-current="true"]{background:#111;color:var(--bg2)}
+.v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:2px}
+.v2 .side{grid-area:side;padding:clamp(24px,3.2vw,62px) 0 0 clamp(16px,4.1vw,79px)}
+.v2 .here2{display:grid;place-items:center;width:clamp(96px,7.9vw,152px);height:clamp(34px,2.1vw,42px);background:#111;color:var(--bg2);font-size:clamp(12.5px,.75vw,15px);letter-spacing:.08em;margin:0;font-weight:400}
+.v2 .main{grid-area:main;overflow:auto;padding:clamp(24px,3.6vw,70px) clamp(16px,3vw,60px) 80px 0;background:transparent}
+.v2 .modal{grid-area:1/1/-1/-1}
+/* 소개 */
+.pf{max-width:clamp(420px,28.5vw,560px)}
+.pf-head{display:flex;align-items:flex-end;gap:clamp(14px,1.1vw,22px);padding-bottom:clamp(12px,1vw,20px);border-bottom:1.5px solid #111}
+.pf-head img{flex:none;width:clamp(96px,6.2vw,120px);aspect-ratio:120/150;object-fit:cover;background:#c79a9a}
+.pf-head h1,.pf-head .pfname{font-size:clamp(20px,1.35vw,26px);line-height:1.3;font-weight:400;margin:0}
+.pf-head h1 span,.pf-head .pfname span{font-size:.92em}
+.pf-head p{margin-top:clamp(8px,.8vw,14px);font-size:clamp(13px,.75vw,14.5px)}
+.pf-sec{padding:clamp(10px,.8vw,16px) 2px clamp(18px,1.6vw,32px);border-bottom:1.5px solid #111;font-size:clamp(12.5px,.68vw,13.5px)}
+.pf-sec h2{font-size:inherit;font-weight:400;margin:0 0 clamp(8px,.7vw,12px)}
+.pf-sec p{margin:0 0 clamp(8px,.9vw,16px)}
+.pf-sec h3{font-size:inherit;font-weight:700;margin:clamp(14px,1.4vw,26px) 0 clamp(6px,.6vw,10px)}
+.pf-sec a{text-decoration:underline;text-underline-offset:3px}
+.pf-sec a:hover{text-decoration-thickness:2px}
+/* 좁은 화면(모바일): 메뉴는 줄바꿈, 왼쪽 상자는 위로 */
+@container app (width < 760px){
+  .shell.v2{grid-template-columns:1fr;grid-template-rows:auto auto minmax(0,1fr);grid-template-areas:"top" "side" "main"}
+  .v2 .top{padding:16px 16px 0}
+  .v2 .nav button{width:auto;flex:1 1 30%;padding:0 6px}
+  .v2 .side{padding:16px 16px 0}
+  .v2 .main{padding:18px 16px 60px}
+  .pf{max-width:none}
+}
 </style>
 </head>
 <body data-mode="pc">
@@ -319,7 +359,10 @@ const PROFILE={
   intro:'움직임으로 이야기를 전하는 모션 디자이너입니다. 광고, 북트레일러, 애니메이션을 기획부터 편집까지 만듭니다.',
   certs:[['2015.12','컴퓨터그래픽기능사 · Q-Net'],['2026.08','GTQi 1급 · KPC 자격']],   // 자격증: [취득 연월, 이름 · 발급처]
   youtube:[{name:'린트',url:'https://www.youtube.com/@%EB%A6%B0%ED%8A%B8_lint'},{name:'오정의 상영서점',url:'https://www.youtube.com/@%EC%98%A4%EC%A0%95%EC%9D%98%EC%83%81%EC%98%81%EC%84%9C%EC%A0%90/shorts'},{name:'오정의 수련',url:'https://www.youtube.com/@%EC%98%A4%EC%A0%95%EC%9D%98%EC%88%98%EB%A0%A8'}],   // 유튜브 채널들
-  tools:['After Effects','Premiere Pro','Photoshop','Illustrator','Figma']
+  nameKo:'김소연', nameEn:'kim so yeon', tagline:'이야기를 전하는 영상 디자이너 입니다.',
+  career:['2026.06 ~ 2026.11&nbsp;&nbsp;MBC아카데미컴퓨터교육센터','멀티미디어 콘텐츠 제작 과정 수료 · 집체교육 약 100일','영상 편집, 모션그래픽, 그래픽 디자인 실무 교육 / 모범상 수상'],
+  tools:['일러스트','포토샵','에펙','프리미어','캡컷','브루'],
+  ai:['일레븐랩스','일레븐 뮤직','힉스필드','구글 플로우','챗GPT','코덱스','클로드 코드','클로드','캔바']
 };
 
 // 3) 분류 — banner: 그 분류 맨 위 16:9 배너에 틀 영상의 유튜브 ID (전체의 banner가 소개 영상이에요)
@@ -329,8 +372,7 @@ const CATS=[
   {id:'ad',    name:'광고 제작물',  en:'Commercial',   icon:'ad',   banner:''},
   {id:'book',  name:'북트레일러',   en:'Book Trailer', icon:'book', banner:''},
   {id:'ani',   name:'애니메이션',   en:'Animation',    icon:'film', banner:''},
-  {id:'team',  name:'팀 프로젝트',  en:'Team Project', icon:'team', banner:''},
-  {id:'school',name:'학원 제작물',  en:'Class Work',   icon:'cap',  banner:'video/class-timeline.mp4'},
+  {id:'school',name:'학원',  en:'Class Work',   icon:'cap',  banner:'video/class-timeline.mp4'},
 ];
 
 // 4) 작품 — yt: 유튜브 영상 ID (youtube.com/watch?v=이부분). 넣으면 썸네일과 재생이 연결돼요
@@ -420,25 +462,16 @@ function buildApp(root,opt){
   const st={cat:opt.cat||'intro',cur:null,tab:'story',seen:[]};
   let wide=false, H='div';   // 화면 제목(h1)은 지금 보이는 배치에 하나만 둬요
   const pick=()=>{wide=root.offsetWidth>=900;H=opt.live&&!wide?'h1':'div'};
-  root.innerHTML=`<div class="shell">
-    <header class="bar"><span class="brand"><b>${CONTACT.name}</b><small>영상 포트폴리오</small></span>
-      <span class="here only-wide"></span><span class="sp"></span>
-      <button class="view" data-act="view"><span class="to-mob">${ICON.phone}모바일 보기</span><span class="to-pc">${ICON.pc}PC 버전</span></button>
-      <span class="tbl only-wide"><span>영상</span><b class="num">${WORKS.length}</b></span></header>
-    <nav class="nav" aria-label="분류"></nav>
+  root.innerHTML=`<div class="shell v2">
+    <header class="top"><nav class="nav" aria-label="분류"></nav></header>
+    <aside class="side"><div class="here2"></div></aside>
     <main class="main"></main>
-    <div class="dock"><button class="btn ghost only-narrow" data-act="home">${ICON.home}처음으로</button>
-      <span class="seen only-wide"><span>본 영상<b class="num">0</b>편</span></span>
-      <button class="btn prim" data-act="contact">${ICON.mail}연락 문의하기</button></div>
     <div class="modal" hidden></div></div>`;
   const $=s=>root.querySelector(s);
 
   function nav(){
-    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" aria-current="${c.id===st.cat}"><span>${c.name}</span>${c.id==='intro'?'':`<span class="n num" aria-hidden="true">${inCat(c.id).length}</span>`}</button>`).join('')
-      +`<span class="line only-wide"></span><button class="only-wide" data-act="contact">연락 문의</button><button class="only-wide" data-act="home">처음으로</button>`;
-    const c=CATS.find(x=>x.id===st.cat);
-    const HH=opt.live&&wide&&c.id!=='intro'?'h1':'div';
-    $('.here').innerHTML=`<${HH} class="hname">${c.name}</${HH}><span>${c.id==='intro'?CONTACT.role:'영상 '+inCat(c.id).length+'편'}</span>`;
+    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" aria-current="${c.id===st.cat}">${c.name}</button>`).join('');
+    $('.here2').textContent=CATS.find(x=>x.id===st.cat).name;
   }
   function banner(c){
     const label=c.id==='all'?'소개 영상':c.name+' 배너 영상';
@@ -456,13 +489,14 @@ function buildApp(root,opt){
         <div class="info"><h3>${w.title}</h3><div class="sub"><p class="meta num">${metaOf(w)}</p>${timeOf(w)}</div></div></article>`}).join('')}</div>`;
   }
   function intro(){
-    const y=PROFILE.youtube;
-    return `<div class="bigphoto">${PROFILE.photo?`<img src="${PROFILE.photo}" alt="${CONTACT.name} 프로필 사진"><div class="cap" aria-hidden="true"><b>${CONTACT.name}</b><span>${CONTACT.role}</span></div>`:'프로필 사진이 들어갈 자리'}</div>
-      <div class="profile"><${opt.live?'h1':'div'} class="title">${CONTACT.name}</${opt.live?'h1':'div'}><p class="role">${CONTACT.role}</p>
-        <p class="intro">${PROFILE.intro}</p>
-        <h2>자격증</h2><table class="hist"><tbody>${PROFILE.certs.map(h=>`<tr><td class="num">${h[0]}</td><td>${h[1]}</td></tr>`).join('')}</tbody></table>
-        <h2>유튜브 채널</h2>${y.map(c=>`<a class="yt" href="${c.url}" target="_blank" rel="noopener">${ICON.mark}<div><b>${c.name}</b><span>${decodeURIComponent(c.url).replace('https://www.','')}</span></div></a>`).join('')}
-        <h2>사용 툴</h2><div class="tools">${PROFILE.tools.map(t=>`<span>${t}</span>`).join('')}</div></div>`;
+    const P=PROFILE, NM=opt.live?'h1':'div';
+    return `<div class="pf">
+      <div class="pf-head"><img src="${P.photo}" alt="${P.nameKo} 프로필 사진"><div><${NM} class="pfname">${P.nameKo} <span>(${P.nameEn})</span></${NM}><p>${P.tagline}</p></div></div>
+      <section class="pf-sec"><h2>경력</h2>${P.career.map(t=>`<p>${t}</p>`).join('')}</section>
+      <section class="pf-sec"><h2>자격증</h2>${P.certs.map(h=>`<p>${h[0]}&nbsp;&nbsp;${h[1]}</p>`).join('')}</section>
+      <section class="pf-sec"><h2>유튜브 채널</h2>${P.youtube.map(c=>`<p><a href="${c.url}" target="_blank" rel="noopener">${c.name}</a></p>`).join('')}</section>
+      <section class="pf-sec"><h2>사용 툴</h2><p>${P.tools.join('&nbsp;&nbsp;')}</p><h3>AI</h3><p>${P.ai.join('&nbsp;&nbsp;')}</p></section>
+    </div>`;
   }
   function pane(){
     const w=st.cur;
@@ -473,7 +507,7 @@ function buildApp(root,opt){
   }
   function openWork(w){
     st.cur=w; st.tab='story'; st.seen=[w.id,...st.seen.filter(x=>x!==w.id)];
-    $('.seen b').textContent=st.seen.length;
+    const sb=$('.seen b'); if(sb)sb.textContent=st.seen.length;
     const m=$('.modal'); m.hidden=false;
     m.innerHTML=`<div class="dlg" role="dialog" aria-label="${w.title}">
       <div class="dtop"><button class="btn ghost" data-act="back">${ICON.back}목록으로</button></div>
