@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
+/* 휴먼아미체: 보는 사람 컴퓨터에 깔려 있으면 그걸 써요 (글꼴 파일은 올리지 않아요) */
+@font-face{font-family:Amiche;src:local("휴먼아미체"),local("Ami R"),local("HMKMAMI")}
 /* =====================================================================
    디자인 기준 (이탈리아 모더니즘 포스터 방식)
    글자 : Pretendard 한 가지만. 크기와 굵기 차이로만 위아래를 나눠요 (가는 획이 없어서 화면에서 깨지지 않아요)
@@ -15,9 +17,9 @@
    모양 : 영상은 모서리 각지게, 버튼만 살짝 둥글게
 ===================================================================== */
 :root{
-  --ink:#0A1238; --ink-2:#1A2456; --cobalt:#1E47E6; --cobalt-d:#1638BD;
-  --paper:#ffffff; --mist:#F1F3F8; --line:#DFE3EC; --control:#C3C9D6; --slate:#5A6079;
-  --ui:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --ink:#111111; --ink-2:#2B2B2B; --cobalt:#111111; --cobalt-d:#000000;   /* 파랑 없이 검정 */
+  --paper:#ffffff; --mist:#F4F4F4; --line:#E4E4E4; --control:#C9C9C9; --slate:#6B6B6B;
+  --ui:Amiche,"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --rule:3px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -37,7 +39,7 @@ a{color:inherit;text-decoration:none}
 body[data-mode="mob"] #app{width:min(430px,100%);box-shadow:0 0 0 1px var(--line)}
 body[data-mode="pc"] #app{margin:0;width:calc(100%/var(--s,1));height:calc(100%/var(--s,1));transform:scale(var(--s,1));transform-origin:0 0}
 /* 휴대폰에서 PC 보기일 때: 화면 아래에 원래 크기로 뜨는 돌아가기 버튼 */
-#backMob{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:none;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:10px;background:var(--ink);color:#fff;font-weight:700;font-size:15px;white-space:nowrap;box-shadow:0 8px 24px rgba(10,18,56,.32)}
+#backMob{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:none;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:10px;background:var(--ink);color:#fff;font-weight:700;font-size:15px;white-space:nowrap;box-shadow:0 8px 24px rgba(17,17,17,.32)}
 #backMob svg{width:18px;height:18px}
 body[data-mode="pc"][data-small] #backMob{display:inline-flex}
 
@@ -240,7 +242,7 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
   .bigphoto img{grid-column:2;grid-row:1;object-position:center 22%}
   .bigphoto .cap{display:block;grid-column:1;grid-row:1;align-self:end;padding:0 56px 52px;color:#fff;text-align:left}
   .bigphoto .cap b{display:block;font-size:56px;line-height:56px;font-weight:800;letter-spacing:-.035em}
-  .bigphoto .cap span{display:block;margin-top:12px;font-size:17px;color:#AFC0F5;font-weight:500}
+  .bigphoto .cap span{display:block;margin-top:12px;font-size:17px;color:#BDBDBD;font-weight:500}
   .bigphoto:has(.cap)+.profile>.title,.bigphoto:has(.cap)+.profile>.role{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}   /* PC는 사진 위 이름이 제목 역할 */
   .bigphoto:has(.cap)+.profile>.intro{margin-top:0}
   .profile{max-width:720px}
@@ -251,7 +253,7 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
   .dock .seen{font-size:15px;color:var(--slate)}
   .dock .seen b{margin:0 2px 0 5px;font-size:20px;font-weight:800;color:var(--ink)}
   .dock .btn{height:52px;width:280px;border-radius:8px;font-size:17px}
-  .modal{grid-row:1/-1;z-index:5;display:grid;place-items:center;padding:36px;background:rgba(10,18,56,.78);backdrop-filter:blur(3px)}
+  .modal{grid-row:1/-1;z-index:5;display:grid;place-items:center;padding:36px;background:rgba(17,17,17,.78);backdrop-filter:blur(3px)}
   .dlg{width:min(1120px,100%);max-height:100%;overflow:auto;background:#fff;border-radius:10px;padding:20px 28px 28px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:0 32px;align-content:start}
   .dtop{grid-column:1/-1;margin-bottom:18px}
   .dr{margin-top:0;display:flex;flex-direction:column}
@@ -261,8 +263,8 @@ body[data-mode="pc"] .view .to-pc,body[data-mode="mob"] .view .to-mob{display:no
 }
 
 /* 문의 창 */
-dialog{margin:auto;border:0;border-radius:14px;padding:26px 24px 24px;width:min(372px,calc(100vw - 32px));color:var(--ink);box-shadow:0 20px 60px rgba(10,18,56,.3)}
-dialog::backdrop{background:rgba(10,18,56,.6)}
+dialog{margin:auto;border:0;border-radius:14px;padding:26px 24px 24px;width:min(372px,calc(100vw - 32px));color:var(--ink);box-shadow:0 20px 60px rgba(17,17,17,.3)}
+dialog::backdrop{background:rgba(17,17,17,.6)}
 dialog h2{font-size:23px;line-height:30px;font-weight:800;letter-spacing:-.03em}
 dialog .about{color:var(--slate);margin-top:6px}
 .way{display:flex;align-items:center;gap:14px;margin-top:10px;padding:15px 18px;border-radius:10px;border:1px solid var(--control);transition:background .15s,border-color .15s}
@@ -315,15 +317,14 @@ const OPENING={ banner:'video/main-banner.mp4' };
 const PROFILE={
   photo:'img/me.jpg',   // 프로필 사진
   intro:'움직임으로 이야기를 전하는 모션 디자이너입니다. 광고, 북트레일러, 애니메이션을 기획부터 편집까지 만듭니다.',
-  certs:[['취득 연도','자격증 이름을 적어 주세요'],['취득 연도','자격증 이름을 적어 주세요']],   // 자격증: [연도, 이름]
-  youtube:{name:'유튜브 채널 이름', url:''},   // 유튜브 채널 주소 (예: 'https://www.youtube.com/@채널')
+  certs:[['2015.12','컴퓨터그래픽기능사 · Q-Net'],['2026.08','GTQi 1급 · KPC 자격']],   // 자격증: [취득 연월, 이름 · 발급처]
+  youtube:[{name:'린트',url:'https://www.youtube.com/@%EB%A6%B0%ED%8A%B8_lint'},{name:'오정의 상영서점',url:'https://www.youtube.com/@%EC%98%A4%EC%A0%95%EC%9D%98%EC%83%81%EC%98%81%EC%84%9C%EC%A0%90/shorts'},{name:'오정의 수련',url:'https://www.youtube.com/@%EC%98%A4%EC%A0%95%EC%9D%98%EC%88%98%EB%A0%A8'}],   // 유튜브 채널들
   tools:['After Effects','Premiere Pro','Photoshop','Illustrator','Figma']
 };
 
 // 3) 분류 — banner: 그 분류 맨 위 16:9 배너에 틀 영상의 유튜브 ID (전체의 banner가 소개 영상이에요)
 //    banner를 비워 두면 그 자리에 제목 화면이 떠요. en: 제목 화면에 크게 들어가는 영어 이름
 const CATS=[
-  {id:'all',   name:'전체',        en:'',             icon:'grid', banner:''},
   {id:'intro', name:'소개',        en:'',             icon:'user', banner:''},
   {id:'ad',    name:'광고 제작물',  en:'Commercial',   icon:'ad',   banner:''},
   {id:'book',  name:'북트레일러',   en:'Book Trailer', icon:'book', banner:''},
@@ -334,7 +335,7 @@ const CATS=[
 
 // 4) 작품 — yt: 유튜브 영상 ID (youtube.com/watch?v=이부분). 넣으면 썸네일과 재생이 연결돼요
 //    state: 'wip' 제작 중 / 'soon' 준비 중
-const T=['#0A1238','#16225C','#101A4A','#1C2B70','#0D1640','#131E54'];   // 썸네일 없을 때 쓰는 임시 색
+const T=['#111111','#262626','#1C1C1C','#2E2E2E','#161616','#222222'];   // 썸네일 없을 때 쓰는 임시 색
 const WORKS=[
   {id:'ad1',cats:['ad'],title:'황태와 북어 광고',en:'AD 1',time:'',yt:'c7c-Irp63t4'},
   {id:'ad2',cats:['ad'],title:'AI 영상제작업체 홍보 광고',en:'AD 2',time:'',yt:'CBYNkkowSlM'},
@@ -416,7 +417,7 @@ dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
 
 /* 앱 만들기 */
 function buildApp(root,opt){
-  const st={cat:opt.cat||'all',cur:null,tab:'story',seen:[]};
+  const st={cat:opt.cat||'intro',cur:null,tab:'story',seen:[]};
   let wide=false, H='div';   // 화면 제목(h1)은 지금 보이는 배치에 하나만 둬요
   const pick=()=>{wide=root.offsetWidth>=900;H=opt.live&&!wide?'h1':'div'};
   root.innerHTML=`<div class="shell">
@@ -460,7 +461,7 @@ function buildApp(root,opt){
       <div class="profile"><${opt.live?'h1':'div'} class="title">${CONTACT.name}</${opt.live?'h1':'div'}><p class="role">${CONTACT.role}</p>
         <p class="intro">${PROFILE.intro}</p>
         <h2>자격증</h2><table class="hist"><tbody>${PROFILE.certs.map(h=>`<tr><td class="num">${h[0]}</td><td>${h[1]}</td></tr>`).join('')}</tbody></table>
-        <h2>유튜브 채널</h2><a class="yt" ${y.url?`href="${y.url}" target="_blank" rel="noopener"`:''}>${ICON.mark}<div><b>${y.name}</b><span>${y.url||'채널 주소를 넣으면 연결돼요'}</span></div></a>
+        <h2>유튜브 채널</h2>${y.map(c=>`<a class="yt" href="${c.url}" target="_blank" rel="noopener">${ICON.mark}<div><b>${c.name}</b><span>${decodeURIComponent(c.url).replace('https://www.','')}</span></div></a>`).join('')}
         <h2>사용 툴</h2><div class="tools">${PROFILE.tools.map(t=>`<span>${t}</span>`).join('')}</div></div>`;
   }
   function pane(){
@@ -505,7 +506,7 @@ function buildApp(root,opt){
     else if(a==='back'){closeWork()}
     else if(a==='tab'){st.tab=id;pane()}
     else if(a==='contact'){openContact(b.dataset.about||'')}
-    else if(a==='home'){closeWork();st.cat='all';render();showOpening()}   // 처음으로 = 오프닝 화면
+    else if(a==='home'){closeWork();st.cat='intro';render();showOpening()}   // 처음으로 = 오프닝 화면
     else if(a==='view'){setMode(document.body.dataset.mode==='pc'?'mob':'pc')}
   });
   if(opt.live)new ResizeObserver(()=>{const was=wide;pick();if(was!==wide)render()}).observe(root);
@@ -543,7 +544,7 @@ function showOpening(){document.body.setAttribute('data-open','');stageEl.inert=
 function enter(m){setMode(m);document.body.removeAttribute('data-open');stageEl.inert=false}
 
 setMode(isPhone?'mob':'pc');
-buildApp(appEl,{live:true,cat:CATS.some(c=>c.id===Q.get('cat'))?Q.get('cat'):'all'});
+buildApp(appEl,{live:true,cat:CATS.some(c=>c.id===Q.get('cat'))?Q.get('cat'):'intro'});
 if(['mob','pc'].includes(Q.get('mode')))enter(Q.get('mode')); else showOpening();
 </script>
 </body>
