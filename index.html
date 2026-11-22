@@ -281,40 +281,39 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
    선택된 것 = 검은 상자 + 바탕색 글자 */
 :root{--bg2:#f2ffe8}
 #stage{background:var(--bg2)}
-.shell.v2{display:grid;grid-template-columns:clamp(110px,15.4vw,300px) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);grid-template-areas:"top top" "side main";
-  height:100%;background:var(--bg2);color:#111;font-size:14px;line-height:1.6}
-.v2 .top{grid-area:top;padding:clamp(14px,1.6vw,30px) 0 0 clamp(16px,8vw,153px)}
-.v2 .nav{all:unset;display:flex;flex-wrap:wrap;gap:clamp(8px,.85vw,16px)}
-.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;place-items:center;width:clamp(96px,7.9vw,152px);height:clamp(34px,2.1vw,42px);
-  border:1.5px solid #111;background:transparent;color:#111;font-size:clamp(12.5px,.75vw,15px);letter-spacing:.08em;transition:background .15s,color .15s}
-.v2 .nav button:hover{background:rgba(17,17,17,.08)}
+.shell.v2{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);grid-template-areas:"top" "main";
+  height:100%;background:var(--bg2);color:#111;font-size:16px;line-height:1.7}
+.v2 .top{grid-area:top;padding:clamp(20px,3vh,36px) 24px 0}
+.v2 .nav{all:unset;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;place-items:center;min-width:150px;height:46px;padding:0 20px;
+  border:1.5px solid #111;background:transparent;color:#111;font-size:15px;letter-spacing:.06em;transition:background .15s,color .15s}
+.v2 .nav button:hover{background:rgba(17,17,17,.07)}
 .v2 .nav button[aria-current="true"]{background:#111;color:var(--bg2)}
-.v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:2px}
-.v2 .side{grid-area:side;padding:clamp(24px,3.2vw,62px) 0 0 clamp(16px,4.1vw,79px)}
-.v2 .here2{display:grid;place-items:center;width:clamp(96px,7.9vw,152px);height:clamp(34px,2.1vw,42px);background:#111;color:var(--bg2);font-size:clamp(12.5px,.75vw,15px);letter-spacing:.08em;margin:0;font-weight:400}
-.v2 .main{grid-area:main;overflow:auto;padding:clamp(24px,3.6vw,70px) clamp(16px,3vw,60px) 80px 0;background:transparent}
+.v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:3px}
+.v2 .main{grid-area:main;overflow:auto;padding:clamp(36px,6vh,72px) 24px 96px;background:transparent}
 .v2 .modal{grid-area:1/1/-1/-1}
-/* 소개 */
-.pf{max-width:clamp(420px,28.5vw,560px)}
-.pf-head{display:flex;align-items:flex-end;gap:clamp(14px,1.1vw,22px);padding-bottom:clamp(12px,1vw,20px);border-bottom:1.5px solid #111}
-.pf-head img{flex:none;width:clamp(96px,6.2vw,120px);aspect-ratio:120/150;object-fit:cover;background:#c79a9a}
-.pf-head h1,.pf-head .pfname{font-size:clamp(20px,1.35vw,26px);line-height:1.3;font-weight:400;margin:0}
-.pf-head h1 span,.pf-head .pfname span{font-size:.92em}
-.pf-head p{margin-top:clamp(8px,.8vw,14px);font-size:clamp(13px,.75vw,14.5px)}
-.pf-sec{padding:clamp(10px,.8vw,16px) 2px clamp(18px,1.6vw,32px);border-bottom:1.5px solid #111;font-size:clamp(12.5px,.68vw,13.5px)}
-.pf-sec h2{font-size:inherit;font-weight:400;margin:0 0 clamp(8px,.7vw,12px)}
-.pf-sec p{margin:0 0 clamp(8px,.9vw,16px)}
-.pf-sec h3{font-size:inherit;font-weight:700;margin:clamp(14px,1.4vw,26px) 0 clamp(6px,.6vw,10px)}
-.pf-sec a{text-decoration:underline;text-underline-offset:3px}
+/* 소개: 가운데 */
+.pf{max-width:760px;margin:0 auto}
+.pf-head{display:flex;align-items:flex-end;gap:28px;padding-bottom:24px;border-bottom:1.5px solid #111}
+.pf-head img{flex:none;width:150px;aspect-ratio:4/5;object-fit:cover;background:#c79a9a}
+.pf-head .pfname{font-size:34px;line-height:1.25;font-weight:400;margin:0}
+.pf-head .pfname span{font-size:.7em;opacity:.75}
+.pf-head p{margin-top:12px;font-size:17px}
+.pf-sec{display:grid;grid-template-columns:130px minmax(0,1fr);gap:4px 24px;padding:24px 0;border-bottom:1.5px solid #111;font-size:16px}
+.pf-sec h2{font-size:15px;font-weight:700;margin:0;letter-spacing:.04em}
+.pf-sec>div>p{margin:0 0 6px}
+.pf-sec>div>p:last-child{margin:0}
+.pf-sec h3{font-size:15px;font-weight:700;margin:18px 0 6px}
+.pf-sec a{text-decoration:underline;text-underline-offset:4px}
 .pf-sec a:hover{text-decoration-thickness:2px}
 /* 좁은 화면(모바일): 메뉴는 줄바꿈, 왼쪽 상자는 위로 */
 @container app (width < 760px){
-  .shell.v2{grid-template-columns:1fr;grid-template-rows:auto auto minmax(0,1fr);grid-template-areas:"top" "side" "main"}
   .v2 .top{padding:16px 16px 0}
-  .v2 .nav button{width:auto;flex:1 1 30%;padding:0 6px}
-  .v2 .side{padding:16px 16px 0}
-  .v2 .main{padding:18px 16px 60px}
-  .pf{max-width:none}
+  .v2 .nav{gap:8px}
+  .v2 .nav button{min-width:0;flex:1 1 30%;height:42px;padding:0 6px;font-size:14px}
+  .v2 .main{padding:28px 16px 60px}
+  .pf-head{gap:18px}.pf-head img{width:104px}.pf-head .pfname{font-size:26px}.pf-head p{font-size:15px}
+  .pf-sec{grid-template-columns:1fr;font-size:15px}
 }
 </style>
 </head>
@@ -464,14 +463,12 @@ function buildApp(root,opt){
   const pick=()=>{wide=root.offsetWidth>=900;H=opt.live&&!wide?'h1':'div'};
   root.innerHTML=`<div class="shell v2">
     <header class="top"><nav class="nav" aria-label="분류"></nav></header>
-    <aside class="side"><div class="here2"></div></aside>
     <main class="main"></main>
     <div class="modal" hidden></div></div>`;
   const $=s=>root.querySelector(s);
 
   function nav(){
     $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" aria-current="${c.id===st.cat}">${c.name}</button>`).join('');
-    $('.here2').textContent=CATS.find(x=>x.id===st.cat).name;
   }
   function banner(c){
     const label=c.id==='all'?'소개 영상':c.name+' 배너 영상';
@@ -492,10 +489,10 @@ function buildApp(root,opt){
     const P=PROFILE, NM=opt.live?'h1':'div';
     return `<div class="pf">
       <div class="pf-head"><img src="${P.photo}" alt="${P.nameKo} 프로필 사진"><div><${NM} class="pfname">${P.nameKo} <span>(${P.nameEn})</span></${NM}><p>${P.tagline}</p></div></div>
-      <section class="pf-sec"><h2>경력</h2>${P.career.map(t=>`<p>${t}</p>`).join('')}</section>
-      <section class="pf-sec"><h2>자격증</h2>${P.certs.map(h=>`<p>${h[0]}&nbsp;&nbsp;${h[1]}</p>`).join('')}</section>
-      <section class="pf-sec"><h2>유튜브 채널</h2>${P.youtube.map(c=>`<p><a href="${c.url}" target="_blank" rel="noopener">${c.name}</a></p>`).join('')}</section>
-      <section class="pf-sec"><h2>사용 툴</h2><p>${P.tools.join('&nbsp;&nbsp;')}</p><h3>AI</h3><p>${P.ai.join('&nbsp;&nbsp;')}</p></section>
+      <section class="pf-sec"><h2>경력</h2><div>${P.career.map(t=>`<p>${t}</p>`).join('')}</div></section>
+      <section class="pf-sec"><h2>자격증</h2><div>${P.certs.map(h=>`<p>${h[0]}&nbsp;&nbsp;${h[1]}</p>`).join('')}</div></section>
+      <section class="pf-sec"><h2>유튜브 채널</h2><div>${P.youtube.map(c=>`<p><a href="${c.url}" target="_blank" rel="noopener">${c.name}</a></p>`).join('')}</div></section>
+      <section class="pf-sec"><h2>사용 툴</h2><div><p>${P.tools.join(' · ')}</p><h3>AI</h3><p>${P.ai.join(' · ')}</p></div></section>
     </div>`;
   }
   function pane(){
