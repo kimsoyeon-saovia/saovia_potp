@@ -358,6 +358,7 @@ const WORKS=[
   {id:'lint',cats:['ani'],title:'린트',en:'LINT',time:'',year:2026,tools:'Seedance · Premiere Pro',state:'wip',yt:'',
    story:'침대 밑 먼지 세계에 사는 여섯 친구의 이야기예요.'},
   {id:'chicken',cats:['ani'],title:'치킨',en:'CHICKEN',time:'',year:2026,state:'soon',yt:''},
+  {id:'insta1',cats:['ani'],title:'인스타그램 애니메이션',en:'INSTAGRAM',time:'1:05',year:2026,yt:'',mp4:'video/ani-insta.mp4',poster:'img/ani-insta.jpg'},   // mp4: 사이트에 직접 올린 영상
   {id:'sangsang',cats:['team'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'팀',yt:'',
    site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png',   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    story:'AI 영상 제작 스튜디오 「상상」의 홈페이지예요. 위 화면에서 직접 스크롤하고 눌러볼 수 있어요.'},
@@ -397,6 +398,7 @@ function thumb(w,tag='div',attrs=''){
   const hq=`https://img.youtube.com/vi/${w.yt}/hqdefault.jpg`;
   // 세로 영상은 세로 썸네일(oar2)을 쓰고, 없으면(작은 대체 그림이 오면) 기본 썸네일로 바꿔요
   if(w.shot) return `<${tag} class="thumb site" ${attrs} style="background:#fff"><img src="${w.shot}" alt="">${badge(w)}<span class="web">웹사이트</span></${tag}>`;
+  if(w.mp4) return `<${tag} class="thumb" ${attrs} style="background:#000"><img src="${w.poster}" alt="" style="object-fit:contain">${badge(w)}<span class="pl">${PLAY}</span></${tag}>`;
   const img=!w.yt?`<span class="ph">${w.en}</span>`
     :tall(w)?[' class="bgi"',''].map(c=>`<img${c} src="https://i.ytimg.com/vi/${w.yt}/oar2.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='${hq}'}" onerror="this.onerror=null;this.src='${hq}'" alt="">`).join('')   // bgi: 세로 영상 양옆을 채우는 흐린 배경
     :`<img src="${hq}" alt="">`;
@@ -477,7 +479,7 @@ function buildApp(root,opt){
     m.innerHTML=`<div class="dlg" role="dialog" aria-label="${w.title}">
       <div class="dtop"><button class="btn ghost" data-act="back">${ICON.back}목록으로</button></div>
       <div class="pv">${w.site?`<div class="player site"><iframe src="${w.site}" title="${w.title}" loading="lazy"></iframe></div>
-        <div class="sitebar"><button class="btn ghost" data-act="sitehome">${ICON.home}첫 화면으로</button><a class="btn prim" href="${w.site}" target="_blank" rel="noopener">사이트 새 창으로 열기</a></div>`:`<div class="player ${tall(w)?'tall':''}">${!w.yt?thumb(w)
+        <div class="sitebar"><button class="btn ghost" data-act="sitehome">${ICON.home}첫 화면으로</button><a class="btn prim" href="${w.site}" target="_blank" rel="noopener">사이트 새 창으로 열기</a></div>`:`<div class="player ${tall(w)?'tall':''}">${w.mp4?`<video src="${w.mp4}" poster="${w.poster}" controls autoplay playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000"></video>`:!w.yt?thumb(w)
         :CAN_EMBED?ytFrame(w.yt,'autoplay=1&rel=0&playsinline=1',w.title)
         :thumb(w,'a',`href="${ytLink(w)}" target="_blank" rel="noopener" aria-label="${w.title} 유튜브에서 보기"`)}</div>`}
         ${w.yt&&!CAN_EMBED?'<p class="ytnote">파일을 바로 연 화면에서는 유튜브가 이 창 안에서 재생되지 않아요. 영상을 누르면 유튜브에서 열려요. 인터넷에 올린 주소에서는 이 자리에서 바로 재생돼요.</p>':''}</div>
