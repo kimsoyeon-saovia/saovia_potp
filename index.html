@@ -6,7 +6,7 @@
 <title>KIM SO YEON 영상 포트폴리오</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Nanum+Gothic+Coding:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Black+And+White+Picture&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 /* =====================================================================
@@ -19,7 +19,7 @@
 :root{
   --ink:#111111; --ink-2:#2B2B2B; --cobalt:#111111; --cobalt-d:#000000;   /* 파랑 없이 검정 */
   --paper:#ffffff; --mist:#F4F4F4; --line:#E4E4E4; --control:#C9C9C9; --slate:#6B6B6B;
-  --ui:"Courier Prime","Nanum Gothic Coding","Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --ui:"Special Elite","Black And White Picture","Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --rule:3px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -294,12 +294,12 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .v2 .modal{grid-area:1/1/-1/-1}
 /* 소개 — 큰 이름과 사진, 왼쪽 제목 칸 + 오른쪽 내용 칸, 선 대신 여백과 색 면 */
 .v2 .main{padding-left:0;padding-right:0}
-.pf{--pad:clamp(20px,4vw,64px);--ko:"Courier Prime","Nanum Gothic Coding",monospace;font-family:var(--ko);color:#111}
+.pf{--pad:clamp(20px,4vw,64px);--ko:"Special Elite","Black And White Picture",serif;font-family:var(--ko);color:#111}
 .pf-in{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
 .pf h1,.pf h2,.pf .disp{font-family:var(--ko);font-weight:400}
-.pf-hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,72px);align-items:end}
-.pf-hero img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#e6eee0}
-.pf-hero h1{font-size:clamp(60px,8.2vw,128px);line-height:.9;letter-spacing:-.02em;margin:0}
+.pf-hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(28px,4vw,72px);align-items:end;min-height:calc(100vh - 170px)}
+.pf-hero img{display:block;width:100%;height:100%;max-height:calc(100vh - 170px);aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;background:#eee}
+.pf-hero h1{font-size:clamp(64px,9.4vw,150px);line-height:.88;letter-spacing:-.03em;margin:0}
 .pf-hero .ko{margin-top:clamp(24px,3vw,40px);font-size:clamp(20px,1.6vw,24px);line-height:1.5}
 .pf-hero .ko b{font-weight:700;margin-right:12px}
 .pf-sec{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(20px,3vw,48px);padding-top:clamp(96px,12vh,160px)}
@@ -313,25 +313,27 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf-certs .o{font-size:16px;margin-top:4px;color:#3d3d3d}
 /* 유튜브: 색 면 위에 채널마다 한 덩어리 */
 .pf-yt{margin-top:clamp(96px,12vh,160px);background:#f3f3f3;padding:clamp(64px,8vh,110px) 0}
-.pf-yt .pf-sec{padding-top:0}
-.ch{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(20px,3vw,48px);align-items:start}
+.pf-yt .pf-sec{padding-top:0;grid-template-columns:1fr}
+.pf-yt h2{font-size:clamp(48px,5.6vw,88px);line-height:.95;margin-bottom:clamp(32px,4vh,56px)}
+.ch{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(20px,3vw,48px) clamp(20px,3vw,48px);align-items:end}
+.ch .ch-v{grid-column:1/-1;margin-top:8px}
 .ch+.ch{margin-top:clamp(64px,8vh,104px)}
 .ch .nm{display:inline-flex;align-items:center;gap:10px;font-family:var(--ko);font-size:clamp(26px,2.2vw,34px);line-height:1.15}
 .ch .nm i{font-style:normal;font-size:.7em;transition:transform .2s}
 .ch .nm:hover i{transform:translate(3px,-3px)}
 .ch .nm:hover{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
 .ch .h{font-size:15px;color:#3d3d3d;margin-top:6px}
-.ch p{font-size:17px;line-height:1.75;margin:18px 0 0}
+.ch p{font-size:18px;line-height:1.8;margin:0}
 .ch-v{display:grid;gap:14px}
 .ch-v.w2{grid-template-columns:1fr 1fr}
 .ch-v.w4{grid-template-columns:repeat(4,1fr)}
-.ch-v.s4{grid-template-columns:repeat(4,1fr)}
+.ch-v.s4{grid-template-columns:repeat(4,1fr);max-width:760px}
 .ch-v a{display:block;color:#111}
 .ch-v .im{display:block;overflow:hidden;background:#e5e5e5}
 .ch-v img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .35s}
 .ch-v.s4 img{aspect-ratio:9/16}
 .ch-v a:hover img{transform:scale(1.04)}
-.ch-v .t{display:block;font-size:14px;line-height:1.45;margin-top:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ch-v .t{display:block;font-size:15px;line-height:1.45;margin-top:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .pf-tools .grp+.grp{margin-top:36px}
 .pf-tools .lb{font-family:var(--ko);font-size:20px;margin-bottom:14px}
 .pf-tools ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
@@ -545,8 +547,8 @@ function buildApp(root,opt){
         ${P.careers.map(c=>`<div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul>`).join('')}</div></section>
       <section class="pf-sec"><h2>자격증</h2><div class="pf-certs">
         ${P.certs.map(h=>`<div><div class="y">${h[0]}</div><div class="n">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div></section></div>
-      <div class="pf-yt"><div class="pf-in"><section class="pf-sec"><h2>유튜브<br>채널</h2><div>
-        ${P.youtube.map(c=>`<div class="ch"><div><a class="nm" href="${c.url}" target="_blank" rel="noopener">${c.name}<i aria-hidden="true">↗</i></a><div class="h">${c.handle}</div><p>${c.desc}</p></div>
+      <div class="pf-yt"><div class="pf-in"><section class="pf-sec"><h2>YouTube</h2><div>
+        ${P.youtube.map(c=>`<div class="ch"><div><a class="nm" href="${c.url}" target="_blank" rel="noopener">${c.name}<i aria-hidden="true">↗</i></a><div class="h">${c.handle}</div></div><p>${c.desc}</p>
           <div class="ch-v ${c.shorts?'s4':c.videos.length>2?'w4':'w2'}">${c.videos.map(v=>th(v,c.shorts)).join('')}</div></div>`).join('')}
       </div></section></div></div>
       <div class="pf-in"><section class="pf-sec pf-tools"><h2>사용 툴</h2><div>
