@@ -292,55 +292,51 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:3px}
 .v2 .main{grid-area:main;overflow:auto;padding:clamp(36px,6vh,72px) 24px 96px;background:transparent}
 .v2 .modal{grid-area:1/1/-1/-1}
-/* 소개: 포스터처럼 — 큰 이름, 검은 테두리 사진, 검은 라벨 상자 */
-.pf{max-width:1120px;margin:0 auto}
-.pf-hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,64px);align-items:end;padding-bottom:clamp(36px,5vh,56px)}
-.pf-photo{position:relative;margin:0 14px 14px 0}
-.pf-photo::after{content:"";position:absolute;inset:14px -14px -14px 14px;background:#111;z-index:0}
-.pf-photo img{position:relative;z-index:1;display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border:1.5px solid #111;background:#ddd}
-.pf-kicker{display:inline-block;background:#111;color:var(--bg2);font-size:13px;letter-spacing:.16em;padding:6px 12px;margin-bottom:22px}
-.pf-big{font-size:clamp(56px,7.4vw,112px);line-height:.92;font-weight:400;letter-spacing:-.01em;margin:0}
-.pf-ko{display:flex;align-items:baseline;gap:14px;margin-top:26px;padding-top:20px;border-top:1.5px solid #111}
-.pf-ko b{font-size:26px;font-weight:700}
-.pf-ko span{font-size:18px}
-.pf-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.pf-cta a,.pf-cta button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border:1.5px solid #111;font-size:15px;letter-spacing:.04em;transition:background .15s,color .15s}
-.pf-cta .on{background:#111;color:var(--bg2)}
-.pf-cta .on:hover{background:#333}
-.pf-cta a:not(.on):hover{background:#111;color:var(--bg2)}
-.pf-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid #111;border-left:1.5px solid #111}
-.pf-box{border-right:1.5px solid #111;border-bottom:1.5px solid #111;padding:26px 28px 30px}
-.pf-box.wide{grid-column:1/-1}
-.pf-tag{display:inline-block;background:#111;color:var(--bg2);font-size:13px;letter-spacing:.14em;padding:5px 11px;margin-bottom:20px}
-.pf-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;padding:10px 0;border-bottom:1px dashed rgba(17,17,17,.35)}
-.pf-row:last-child{border-bottom:0}
-.pf-row .y{font-size:14px;opacity:.7;padding-top:2px}
-.pf-row .t{font-size:17px;line-height:1.5}
-.pf-row .t small{display:block;font-size:14px;opacity:.7;margin-top:2px}
-.pf-yt{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px dashed rgba(17,17,17,.35);font-size:18px;transition:padding .2s}
-.pf-yt:last-child{border-bottom:0}
-.pf-yt i{font-style:normal;font-size:20px;transition:transform .2s}
-.pf-yt:hover{padding-left:8px}
-.pf-yt:hover i{transform:translate(3px,-3px)}
-.pf-chips{display:flex;flex-wrap:wrap;gap:8px}
-.pf-chips span{border:1.5px solid #111;padding:7px 14px;font-size:15px;line-height:1}
-.pf-sub{font-size:13px;letter-spacing:.14em;margin:22px 0 10px;opacity:.75}
-.pf-ko span,.pf-row .t,.pf-row .y,.pf-chips span,.yt3 p,.yt3 li,.yt3 .h{font-family:"Pretendard Variable",Pretendard,sans-serif}
-.pf-row .t b{font-weight:700}
-.pf-row .t small{line-height:1.65}
-.yt3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 -28px -30px;border-top:1.5px solid #111}
-.yt3 a{display:flex;flex-direction:column;padding:24px 28px 28px;border-right:1.5px solid #111;transition:background .15s,color .15s}
-.yt3 a:last-child{border-right:0}
-.yt3 a:hover{background:#111;color:var(--bg2)}
-.yt3 .nm{display:flex;align-items:center;justify-content:space-between;font-size:22px;line-height:1.2}
-.yt3 .nm i{font-style:normal;font-size:20px}
-.yt3 .h{font-size:13px;opacity:.65;margin-top:4px}
-.yt3 .theme{display:inline-block;align-self:flex-start;margin:16px 0 12px;padding:4px 10px;border:1.5px solid currentColor;font-size:13px}
-.yt3 p{font-size:15px;line-height:1.7;margin:0}
-.yt3 ul{list-style:none;margin:14px 0 0;padding:14px 0 0;border-top:1px dashed currentColor}
-.yt3 li{font-size:14px;line-height:1.6;padding-left:14px;position:relative;margin-bottom:4px}
-.yt3 li::before{content:"·";position:absolute;left:2px}
-
+/* 소개 — 큰 이름과 사진, 왼쪽 제목 칸 + 오른쪽 내용 칸, 선 대신 여백과 색 면 */
+.v2 .main{padding-left:0;padding-right:0}
+.pf{--pad:clamp(20px,4vw,64px);--ko:"Pretendard Variable",Pretendard,sans-serif;font-family:var(--ko);color:#111}
+.pf-in{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
+.pf h1,.pf h2,.pf .disp{font-family:Orbit,var(--ko);font-weight:400}
+.pf-hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,72px);align-items:end}
+.pf-hero img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#e6eee0}
+.pf-hero h1{font-size:clamp(60px,8.2vw,128px);line-height:.9;letter-spacing:-.02em;margin:0}
+.pf-hero .ko{margin-top:clamp(24px,3vw,40px);font-size:clamp(20px,1.6vw,24px);line-height:1.5}
+.pf-hero .ko b{font-weight:700;margin-right:12px}
+.pf-sec{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(20px,3vw,48px);padding-top:clamp(96px,12vh,160px)}
+.pf-sec h2{font-size:clamp(30px,2.6vw,40px);line-height:1.05;letter-spacing:-.01em;margin:0}
+.pf-career .when{font-family:Orbit,var(--ko);font-size:clamp(18px,1.4vw,22px);margin-bottom:10px}
+.pf-career .what{font-size:clamp(22px,1.8vw,28px);font-weight:700;line-height:1.35}
+.pf-career ul{list-style:none;margin:16px 0 0;padding:0;font-size:17px;line-height:1.75}
+.pf-certs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,48px)}
+.pf-certs .y{font-family:Orbit,var(--ko);font-size:clamp(34px,3.2vw,48px);line-height:1}
+.pf-certs .n{font-size:clamp(20px,1.6vw,24px);font-weight:700;margin-top:16px}
+.pf-certs .o{font-size:16px;margin-top:4px;color:#3d3d3d}
+/* 유튜브: 색 면 위에 채널마다 한 덩어리 */
+.pf-yt{margin-top:clamp(96px,12vh,160px);background:#ecf5e5;padding:clamp(64px,8vh,110px) 0}
+.pf-yt .pf-sec{padding-top:0}
+.ch{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(20px,3vw,48px);align-items:start}
+.ch+.ch{margin-top:clamp(64px,8vh,104px)}
+.ch .nm{display:inline-flex;align-items:center;gap:10px;font-family:Orbit,var(--ko);font-size:clamp(26px,2.2vw,34px);line-height:1.15}
+.ch .nm i{font-style:normal;font-size:.7em;transition:transform .2s}
+.ch .nm:hover i{transform:translate(3px,-3px)}
+.ch .nm:hover{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+.ch .h{font-size:15px;color:#3d3d3d;margin-top:6px}
+.ch p{font-size:17px;line-height:1.75;margin:18px 0 0}
+.ch-v{display:grid;gap:14px}
+.ch-v.w2{grid-template-columns:1fr 1fr}
+.ch-v.w4{grid-template-columns:repeat(4,1fr)}
+.ch-v.s4{grid-template-columns:repeat(4,1fr)}
+.ch-v a{display:block;color:#111}
+.ch-v .im{display:block;overflow:hidden;background:#d9e4d2}
+.ch-v img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .35s}
+.ch-v.s4 img{aspect-ratio:9/16}
+.ch-v a:hover img{transform:scale(1.04)}
+.ch-v .t{display:block;font-size:14px;line-height:1.45;margin-top:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pf-tools .grp+.grp{margin-top:36px}
+.pf-tools .lb{font-family:Orbit,var(--ko);font-size:20px;margin-bottom:14px}
+.pf-tools ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.pf-tools li{background:#e6efdf;padding:12px 18px;font-size:17px;line-height:1}
+.pf-end{height:clamp(80px,10vh,140px)}
 /* 좁은 화면(모바일): 메뉴는 줄바꿈, 왼쪽 상자는 위로 */
 @container app (width < 760px){
   .v2 .top{padding:16px 16px 0}
@@ -348,14 +344,14 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
   .v2 .nav button{min-width:0;flex:1 1 30%;height:42px;padding:0 6px;font-size:14px}
   .v2 .main{padding:28px 16px 60px}
   .pf-hero{grid-template-columns:1fr;gap:28px}
-  .pf-photo{max-width:260px}
-  .pf-big{font-size:56px}
-  .pf-grid{grid-template-columns:1fr}
-  .pf-box{padding:22px 18px 24px}
-  .pf-row{grid-template-columns:76px minmax(0,1fr)}
-  .yt3{grid-template-columns:1fr;margin:0 -18px -24px}
-  .yt3 a{border-right:0;border-bottom:1.5px solid #111;padding:20px 18px 22px}
-  .yt3 a:last-child{border-bottom:0}
+  .pf-hero img{max-width:320px}
+  .pf-hero h1{font-size:60px}
+  .pf-sec,.ch{grid-template-columns:1fr;gap:20px}
+  .pf-sec{padding-top:88px}
+  .pf-certs{grid-template-columns:1fr}
+  .ch-v.w4{grid-template-columns:1fr 1fr}
+  .ch-v.s4{grid-template-columns:1fr 1fr}
+  .ch-v.w2{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -400,19 +396,19 @@ const PROFILE={
   intro:'움직임으로 이야기를 전하는 모션 디자이너입니다. 광고, 북트레일러, 애니메이션을 기획부터 편집까지 만듭니다.',
   certs:[['2015.12','컴퓨터그래픽기능사 · Q-Net'],['2026.08','GTQi 1급 · KPC 자격']],   // 자격증: [취득 연월, 이름 · 발급처]
   youtube:[
-    {name:'린트',handle:'@린트_lint',theme:'오리지널 캐릭터 애니메이션',url:'https://www.youtube.com/@%EB%A6%B0%ED%8A%B8_lint',
-     desc:'집 구석구석 먼지 세계에 사는 여섯 친구, 린트 · 헤어리 · 파피 · 페니 · 와비 · 토토의 이야기를 담는 채널이에요. 캐릭터를 백지에서부터 직접 디자인했고, 캐릭터 저작권 등록 신청까지 마쳤어요.',
-     points:['일러스트레이터로 그린 초기 캐릭터 디자인 소개 영상','힉스필드 · Seedance 2.5 · ElevenLabs Music으로 만든 AI 오프닝','애니메이션과 툰 연재 준비 중']},
-    {name:'오정의 상영서점',handle:'@오정의상영서점',theme:'영화와 책이 만나는 곳',url:'https://www.youtube.com/@%EC%98%A4%EC%A0%95%EC%9D%98%EC%83%81%EC%98%81%EC%84%9C%EC%A0%90/shorts',
-     desc:'책을 읽고 그 이야기를 한 편의 예고편처럼 만드는 북트레일러 쇼츠 채널이에요. 장면 구성부터 자막, 음악, 편집까지 직접 기획하고 만들어요.',
-     points:['한강 『바람이 분다, 가라』','양귀자 『모순』 · 조회수 1.3천회','앤디 위어 『아르테미스』 · 조회수 1.3천회','앤디 위어 『프로젝트 헤일메리』']},
-    {name:'오정의 수련',handle:'@오정의수련',theme:'작업 기록 · 연습 작품',url:'https://www.youtube.com/@%EC%98%A4%EC%A0%95%EC%9D%98%EC%88%98%EB%A0%A8',
-     desc:'디자인과 영상 제작을 배우며 만든 연습 작품을 기록하는 채널이에요. AI 영상, 광고, 북트레일러, 팀 애니메이션까지 배운 것을 바로 작품으로 남겨요.',
-     points:['AI로 만든 『바람이 분다, 가라』 북트레일러','북어포 · 황태포 AI 광고 합본','Cheese Cheese Cheese Cat 영상','팀 애니메이션 「흑기사의 직장생활」']}
+    {name:'린트',handle:'@린트_lint',url:'https://www.youtube.com/@%EB%A6%B0%ED%8A%B8_lint',
+     desc:'침대 밑 먼지 뭉치 사자 린트와 친구들이 사는 채널이에요. 캐릭터를 하나하나 직접 그려서 만들었고, 지금은 캐릭터 소개 영상이랑 오프닝을 올려 뒀어요. 앞으로 짧은 툰이랑 애니메이션을 차근차근 올릴 거예요.',
+     videos:[['IAx_crw2Qdg','린트 LINT 오프닝 | 음치 파피의 노래가 불러온 대참사'],['IlkGxsPnnGU','린트와 그 친구들을 소개합니다']]},
+    {name:'오정의 상영서점',handle:'@오정의상영서점',shorts:true,url:'https://www.youtube.com/@%EC%98%A4%EC%A0%95%EC%9D%98%EC%83%81%EC%98%81%EC%84%9C%EC%A0%90/shorts',
+     desc:'읽은 책을 영화 예고편처럼 만들어 보는 쇼츠 채널이에요. 1분 안에 책 한 권을 보여 주려면 어떤 장면을 고르고 어떤 문장을 남길지가 제일 고민이에요. 『모순』과 『아르테미스』는 조회수 1,300회를 넘겼어요.',
+     videos:[['hZVVFRppHfk','같은 얼굴, 전혀 다른 삶 | 양귀자 『모순』'],['D7FgB9M5_n8','달에서 살아남는 법? | 앤디 위어 『아르테미스』'],['Aa1E4okywn4','프로젝트 헤일메리 | 앤디 위어'],['Fo8P-7zUyVk','한강 『바람이 분다, 가라』 수묵 애니메이션']]},
+    {name:'오정의 수련',handle:'@오정의수련',url:'https://www.youtube.com/@%EC%98%A4%EC%A0%95%EC%9D%98%EC%88%98%EB%A0%A8',
+     desc:'배우면서 만든 것들을 그냥 넘기기 아까워서 모아 두는 곳이에요. 학원 과제, 혼자 해 본 AI 광고, 팀으로 만든 애니메이션까지 그때그때 올려요. 잘 만든 것보다 해 본 것들이 쌓여 있는 채널이에요.',
+     videos:[['jhCq0QwulHA','[팀플 애니메이션] 흑기사의 직장생활'],['c7c-Irp63t4','북어포 · 황태포 AI 광고 합본'],['0KsKN15YoDM','촬영 없이 AI로 30초 브랜드 광고 만들기'],['-1pifLVP5Q4','새롭게 만나는 경주 | AI 지역 홍보 영상'],['CBYNkkowSlM','부모님 환갑 영상을 AI로 만들어 봤습니다'],['hOen1WB81lI','Cheese Cheese Cheese Cat'],['Uk06Fqh8uho','코드로 3D 원기옥 영상 만들기'],['SOr_mlN4ipo','『바람이 분다, 가라』 수묵 애니메이션']]}
   ],   // 유튜브 채널들
   nameKo:'김소연', nameEn:'kim so yeon', tagline:'이야기를 전하는 영상 디자이너 입니다.',
-  careers:[['2026.06.15<br>~ 2026.11.02','MBC아카데미컴퓨터교육센터','(멀티미디어) AI를 활용한 뉴미디어 광고기획 및 제작 과정 수료<br>총 760시간 · 영상 편집, 모션그래픽, 그래픽 디자인 실무 교육<br>모범상 수상']],
-  tools:['일러스트','포토샵','에펙','프리미어','캡컷','브루'],
+  careers:[{when:'2026.06.15 — 2026.11.02',what:'MBC아카데미컴퓨터교육센터',items:['(멀티미디어) AI를 활용한 뉴미디어 광고기획 및 제작 과정 수료 · 760시간','영상 편집, 모션그래픽, 그래픽 디자인 실무 교육','모범상 수상']}],
+  tools:['일러스트레이터','포토샵','애프터이펙트','프리미어 프로','캡컷','브루'],
   ai:['일레븐랩스','일레븐 뮤직','힉스필드','구글 플로우','챗GPT','코덱스','클로드 코드','클로드','캔바']
 };
 
@@ -539,30 +535,24 @@ function buildApp(root,opt){
   }
   function intro(){
     const P=PROFILE, NM=opt.live?'h1':'div';
+    const th=(v,sh)=>`<a href="https://www.youtube.com/${sh?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener"><span class="im"><img src="https://i.ytimg.com/vi/${v[0]}/${sh?'oar2':'hqdefault'}.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'" alt="" loading="lazy"></span><span class="t">${v[1]}</span></a>`;
     return `<div class="pf">
-      <section class="pf-hero">
-        <div class="pf-photo"><img src="${P.photo}" alt="${P.nameKo} 프로필 사진"></div>
-        <div>
-          <${NM} class="pf-big">KIM<br>SO YEON</${NM}>
-          <div class="pf-ko"><b>${P.nameKo}</b><span>${P.tagline}</span></div>
-          <div class="pf-cta"><button class="on" data-act="contact">연락하기 →</button><a href="${P.youtube[0].url}" target="_blank" rel="noopener">유튜브 채널 ↗</a></div>
-        </div>
+      <div class="pf-in"><section class="pf-hero">
+        <img src="${P.photo}" alt="${P.nameKo} 프로필 사진">
+        <div><${NM}>KIM<br>SO YEON</${NM}><p class="ko"><b>${P.nameKo}</b>${P.tagline}</p></div>
       </section>
-      <div class="pf-grid">
-        <section class="pf-box wide"><span class="pf-tag">유튜브 채널</span>
-          <div class="yt3">${P.youtube.map(c=>`<a href="${c.url}" target="_blank" rel="noopener">
-            <span class="nm">${c.name}<i aria-hidden="true">↗</i></span><span class="h">${c.handle}</span>
-            <span class="theme">${c.theme}</span><p>${c.desc}</p>
-            <ul>${c.points.map(t=>`<li>${t}</li>`).join('')}</ul></a>`).join('')}</div></section>
-        <section class="pf-box"><span class="pf-tag">경력</span>
-          ${P.careers.map(c=>`<div class="pf-row"><span class="y num">${c[0]}</span><span class="t"><b>${c[1]}</b><small>${c[2]}</small></span></div>`).join('')}</section>
-        <section class="pf-box"><span class="pf-tag">자격증</span>
-          ${P.certs.map(h=>`<div class="pf-row"><span class="y num">${h[0]}</span><span class="t"><b>${h[1].split(' · ')[0]}</b><small>${h[1].split(' · ')[1]||''}</small></span></div>`).join('')}</section>
-        <section class="pf-box wide"><span class="pf-tag">사용 툴</span>
-          <div class="pf-chips">${P.tools.map(t=>`<span>${t}</span>`).join('')}</div>
-          <p class="pf-sub">AI</p>
-          <div class="pf-chips">${P.ai.map(t=>`<span>${t}</span>`).join('')}</div></section>
-      </div>
+      <section class="pf-sec pf-career"><h2>경력</h2><div>
+        ${P.careers.map(c=>`<div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul>`).join('')}</div></section>
+      <section class="pf-sec"><h2>자격증</h2><div class="pf-certs">
+        ${P.certs.map(h=>`<div><div class="y">${h[0]}</div><div class="n">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div></section></div>
+      <div class="pf-yt"><div class="pf-in"><section class="pf-sec"><h2>유튜브<br>채널</h2><div>
+        ${P.youtube.map(c=>`<div class="ch"><div><a class="nm" href="${c.url}" target="_blank" rel="noopener">${c.name}<i aria-hidden="true">↗</i></a><div class="h">${c.handle}</div><p>${c.desc}</p></div>
+          <div class="ch-v ${c.shorts?'s4':c.videos.length>2?'w4':'w2'}">${c.videos.map(v=>th(v,c.shorts)).join('')}</div></div>`).join('')}
+      </div></section></div></div>
+      <div class="pf-in"><section class="pf-sec pf-tools"><h2>사용 툴</h2><div>
+        <div class="grp"><div class="lb">디자인 · 편집</div><ul>${P.tools.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+        <div class="grp"><div class="lb">AI</div><ul>${P.ai.map(t=>`<li>${t}</li>`).join('')}</ul></div></div></section></div>
+      <div class="pf-end"></div>
     </div>`;
   }
   function pane(){
