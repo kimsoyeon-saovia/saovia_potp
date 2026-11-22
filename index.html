@@ -297,8 +297,8 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf{--pad:clamp(20px,4vw,64px);--ko:"Special Elite","Black And White Picture",serif;font-family:var(--ko);color:#111}
 .pf-in{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
 .pf h1,.pf h2,.pf .disp{font-family:var(--ko);font-weight:400}
-.pf-hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(28px,4vw,72px);align-items:end;min-height:calc(100vh - 170px)}
-.pf-hero img{display:block;width:100%;height:100%;max-height:calc(100vh - 170px);aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;background:#eee}
+.pf-hero{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,4vw,72px);align-items:end}
+.pf-hero img{display:block;width:100%;max-width:340px;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;background:#eee}
 .pf-hero h1{font-size:clamp(64px,9.4vw,150px);line-height:.88;letter-spacing:-.03em;margin:0}
 .pf-hero .ko{margin-top:clamp(24px,3vw,40px);font-size:clamp(20px,1.6vw,24px);line-height:1.5}
 .pf-hero .ko b{font-weight:700;margin-right:12px}
@@ -339,6 +339,9 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf-tools ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
 .pf-tools li{background:#f0f0f0;padding:12px 18px;font-size:17px;line-height:1}
 .pf-end{height:clamp(80px,10vh,140px)}
+/* 분류 페이지: 소개처럼 가운데 적당한 폭 */
+.v2 .lst{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+.v2 .lst .banner{margin:0 0 28px}
 /* 좁은 화면(모바일): 메뉴는 줄바꿈, 왼쪽 상자는 위로 */
 @container app (width < 760px){
   .v2 .top{padding:16px 16px 0}
@@ -438,7 +441,7 @@ const WORKS=[
   {id:'bk2',cats:['book'],title:'아르테미스',by:'앤디 위어',en:'BOOK 2',time:'1:47',tools:'Premiere Pro · After Effects',ratio:'9:16',yt:'D7FgB9M5_n8'},
   {id:'bk3',cats:['book'],title:'모순',by:'양귀자',en:'BOOK 3',time:'1:55',tools:'Premiere Pro · After Effects',ratio:'9:16',yt:'hZVVFRppHfk'},
   {id:'bk4',cats:['book'],title:'프로젝트 헤일메리',by:'앤디 위어',en:'BOOK 4',time:'0:57',tools:'Premiere Pro · After Effects',yt:'tf5FNmodBmU'},
-  {id:'knight',cats:['ani','team'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,tools:'After Effects · Photoshop',team:'4인 팀',role:'연출 · 애니메이션',yt:'jhCq0QwulHA',
+  {id:'knight',cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,tools:'After Effects · Photoshop',team:'4인 팀',role:'연출 · 애니메이션',yt:'jhCq0QwulHA',
    story:'흑기사의 줄거리를 적어 주세요.',intent:'이 작품을 만든 이유를 적어 주세요.',
    process:[['레퍼런스','분위기와 비주얼 방향을 정하려고 참고 자료를 모았어요.'],['스토리보드','주요 장면과 시퀀스를 그림으로 짰어요.'],['애니메이션','연출에 맞춰 장면을 움직이고 완성했어요.']]},
   {id:'lint',cats:['ani'],title:'린트 오프닝',en:'LINT OPENING',time:'1:19',year:2026,tools:'Higgsfield · Seedance 2.5 · GPT Image 2 · ElevenLabs Music',yt:'IAx_crw2Qdg',
@@ -449,7 +452,7 @@ const WORKS=[
    story:'집 구석구석에 사는 먼지 친구들, 린트 · 헤어리 · 파피 · 페니 · 와비 · 토토를 소개하는 영상이에요.',
    intent:'일러스트레이터로 백지에서부터 만든 초기 캐릭터 디자인을 처음 공개했어요. 먼지 갈기와 머리카락 질감을 어떻게 표현할지 가장 많이 고민했어요.'},
   {id:'insta1',cats:['ani'],title:'인스타그램 애니메이션',en:'INSTAGRAM',time:'1:05',year:2026,yt:'',mp4:'video/ani-insta.mp4',poster:'img/ani-insta.jpg'},   // mp4: 사이트에 직접 올린 영상
-  {id:'sangsang',cats:['team'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'팀',yt:'',
+  {id:'sangsang',cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'팀',yt:'',
    site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png',   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    story:'AI 영상 제작 스튜디오 「상상」의 홈페이지예요. 위 화면에서 직접 스크롤하고 눌러볼 수 있어요.'},
   ...[1,2,3].map(n=>({id:'sc'+n,cats:['school'],title:'학원 실습 '+n,en:'CLASS '+n,time:'0:30',year:2025,tools:'After Effects',yt:''})),
@@ -530,10 +533,10 @@ function buildApp(root,opt){
   }
   function list(){
     const c=CATS.find(x=>x.id===st.cat), ws=inCat(st.cat);
-    return `${banner(c)}<div class="trow"><${H} class="title">${c.name}</${H}><span class="cnt num">${ws.length}편</span></div>
+    return `<div class="lst">${banner(c)}<div class="trow"><${H} class="title">${c.name}</${H}><span class="cnt num">${ws.length}편</span></div>
       <div class="grid">${ws.map((w,i)=>{const off=w.state==='soon';return `<article class="card ${off?'off':''} ${tall(w)?'tall':''}" style="--i:${Math.min(i,11)}" ${off?'':`data-act="open" data-id="${w.id}" tabindex="0" role="button" aria-label="${w.title} 보기"`}>
         ${thumb(w)}
-        <div class="info"><h3>${w.title}</h3><div class="sub"><p class="meta num">${metaOf(w)}</p>${timeOf(w)}</div></div></article>`}).join('')}</div>`;
+        <div class="info"><h3>${w.title}</h3><div class="sub"><p class="meta num">${metaOf(w)}</p>${timeOf(w)}</div></div></article>`}).join('')}</div></div>`;
   }
   function intro(){
     const P=PROFILE, NM=opt.live?'h1':'div';
