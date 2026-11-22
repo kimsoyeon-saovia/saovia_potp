@@ -6,7 +6,7 @@
 <title>KIM SO YEON 영상 포트폴리오</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Song+Myung&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 /* =====================================================================
@@ -19,12 +19,12 @@
 :root{
   --ink:#111111; --ink-2:#2B2B2B; --cobalt:#111111; --cobalt-d:#000000;   /* 파랑 없이 검정 */
   --paper:#ffffff; --mist:#F4F4F4; --line:#E4E4E4; --control:#C9C9C9; --slate:#6B6B6B;
-  --ui:"Courier Prime","Song Myung","Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --ui:"Noto Serif KR","Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --rule:3px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{word-break:keep-all;font-family:var(--ui);color:var(--ink);background:var(--mist);font-size:14px;line-height:20px;-webkit-font-smoothing:antialiased}
+body{word-break:keep-all;font-family:var(--ui);font-weight:500;color:var(--ink);background:var(--mist);font-size:14px;line-height:20px;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:inherit;text-decoration:none}
 [hidden]{display:none!important}
@@ -294,7 +294,7 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .v2 .modal{grid-area:1/1/-1/-1}
 /* 소개 — 큰 이름과 사진, 왼쪽 제목 칸 + 오른쪽 내용 칸, 선 대신 여백과 색 면 */
 .v2 .main{padding-left:0;padding-right:0}
-.pf{--pad:clamp(20px,4vw,64px);--ko:"Courier Prime","Song Myung",serif;font-family:var(--ko);color:#111}
+.pf{--pad:clamp(20px,4vw,64px);--ko:"Noto Serif KR",serif;font-family:var(--ko);color:#111}
 .pf-in{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
 .pf h1,.pf h2,.pf .disp{font-family:var(--ko);font-weight:400}
 .pf-hero{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,4vw,72px);align-items:end}
@@ -468,6 +468,7 @@ const WORKS=[
    site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png',   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    story:'AI 영상 제작 스튜디오 「상상」의 홈페이지예요. 위 화면에서 직접 스크롤하고 눌러볼 수 있어요.'},
   ...[1,2,3].map(n=>({id:'sc'+n,cats:['school'],title:'학원 실습 '+n,en:'CLASS '+n,time:'0:30',year:2025,tools:'After Effects',yt:''})),
+  {id:'present',cats:['school'],title:'STUDIO 상상 최종 발표 영상',en:'PRESENTATION',time:'',year:2026,yt:'f8bngEEk3xY'},
 ];
 WORKS.forEach((w,i)=>{w.bg=T[i%T.length]});
 
@@ -500,13 +501,13 @@ const timeOf=w=>w.state==='soon'?'<span class="time wait">준비 중</span>':w.t
 const tall=w=>w.ratio==='9:16';   // 세로 영상(쇼츠)
 const badge=w=>w.state==='wip'?'<span class="bdg">제작 중</span>':w.state==='soon'?'<span class="bdg">준비 중</span>':'';
 function thumb(w,tag='div',attrs=''){
-  const hq=`https://img.youtube.com/vi/${w.yt}/hqdefault.jpg`;
+  const hq=`https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg`, mx=`https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg`;
   // 세로 영상은 세로 썸네일(oar2)을 쓰고, 없으면(작은 대체 그림이 오면) 기본 썸네일로 바꿔요
   if(w.shot) return `<${tag} class="thumb site" ${attrs} style="background:#fff"><img src="${w.shot}" alt="">${badge(w)}<span class="web">웹사이트</span></${tag}>`;
   if(w.mp4) return `<${tag} class="thumb" ${attrs} style="background:#000"><img src="${w.poster}" alt="" style="object-fit:contain">${badge(w)}<span class="pl">${PLAY}</span></${tag}>`;
   const img=!w.yt?`<span class="ph">${w.en}</span>`
     :tall(w)?[' class="bgi"',''].map(c=>`<img${c} src="https://i.ytimg.com/vi/${w.yt}/oar2.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='${hq}'}" onerror="this.onerror=null;this.src='${hq}'" alt="">`).join('')   // bgi: 세로 영상 양옆을 채우는 흐린 배경
-    :`<img src="${hq}" alt="">`;
+    :`<img src="${mx}" onload="if(this.naturalWidth<=120){this.onload=null;this.src='${hq}'}" onerror="this.onerror=null;this.src='${hq}'" alt="">`;   // 고화질 썸네일, 없으면 기본
   return `<${tag} class="thumb" ${attrs} style="background:${w.bg}">${img}${badge(w)}${w.yt?`<span class="pl">${PLAY}</span>`:''}</${tag}>`;
 }
 
@@ -552,7 +553,7 @@ function buildApp(root,opt){
   }
   function intro(){
     const P=PROFILE, NM=opt.live?'h1':'div';
-    const th=(v,sh)=>`<a href="https://www.youtube.com/${sh?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener"><span class="im"><img src="https://i.ytimg.com/vi/${v[0]}/${sh?'oar2':'hqdefault'}.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'" alt="" loading="lazy"></span><span class="t">${v[1]}</span></a>`;
+    const th=(v,sh)=>`<a href="https://www.youtube.com/${sh?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener"><span class="im"><img src="https://i.ytimg.com/vi/${v[0]}/${sh?'oar2':'maxresdefault'}.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'" alt="" loading="lazy"></span><span class="t">${v[1]}</span></a>`;
     return `<div class="pf">
       <div class="pf-in"><section class="pf-hero">
         <img src="${P.photo}" alt="${P.nameKo} 프로필 사진">
