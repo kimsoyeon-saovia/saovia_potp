@@ -389,7 +389,9 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ft-c p{font-size:14.5px;line-height:1.75;margin:8px 0 0}
 .ft-sec+.ft-sec{margin-top:40px}
 .ft-meta{text-align:center;font-size:14.5px;color:#666;margin:0}
-.ft-grid.txt{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+.ft-grid.txt{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+.ft-grid.txt>div:last-child{display:flex;flex-direction:column}
+.ft-grid.txt>div:last-child>.ft-toolbox{margin-top:auto;padding-top:40px}
 .ft-grid.txt .ft-toolbox{margin-top:40px}
 .ft-steps{margin:0;padding-left:1.3em;font-size:16px;line-height:1.9}
 .ft-shot{margin:18px 0 0}
@@ -512,7 +514,7 @@ const WORKS=[
   {id:'bk1',cats:['book'],title:'바람이 분다, 가라',by:'한강',en:'BOOK 1',time:'3:34',tools:'Premiere Pro · After Effects',yt:'SOr_mlN4ipo'},
   {id:'bk2',cats:['book'],title:'아르테미스',by:'앤디 위어',en:'BOOK 2',time:'1:47',tools:'ChatGPT · Canva · Premiere Pro',ratio:'9:16',yt:'D7FgB9M5_n8',
    feature:{
-     title:'「아르테미스」 <span>북트레일러</span>',
+     title:'「아르테미스」 <span>앤디 위어</span>',
      synopsis:['『프로젝트 헤일메리』의 작가 앤디 위어의 장편소설 『아르테미스』를 소개하는 북트레일러입니다. 달에 세워진 최초의 도시 아르테미스를 배경으로, 군더더기 없이 깔끔하고 재미있게 흘러가는 이야기가 좋아서 직접 만들어 보았습니다.'],
      tools:['ChatGPT','Canva','Premiere Pro'],
      content:['장면 이미지는 ChatGPT로 만들었고, 이 이미지를 Canva에 넣어 5초 길이의 영상 클립을 여러 개 생성했습니다. 생성한 클립을 Premiere Pro에서 컷 편집해 한 편의 예고편으로 완성했습니다.','내레이션은 제 목소리로 직접 녹음한 뒤 Premiere Pro에서 음성을 변조해 더빙했습니다.'],
@@ -520,7 +522,7 @@ const WORKS=[
      shot:'img/artemis-canva.jpg',shotCap:'Canva에서 작업한 아르테미스 이미지와 5초 클립들'}},
   {id:'bk3',cats:['book'],title:'모순',by:'양귀자',en:'BOOK 3',time:'1:55',tools:'Google Flow · Premiere Pro · Pixabay',ratio:'9:16',yt:'hZVVFRppHfk',
    feature:{
-     title:'「모순」 <span>북트레일러</span>',
+     title:'「모순」 <span>양귀자</span>',
      synopsis:['양귀자 작가의 장편소설 『모순』을 소개하는 북트레일러입니다. 같은 얼굴을 한 쌍둥이 자매가 전혀 다른 삶을 살아가는 이야기를 세로형 쇼츠로 담았습니다.',
                '선화 느낌의 애니메이션으로, 인물에게 눈코입을 그리지 않는 연출을 선택했습니다. 표정 대신 장면과 문장으로 인물의 삶을 읽게 하고 싶었습니다.'],
      tools:['Google Flow','Premiere Pro','Pixabay Music'],
@@ -528,7 +530,7 @@ const WORKS=[
               '그래서 Google Flow로 도구를 바꿔 약 15개의 영상 클립을 생성하고, Premiere Pro에서 컷 편집해 한 편으로 이었습니다. 배경 음악은 Pixabay의 음원을 사용했습니다.','내레이션은 제 목소리로 직접 녹음한 뒤 Premiere Pro에서 음성을 변조해 더빙했습니다.']}},
   {id:'bk4',cats:['book','school'],title:'프로젝트 헤일메리',by:'앤디 위어',en:'BOOK 4',time:'0:57',tools:'Gemini · Vrew · CapCut',yt:'tf5FNmodBmU',
    feature:{
-     title:'「프로젝트 헤일메리」 <span>북트레일러</span>',
+     title:'「프로젝트 헤일메리」 <span>앤디 위어</span>',
      synopsis:['『마션』의 작가 앤디 위어의 장편소설 『프로젝트 헤일메리』를 소개하는 북트레일러입니다. 영화로도 제작된 작품으로, 이야기가 무척 재미있어 직접 예고편으로 만들어 보고 싶었습니다.',
                '기억을 잃은 채 우주선에서 깨어난 주인공이 인류를 구할 단 하나의 임무를 맡고, 그곳에서 뜻밖의 외계인 친구를 만나게 되는 이야기를 1분 안에 담았습니다.'],
      tools:['Gemini','Vrew','CapCut'],
@@ -674,16 +676,16 @@ function buildApp(root,opt){
     const steps=F.process?`<ol class="ft-steps">${F.process.map(t=>`<li>${t}</li>`).join('')}</ol>${F.shot?`<figure class="ft-shot"><img src="${F.shot}" alt="${F.shotCap}" loading="lazy"><figcaption>${F.shotCap}</figcaption></figure>`:''}`:'';
     const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
     const play=`<button class="ft-play ${tall(w)?'tall':''} ${w.mp4?'sq':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>`;
-    const title=`<h2 class="ft-title">${F.title||w.title}</h2>`;
+    const title=`<h2 class="ft-title">${F.title||(w.by?`「${w.title}」 <span>${w.by}</span>`:w.title)}</h2>`;
     let left, right;
     if(F.chars){   // 등장인물이 있는 작품: 왼쪽 영상·제목·줄거리·툴 / 오른쪽 등장인물·영상 내용·제작 과정
       left=play+title+syn.map(t=>`<p class="ft-syn">${t}</p>`).join('')+toolbox;
       right=sec('등장인물',`<div class="ft-chars">${F.chars.map(c=>`<div class="ft-c"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div>`)
         +sec('영상 내용',ps(F.content))+sec('제작 과정',steps);
     }else{   // 등장인물이 없는 작품: 왼쪽 영상·제목 / 오른쪽에 글을 모두 (빈 곳 없이)
-      left=play+title+`<p class="ft-meta">${[w.by,w.year,w.time,w.team,w.role&&'내 역할 '+w.role].filter(Boolean).join(' · ')}</p>`;
-      right=sec('작품 소개',ps(syn.length?syn:(w.story?[w.story]:[])))
-        +sec('제작 이야기',ps(F.content))
+      const intro=(syn.length?syn:(w.story?[w.story]:[])).map(t=>`<p class="ft-syn">${t}</p>`).join('');
+      left=play+title+intro;
+      right=sec('제작 이야기',ps(F.content))
         +sec('기획 의도',w.intent?ps([w.intent]):'')
         +sec('제작 과정',steps||(w.process?w.process.map(p=>`<p class="ft-body"><b>${p[0]}</b> · ${p[1]}</p>`).join(''):''))
         +toolbox;
