@@ -293,63 +293,62 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:3px}
 .v2 .main{grid-area:main;overflow:auto;padding:clamp(36px,6vh,72px) 24px 96px;background:transparent}
 .v2 .modal{grid-area:1/1/-1/-1}
-/* 소개 — 흰 바탕 위에 옅은 회색 면(#f3f3f3)으로 덩어리를 나눠요. 선 없이 면과 여백으로만 */
+/* 소개 — 이력서 한 장처럼: 회색 면 안에서 왼쪽 제목 칸(200px) · 오른쪽 내용 칸으로 모든 줄을 맞춰요 */
 .v2 .main{padding-left:0;padding-right:0;padding-top:clamp(28px,4vh,48px)}
-.pf{--g:#f3f3f3;--pad:clamp(20px,4vw,64px);--ko:"Noto Serif KR",serif;font-family:var(--ko);color:#111}
-.pf-in{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
-.pf h1,.pf h2,.pf h3{font-weight:500;margin:0}
-/* 첫 화면: 회색 면 안에 소개 문장 · 큰 이름 · 사진 */
-.pf-hero{background:var(--g);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:clamp(28px,4vw,72px);padding:clamp(40px,6vw,88px) clamp(28px,5vw,80px) 0}
-.pf-hero .tag{font-size:clamp(24px,2.4vw,36px);line-height:1.45;margin:0 0 clamp(14px,1.6vw,24px)}
-.pf-hero .ko-name{font-size:clamp(88px,11vw,176px);line-height:.95;letter-spacing:-.03em;font-weight:700;padding-bottom:clamp(40px,6vw,88px)}
-.pf-hero img{display:block;width:clamp(220px,24vw,340px);aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;background:#e6e6e6}
-/* 경력 · 자격증: 회색 면 두 칸 */
-.pf-two{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:16px;margin-top:16px}
-.pf-box{background:var(--g);padding:clamp(28px,3vw,44px)}
-.pf-box h2{font-size:clamp(26px,2.2vw,34px);margin-bottom:clamp(22px,2.4vw,34px)}
-.pf-career .when{font-size:16px;margin-bottom:8px}
-.pf-career .what{font-size:clamp(20px,1.7vw,24px);font-weight:700;line-height:1.4}
-.pf-career ul{list-style:none;margin:14px 0 0;padding:0;font-size:16.5px;line-height:1.8}
-.pf-certs{display:grid;gap:26px}
-.pf-certs .y{font-size:15px}
-.pf-certs .n{font-size:clamp(20px,1.7vw,24px);font-weight:700;margin-top:4px}
-.pf-certs .o{font-size:15.5px;margin-top:2px;color:#444}
+.pf{--g:#f3f3f3;--ink:#1a1a1a;--mute:#5c5c5c;--lab:200px;--pad:clamp(20px,4vw,56px);--ko:"Noto Serif KR",serif;font-family:var(--ko);font-weight:500;color:var(--ink)}
+.pf-in{max-width:1040px;margin:0 auto;padding:0 var(--pad)}
+.pf h1,.pf h2,.pf h3{font-weight:700;margin:0}
+.pf-p{background:var(--g);padding:clamp(28px,3.4vw,48px)}
+.pf-p+.pf-p{margin-top:12px}
+.pf-row{display:grid;grid-template-columns:var(--lab) minmax(0,1fr);gap:24px}
+.pf-row>h2{font-size:17px;line-height:1.6;letter-spacing:.02em}
+/* 첫 칸: 사진 · 소개 문장 · 이름 */
+.pf-hero{display:grid;grid-template-columns:var(--lab) minmax(0,1fr);gap:24px;align-items:end}
+.pf-hero img{display:block;width:100%;max-width:168px;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;background:#e4e4e4}
+.pf-hero .tag{font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:var(--mute);margin:0 0 10px}
+.pf-hero .ko-name{font-size:clamp(40px,4.4vw,56px);line-height:1.1;letter-spacing:-.01em}
+/* 경력 · 자격증 */
+.pf-item+.pf-item{margin-top:22px}
+.pf-item .when{font-size:14.5px;color:var(--mute)}
+.pf-item .what{font-size:18px;font-weight:700;line-height:1.5;margin-top:2px}
+.pf-item ul{list-style:none;margin:8px 0 0;padding:0;font-size:16px;line-height:1.85}
+.pf-item .o{font-size:15px;color:var(--mute);margin-top:2px}
+/* 보유 역량 표 */
+.pf-skill{width:100%;border-collapse:separate;border-spacing:0 2px;font-size:15.5px;line-height:1.7}
+.pf-skill th,.pf-skill td{text-align:left;vertical-align:top;padding:12px 16px}
+.pf-skill thead th{background:#1a1a1a;color:#fff;font-weight:700;font-size:14.5px}
+.pf-skill tbody th{width:170px;background:#e9e9e9;font-weight:700;white-space:nowrap}
+.pf-skill tbody td{background:#fff}
 /* 유튜브 */
-.pf-yt{margin-top:clamp(80px,10vh,128px)}
-.pf-yt>h2{font-size:clamp(40px,4.4vw,64px);line-height:1;margin-bottom:clamp(24px,3vw,40px)}
-.ch{background:var(--g);padding:clamp(28px,3vw,44px);display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:20px clamp(24px,3vw,48px);align-items:start}
-.ch+.ch{margin-top:16px}
-.ch .ch-v{grid-column:1/-1;margin-top:12px}
-.ch .nm{display:inline-flex;align-items:center;gap:10px;font-size:clamp(24px,2vw,30px);line-height:1.2;font-weight:700}
-.ch .nm i{font-style:normal;font-size:.7em;transition:transform .2s}
+.ch+.ch{margin-top:36px}
+.ch .nm{display:inline-flex;align-items:center;gap:8px;font-size:20px;font-weight:700;line-height:1.3}
+.ch .nm i{font-style:normal;font-size:.75em;transition:transform .2s}
 .ch .nm:hover i{transform:translate(3px,-3px)}
-.ch .h{font-size:14.5px;color:#555;margin-top:6px}
-.ch p{font-size:16.5px;line-height:1.85;margin:0}
-.ch-v{display:grid;gap:12px}
+.ch .h{font-size:14px;color:var(--mute);margin-left:10px}
+.ch p{font-size:16px;line-height:1.85;margin:10px 0 0;max-width:62ch}
+.ch-v{display:grid;gap:10px;margin-top:16px}
 .ch-v.w2{grid-template-columns:1fr 1fr}
 .ch-v.w4{grid-template-columns:repeat(4,1fr)}
-.ch-v.s4{grid-template-columns:repeat(4,1fr);max-width:720px}
+.ch-v.s4{grid-template-columns:repeat(4,1fr);max-width:560px}
 .ch-v a{display:block;position:relative;color:#111}
 .ch-v .im{display:block;overflow:hidden;background:#e2e2e2}
 .ch-v img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .35s}
 .ch-v.s4 img{aspect-ratio:9/16}
 .ch-v a:hover img{transform:scale(1.04)}
 /* 사용 툴 */
-.pf-tools{margin-top:16px}
-.pf-tools .grp+.grp{margin-top:30px}
-.pf-tools .lb{font-size:16px;margin-bottom:12px}
-.pf-tools ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.pf-tools li{background:#fff;padding:11px 16px;font-size:16px;line-height:1}
-.pf-end{height:clamp(80px,10vh,140px)}
+.pf-tools .grp+.grp{margin-top:18px}
+.pf-tools .lb{font-size:14.5px;color:var(--mute);margin-bottom:8px}
+.pf-tools ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.pf-tools li{background:#fff;padding:9px 14px;font-size:15px;line-height:1}
+.pf-end{height:clamp(64px,8vh,110px)}
+.ch-v .t{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px;background:rgba(0,0,0,.62);color:#fff;font-size:14px;line-height:1.45;opacity:0;transition:opacity .2s}
+.ch-v a:hover .t,.ch-v a:focus-visible .t{opacity:1}
 .v2 .card{position:relative;gap:0}
 .v2 .card .info{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:18px 18px 16px;background:rgba(0,0,0,.62);color:#fff;opacity:0;transition:opacity .2s;pointer-events:none}
 .v2 .card:hover .info,.v2 .card:focus-visible .info{opacity:1}
 .v2 .card .info h3{color:#fff;white-space:normal;font-size:18px;line-height:1.35}
 .v2 .card .info .meta,.v2 .card .info .time{color:#fff}
 .v2 .card:not(.off):hover h3{color:#fff}
-.ch-v .t{position:absolute;inset:0;display:flex;align-items:flex-end;padding:14px;background:rgba(0,0,0,.62);color:#fff;font-size:14.5px;line-height:1.45;opacity:0;transition:opacity .2s}
-.ch-v a:hover .t,.ch-v a:focus-visible .t{opacity:1}
-.pf-hero h1.ko-name,.pf-hero div.ko-name{}
 /* 분류 페이지: 소개처럼 가운데 적당한 폭 */
 .v2 .lst{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
 .v2 .lst .banner{margin:0 0 28px}
@@ -359,11 +358,11 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
   .v2 .nav{gap:8px}
   .v2 .nav button{min-width:0;flex:1 1 30%;height:42px;padding:0 6px;font-size:14px}
   .v2 .main{padding:28px 16px 60px}
-  .pf-hero{grid-template-columns:1fr;padding:36px 22px 0;gap:24px}
-  .pf-hero .ko-name{font-size:76px;padding-bottom:0}
-  .pf-hero img{width:100%;max-width:300px;margin-bottom:-1px}
-  .pf-two,.ch{grid-template-columns:1fr}
-  .pf-box,.ch{padding:26px 20px}
+  .pf-row,.pf-hero{grid-template-columns:1fr;gap:14px}
+  .pf-hero img{max-width:132px}
+  .pf-p{padding:24px 18px}
+  .pf-skill tbody th{width:auto;white-space:normal}
+  .pf-skill th,.pf-skill td{padding:10px 12px}
   .ch-v.w4,.ch-v.s4{grid-template-columns:1fr 1fr}
   .ch-v.w2{grid-template-columns:1fr}
 }
@@ -425,6 +424,16 @@ const PROFILE={
   ],   // 유튜브 채널들
   nameKo:'김소연', nameEn:'kim so yeon', tagline:'이야기를 전하는<br>영상 디자이너',
   careers:[{when:'2026.06.15 — 2026.11.02',what:'MBC아카데미컴퓨터교육센터',items:['(멀티미디어) AI를 활용한 뉴미디어 광고기획 및 제작 과정 수료 · 760시간','영상 편집, 모션그래픽, 그래픽 디자인 실무 교육','모범상 수상']}],
+  skills:[
+    ['그래픽 디자인','Adobe Illustrator · Photoshop을 활용한 벡터 디자인, 이미지 보정 · 합성 및 홍보 콘텐츠 제작'],
+    ['인쇄 · 편집 디자인','Adobe InDesign을 활용한 책자 · 브로슈어 편집, 레이아웃 구성 및 인쇄용 파일 제작'],
+    ['영상 편집','Adobe Premiere Pro를 활용한 영상 편집, 자막 삽입 및 SNS · 유튜브 콘텐츠 제작'],
+    ['모션그래픽','Adobe After Effects를 활용한 모션그래픽, 영상 효과 및 애니메이션 제작'],
+    ['리깅 애니메이션','캐릭터의 본 · 스켈레톤 설정, 웨이트 페인팅, 키프레임을 활용한 동작 구현 및 리깅 애니메이션 영상 제작'],
+    ['AI 콘텐츠 제작','생성형 AI를 활용한 영상 제작 및 AI 기반 3D · 리깅 애니메이션 제작'],
+    ['LLM 활용','LLM을 활용한 웹 콘텐츠 기획, 코드 작성 보조 및 반응형 웹 제작'],
+    ['버전 관리 · 웹 배포','GitHub를 활용한 소스코드 관리 · 공유 및 닷홈 웹호스팅을 통한 사이트 배포'],
+    ['SNS 콘텐츠 제작','유튜브 · 인스타그램 · 페이스북 · 블로그용 이미지, 영상 및 글 콘텐츠 기획 · 제작']],
   tools:['일러스트레이터','포토샵','애프터이펙트','프리미어 프로','캡컷','브루'],
   ai:['일레븐랩스','일레븐 뮤직','힉스필드','구글 플로우','챗GPT','코덱스','클로드 코드','클로드','캔바']
 };
@@ -453,9 +462,6 @@ const WORKS=[
   {id:'bk2',cats:['book'],title:'아르테미스',by:'앤디 위어',en:'BOOK 2',time:'1:47',tools:'Premiere Pro · After Effects',ratio:'9:16',yt:'D7FgB9M5_n8'},
   {id:'bk3',cats:['book'],title:'모순',by:'양귀자',en:'BOOK 3',time:'1:55',tools:'Premiere Pro · After Effects',ratio:'9:16',yt:'hZVVFRppHfk'},
   {id:'bk4',cats:['book'],title:'프로젝트 헤일메리',by:'앤디 위어',en:'BOOK 4',time:'0:57',tools:'Premiere Pro · After Effects',yt:'tf5FNmodBmU'},
-  {id:'knight',cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,tools:'After Effects · Photoshop',team:'4인 팀',role:'연출 · 애니메이션',yt:'jhCq0QwulHA',
-   story:'흑기사의 줄거리를 적어 주세요.',intent:'이 작품을 만든 이유를 적어 주세요.',
-   process:[['레퍼런스','분위기와 비주얼 방향을 정하려고 참고 자료를 모았어요.'],['스토리보드','주요 장면과 시퀀스를 그림으로 짰어요.'],['애니메이션','연출에 맞춰 장면을 움직이고 완성했어요.']]},
   {id:'lint',cats:['ani'],title:'린트 오프닝',en:'LINT OPENING',time:'1:19',year:2026,tools:'Higgsfield · Seedance 2.5 · GPT Image 2 · ElevenLabs Music',yt:'IAx_crw2Qdg',
    story:'음치 파피가 열창하는 사이 페니가 뛰어다니다 노견을 깨우고, 헤어리는 인상을 쓰고 와비는 시큰둥, 토토는 해맑고 린트는 벌벌 떨어요. 린트 친구들의 성격이 한눈에 보이는 오프닝이에요.',
    intent:'직접 그린 일러스트 캐릭터 디자인을 바탕으로, AI 도구로 캐릭터의 생김새를 그대로 살린 오프닝을 만들었어요.',
@@ -467,9 +473,11 @@ const WORKS=[
   {id:'sangsang',cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'팀',yt:'',
    site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png',   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    story:'AI 영상 제작 스튜디오 「상상」의 홈페이지예요. 위 화면에서 직접 스크롤하고 눌러볼 수 있어요.'},
-  ...[1,2,3].map(n=>({id:'sc'+n,cats:['school'],title:'학원 실습 '+n,en:'CLASS '+n,time:'0:30',year:2025,tools:'After Effects',yt:''})),
   {id:'course',cats:['school'],title:'학원 수업 과정 (760시간 타임라인)',en:'CLASS COURSE',time:'2:28',year:2026,yt:'',mp4:'video/class-course.mp4',poster:'img/class-course.jpg'},
   {id:'present',cats:['school'],title:'STUDIO 상상 최종 발표 영상',en:'PRESENTATION',time:'',year:2026,yt:'f8bngEEk3xY'},
+  {id:'knight',cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,tools:'After Effects · Photoshop',team:'4인 팀',role:'연출 · 애니메이션',yt:'jhCq0QwulHA',
+   story:'흑기사의 줄거리를 적어 주세요.',intent:'이 작품을 만든 이유를 적어 주세요.',
+   process:[['레퍼런스','분위기와 비주얼 방향을 정하려고 참고 자료를 모았어요.'],['스토리보드','주요 장면과 시퀀스를 그림으로 짰어요.'],['애니메이션','연출에 맞춰 장면을 움직이고 완성했어요.']]},
 ];
 WORKS.forEach((w,i)=>{w.bg=T[i%T.length]});
 
@@ -556,23 +564,23 @@ function buildApp(root,opt){
     const P=PROFILE, NM=opt.live?'h1':'div';
     const th=(v,sh)=>`<a href="https://www.youtube.com/${sh?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener"><span class="im"><img src="https://i.ytimg.com/vi/${v[0]}/${sh?'oar2':'maxresdefault'}.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'" alt="" loading="lazy"></span><span class="t">${v[1]}</span></a>`;
     return `<div class="pf"><div class="pf-in">
-      <section class="pf-hero">
-        <div><p class="tag">${P.tagline}</p><${NM} class="ko-name">${P.nameKo}</${NM}></div>
+      <section class="pf-p pf-hero">
         <img src="${P.photo}" alt="${P.nameKo} 프로필 사진">
+        <div><p class="tag">${P.tagline}</p><${NM} class="ko-name">${P.nameKo}</${NM}></div>
       </section>
-      <div class="pf-two">
-        <section class="pf-box pf-career"><h2>경력</h2>
-          ${P.careers.map(c=>`<div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul>`).join('')}</section>
-        <section class="pf-box"><h2>자격증</h2><div class="pf-certs">
-          ${P.certs.map(h=>`<div><div class="y">${h[0]}</div><div class="n">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div></section>
-      </div>
-      <section class="pf-yt"><h2>유튜브 채널</h2>
-        ${P.youtube.map(c=>`<div class="ch"><div><a class="nm" href="${c.url}" target="_blank" rel="noopener">${c.name}<i aria-hidden="true">↗</i></a><div class="h">${c.handle}</div></div><p>${c.desc}</p>
-          <div class="ch-v ${c.shorts?'s4':c.videos.length>2?'w4':'w2'}">${c.videos.map(v=>th(v,c.shorts)).join('')}</div></div>`).join('')}
-      </section>
-      <section class="pf-box pf-tools"><h2>사용 툴</h2>
+      <section class="pf-p pf-row"><h2>경력</h2><div>
+        ${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}</div></section>
+      <section class="pf-p pf-row"><h2>자격증</h2><div>
+        ${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div></section>
+      <section class="pf-p pf-row"><h2>보유 역량</h2><div>
+        <table class="pf-skill"><thead><tr><th scope="col">구분</th><th scope="col">보유 기술 및 활용 능력</th></tr></thead>
+        <tbody>${P.skills.map(k=>`<tr><th scope="row">${k[0]}</th><td>${k[1]}</td></tr>`).join('')}</tbody></table></div></section>
+      <section class="pf-p pf-row"><h2>유튜브 채널</h2><div>
+        ${P.youtube.map(c=>`<div class="ch"><a class="nm" href="${c.url}" target="_blank" rel="noopener">${c.name}<i aria-hidden="true">↗</i></a><span class="h">${c.handle}</span><p>${c.desc}</p>
+          <div class="ch-v ${c.shorts?'s4':c.videos.length>2?'w4':'w2'}">${c.videos.map(v=>th(v,c.shorts)).join('')}</div></div>`).join('')}</div></section>
+      <section class="pf-p pf-row pf-tools"><h2>사용 툴</h2><div>
         <div class="grp"><div class="lb">디자인 · 편집</div><ul>${P.tools.map(t=>`<li>${t}</li>`).join('')}</ul></div>
-        <div class="grp"><div class="lb">AI</div><ul>${P.ai.map(t=>`<li>${t}</li>`).join('')}</ul></div></section>
+        <div class="grp"><div class="lb">AI</div><ul>${P.ai.map(t=>`<li>${t}</li>`).join('')}</ul></div></div></section>
       <div class="pf-end"></div>
     </div></div>`;
   }
