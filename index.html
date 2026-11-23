@@ -366,6 +366,8 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ft-play:focus-visible{outline:3px solid #111;outline-offset:3px}
 .ft-player{position:relative;aspect-ratio:16/9;background:#000}
 .ft-player iframe,.ft-player video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ft-player video{object-fit:contain;background:#000}
+.ft-play.sq img{object-fit:contain}
 .ft-title{font-size:clamp(34px,3vw,48px);line-height:1.2;margin:36px 0 24px;font-weight:400;text-align:center}
 .ft-title span{font-size:.6em;margin-left:8px}
 /* 본문: 양쪽 정렬로 줄 끝을 맞춰요 (자간은 그대로) */
@@ -386,6 +388,10 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ft-c .m{display:block;font-size:13px;color:#666;margin-top:4px}
 .ft-c p{font-size:14.5px;line-height:1.75;margin:8px 0 0}
 .ft-sec+.ft-sec{margin-top:40px}
+.ft-steps{margin:0;padding-left:1.3em;font-size:16px;line-height:1.9}
+.ft-shot{margin:18px 0 0}
+.ft-shot img{display:block;width:100%;border:1px solid #e4e4e4}
+.ft-shot figcaption{font-size:13.5px;color:#666;margin-top:8px}
 .ft-body{font-size:16px;line-height:1.95;margin:0}
 .ft-body+.ft-body{margin-top:12px}
 @media (max-width:1100px){.ft-grid{grid-template-columns:1fr}}
@@ -537,7 +543,17 @@ const WORKS=[
        {name:'페니',kind:'동전 아르마딜로 · 쌍둥이 남동생',img:'img/lint/ill-penny.jpg',desc:'은색, 구리색, 금색 동전이 겹친 등껍질. 누나를 따라 하다 더 큰 사고를 치는 천방지축.'}],
      content:['여섯 캐릭터가 차례로 등장해 각자의 소재와 성격을 보여 주고, 마지막에 모두 모여 침대 밑 세계를 소개한다.',
               '일러스트레이터로 캐릭터를 직접 그리고, 애프터이펙트로 등장 모션과 자막을 더해 편집했다. 배경 음악은 오프닝과 같은 곡 「숨바꼭질 친구들」로, ElevenLabs Music으로 제작했다. 영상에서 AI를 활용한 부분은 이 음악뿐이며, 캐릭터 일러스트는 툰 연재의 기본 디자인으로 이어진다.']}},
-  {id:'insta1',cats:['ani'],title:'인스타그램 애니메이션',en:'INSTAGRAM',time:'1:05',year:2026,yt:'',mp4:'video/ani-insta.mp4',poster:'img/ani-insta.jpg'},   // mp4: 사이트에 직접 올린 영상
+  {id:'insta1',cats:['ani'],title:'사오정의 하루',en:'INSTAGRAM',time:'1:05',year:2026,yt:'',mp4:'video/ani-insta.mp4',poster:'img/ani-insta.jpg',tools:'ChatGPT · Canva · Premiere Pro',
+   feature:{
+     title:'「사오정의 하루」 <span>애니메이션</span>',
+     synopsis:['학원 수업과 자격증 공부를 함께 하던 시기, 필기시험 공부에 몰두하다 보니 정작 매일 쓰던 프로그램 사용법이 머릿속에서 하나둘 사라지는 것 같았다. 그때의 불안한 마음을 담아 만든 짧은 애니메이션이다.',
+               '머리를 쥐어뜯던 주인공의 머릿속에서 툴 아이콘들이 빠져나가 밤하늘의 별이 된다. 남은 머릿속 용량은 1%. 잠시 멍하니 하늘을 올려다보던 주인공은 마음을 다잡고, 잠자리채를 들고 별을 사냥하러 나선다.'],
+     tools:['ChatGPT','Canva','Premiere Pro'],
+     chars:[{name:'사오정',kind:'주인공 · 나를 보고 만든 캐릭터',img:'img/insta-char.jpg',desc:'보라색 후드티에 단발머리, 동그란 얼굴. 공부하는 내 모습을 보고 만든 캐릭터다. 초기 작업이라 장면마다 생김새가 조금씩 다르다.'}],
+     content:['책상 앞에서 머리를 감싸 쥔 장면으로 시작해, 툴 아이콘이 별똥별처럼 머리 밖으로 쏟아져 나가는 장면, 밤하늘에 흩어진 툴 별을 올려다보는 장면으로 이어진다. 창고에서 잠자리채를 꺼낸 주인공은 탐험 모자를 쓰고 별을 잡으러 나가고, 마지막에는 다시 작업 책상 앞에서 웃으며 끝난다.',
+              '인스타그램에 올리기 위해 만든 영상으로, 시험 기간의 불안을 무겁지 않게 보여 주고 싶었다.'],
+     process:['ChatGPT로 장면마다 첫 프레임 이미지를 만들었다.','이미지를 Canva에 넣어 5초 길이의 영상 클립을 여러 개 생성했다.','생성한 클립을 Premiere Pro에서 컷 편집해 한 편의 이야기로 이었다.'],
+     shot:'img/insta-canva.jpg',shotCap:'Canva에서 생성한 5초 클립들'}},
   {id:'sangsang',cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'팀',yt:'',
    site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png',   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    story:'AI 영상 제작 스튜디오 「상상」의 홈페이지예요. 위 화면에서 직접 스크롤하고 눌러볼 수 있어요.'},
@@ -628,13 +644,14 @@ function buildApp(root,opt){
   function page(w){   // 영상 하나 = 소개 페이지 하나 (붓 테두리 안에 왼쪽 영상·제목·줄거리, 오른쪽 등장인물·영상 내용)
     const F=w.feature||{}, syn=F.synopsis||(w.story?[w.story]:[]);
     const right=F.chars?`<section class="ft-sec"><h3>등장인물</h3><div class="ft-chars">${F.chars.map(c=>`<div class="ft-c"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div></section>
-        <section class="ft-sec"><h3>영상 내용</h3>${F.content.map(t=>`<p class="ft-body">${t}</p>`).join('')}</section>`
+        <section class="ft-sec"><h3>영상 내용</h3>${F.content.map(t=>`<p class="ft-body">${t}</p>`).join('')}</section>
+        ${F.process?`<section class="ft-sec"><h3>제작 과정</h3><ol class="ft-steps">${F.process.map(t=>`<li>${t}</li>`).join('')}</ol>${F.shot?`<figure class="ft-shot"><img src="${F.shot}" alt="${F.shotCap}" loading="lazy"><figcaption>${F.shotCap}</figcaption></figure>`:''}</section>`:''}`
       :`${w.intent?`<section class="ft-sec"><h3>기획 의도</h3><p class="ft-body">${w.intent}</p></section>`:''}
         ${w.process?`<section class="ft-sec"><h3>제작 과정</h3>${w.process.map(p=>`<p class="ft-body"><b>${p[0]}</b> · ${p[1]}</p>`).join('')}</section>`:''}
         <section class="ft-sec"><h3>작업 정보</h3><p class="ft-body">${spans([w.by,w.year,w.time,w.team,w.role&&'내 역할 '+w.role,w.tools])}</p></section>`;
     const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
     return `<article class="ft-page" id="w-${w.id}"><div class="ft-grid">
-      <div><button class="ft-play ${tall(w)?'tall':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>
+      <div><button class="ft-play ${tall(w)?'tall':''} ${w.mp4?'sq':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>
         <h2 class="ft-title">${F.title||w.title}</h2>${syn.map(t=>`<p class="ft-syn">${t}</p>`).join('')}
         ${F.tools?`<div class="ft-toolbox"><h4>사용 툴</h4><ul>${F.tools.map(t=>`<li>${t}</li>`).join('')}</ul></div>`:''}</div>
       <div>${right}</div></div></article>`;
