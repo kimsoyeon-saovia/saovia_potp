@@ -419,6 +419,11 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf2 .pf-cert{display:grid;grid-template-columns:140px minmax(0,1fr);gap:20px;margin:44px 0}
 .pf2 .pf-cert h2{font-size:16px;line-height:1.6}
 .pf2 .pf-skill{font-size:14px}.pf2 .pf-skill tbody th{width:120px}
+.pf2 .sec>h2,.pf2 .yt-h{font-size:22px;font-weight:700;line-height:1.3;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid #111}
+.pf2 .sec+.sec{margin-top:48px}
+.pf2 .certs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pf2 .certs .pf-item+.pf-item{margin-top:0}
+.pf2 .yt-h{margin-bottom:28px}
 .pf2 .pf-yt{margin-top:clamp(0px,1vw,16px)}
 .pf2 .pf-yt .ch+.ch{margin-top:44px}
 @media (max-width:1000px){.pf2{grid-template-columns:1fr}.pf2 .pf-hero{width:auto}}
@@ -743,13 +748,16 @@ function buildApp(root,opt){
           <div><p class="tag">${P.tagline}</p><${NM} class="ko-name">${P.nameKo}</${NM}></div>
         </section>
         <section class="bx pf-info">
-          ${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}
-          <div class="pf-cert"><h2>자격증</h2><div>${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div></div>
-          <table class="pf-skill"><thead><tr><th scope="col">구분</th><th scope="col">보유 기술 및 활용 능력</th></tr></thead>
-          <tbody>${P.skills.map(k=>`<tr><th scope="row">${k[0]}</th><td>${k[1]}</td></tr>`).join('')}</tbody></table>
+          <div class="sec"><h2>경력</h2>${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}</div>
+          <div class="sec"><h2>자격증</h2><div class="certs">${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div></div>
+          <div class="sec"><h2>핵심 보유 기술</h2><table class="pf-skill"><thead><tr><th scope="col">구분</th><th scope="col">보유 기술 및 활용 능력</th></tr></thead>
+          <tbody>${P.skills.map(k=>`<tr><th scope="row">${k[0]}</th><td>${k[1]}</td></tr>`).join('')}</tbody></table></div>
+          <div class="sec pf-tools"><h2>사용 가능 툴</h2>
+            <div class="grp"><div class="lb">디자인 · 편집</div><ul>${P.tools.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+            <div class="grp"><div class="lb">AI</div><ul>${P.ai.map(t=>`<li>${t}</li>`).join('')}</ul></div></div>
         </section>
       </div>
-      <section class="bx pf-yt">
+      <section class="bx pf-yt"><h2 class="yt-h">유튜브 채널</h2>
         ${P.youtube.map(c=>`<div class="ch"><a class="nm" href="${c.url}" target="_blank" rel="noopener">${c.name}<i aria-hidden="true">↗</i></a><span class="h">${c.handle}</span><p>${c.desc}</p>
           <div class="ch-v ${c.shorts?'s4':c.videos.length>2?'w4':'w2'}">${c.videos.map(v=>th(v,c.shorts)).join('')}</div></div>`).join('')}
       </section>
