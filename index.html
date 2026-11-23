@@ -438,6 +438,13 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf2 .pf-yt{margin-top:0}
 .pf2 .pf-yt .ch-v.w4{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media (max-width:1000px){.pf2 .sk{grid-template-columns:1fr}}
+.pf2 .pf-top{grid-column:1/-1;display:grid;grid-template-columns:200px minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:auto 1fr;gap:30px 44px;align-items:start}
+.pf2 .pf-top .ph{grid-row:1/3;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;display:block;align-self:center}
+.pf2 .pf-top .ko-name{font-size:clamp(40px,3.6vw,54px);font-weight:700;line-height:1.1;margin:0;align-self:end}
+.pf2 .pf-top .tag{font-size:clamp(17px,1.4vw,20px);color:#5c5c5c;margin:0;align-self:end;padding-bottom:6px}
+.pf2 .pf-top .sec>h2{margin-bottom:14px;padding-bottom:10px}
+.pf2 .pf-top .cer .pf-item+.pf-item{margin-top:14px}
+@media (max-width:1000px){.pf2 .pf-top{grid-template-columns:120px 1fr}.pf2 .pf-top .ph{grid-row:auto}.pf2 .pf-top .tag,.pf2 .pf-top .car,.pf2 .pf-top .cer{grid-column:1/-1}}
 @media (max-width:1000px){.pf2{grid-template-columns:1fr}.pf2 .pf-hero{width:auto}}
 .ft-tno{text-align:center;font-family:Orbit,sans-serif;font-size:17px;letter-spacing:.06em;margin:0 0 10px;color:#555}
 .team-grp{margin-top:clamp(72px,9vh,120px);padding-top:clamp(40px,5vh,64px);border-top:3px solid #111}
@@ -801,13 +808,12 @@ function buildApp(root,opt){
     const P=PROFILE, NM=opt.live?'h1':'div';
     const th=(v,sh)=>`<a href="https://www.youtube.com/${sh?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener"><span class="im"><img src="https://i.ytimg.com/vi/${v[0]}/${sh?'oar2':'maxresdefault'}.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'" alt="" loading="lazy"></span><span class="t">${v[1]}</span></a>`;
     return `<div class="pf pf2">
-      <section class="bx pf-hero">
-        <img src="${P.photo}" alt="${P.nameKo} 프로필 사진">
-        <div><p class="tag">${P.tagline}</p><${NM} class="ko-name">${P.nameKo}</${NM}></div>
-      </section>
-      <section class="bx pf-info">
-        <div class="sec"><h2>경력</h2>${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}</div>
-        <div class="sec"><h2>자격증</h2><div class="certs">${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div></div>
+      <section class="bx pf-top">
+        <img class="ph" src="${P.photo}" alt="${P.nameKo} 프로필 사진">
+        <${NM} class="ko-name">${P.nameKo}</${NM}>
+        <p class="tag">${P.tagline.replace(/<br\s*\/?>/g,' ')}</p>
+        <div class="sec car"><h2>경력</h2>${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}</div>
+        <div class="sec cer"><h2>자격증</h2>${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div>
       </section>
       <section class="bx pf-skills">
         <div class="sec"><h2>핵심 보유 기술</h2><ul class="sk">${P.skills.map(k=>`<li><b>${k[0]}</b><p>${k[1]}</p></li>`).join('')}</ul></div>
