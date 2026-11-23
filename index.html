@@ -522,6 +522,18 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
   .ch-v.w4,.ch-v.s4{grid-template-columns:1fr 1fr}
   .ch-v.w2{grid-template-columns:1fr}
 }
+/* 휴대폰: 작품 페이지는 한 줄로 (영상 → 글) */
+@media (max-width:1100px){.ft-grid,.ft-grid.txt{grid-template-columns:minmax(0,1fr)}.ft-chars{grid-template-columns:1fr}}
+body[data-mode="mob"] .ft-grid,body[data-mode="mob"] .ft-grid.txt{grid-template-columns:minmax(0,1fr);padding:22px 16px}
+body[data-mode="mob"] .ft-chars{grid-template-columns:1fr}
+body[data-mode="mob"] .ft-title{font-size:30px;margin-bottom:28px}
+body[data-mode="mob"] .ft-scenes ol{grid-template-columns:repeat(2,minmax(0,1fr))}
+body[data-mode="mob"] .pf3 .p3-head{grid-template-columns:110px minmax(0,1fr);gap:24px}
+body[data-mode="mob"] .pf3 .p3-head .sec{grid-column:1/-1}
+body[data-mode="mob"] .pf3 .who .tag{white-space:normal}
+body[data-mode="mob"] .pf3 .p3-body{grid-template-columns:1fr}
+body[data-mode="mob"] .pf3 .p3-body>.p3yt{padding-left:0;border-left:0;margin-top:56px}
+body[data-mode="mob"] .pf3 .bx{padding:24px 16px}
 </style>
 </head>
 <body data-mode="pc">
