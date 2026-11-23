@@ -388,6 +388,13 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ft-c .m{display:block;font-size:13px;color:#666;margin-top:4px}
 .ft-c p{font-size:14.5px;line-height:1.75;margin:8px 0 0}
 .ft-sec+.ft-sec{margin-top:40px}
+/* 대각선 필름 */
+.film-wrap{margin:40px 0 8px;padding:36px 0;overflow:hidden}
+.film{position:relative;display:flex;gap:8px;padding:20px 12px;background:#151515;transform:rotate(-7deg);width:108%;margin-left:-4%}
+.film::before,.film::after{content:"";position:absolute;left:0;right:0;height:7px;background:repeating-linear-gradient(90deg,#fff 0 9px,transparent 9px 20px)}
+.film::before{top:7px}.film::after{bottom:7px}
+.film img{flex:1 1 0;min-width:0;aspect-ratio:16/9;object-fit:cover;display:block}
+.film.v img{aspect-ratio:3/4}
 .ft-meta{text-align:center;font-size:14.5px;color:#666;margin:0}
 .ft-grid.txt{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
 .ft-grid>div:last-child{display:flex;flex-direction:column}
@@ -687,14 +694,16 @@ function buildApp(root,opt){
     const steps=F.process?`<ol class="ft-steps">${F.process.map(t=>`<li>${t}</li>`).join('')}</ol>${F.shot?`<figure class="ft-shot"><img src="${F.shot}" alt="${F.shotCap}" loading="lazy"><figcaption>${F.shotCap}</figcaption></figure>`:''}`:'';
     const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
     const play=`<button class="ft-play ${tall(w)?'tall':''} ${w.mp4?'sq':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>`;
+    const fk=w.yt||(w.mp4?w.mp4.split('/').pop().replace('.mp4',''):'');   // 영상 중간 장면 5컷 → 대각선 필름
+    const film=fk?`<div class="film-wrap" aria-hidden="true"><div class="film ${tall(w)?'v':''}">${[1,2,3,4,5].map(n=>`<img src="img/frames/${fk}-${n}.jpg" alt="" loading="lazy">`).join('')}</div></div>`:'';
     const title=`<h2 class="ft-title">${F.title||(w.by?`「${w.title}」 <span>${w.by}</span>`:w.title)}</h2>`;
     let left, right;
     if(F.chars){   // 등장인물이 있는 작품: 왼쪽 영상·제목·줄거리·툴 / 오른쪽 등장인물·영상 내용·제작 과정
-      left=play+title+syn.map(t=>`<p class="ft-syn">${t}</p>`).join('');
+      left=play+title+syn.map(t=>`<p class="ft-syn">${t}</p>`).join('')+film;
       right=sec('등장인물',`<div class="ft-chars">${F.chars.map(c=>`<div class="ft-c"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div>`)
         +sec('영상 내용',ps(F.content))+sec('제작 과정',steps)+toolbox;
     }else{   // 등장인물이 없는 작품: 왼쪽 영상·제목 / 오른쪽에 글을 모두 (빈 곳 없이)
-      left=play+title;
+      left=play+title+film;
       right=sec('작품 소개',ps(syn.length?syn:(w.story?[w.story]:[])))
         +sec('제작 이야기',ps(F.content))
         +sec('기획 의도',w.intent?ps([w.intent]):'')
