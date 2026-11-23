@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap&text=%E2%80%9C%E2%80%9D%ED%87%B4%EC%82%AC%EB%8A%94%ED%95%98%EA%B3%A0%EC%8B%B6%EC%A7%80%EB%A7%8C%2C%ED%95%A0%EB%B6%80%EA%B0%80%EB%82%A8%EC%95%98%EB%8B%A4.%20">
 <style>
 @font-face{font-family:Orbit;src:url("fonts/Orbit-Regular.ttf") format("truetype");font-display:swap}
 /* =====================================================================
@@ -440,6 +441,9 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ft-scenes b{font-weight:400;color:#888;font-size:12.5px}
 .ft-c.cut img{object-fit:contain;background:#fff;border:1px solid #e5e5e5}
 .ft-team{list-style:none;margin:0;padding:0}
+.ft-team a{color:#111;text-underline-offset:3px}
+.ft-syn:has(.ft-quote){text-align:center;margin:36px 0 8px}
+.ft-quote{display:block;font-family:"Noto Serif KR",serif;font-weight:900;font-size:clamp(28px,2.4vw,38px);line-height:1.4;letter-spacing:-.01em;text-align:center}
 .ft-team li{font-size:15.5px;line-height:1.85}
 .ft-team li b{font-weight:400;display:inline-block;min-width:130px}
 /* 분류 페이지: 소개처럼 가운데 적당한 폭 */
@@ -655,7 +659,7 @@ const WORKS=[
      title:'「흑기사의 직장생활」 <span>퇴사와 할부 사이</span>',
      synopsis:['정규직 전환을 꿈꾸던 계약직 신입사원 흑기사가 야근과 부당한 대우를 견디지만, 프로젝트 성과를 빼앗기고 남의 실수까지 떠안은 끝에 생계 때문에 다시 계약직으로 남는 오피스 블랙코미디입니다.',
                '「일러스트를 활용한 2D 리깅 애니메이션과 Codex·Claude Code를 활용한 Blender 3D 리깅 애니메이션을 하나의 작품으로 만들어 발표하라」는 주제로 진행한 팀 프로젝트입니다. 본편은 2D 리깅 애니메이션으로, 오프닝과 쿠키 영상은 3D로 제작했습니다.',
-               '“퇴사는 하고 싶지만, 할부가 남았다.”'],
+               '<span class="ft-quote">“퇴사는 하고 싶지만,<br>할부가 남았다.”</span>'],
      tools:['Illustrator','After Effects','Duik Angela','Codex','Notion','GitHub','Naver MYBOX'],
      chars:[
        {name:'흑기사',kind:'펭귄 · 계약직 신입사원',img:'img/knight/heuk.jpg',cut:1,desc:'정규직 전환을 꿈꾸며 성실하게 일하는 주인공입니다. 억울한 순간이면 눈에 불이 붙고 불을 뿜습니다.'},
@@ -667,8 +671,8 @@ const WORKS=[
               '퇴근길 버스 정류장에서 퇴사를 떠올리던 흑기사는 150만 원의 카드대금 문자를 받습니다. 그리고 계약 종료일, 정규직 대신 내밀어진 1년짜리 계약직 근로계약서에 결국 서명합니다.'],
      processH:'내가 맡은 작업',
      process:['캐릭터를 구상했습니다. 흑기사, 붕어 대리 빡대리, 닭과장, 비둘기 과장, 붕어 대표이사를 생각해 성격과 색을 정했습니다.','팀원이 만든 배경 레퍼런스에 맞춰 Illustrator로 캐릭터를 그리고 장면마다 배치했습니다.','리깅용 파츠를 따로 제작하고 레이어를 정리했습니다.','After Effects와 Duik Angela로 리깅 애니메이션이 들어가는 장면을 제작했습니다.','영상 속 카카오톡 대화 장면은 Codex로 만들었습니다.'],
-     more:[['어려웠던 점',`<p class="ft-body">2~3등신의 짧은 팔다리 때문에 리깅이 부자연스러워, 초안보다 팔다리를 조금 늘려 다시 그렸습니다. 두꺼운 검은 외곽선이 관절에서 겹쳐 보이는 문제는 캐릭터의 개성을 지키기 위해 외곽선을 없애지 않고, 관절 부분만 섬세하게 다듬어 해결했습니다.</p>`],
-           ['팀 협업',`<ul class="ft-team"><li><b>Notion</b>회의록, 일정, 작업 현황 정리</li><li><b>GitHub</b>코드와 문서 버전 관리</li><li><b>Naver MYBOX</b>작업 파일 공유와 버전 관리</li></ul>`]],
+     more:[['어려웠던 점',`<p class="ft-body">2~3등신의 짧은 팔다리 때문에 리깅이 부자연스러워, 초안보다 팔다리를 조금 늘려 다시 그렸습니다. 두꺼운 검은 외곽선이 관절에서 겹쳐 보이는 문제도 있었지만, 제작 기간이 부족해 끝내 해결하지 못했습니다. 시간이 조금 더 있었다면 더 자연스럽게 다듬을 수 있었을 것 같아 아쉬움이 남습니다.</p>`],
+           ['팀 협업',`<ul class="ft-team"><li><b>Notion</b>회의록, 일정, 작업 현황 정리 · <a href="https://app.notion.com/p/2-eaef780dfbbf8215a6310137161ab470?source=copy_link" target="_blank" rel="noopener">노션 1 ↗</a> · <a href="https://app.notion.com/p/2-3ecf7543458f80f588b3e41c77c9dfc7?source=copy_link" target="_blank" rel="noopener">노션 2 ↗</a></li><li><b>GitHub</b>코드와 문서 버전 관리 · <a href="https://github.com/kimsoyeon-saovia/Claude/tree/main/흑기사의직장생활_발표자료" target="_blank" rel="noopener">깃허브 ↗</a></li><li><b>Naver MYBOX</b>작업 파일 공유와 버전 관리</li></ul>`]],
      scenes:['오프닝 (3D)','면접','합격 문자','합격의 기쁨','첫 출근','퇴근 5분 전','쌓인 서류','약속 취소 카카오톡','명절 선물 차별','스팸 세트의 분노','빼앗긴 아이디어','바뀐 작성자','타오르는 분노','잘못된 발주','떠넘겨진 책임','시말서','버스 정류장','퇴근 버스','카드대금 문자','재계약','근로계약서 서명','쿠키 영상 (3D)']}},
 ];
 WORKS.forEach((w,i)=>{w.bg=T[i%T.length]});
