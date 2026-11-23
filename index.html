@@ -389,8 +389,8 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ft-c p{font-size:14.5px;line-height:1.75;margin:8px 0 0}
 .ft-sec+.ft-sec{margin-top:40px}
 /* 대각선 필름 */
-.film-wrap{flex:1 1 0;min-height:180px;margin-top:32px;padding:30px 0 0;overflow:hidden;display:flex;flex-direction:column;gap:46px}
-.film{position:relative;display:flex;gap:8px;padding:20px 12px;background:#151515;transform:rotate(var(--a,-7deg));width:110%;margin-left:-5%;flex:none}
+.film-wrap{flex:none;margin-top:48px;padding:14px 0;display:flex;flex-direction:column;gap:60px}
+.film{position:relative;display:flex;gap:8px;padding:20px 10px;background:#151515;transform:rotate(var(--a,-3deg));width:92%;margin:0 auto;flex:none}
 .film::before,.film::after{content:"";position:absolute;left:0;right:0;height:7px;background:repeating-linear-gradient(90deg,#fff 0 9px,transparent 9px 20px)}
 .film::before{top:7px}.film::after{bottom:7px}
 .film img{flex:1 1 0;min-width:0;aspect-ratio:16/9;object-fit:cover;display:block}
@@ -544,7 +544,7 @@ const WORKS=[
      content:['선화 느낌의 애니메이션으로, 인물에게 눈코입을 그리지 않는 연출을 선택했습니다. 표정 대신 장면과 문장으로 인물의 삶을 읽게 하고 싶었습니다.',
               '처음에는 Canva로 제작하려 했지만, 눈코입이 없는 인물을 만들고 싶어도 Canva에서는 계속 이목구비가 생겨 원하는 그림을 얻기가 무척 어려웠습니다.',
               '그래서 Google Flow로 도구를 바꿔 약 15개의 영상 클립을 생성하고, Premiere Pro에서 컷 편집해 한 편으로 이었습니다. 배경 음악은 Pixabay의 음원을 사용했습니다.','내레이션은 제 목소리로 직접 녹음한 뒤 Premiere Pro에서 음성을 변조해 더빙했습니다.']}},
-  {id:'bk4',cats:['book','school'],title:'프로젝트 헤일메리',by:'앤디 위어',en:'BOOK 4',time:'0:57',tools:'Gemini · Vrew · CapCut',yt:'tf5FNmodBmU',
+  {id:'bk4',cats:['book'],title:'프로젝트 헤일메리',by:'앤디 위어',en:'BOOK 4',time:'0:57',tools:'Gemini · Vrew · CapCut',yt:'tf5FNmodBmU',
    feature:{
      title:'「프로젝트 헤일메리」 <span>앤디 위어</span>',
      synopsis:['『마션』의 작가 앤디 위어의 장편소설 『프로젝트 헤일메리』를 소개하는 북트레일러입니다. 영화로도 제작된 작품으로, 이야기가 무척 재미있어 직접 예고편으로 만들어 보고 싶었습니다.',
@@ -696,7 +696,7 @@ function buildApp(root,opt){
     const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
     const play=`<button class="ft-play ${tall(w)?'tall':''} ${w.mp4?'sq':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>`;
     const fk=w.yt||(w.mp4?w.mp4.split('/').pop().replace('.mp4',''):'');   // 영상 중간 장면 5컷 → 대각선 필름
-    const FN={"-1pifLVP5Q4": 12, "0KsKN15YoDM": 12, "CBYNkkowSlM": 12, "D7FgB9M5_n8": 8, "IAx_crw2Qdg": 15, "IlkGxsPnnGU": 10, "SOr_mlN4ipo": 12, "ani-insta": 6, "c7c-Irp63t4": 12, "class-course": 12, "f8bngEEk3xY": 12, "hOen1WB81lI": 12, "hZVVFRppHfk": 13, "jhCq0QwulHA": 12, "tf5FNmodBmU": 10}[fk]||0, per=tall(w)?8:5, ang=[-7,5,-5,6,-6,4];   // 남는 여백만큼 대각선 필름을 여러 줄 (넘치는 건 잘려요)
+    const FN={"-1pifLVP5Q4": 12, "0KsKN15YoDM": 12, "CBYNkkowSlM": 12, "D7FgB9M5_n8": 8, "IAx_crw2Qdg": 15, "IlkGxsPnnGU": 10, "SOr_mlN4ipo": 12, "ani-insta": 6, "c7c-Irp63t4": 12, "class-course": 12, "f8bngEEk3xY": 12, "hOen1WB81lI": 12, "hZVVFRppHfk": 13, "jhCq0QwulHA": 12, "tf5FNmodBmU": 10}[fk]||0, per=tall(w)?8:5, ang=[-3,3,-3,3,-3,3];   // 남는 여백만큼 대각선 필름을 여러 줄 (넘치는 건 잘려요)
     const film=FN&&st.cat!=='school'?`<div class="film-wrap" aria-hidden="true">${ang.slice(0,Math.min({bk2:1,bk3:1,lint:3,lintchar:2}[w.id]||6,Math.floor(FN/per))).map((a,r)=>`<div class="film ${tall(w)?'v':''}" style="--a:${a}deg">${Array.from({length:per},(_,n)=>`<img src="img/frames/${fk}-${(r*per+n)%FN+1}.jpg" alt="" loading="lazy">`).join('')}</div>`).join('')}</div>`:'';
     const title=`<h2 class="ft-title">${F.title||(w.by?`「${w.title}」 <span>${w.by}</span>`:w.title)}</h2>`;
     let left, right;
