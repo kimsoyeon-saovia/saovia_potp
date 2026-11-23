@@ -6,9 +6,10 @@
 <title>KIM SO YEON 영상 포트폴리오</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&display=swap">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
+@font-face{font-family:Orbit;src:url("fonts/Orbit-Regular.ttf") format("truetype");font-display:swap}
 /* =====================================================================
    디자인 기준 (이탈리아 모더니즘 포스터 방식)
    글자 : Pretendard 한 가지만. 크기와 굵기 차이로만 위아래를 나눠요 (가는 획이 없어서 화면에서 깨지지 않아요)
@@ -19,12 +20,12 @@
 :root{
   --ink:#111111; --ink-2:#2B2B2B; --cobalt:#111111; --cobalt-d:#000000;   /* 파랑 없이 검정 */
   --paper:#ffffff; --mist:#F4F4F4; --line:#E4E4E4; --control:#C9C9C9; --slate:#6B6B6B;
-  --ui:"Noto Serif KR","Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --ui:Orbit,"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --rule:3px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{word-break:keep-all;font-family:var(--ui);font-weight:500;color:var(--ink);background:var(--mist);font-size:14px;line-height:20px;-webkit-font-smoothing:antialiased}
+body{word-break:keep-all;font-family:var(--ui);font-weight:400;color:var(--ink);background:var(--mist);font-size:14px;line-height:20px;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:inherit;text-decoration:none}
 [hidden]{display:none!important}
@@ -295,7 +296,7 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .v2 .modal{grid-area:1/1/-1/-1}
 /* 소개 — 이력서 한 장처럼: 회색 면 안에서 왼쪽 제목 칸(200px) · 오른쪽 내용 칸으로 모든 줄을 맞춰요 */
 .v2 .main{padding-left:0;padding-right:0;padding-top:clamp(28px,4vh,48px)}
-.pf{--g:#f3f3f3;--ink:#1a1a1a;--mute:#5c5c5c;--lab:200px;--pad:clamp(20px,4vw,56px);--ko:"Noto Serif KR",serif;font-family:var(--ko);font-weight:500;color:var(--ink)}
+.pf{--g:#f3f3f3;--ink:#1a1a1a;--mute:#5c5c5c;--lab:200px;--pad:clamp(20px,4vw,56px);--ko:Orbit,sans-serif;font-family:var(--ko);font-weight:400;color:var(--ink)}
 .pf-in{max-width:1040px;margin:0 auto;padding:0 var(--pad)}
 .pf h1,.pf h2,.pf h3{font-weight:700;margin:0}
 .pf-p{background:var(--g);padding:clamp(28px,3.4vw,48px)}
@@ -349,6 +350,28 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .v2 .card .info h3{color:#fff;white-space:normal;font-size:18px;line-height:1.35}
 .v2 .card .info .meta,.v2 .card .info .time{color:#fff}
 .v2 .card:not(.off):hover h3{color:#fff}
+/* 작품 소개 한 페이지 (영상 누르면): 왼쪽 영상·제목·줄거리 / 오른쪽 등장인물·영상 내용 */
+.ft{max-width:1240px;margin:0 auto;padding:8px clamp(4px,1.5vw,24px) 48px;font-family:Orbit,sans-serif;color:#1a1a1a}
+.ft-top{display:flex;justify-content:flex-start;margin-bottom:18px}
+.ft-grid{display:grid;grid-template-columns:minmax(0,11fr) minmax(0,10fr);gap:clamp(24px,3vw,48px);background:#f3f3f3;padding:clamp(22px,2.6vw,40px)}
+.ft-grid .player{background:#000}
+.ft-title{font-size:clamp(30px,2.8vw,42px);line-height:1.2;margin:26px 0 14px;font-weight:400}
+.ft-title span{font-size:.62em;margin-left:6px}
+.ft-syn{font-size:16px;line-height:1.9;margin:0}
+.ft-syn+.ft-syn{margin-top:10px}
+.ft h3{font-size:20px;font-weight:400;margin:0 0 14px}
+.ft-chars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ft-c{background:#fff;padding:10px 10px 14px}
+.ft-c img{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#f6efe6}
+.ft-c b{display:block;font-size:17px;font-weight:400;margin-top:10px}
+.ft-c .m{display:block;font-size:12.5px;color:#666;margin-top:2px}
+.ft-c p{font-size:13.5px;line-height:1.65;margin:8px 0 0}
+.ft-sec+.ft-sec{margin-top:30px}
+.ft-body{font-size:15.5px;line-height:1.9;margin:0}
+.ft-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.ft-tools span{background:#fff;padding:7px 12px;font-size:13.5px}
+@media (max-width:900px){.ft-grid{grid-template-columns:1fr}.ft-chars{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dlg.ft{display:block!important;width:min(1240px,100%)!important;border-radius:0!important;padding:20px clamp(16px,2vw,28px) 32px!important}
 /* 분류 페이지: 소개처럼 가운데 적당한 폭 */
 .v2 .lst{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
 .v2 .lst .banner{margin:0 0 28px}
@@ -462,7 +485,21 @@ const WORKS=[
   {id:'bk2',cats:['book'],title:'아르테미스',by:'앤디 위어',en:'BOOK 2',time:'1:47',tools:'Premiere Pro · After Effects',ratio:'9:16',yt:'D7FgB9M5_n8'},
   {id:'bk3',cats:['book'],title:'모순',by:'양귀자',en:'BOOK 3',time:'1:55',tools:'Premiere Pro · After Effects',ratio:'9:16',yt:'hZVVFRppHfk'},
   {id:'bk4',cats:['book'],title:'프로젝트 헤일메리',by:'앤디 위어',en:'BOOK 4',time:'0:57',tools:'Premiere Pro · After Effects',yt:'tf5FNmodBmU'},
-  {id:'lint',cats:['ani'],title:'린트 오프닝',en:'LINT OPENING',time:'1:19',year:2026,tools:'Higgsfield · Seedance 2.5 · GPT Image 2 · ElevenLabs Music',yt:'IAx_crw2Qdg',
+  {id:'lint',cats:['ani'],feature:{
+     title:'「린트」 <span>애니메이션</span>',
+     synopsis:['3대가 살고 있는 3층집, 침대 밑에는 사람 손가락만 한 존재들이 산다. 먼지, 머리카락, 양말, 면봉, 단추와 동전. 사람이 흘리고 잊은 것들이 동물의 모습을 얻어 함께 살아간다.',
+               '겁 많은 먼지 갈기 사자 린트를 중심으로 성격도 속도도 다른 친구들이 모인다. 쌍둥이가 일을 벌이고, 캥거루가 해결책을 찾고, 부엉이가 구경하다 끼어든다. 기린은 자기 속도로 모두를 받아준다.'],
+     tools:['Illustrator','GPT Image 2','Higgsfield','Seedance 2.5','ElevenLabs Music','Premiere Pro'],
+     chars:[
+       {name:'린트',kind:'먼지 갈기 사자 · 주인공',img:'img/lint/lint.jpg',desc:'가장 힘이 세지만 가장 먼저 겁이 난다. 같은 집 노견을 제일 무서워하고, 갈기가 젖을까 봐 물을 싫어한다.'},
+       {name:'헤어리',kind:'머리카락 캥거루 · 해결사',img:'img/lint/hairy.jpg',desc:'침착한 모범생. 배주머니의 머리카락으로 자기를 닮은 친구를 뜨개질하지만 늘 미완성이다.'},
+       {name:'토토',kind:'양말 기린 · 느긋한 친구',img:'img/lint/toto.jpg',desc:'말도 행동도 느린 순한 친구. 뒤집어쓴 양말을 좋아하고, 공룡 피규어와 사랑에 빠져 있다.'},
+       {name:'와비',kind:'면봉 부엉이 · 츤데레 관찰자',img:'img/lint/wabi.jpg',desc:'심심한 걸 싫어하고 소동 구경을 좋아한다. 핀잔을 주면서도 친구가 위험하면 먼저 눈이 커진다.'},
+       {name:'파피',kind:'단추 아르마딜로 · 쌍둥이 누나',img:'img/lint/poppy.jpg',desc:'성격 급하고 자신감 넘치는 열정적인 음치. 동생이 사고를 치면 꼭 한마디 한다. 그래도 내가 나아.'},
+       {name:'페니',kind:'동전 아르마딜로 · 쌍둥이 남동생',img:'img/lint/penny.jpg',desc:'생각보다 손발이 먼저 움직이는 천방지축. 혼나도 금방 일어나 다시 장난을 시작한다.'}],
+     content:['음치 파피가 자신만만하게 노래를 시작하고, 그 사이 페니가 계단을 뛰어다니다 자고 있던 노견을 깨운다. 소란에 헤어리는 뜨개질을 멈추고 인상을 쓰고, 토토 등에 앉은 와비는 시큰둥한 표정으로 지켜본다. 토토는 영문도 모른 채 해맑고, 노견을 가장 무서워하는 린트는 소파 밑에서 갈기까지 떨며 숨는다.',
+              '여섯 캐릭터의 성격과 관계가 한 장면 안에서 드러나도록 구성했다. 일러스트레이터로 그린 초기 캐릭터 디자인을 바탕으로 GPT Image 2로 장면 이미지를 만들고, Higgsfield의 Seedance 2.5로 움직임을 입혔으며, ElevenLabs Music으로 오프닝 곡을 제작했다.']},
+   title:'린트 오프닝',en:'LINT OPENING',time:'1:19',year:2026,tools:'Higgsfield · Seedance 2.5 · GPT Image 2 · ElevenLabs Music',yt:'IAx_crw2Qdg',
    story:'음치 파피가 열창하는 사이 페니가 뛰어다니다 노견을 깨우고, 헤어리는 인상을 쓰고 와비는 시큰둥, 토토는 해맑고 린트는 벌벌 떨어요. 린트 친구들의 성격이 한눈에 보이는 오프닝이에요.',
    intent:'직접 그린 일러스트 캐릭터 디자인을 바탕으로, AI 도구로 캐릭터의 생김새를 그대로 살린 오프닝을 만들었어요.',
    process:[['캐릭터 디자인','일러스트레이터로 그린 초기 캐릭터 디자인에서 시작했어요.'],['이미지','GPT Image 2로 캐릭터를 살린 장면 이미지를 만들었어요.'],['영상','힉스필드의 Seedance 2.5로 움직임을 입혔어요.'],['음악 · 편집','ElevenLabs Music으로 노래를 만들고 자막과 이름표를 넣어 완성했어요.']]},
@@ -595,6 +632,17 @@ function buildApp(root,opt){
     st.cur=w; st.tab='story'; st.seen=[w.id,...st.seen.filter(x=>x!==w.id)];
     const sb=$('.seen b'); if(sb)sb.textContent=st.seen.length;
     const m=$('.modal'); m.hidden=false;
+    if(w.feature){const F=w.feature;
+      m.innerHTML=`<div class="dlg ft" role="dialog" aria-label="${w.title}">
+        <div class="ft-top"><button class="btn ghost" data-act="back">${ICON.back}목록으로</button></div>
+        <div class="ft-grid">
+          <div><div class="player">${CAN_EMBED?ytFrame(w.yt,'autoplay=1&rel=0&playsinline=1',w.title):thumb(w,'a',`href="${ytLink(w)}" target="_blank" rel="noopener"`)}</div>
+            <h2 class="ft-title">${F.title}</h2>${F.synopsis.map(t=>`<p class="ft-syn">${t}</p>`).join('')}
+            <div class="ft-tools">${F.tools.map(t=>`<span>${t}</span>`).join('')}</div></div>
+          <div><section class="ft-sec"><h3>등장인물</h3><div class="ft-chars">${F.chars.map(c=>`<div class="ft-c"><img src="${c.img}" alt="${c.name}"><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div>`).join('')}</div></section>
+            <section class="ft-sec"><h3>영상 내용</h3>${F.content.map(t=>`<p class="ft-body">${t}</p>`).join('')}</section></div>
+        </div></div>`;
+      return;}
     m.innerHTML=`<div class="dlg" role="dialog" aria-label="${w.title}">
       <div class="dtop"><button class="btn ghost" data-act="back">${ICON.back}목록으로</button></div>
       <div class="pv">${w.site?`<div class="player site"><iframe src="${w.site}" title="${w.title}" loading="lazy"></iframe></div>
