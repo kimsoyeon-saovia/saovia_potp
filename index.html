@@ -369,7 +369,7 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ft-player iframe,.ft-player video{position:absolute;inset:0;width:100%;height:100%;border:0}
 .ft-player video{object-fit:contain;background:#000}
 .ft-play.sq img{object-fit:contain}
-.ft-title{font-size:clamp(40px,3.6vw,58px);line-height:1.2;margin:0 0 28px;font-weight:400;text-align:center}
+.ft-title{font-size:clamp(40px,3.6vw,58px);line-height:1.2;margin:0 0 52px;font-weight:400;text-align:center}
 .ft-title span{font-size:.6em;margin-left:8px}
 /* 본문: 양쪽 정렬로 줄 끝을 맞춰요 (자간은 그대로) */
 .ft-syn,.ft-body,.ft-c p{text-align:justify;word-break:break-all;letter-spacing:0}
@@ -428,6 +428,17 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ytl{width:26px;height:19px;flex:none;vertical-align:-3px;margin-right:8px}.ytl.big{width:34px;height:24px;margin:0}
 .pf2 .pf-yt{margin-top:clamp(0px,1vw,16px)}
 .pf2 .pf-yt .ch+.ch{margin-top:44px}
+.pf2{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.pf2 .pf-hero{width:auto;align-self:stretch}
+.pf2 .pf-info .sec+.sec{margin-top:40px}
+.pf2 .sk{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.pf2 .sk li{padding:16px 0;border-bottom:1px solid #ddd}
+.pf2 .sk b{display:block;font-size:16.5px;font-weight:700;margin-bottom:6px}
+.pf2 .sk p{margin:0;font-size:14.5px;line-height:1.75;color:#444}
+.pf2 .pf-skills{grid-column:1/-1}
+.pf2 .pf-yt{grid-column:1/-1;margin-top:0}
+.pf2 .pf-yt .ch-v.w4,.pf2 .pf-yt .ch-v.w2{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){.pf2 .sk{grid-template-columns:1fr}}
 @media (max-width:1000px){.pf2{grid-template-columns:1fr}.pf2 .pf-hero{width:auto}}
 .team-grp{margin-top:clamp(72px,9vh,120px);padding-top:clamp(40px,5vh,64px);border-top:3px solid #111}
 .team-h{text-align:center;margin:0 0 clamp(36px,5vh,56px);font-family:Orbit,sans-serif}
@@ -659,7 +670,7 @@ const WORKS=[
      title:'「흑기사의 직장생활」 <span>퇴사와 할부 사이</span>',
      synopsis:['정규직 전환을 꿈꾸던 계약직 신입사원 흑기사가 야근과 부당한 대우를 견디지만, 프로젝트 성과를 빼앗기고 남의 실수까지 떠안은 끝에 생계 때문에 다시 계약직으로 남는 오피스 블랙코미디입니다.',
                '「일러스트를 활용한 2D 리깅 애니메이션과 Codex·Claude Code를 활용한 Blender 3D 리깅 애니메이션을 하나의 작품으로 만들어 발표하라」는 주제로 진행한 팀 프로젝트입니다. 본편은 2D 리깅 애니메이션으로, 오프닝과 쿠키 영상은 3D로 제작했습니다.',
-               '<span class="ft-quote">“퇴사는 하고 싶지만,<br>할부가 남았다.”</span>'],
+               '<span class="ft-quote">“퇴사는 하고 싶지만,<br>할부는 남았다.”</span>'],
      tools:['Illustrator','After Effects','Duik Angela','Codex','Notion','GitHub','Naver MYBOX'],
      chars:[
        {name:'흑기사',kind:'펭귄 · 계약직 신입사원',img:'img/knight/heuk.jpg',cut:1,desc:'정규직 전환을 꿈꾸며 성실하게 일하는 주인공입니다. 억울한 순간이면 눈에 불이 붙고 불을 뿜습니다.'},
@@ -787,21 +798,20 @@ function buildApp(root,opt){
     const P=PROFILE, NM=opt.live?'h1':'div';
     const th=(v,sh)=>`<a href="https://www.youtube.com/${sh?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener"><span class="im"><img src="https://i.ytimg.com/vi/${v[0]}/${sh?'oar2':'maxresdefault'}.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'" alt="" loading="lazy"></span><span class="t">${v[1]}</span></a>`;
     return `<div class="pf pf2">
-      <div class="pf-col">
-        <section class="bx pf-hero">
-          <img src="${P.photo}" alt="${P.nameKo} 프로필 사진">
-          <div><p class="tag">${P.tagline}</p><${NM} class="ko-name">${P.nameKo}</${NM}></div>
-        </section>
-        <section class="bx pf-info">
-          <div class="sec"><h2>경력</h2>${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}</div>
-          <div class="sec"><h2>자격증</h2><div class="certs">${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div></div>
-          <div class="sec"><h2>핵심 보유 기술</h2><table class="pf-skill"><thead><tr><th scope="col">구분</th><th scope="col">보유 기술 및 활용 능력</th></tr></thead>
-          <tbody>${P.skills.map(k=>`<tr><th scope="row">${k[0]}</th><td>${k[1]}</td></tr>`).join('')}</tbody></table></div>
-          <div class="sec pf-tools"><h2>사용 가능 툴</h2>
-            <div class="grp"><div class="lb">디자인 · 편집</div><ul>${P.tools.map(t=>`<li>${t}</li>`).join('')}</ul></div>
-            <div class="grp"><div class="lb">AI</div><ul>${P.ai.map(t=>`<li>${t}</li>`).join('')}</ul></div></div>
-        </section>
-      </div>
+      <section class="bx pf-hero">
+        <img src="${P.photo}" alt="${P.nameKo} 프로필 사진">
+        <div><p class="tag">${P.tagline}</p><${NM} class="ko-name">${P.nameKo}</${NM}></div>
+      </section>
+      <section class="bx pf-info">
+        <div class="sec"><h2>경력</h2>${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}</div>
+        <div class="sec"><h2>자격증</h2><div class="certs">${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div></div>
+      </section>
+      <section class="bx pf-skills">
+        <div class="sec"><h2>핵심 보유 기술</h2><ul class="sk">${P.skills.map(k=>`<li><b>${k[0]}</b><p>${k[1]}</p></li>`).join('')}</ul></div>
+        <div class="sec pf-tools"><h2>사용 가능 툴</h2>
+          <div class="grp"><div class="lb">디자인 · 편집</div><ul>${P.tools.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+          <div class="grp"><div class="lb">AI</div><ul>${P.ai.map(t=>`<li>${t}</li>`).join('')}</ul></div></div>
+      </section>
       <section class="bx pf-yt"><h2 class="yt-h"><svg class="ytl big" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>유튜브 채널</h2>
         ${P.youtube.map(c=>`<div class="ch"><a class="nm" href="${c.url}" target="_blank" rel="noopener"><svg class="ytl" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>${c.name}<i aria-hidden="true">↗</i></a><span class="h">${c.handle}</span><p>${c.desc}</p>
           <div class="ch-v ${c.shorts?'s4':c.videos.length>2?'w4':'w2'}">${c.videos.map(v=>th(v,c.shorts)).join('')}</div></div>`).join('')}
