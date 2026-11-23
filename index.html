@@ -368,13 +368,14 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ft-player iframe,.ft-player video{position:absolute;inset:0;width:100%;height:100%;border:0}
 .ft-player video{object-fit:contain;background:#000}
 .ft-play.sq img{object-fit:contain}
-.ft-title{font-size:clamp(34px,3vw,48px);line-height:1.2;margin:36px 0 24px;font-weight:400;text-align:center}
+.ft-title{font-size:clamp(40px,3.6vw,58px);line-height:1.2;margin:0 0 28px;font-weight:400;text-align:center}
 .ft-title span{font-size:.6em;margin-left:8px}
 /* 본문: 양쪽 정렬로 줄 끝을 맞춰요 (자간은 그대로) */
 .ft-syn,.ft-body,.ft-c p{text-align:justify;word-break:break-all;letter-spacing:0}
 .ft-c p{max-width:34em}
 .ft-syn{font-size:17px;line-height:1.95;margin:0}
 .ft-syn+.ft-syn{margin-top:14px}
+.ft-play+.ft-syn,.ft-player+.ft-syn{margin-top:32px}
 .ft-grid h3{font-size:24px;font-weight:400;margin:0 0 20px}
 .ft-toolbox{margin-top:36px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px 24px;align-items:start}
 .ft-toolbox h4{font-size:17px;font-weight:400;margin:0;line-height:2}
@@ -701,16 +702,16 @@ function buildApp(root,opt){
     const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
     const play=`<button class="ft-play ${tall(w)?'tall':''} ${w.mp4?'sq':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>`;
     const fk=w.yt||(w.mp4?w.mp4.split('/').pop().replace('.mp4',''):'');   // 영상 중간 장면 5컷 → 대각선 필름
-    const FN={"-1pifLVP5Q4": 12, "0KsKN15YoDM": 12, "CBYNkkowSlM": 12, "D7FgB9M5_n8": 8, "IAx_crw2Qdg": 15, "IlkGxsPnnGU": 10, "SOr_mlN4ipo": 12, "ani-insta": 6, "c7c-Irp63t4": 12, "class-course": 12, "f8bngEEk3xY": 12, "hOen1WB81lI": 12, "hZVVFRppHfk": 13, "jhCq0QwulHA": 12, "tf5FNmodBmU": 10}[fk]||0, per=tall(w)?8:5, ang=[-3,3,-3,3,-3,3];   // 남는 여백만큼 대각선 필름을 여러 줄 (넘치는 건 잘려요)
-    const film=FN&&st.cat!=='school'?`<div class="film-wrap" aria-hidden="true">${ang.slice(0,Math.min({bk2:1,bk3:1,lint:3,lintchar:2}[w.id]||6,Math.floor(FN/per))).map((a,r)=>`<div class="film ${tall(w)?'v':''}" style="--a:${a}deg">${Array.from({length:per},(_,n)=>`<img src="img/frames/${fk}-${(r*per+n)%FN+1}.jpg" alt="" loading="lazy">`).join('')}</div>`).join('')}</div>`:'';
+    const FN={"-1pifLVP5Q4": 10, "0KsKN15YoDM": 10, "CBYNkkowSlM": 10, "D7FgB9M5_n8": 8, "IAx_crw2Qdg": 10, "IlkGxsPnnGU": 10, "SOr_mlN4ipo": 10, "ani-insta": 5, "c7c-Irp63t4": 10, "class-course": 12, "f8bngEEk3xY": 12, "hOen1WB81lI": 10, "hZVVFRppHfk": 8, "jhCq0QwulHA": 10, "tf5FNmodBmU": 10}[fk]||0, per=tall(w)?8:5, ang=[-3,3,-3,3,-3,3];   // 남는 여백만큼 대각선 필름을 여러 줄 (넘치는 건 잘려요)
+    const film=FN&&st.cat!=='school'?`<div class="film-wrap" aria-hidden="true">${ang.slice(0,Math.min({bk2:1,bk3:1,lint:2,lintchar:2}[w.id]||6,Math.floor(FN/per))).map((a,r)=>`<div class="film ${tall(w)?'v':''}" style="--a:${a}deg">${Array.from({length:per},(_,n)=>`<img src="img/frames/${fk}-${(r*per+n)%FN+1}.jpg" alt="" loading="lazy">`).join('')}</div>`).join('')}</div>`:'';
     const title=`<h2 class="ft-title">${F.title||(w.by?`「${w.title}」 <span>${w.by}</span>`:w.title)}</h2>`;
     let left, right;
     if(F.chars){   // 등장인물이 있는 작품: 왼쪽 영상·제목·줄거리·툴 / 오른쪽 등장인물·영상 내용·제작 과정
-      left=play+title+syn.map(t=>`<p class="ft-syn">${t}</p>`).join('')+film;
+      left=title+play+syn.map(t=>`<p class="ft-syn">${t}</p>`).join('')+film;
       right=sec('등장인물',`<div class="ft-chars">${F.chars.map(c=>`<div class="ft-c"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div>`)
         +sec('영상 내용',ps(F.content))+sec('제작 과정',steps)+toolbox;
     }else{   // 등장인물이 없는 작품: 왼쪽 영상·제목 / 오른쪽에 글을 모두 (빈 곳 없이)
-      left=play+title+film;
+      left=title+play+film;
       right=sec('작품 소개',ps(syn.length?syn:(w.story?[w.story]:[])))
         +sec('제작 이야기',ps(F.content))
         +sec('기획 의도',w.intent?ps([w.intent]):'')
