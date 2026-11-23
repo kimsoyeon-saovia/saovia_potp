@@ -432,6 +432,16 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .team-h{text-align:center;margin:0 0 clamp(36px,5vh,56px);font-family:Orbit,sans-serif}
 .team-h h2{font-size:clamp(30px,2.6vw,42px);font-weight:400;margin:0 0 12px}
 .team-h p{font-size:16px;color:#555;margin:0}
+.ft-scenes{grid-column:1/-1;margin-top:clamp(16px,2vw,32px);padding-top:clamp(32px,3vw,48px);border-top:2px solid #111}
+.ft-scenes h3{font-size:24px;font-weight:400;margin:0 0 24px}
+.ft-scenes ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px 16px}
+.ft-scenes img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border:1.5px solid #111}
+.ft-scenes span{display:flex;gap:8px;align-items:baseline;font-size:14px;margin-top:8px;line-height:1.5}
+.ft-scenes b{font-weight:400;color:#888;font-size:12.5px}
+.ft-c.cut img{object-fit:contain;background:#fff;border:1px solid #e5e5e5}
+.ft-team{list-style:none;margin:0;padding:0}
+.ft-team li{font-size:15.5px;line-height:1.85}
+.ft-team li b{font-weight:400;display:inline-block;min-width:130px}
 /* 분류 페이지: 소개처럼 가운데 적당한 폭 */
 .v2 .lst{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
 .v2 .lst .banner{margin:0 0 28px}
@@ -640,9 +650,26 @@ const WORKS=[
    site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png',   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    story:'AI 영상 제작 스튜디오 「상상」의 홈페이지예요. 위 화면에서 직접 스크롤하고 눌러볼 수 있어요.'},
   {id:'present',group:'team',cats:['school'],title:'STUDIO 상상 최종 발표 영상',en:'PRESENTATION',time:'',year:2026,yt:'f8bngEEk3xY'},
-  {id:'knight',group:'team',cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,tools:'After Effects · Photoshop',team:'4인 팀',role:'연출 · 애니메이션',yt:'jhCq0QwulHA',
-   story:'흑기사의 줄거리를 적어 주세요.',intent:'이 작품을 만든 이유를 적어 주세요.',
-   process:[['레퍼런스','분위기와 비주얼 방향을 정하려고 참고 자료를 모았어요.'],['스토리보드','주요 장면과 시퀀스를 그림으로 짰어요.'],['애니메이션','연출에 맞춰 장면을 움직이고 완성했어요.']]},
+  {id:'knight',group:'team',cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,team:'4인 팀',yt:'jhCq0QwulHA',
+   feature:{
+     title:'「흑기사의 직장생활」 <span>퇴사와 할부 사이</span>',
+     synopsis:['정규직 전환을 꿈꾸던 계약직 신입사원 흑기사가 야근과 부당한 대우를 견디지만, 프로젝트 성과를 빼앗기고 남의 실수까지 떠안은 끝에 생계 때문에 다시 계약직으로 남는 오피스 블랙코미디입니다.',
+               '「일러스트를 활용한 2D 리깅 애니메이션과 Codex·Claude Code를 활용한 Blender 3D 리깅 애니메이션을 하나의 작품으로 만들어 발표하라」는 주제로 진행한 팀 프로젝트입니다. 본편은 2D 리깅 애니메이션으로, 오프닝과 쿠키 영상은 3D로 제작했습니다.',
+               '“퇴사는 하고 싶지만, 할부가 남았다.”'],
+     tools:['Illustrator','After Effects','Duik Angela','Codex','Notion','GitHub','Naver MYBOX'],
+     chars:[
+       {name:'흑기사',kind:'펭귄 · 계약직 신입사원',img:'img/knight/heuk.jpg',cut:1,desc:'정규직 전환을 꿈꾸며 성실하게 일하는 주인공입니다. 억울한 순간이면 눈에 불이 붙고 불을 뿜습니다.'},
+       {name:'빡대리',kind:'붕어 · 만년 대리',img:'img/knight/bbak.jpg',cut:1,desc:'흑기사의 직속 상사입니다. 일은 떠넘기고 성과는 가로채며, 문제가 생기면 모른 척합니다.'},
+       {name:'닭과장',kind:'닭 · 과장',img:'img/knight/chicken.jpg',cut:1,desc:'업무를 지시하고 실수를 질책하는 권위적인 상사입니다. 손가락으로 가리키며 다그치는 것이 특징입니다.'},
+       {name:'비둘기 과장',kind:'비둘기 · 면접관',img:'img/knight/pigeon.jpg',cut:1,desc:'흑기사의 면접 장면에 등장하는 면접관입니다.'},
+       {name:'붕어 대표이사',kind:'붕어 · 면접관',img:'img/knight/ceo.jpg',cut:1,desc:'면접 장면에서 가장 먼저 질문을 던지는 회사의 대표이사입니다.'}],
+     content:['면접에 합격한 기쁨도 잠시, 흑기사는 첫 출근부터 퇴근 5분 전에 서류 더미를 받고 친구와의 약속을 취소합니다. 명절 선물은 계약직이라는 이유로 차별받고, 직접 쓴 기획안은 작성자 이름이 빡대리로 바뀌어 제출되며, 빡대리의 발주 실수는 흑기사의 시말서로 돌아옵니다.',
+              '퇴근길 버스 정류장에서 퇴사를 떠올리던 흑기사는 150만 원의 카드대금 문자를 받습니다. 그리고 계약 종료일, 정규직 대신 내밀어진 1년짜리 계약직 근로계약서에 결국 서명합니다.'],
+     processH:'내가 맡은 작업',
+     process:['캐릭터를 구상했습니다. 흑기사, 붕어 대리 빡대리, 닭과장, 비둘기 과장, 붕어 대표이사를 생각해 성격과 색을 정했습니다.','팀원이 만든 배경 레퍼런스에 맞춰 Illustrator로 캐릭터를 그리고 장면마다 배치했습니다.','리깅용 파츠를 따로 제작하고 레이어를 정리했습니다.','After Effects와 Duik Angela로 리깅 애니메이션이 들어가는 장면을 제작했습니다.','영상 속 카카오톡 대화 장면은 Codex로 만들었습니다.'],
+     more:[['어려웠던 점',`<p class="ft-body">2~3등신의 짧은 팔다리 때문에 리깅이 부자연스러워, 초안보다 팔다리를 조금 늘려 다시 그렸습니다. 두꺼운 검은 외곽선이 관절에서 겹쳐 보이는 문제는 캐릭터의 개성을 지키기 위해 외곽선을 없애지 않고, 관절 부분만 섬세하게 다듬어 해결했습니다.</p>`],
+           ['팀 협업',`<ul class="ft-team"><li><b>Notion</b>회의록, 일정, 작업 현황 정리</li><li><b>GitHub</b>코드와 문서 버전 관리</li><li><b>Naver MYBOX</b>작업 파일 공유와 버전 관리</li></ul>`]],
+     scenes:['오프닝 (3D)','면접','합격 문자','합격의 기쁨','첫 출근','퇴근 5분 전','쌓인 서류','약속 취소 카카오톡','명절 선물 차별','스팸 세트의 분노','빼앗긴 아이디어','바뀐 작성자','타오르는 분노','잘못된 발주','떠넘겨진 책임','시말서','버스 정류장','퇴근 버스','카드대금 문자','재계약','근로계약서 서명','쿠키 영상 (3D)']}},
 ];
 WORKS.forEach((w,i)=>{w.bg=T[i%T.length]});
 
@@ -738,8 +765,8 @@ function buildApp(root,opt){
     let left, right;
     if(F.chars){   // 등장인물이 있는 작품: 왼쪽 영상·제목·줄거리·툴 / 오른쪽 등장인물·영상 내용·제작 과정
       left=title+play+syn.map(t=>`<p class="ft-syn">${t}</p>`).join('')+film;
-      right=sec('등장인물',`<div class="ft-chars">${F.chars.map(c=>`<div class="ft-c"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div>`)
-        +sec('영상 내용',ps(F.content))+sec('제작 과정',steps)+toolbox;
+      right=sec('등장인물',`<div class="ft-chars">${F.chars.map(c=>`<div class="ft-c ${c.cut?'cut':''}"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div>`)
+        +sec('영상 내용',ps(F.content))+sec(F.processH||'제작 과정',steps)+(F.more||[]).map(m=>sec(m[0],m[1])).join('')+toolbox;
     }else{   // 등장인물이 없는 작품: 왼쪽 영상·제목 / 오른쪽에 글을 모두 (빈 곳 없이)
       left=title+play+film;
       right=sec('작품 소개',ps(syn.length?syn:(w.story?[w.story]:[])))
@@ -748,7 +775,8 @@ function buildApp(root,opt){
         +sec('제작 과정',steps||(w.process?w.process.map(p=>`<p class="ft-body"><b>${p[0]}</b> · ${p[1]}</p>`).join(''):''))
         +toolbox;
     }
-    return `<article class="ft-page" id="w-${w.id}"><div class="ft-grid ${F.chars?'':'txt'}"><div>${left}</div><div>${right}</div></div></article>`;
+    const scenes=F.scenes?`<section class="ft-scenes"><h3>장면 구성</h3><ol>${F.scenes.map((t,n)=>`<li><img src="img/knight/scenes/${String(n+1).padStart(2,'0')}.jpg" alt="${t}" loading="lazy"><span><b>${String(n+1).padStart(2,'0')}</b>${t}</span></li>`).join('')}</ol></section>`:'';
+    return `<article class="ft-page" id="w-${w.id}"><div class="ft-grid ${F.chars?'':'txt'}"><div>${left}</div><div>${right}</div>${scenes}</div></article>`;
   }
 
   function intro(){
@@ -794,7 +822,7 @@ function buildApp(root,opt){
           <div><div class="player">${CAN_EMBED?ytFrame(w.yt,'autoplay=1&rel=0&playsinline=1',w.title):thumb(w,'a',`href="${ytLink(w)}" target="_blank" rel="noopener"`)}</div>
             <h2 class="ft-title">${F.title}</h2>${F.synopsis.map(t=>`<p class="ft-syn">${t}</p>`).join('')}
             <div class="ft-tools">${F.tools.map(t=>`<span>${t}</span>`).join('')}</div></div>
-          <div><section class="ft-sec"><h3>등장인물</h3><div class="ft-chars">${F.chars.map(c=>`<div class="ft-c"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div></section>
+          <div><section class="ft-sec"><h3>등장인물</h3><div class="ft-chars">${F.chars.map(c=>`<div class="ft-c ${c.cut?'cut':''}"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div></section>
             <section class="ft-sec"><h3>영상 내용</h3>${F.content.map(t=>`<p class="ft-body">${t}</p>`).join('')}</section></div>
         </div></div>`;
       return;}
