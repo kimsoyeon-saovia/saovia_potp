@@ -467,12 +467,12 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 /* 소개: 붓 테두리 상자 하나 — 위: 사진·이름 | 경력 | 자격증 (머리줄 한 줄로 맞춤) / 아래: 보유 기술·툴 | 유튜브 채널 */
 .pf3{max-width:1560px;margin:0 auto;padding:0 clamp(16px,2.6vw,48px) 80px}
 .pf3 .bx{background:#fff;padding:clamp(32px,3.4vw,60px);border:16px solid transparent;border-image:url("img/brush/frame.png") 28 / 16px / 0 stretch}
-.pf3 .sec>h2{font-size:21px;font-weight:700;line-height:1.3;margin:0 0 18px;padding-bottom:12px;border-bottom:2px solid #111;display:flex;align-items:center;gap:10px}
-.pf3 .p3-head{display:grid;grid-template-columns:170px minmax(0,1fr) minmax(0,1.5fr) minmax(0,1fr);gap:0 clamp(28px,3vw,52px);align-items:start;padding-bottom:clamp(36px,3.6vw,56px);border-bottom:2px solid #111}
-.pf3 .ph{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;display:block}
-.pf3 .who{align-self:end}
-.pf3 .who .tag{font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:#5c5c5c;margin:0 0 8px}
-.pf3 .who .ko-name{font-size:clamp(40px,3.6vw,56px);font-weight:700;line-height:1.05;margin:0}
+.pf3 .sec>h2{font-size:22px;font-weight:700;line-height:1.3;margin:0 0 20px;display:flex;align-items:center;gap:10px}
+.pf3 .p3-head{display:grid;grid-template-columns:170px max-content minmax(0,1.5fr) minmax(0,1fr);gap:0 clamp(28px,3vw,52px);align-items:start;padding-bottom:clamp(36px,3.6vw,56px);border-bottom:2px solid #111}
+.pf3 .ph{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;display:block;align-self:end}
+.pf3 .who{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end}
+.pf3 .who .tag{font-size:clamp(16px,1.3vw,19px);line-height:1.4;color:#5c5c5c;margin:0 0 22px;white-space:nowrap}
+.pf3 .who .ko-name{font-size:clamp(44px,4vw,62px);font-weight:700;line-height:.8;margin:0;position:relative;top:-.17em}
 .pf3 .pf-item .when{font-size:13.5px;color:#777}
 .pf3 .pf-item .what{font-size:17px;font-weight:700;margin-top:2px}
 .pf3 .pf-item ul{list-style:none;margin:6px 0 0;padding:0;font-size:14.5px;line-height:1.8}
@@ -850,7 +850,7 @@ function buildApp(root,opt){
     return `<div class="pf pf3"><div class="bx">
       <div class="p3-head">
         <img class="ph" src="${P.photo}" alt="${P.nameKo} 프로필 사진">
-        <div class="who"><p class="tag">${P.tagline}</p><${NM} class="ko-name">${P.nameKo}</${NM}></div>
+        <div class="who"><p class="tag">${P.tagline.replace(/<br\s*\/?>/g,' ')}</p><${NM} class="ko-name">${P.nameKo}</${NM}></div>
         <div class="sec"><h2>경력</h2>${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}</div>
         <div class="sec"><h2>자격증</h2>${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div>
       </div>
