@@ -428,6 +428,10 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf2 .pf-yt{margin-top:clamp(0px,1vw,16px)}
 .pf2 .pf-yt .ch+.ch{margin-top:44px}
 @media (max-width:1000px){.pf2{grid-template-columns:1fr}.pf2 .pf-hero{width:auto}}
+.team-grp{margin-top:clamp(72px,9vh,120px);padding-top:clamp(40px,5vh,64px);border-top:3px solid #111}
+.team-h{text-align:center;margin:0 0 clamp(36px,5vh,56px);font-family:Orbit,sans-serif}
+.team-h h2{font-size:clamp(30px,2.6vw,42px);font-weight:400;margin:0 0 12px}
+.team-h p{font-size:16px;color:#555;margin:0}
 /* 분류 페이지: 소개처럼 가운데 적당한 폭 */
 .v2 .lst{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
 .v2 .lst .banner{margin:0 0 28px}
@@ -624,12 +628,12 @@ const WORKS=[
               '인스타그램에 올리기 위해 만든 영상으로, 시험 기간의 불안을 무겁지 않게 보여 주고 싶었습니다.'],
      process:['ChatGPT로 장면마다 첫 프레임 이미지를 만들었습니다.','이미지를 Canva에 넣어 5초 길이의 영상 클립을 여러 개 생성했습니다.','생성한 클립을 Premiere Pro에서 컷 편집해 한 편의 이야기로 이었습니다.'],
      shot:'img/insta-canva.jpg',shotCap:'Canva에서 생성한 5초 클립들'}},
-  {id:'sangsang',cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'팀',yt:'',
+  {id:'course',cats:['school'],title:'학원 수업 과정 (760시간 타임라인)',en:'CLASS COURSE',time:'2:28',year:2026,yt:'',mp4:'video/class-course.mp4',poster:'img/class-course.jpg'},
+  {id:'sangsang',group:'team',cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'팀',yt:'',
    site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png',   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    story:'AI 영상 제작 스튜디오 「상상」의 홈페이지예요. 위 화면에서 직접 스크롤하고 눌러볼 수 있어요.'},
-  {id:'course',cats:['school'],title:'학원 수업 과정 (760시간 타임라인)',en:'CLASS COURSE',time:'2:28',year:2026,yt:'',mp4:'video/class-course.mp4',poster:'img/class-course.jpg'},
-  {id:'present',cats:['school'],title:'STUDIO 상상 최종 발표 영상',en:'PRESENTATION',time:'',year:2026,yt:'f8bngEEk3xY'},
-  {id:'knight',cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,tools:'After Effects · Photoshop',team:'4인 팀',role:'연출 · 애니메이션',yt:'jhCq0QwulHA',
+  {id:'present',group:'team',cats:['school'],title:'STUDIO 상상 최종 발표 영상',en:'PRESENTATION',time:'',year:2026,yt:'f8bngEEk3xY'},
+  {id:'knight',group:'team',cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,tools:'After Effects · Photoshop',team:'4인 팀',role:'연출 · 애니메이션',yt:'jhCq0QwulHA',
    story:'흑기사의 줄거리를 적어 주세요.',intent:'이 작품을 만든 이유를 적어 주세요.',
    process:[['레퍼런스','분위기와 비주얼 방향을 정하려고 참고 자료를 모았어요.'],['스토리보드','주요 장면과 시퀀스를 그림으로 짰어요.'],['애니메이션','연출에 맞춰 장면을 움직이고 완성했어요.']]},
 ];
@@ -709,7 +713,8 @@ function buildApp(root,opt){
   }
   function list(){
     const ws=inCat(st.cat);
-    return `<div class="fts">${ws.map(w=>page(w)).join('')}</div>`;
+    const team=st.cat==='school'?ws.filter(w=>w.group==='team'):[], solo=ws.filter(w=>!team.includes(w));
+    return `<div class="fts">${solo.map(w=>page(w)).join('')}${team.length?`<section class="team-grp"><header class="team-h"><h2>팀 프로젝트</h2><p>가상의 AI 영상 제작 업체 「STUDIO 상상」을 팀으로 설정해 함께 만든 작업입니다.</p></header>${team.map(w=>page(w)).join('')}</section>`:''}</div>`;
   }
   function page(w){   // 영상 하나 = 소개 페이지 하나 (붓 테두리 안)
     const F=w.feature||{}, syn=F.synopsis||[], tools=F.tools||(w.tools?w.tools.split(' · '):[]);
