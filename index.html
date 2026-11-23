@@ -286,21 +286,22 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .shell.v2{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);grid-template-areas:"top" "main";
   height:100%;background:var(--bg2);color:#111;font-size:16px;line-height:1.7}
 .v2 .top{grid-area:top;padding:clamp(20px,3vh,36px) 24px 0}
-.v2 .nav{all:unset;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
-.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;place-items:center;min-width:150px;height:46px;padding:0 20px;
-  border:1.5px solid #111;background:transparent;color:#111;font-size:15px;letter-spacing:.06em;transition:background .15s,color .15s}
-.v2 .nav button:hover{background:rgba(17,17,17,.07)}
-.v2 .nav button[aria-current="true"]{background:#111;color:var(--bg2)}
+.v2 .nav{all:unset;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px,2.4vw,40px)}
+.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;padding:6px 12px 14px;font-size:clamp(17px,1.4vw,21px);letter-spacing:.04em;color:#111;text-align:center}
+.v2 .nav button::after{content:"";position:absolute;left:4px;right:4px;bottom:2px;height:9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 16' preserveAspectRatio='none'%3E%3Cpath d='M3 9.5 C30 6.8 62 10.6 96 8.4 S160 6.2 196 8.1 S228 9.6 237 7.2 L236 9.4 C220 11.6 196 10.8 160 11 S98 12.4 62 11.6 S20 12.2 4 11.4 Z' fill='%23111'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.v2 .nav button[aria-current="true"]::after{display:none}
+.v2 .nav button[aria-current="true"]::before{content:"";position:absolute;left:-12px;top:-8px;width:26px;height:26px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M4 20 C7 19 9 21 11 24 C12.5 26.5 13.5 29 14.5 30.5 C18 22 25 12 37 4.5 C38.5 3.8 39 5 38 6 C28 14 21 24 16.5 35 C15.6 37 13.6 37.2 12.6 35.4 C10.4 31.2 8 26.4 4.6 22.6 C3.4 21.4 3.2 20.4 4 20 Z' fill='%23111'/%3E%3C/svg%3E") center/contain no-repeat}
+.v2 .nav button:hover{opacity:.7}
 .v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:3px}
 .v2 .main{grid-area:main;overflow:auto;padding:clamp(36px,6vh,72px) 24px 96px;background:transparent}
 .v2 .modal{grid-area:1/1/-1/-1}
 /* 소개 — 이력서 한 장처럼: 회색 면 안에서 왼쪽 제목 칸(200px) · 오른쪽 내용 칸으로 모든 줄을 맞춰요 */
 .v2 .main{padding-left:0;padding-right:0;padding-top:clamp(28px,4vh,48px)}
-.pf{--g:#f3f3f3;--ink:#1a1a1a;--mute:#5c5c5c;--lab:200px;--pad:clamp(20px,4vw,56px);--ko:Orbit,sans-serif;font-family:var(--ko);font-weight:400;color:var(--ink)}
+.pf{--g:#fff;--ink:#1a1a1a;--mute:#5c5c5c;--lab:200px;--pad:clamp(20px,4vw,56px);--ko:Orbit,sans-serif;font-family:var(--ko);font-weight:400;color:var(--ink)}
 .pf-in{max-width:1040px;margin:0 auto;padding:0 var(--pad)}
 .pf h1,.pf h2,.pf h3{font-weight:700;margin:0}
 .pf-p{background:var(--g);padding:clamp(28px,3.4vw,48px)}
-.pf-p+.pf-p{margin-top:12px}
+.pf-p+.pf-p{margin-top:0;border-top:1.5px solid #111}
 .pf-row{display:grid;grid-template-columns:var(--lab) minmax(0,1fr);gap:24px}
 .pf-row>h2{font-size:17px;line-height:1.6;letter-spacing:.02em}
 /* 첫 칸: 사진 · 소개 문장 · 이름 */
@@ -318,7 +319,7 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf-skill{width:100%;border-collapse:separate;border-spacing:0 2px;font-size:15.5px;line-height:1.7}
 .pf-skill th,.pf-skill td{text-align:left;vertical-align:top;padding:12px 16px}
 .pf-skill thead th{background:#1a1a1a;color:#fff;font-weight:700;font-size:14.5px}
-.pf-skill tbody th{width:170px;background:#e9e9e9;font-weight:700;white-space:nowrap}
+.pf-skill tbody th{width:170px;background:#f5f5f5;font-weight:700;white-space:nowrap}
 .pf-skill tbody td{background:#fff}
 /* 유튜브 */
 .ch+.ch{margin-top:36px}
@@ -340,7 +341,7 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf-tools .grp+.grp{margin-top:18px}
 .pf-tools .lb{font-size:14.5px;color:var(--mute);margin-bottom:8px}
 .pf-tools ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
-.pf-tools li{background:#fff;padding:9px 14px;font-size:15px;line-height:1}
+.pf-tools li{background:#f5f5f5;padding:9px 14px;font-size:15px;line-height:1}
 .pf-end{height:clamp(64px,8vh,110px)}
 .ch-v .t{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px;background:rgba(0,0,0,.62);color:#fff;font-size:14px;line-height:1.45;opacity:0;transition:opacity .2s}
 .ch-v a:hover .t,.ch-v a:focus-visible .t{opacity:1}
@@ -350,28 +351,36 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .v2 .card .info h3{color:#fff;white-space:normal;font-size:18px;line-height:1.35}
 .v2 .card .info .meta,.v2 .card .info .time{color:#fff}
 .v2 .card:not(.off):hover h3{color:#fff}
-/* 작품 소개 한 페이지 (영상 누르면): 왼쪽 영상·제목·줄거리 / 오른쪽 등장인물·영상 내용 */
-.ft{max-width:1240px;margin:0 auto;padding:8px clamp(4px,1.5vw,24px) 48px;font-family:Orbit,sans-serif;color:#1a1a1a}
-.ft-top{display:flex;justify-content:flex-start;margin-bottom:18px}
-.ft-grid{display:grid;grid-template-columns:minmax(0,11fr) minmax(0,10fr);gap:clamp(24px,3vw,48px);background:#f3f3f3;padding:clamp(22px,2.6vw,40px)}
-.ft-grid .player{background:#000}
-.ft-title{font-size:clamp(30px,2.8vw,42px);line-height:1.2;margin:26px 0 14px;font-weight:400}
+/* 작품 소개 페이지: 흰 바탕, 붓으로 그린 듯한 테두리 */
+.fts{max-width:1240px;margin:0 auto;padding:0 clamp(16px,3vw,40px)}
+.ft-page+.ft-page{margin-top:clamp(56px,7vh,96px)}
+.ft-grid{position:relative;display:grid;grid-template-columns:minmax(0,11fr) minmax(0,10fr);gap:clamp(24px,3vw,56px);padding:clamp(26px,3vw,48px);font-family:Orbit,sans-serif;color:#1a1a1a;background:#fff}
+.ft-grid::before{content:"";position:absolute;inset:0;border:3.5px solid #111;filter:url(#rough);pointer-events:none}
+.ft-play{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:16/9;cursor:pointer;background:#000;overflow:hidden}
+.ft-play img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.ft-play.tall img{object-fit:contain}
+.ft-play:hover img{transform:scale(1.03)}
+.ft-play .pb{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:rgba(255,255,255,.92);color:#111;display:grid;place-items:center;transition:transform .15s}
+.ft-play .pb svg{width:22px;height:22px;margin-left:4px}
+.ft-play:hover .pb{transform:scale(1.08)}
+.ft-play:focus-visible{outline:3px solid #111;outline-offset:3px}
+.ft-player{position:relative;aspect-ratio:16/9;background:#000}
+.ft-player iframe,.ft-player video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ft-title{font-size:clamp(30px,2.8vw,42px);line-height:1.2;margin:28px 0 14px;font-weight:400;text-align:center}
 .ft-title span{font-size:.62em;margin-left:6px}
 .ft-syn{font-size:16px;line-height:1.9;margin:0}
 .ft-syn+.ft-syn{margin-top:10px}
-.ft h3{font-size:20px;font-weight:400;margin:0 0 14px}
-.ft-chars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.ft-c{background:#fff;padding:10px 10px 14px}
+.ft h3,.ft-grid h3{font-size:22px;font-weight:400;margin:0 0 14px}
+.ft-chars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 14px}
 .ft-c img{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#f6efe6}
 .ft-c b{display:block;font-size:17px;font-weight:400;margin-top:10px}
 .ft-c .m{display:block;font-size:12.5px;color:#666;margin-top:2px}
-.ft-c p{font-size:13.5px;line-height:1.65;margin:8px 0 0}
-.ft-sec+.ft-sec{margin-top:30px}
+.ft-c p{font-size:13.5px;line-height:1.65;margin:6px 0 0}
+.ft-sec+.ft-sec{margin-top:32px}
 .ft-body{font-size:15.5px;line-height:1.9;margin:0}
-.ft-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.ft-tools span{background:#fff;padding:7px 12px;font-size:13.5px}
+.ft-body+.ft-body{margin-top:8px}
+.ft-tools{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:16px;font-size:13.5px;color:#444}
 @media (max-width:900px){.ft-grid{grid-template-columns:1fr}.ft-chars{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.dlg.ft{display:block!important;width:min(1240px,100%)!important;border-radius:0!important;padding:20px clamp(16px,2vw,28px) 32px!important}
 /* 분류 페이지: 소개처럼 가운데 적당한 폭 */
 .v2 .lst{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
 .v2 .lst .banner{margin:0 0 28px}
@@ -392,6 +401,7 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 </style>
 </head>
 <body data-mode="pc">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" scale="7"/></filter></svg>
 
 <!-- 오프닝 화면: 배너 + 버튼 두 개. 누르면 그 보기로 들어가요 -->
 <section id="opening" aria-label="시작 화면">
@@ -464,11 +474,11 @@ const PROFILE={
 // 3) 분류 — banner: 그 분류 맨 위 16:9 배너에 틀 영상의 유튜브 ID (전체의 banner가 소개 영상이에요)
 //    banner를 비워 두면 그 자리에 제목 화면이 떠요. en: 제목 화면에 크게 들어가는 영어 이름
 const CATS=[
-  {id:'intro', name:'소개',        en:'',             icon:'user', banner:''},
-  {id:'ad',    name:'광고 제작물',  en:'Commercial',   icon:'ad',   banner:''},
+  {id:'intro', name:'소&nbsp;&nbsp;&nbsp;개',   en:'',             icon:'user', banner:''},
   {id:'book',  name:'북트레일러',   en:'Book Trailer', icon:'book', banner:''},
+  {id:'ad',    name:'광고제작물',   en:'Commercial',   icon:'ad',   banner:''},
   {id:'ani',   name:'애니메이션',   en:'Animation',    icon:'film', banner:''},
-  {id:'school',name:'학원',  en:'Class Work',   icon:'cap',  banner:''},
+  {id:'school',name:'학원제작물',   en:'Class Work',   icon:'cap',  banner:''},
 ];
 
 // 4) 작품 — yt: 유튜브 영상 ID (youtube.com/watch?v=이부분). 넣으면 썸네일과 재생이 연결돼요
@@ -591,11 +601,22 @@ function buildApp(root,opt){
         <div class="tc-name" ${c.id==='all'?'style="--fs:14.6cqw"':''}>${c.id==='all'?CONTACT.name:c.en||c.name}</div></div>`}</div>`;
   }
   function list(){
-    const c=CATS.find(x=>x.id===st.cat), ws=inCat(st.cat);
-    return `<div class="lst"><div class="trow"><${H} class="title">${c.name}</${H}><span class="cnt num">${ws.length}편</span></div>
-      <div class="grid">${ws.map((w,i)=>{const off=w.state==='soon';return `<article class="card ${off?'off':''} ${tall(w)?'tall':''}" style="--i:${Math.min(i,11)}" ${off?'':`data-act="open" data-id="${w.id}" tabindex="0" role="button" aria-label="${w.title} 보기"`}>
-        ${thumb(w)}
-        <div class="info"><h3>${w.title}</h3><div class="sub"><p class="meta num">${metaOf(w)}</p>${timeOf(w)}</div></div></article>`}).join('')}</div></div>`;
+    const ws=inCat(st.cat);
+    return `<div class="fts">${ws.map(w=>page(w)).join('')}</div>`;
+  }
+  function page(w){   // 영상 하나 = 소개 페이지 하나 (붓 테두리 안에 왼쪽 영상·제목·줄거리, 오른쪽 등장인물·영상 내용)
+    const F=w.feature||{}, syn=F.synopsis||(w.story?[w.story]:[]);
+    const right=F.chars?`<section class="ft-sec"><h3>등장인물</h3><div class="ft-chars">${F.chars.map(c=>`<div class="ft-c"><img src="${c.img}" alt="${c.name}"><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div>`).join('')}</div></section>
+        <section class="ft-sec"><h3>영상 내용</h3>${F.content.map(t=>`<p class="ft-body">${t}</p>`).join('')}</section>`
+      :`${w.intent?`<section class="ft-sec"><h3>기획 의도</h3><p class="ft-body">${w.intent}</p></section>`:''}
+        ${w.process?`<section class="ft-sec"><h3>제작 과정</h3>${w.process.map(p=>`<p class="ft-body"><b>${p[0]}</b> · ${p[1]}</p>`).join('')}</section>`:''}
+        <section class="ft-sec"><h3>작업 정보</h3><p class="ft-body">${spans([w.by,w.year,w.time,w.team,w.role&&'내 역할 '+w.role,w.tools])}</p></section>`;
+    const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
+    return `<article class="ft-page" id="w-${w.id}"><div class="ft-grid">
+      <div><button class="ft-play ${tall(w)?'tall':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>
+        <h2 class="ft-title">${F.title||w.title}</h2>${syn.map(t=>`<p class="ft-syn">${t}</p>`).join('')}
+        ${F.tools?`<div class="ft-tools">${F.tools.map(t=>`<span>${t}</span>`).join('')}</div>`:''}</div>
+      <div>${right}</div></div></article>`;
   }
   function intro(){
     const P=PROFILE, NM=opt.live?'h1':'div';
@@ -671,6 +692,8 @@ function buildApp(root,opt){
     if(a==='cat'){closeWork();st.cat=id;render()}
     else if(a==='sitehome'){const f=$('.player.site iframe');if(f)f.src=st.cur.site}
     else if(a==='open'){openWork(byId(id))}
+    else if(a==='play'){const w=byId(id);   // 그 자리에서 재생
+      b.outerHTML=`<div class="ft-player ${tall(w)?'tall':''}">${w.site?`<iframe src="${w.site}" title="${w.title}"></iframe>`:w.mp4?`<video src="${w.mp4}" controls autoplay playsinline></video>`:ytFrame(w.yt,'autoplay=1&rel=0&playsinline=1',w.title)}</div>`}
     else if(a==='back'){closeWork()}
     else if(a==='tab'){st.tab=id;pane()}
     else if(a==='contact'){openContact(b.dataset.about||'')}
