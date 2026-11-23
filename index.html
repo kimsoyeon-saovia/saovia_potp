@@ -428,16 +428,15 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ytl{width:26px;height:19px;flex:none;vertical-align:-3px;margin-right:8px}.ytl.big{width:34px;height:24px;margin:0}
 .pf2 .pf-yt{margin-top:clamp(0px,1vw,16px)}
 .pf2 .pf-yt .ch+.ch{margin-top:44px}
-.pf2{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.pf2{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:stretch}
 .pf2 .pf-hero{width:auto;align-self:stretch}
 .pf2 .pf-info .sec+.sec{margin-top:40px}
-.pf2 .sk{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.pf2 .sk{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:0}
 .pf2 .sk li{padding:16px 0;border-bottom:1px solid #ddd}
 .pf2 .sk b{display:block;font-size:16.5px;font-weight:700;margin-bottom:6px}
 .pf2 .sk p{margin:0;font-size:14.5px;line-height:1.75;color:#444}
-.pf2 .pf-skills{grid-column:1/-1}
-.pf2 .pf-yt{grid-column:1/-1;margin-top:0}
-.pf2 .pf-yt .ch-v.w4,.pf2 .pf-yt .ch-v.w2{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pf2 .pf-yt{margin-top:0}
+.pf2 .pf-yt .ch-v.w4{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media (max-width:1000px){.pf2 .sk{grid-template-columns:1fr}}
 @media (max-width:1000px){.pf2{grid-template-columns:1fr}.pf2 .pf-hero{width:auto}}
 .ft-tno{text-align:center;font-family:Orbit,sans-serif;font-size:17px;letter-spacing:.06em;margin:0 0 10px;color:#555}
