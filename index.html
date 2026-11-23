@@ -390,8 +390,8 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ft-sec+.ft-sec{margin-top:40px}
 .ft-meta{text-align:center;font-size:14.5px;color:#666;margin:0}
 .ft-grid.txt{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
-.ft-grid.txt>div:last-child{display:flex;flex-direction:column}
-.ft-grid.txt>div:last-child>.ft-toolbox{margin-top:auto;padding-top:40px}
+.ft-grid>div:last-child{display:flex;flex-direction:column}
+.ft-grid>div:last-child>.ft-toolbox{margin-top:auto;padding-top:40px}
 .ft-grid.txt .ft-toolbox{margin-top:40px}
 .ft-steps{margin:0;padding-left:1.3em;font-size:16px;line-height:1.9}
 .ft-shot{margin:18px 0 0}
@@ -685,9 +685,9 @@ function buildApp(root,opt){
     const title=`<h2 class="ft-title">${F.title||(w.by?`「${w.title}」 <span>${w.by}</span>`:w.title)}</h2>`;
     let left, right;
     if(F.chars){   // 등장인물이 있는 작품: 왼쪽 영상·제목·줄거리·툴 / 오른쪽 등장인물·영상 내용·제작 과정
-      left=play+title+syn.map(t=>`<p class="ft-syn">${t}</p>`).join('')+toolbox;
+      left=play+title+syn.map(t=>`<p class="ft-syn">${t}</p>`).join('');
       right=sec('등장인물',`<div class="ft-chars">${F.chars.map(c=>`<div class="ft-c"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div>`)
-        +sec('영상 내용',ps(F.content))+sec('제작 과정',steps);
+        +sec('영상 내용',ps(F.content))+sec('제작 과정',steps)+toolbox;
     }else{   // 등장인물이 없는 작품: 왼쪽 영상·제목 / 오른쪽에 글을 모두 (빈 곳 없이)
       left=play+title;
       right=sec('작품 소개',ps(syn.length?syn:(w.story?[w.story]:[])))
