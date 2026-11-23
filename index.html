@@ -288,11 +288,10 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
   height:100%;background:var(--bg2);color:#111;font-size:16px;line-height:1.7}
 .v2 .top{grid-area:top;padding:clamp(20px,3vh,36px) 24px 0}
 .v2 .nav{all:unset;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px,2.4vw,40px)}
-.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;padding:6px 12px 14px;font-size:clamp(17px,1.4vw,21px);letter-spacing:.04em;color:#111;text-align:center}
-.v2 .nav button::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:url("img/brush/underline.png") center/100% 100% no-repeat}
-.v2 .nav button[aria-current="true"]::after{display:none}
-.v2 .nav button[aria-current="true"]::before{content:"";position:absolute;left:-10px;right:-10px;top:-8px;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80' preserveAspectRatio='none'%3E%3Cpath d='M30 14 C70 2 150 4 184 22 C200 34 192 62 150 72 C100 82 34 76 12 56 C-2 40 14 18 52 10 C80 5 120 6 150 12' fill='none' stroke='%23e0261f' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;pointer-events:none}
-.v2 .nav button:hover{opacity:.7}
+.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;padding:10px 22px;font-size:clamp(18px,1.5vw,23px);color:#111;text-align:center;background:#fff;border:9px solid transparent;border-image:url("img/brush/frame.png") 28 / 9px / 0 stretch}
+.v2 .nav button>span{display:inline-block;transform:scaleX(.78);transform-origin:center;letter-spacing:0}
+.v2 .nav button[aria-current="true"]{background:#111;color:#fff}
+.v2 .nav button:hover{opacity:.75}
 .v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:3px}
 .v2 .main{grid-area:main;overflow:auto;padding:clamp(36px,6vh,72px) 24px 96px;background:transparent}
 .v2 .modal{grid-area:1/1/-1/-1}
@@ -468,7 +467,8 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf3{max-width:1560px;margin:0 auto;padding:0 clamp(16px,2.6vw,48px) 80px}
 .pf3 .bx{background:#fff;padding:clamp(32px,3.4vw,60px);border:16px solid transparent;border-image:url("img/brush/frame.png") 28 / 16px / 0 stretch}
 .pf3 .sec>h2{position:relative;font-size:24px;font-weight:700;line-height:1.3;margin:0 0 30px;display:flex;align-items:center;gap:10px}
-.pf3 .sec>h2::before{content:"";flex:none;width:28px;height:27px;background:url("img/brush/check.png") center/contain no-repeat;margin-top:-10px}
+.pf3 .sec>h2{width:max-content;max-width:100%;padding-bottom:12px}
+.pf3 .sec>h2::after{content:"";position:absolute;left:-2px;right:-6px;bottom:0;height:7px;background:url("img/brush/underline.png") center/100% 100% no-repeat}
 .pf3 .p3-head{display:grid;grid-template-columns:170px max-content minmax(0,1.5fr) minmax(0,1fr);gap:0 clamp(28px,3vw,52px);align-items:start;padding-bottom:clamp(56px,5vw,80px);border-bottom:2px solid #111}
 .pf3 .ph{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;display:block;align-self:end}
 .pf3 .who{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-end}
@@ -800,7 +800,7 @@ function buildApp(root,opt){
   const $=s=>root.querySelector(s);
 
   function nav(){
-    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" aria-current="${c.id===st.cat}">${c.name}</button>`).join('');
+    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" aria-current="${c.id===st.cat}"><span>${c.name}</span></button>`).join('');
   }
   function banner(c){
     const label=c.id==='all'?'소개 영상':c.name+' 배너 영상';
