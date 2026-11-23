@@ -464,6 +464,46 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .ft-quote{display:block;font-family:"Noto Serif KR",serif;font-weight:900;font-size:clamp(28px,2.4vw,38px);line-height:1.4;letter-spacing:-.01em;text-align:center}
 .ft-team li{font-size:15.5px;line-height:1.85}
 .ft-team li b{font-weight:400;display:inline-block;min-width:130px}
+/* 소개: 붓 테두리 상자 하나 — 위: 사진·이름 | 경력 | 자격증 (머리줄 한 줄로 맞춤) / 아래: 보유 기술·툴 | 유튜브 채널 */
+.pf3{max-width:1560px;margin:0 auto;padding:0 clamp(16px,2.6vw,48px) 80px}
+.pf3 .bx{background:#fff;padding:clamp(32px,3.4vw,60px);border:16px solid transparent;border-image:url("img/brush/frame.png") 28 / 16px / 0 stretch}
+.pf3 .sec>h2{font-size:21px;font-weight:700;line-height:1.3;margin:0 0 18px;padding-bottom:12px;border-bottom:2px solid #111;display:flex;align-items:center;gap:10px}
+.pf3 .p3-head{display:grid;grid-template-columns:170px minmax(0,1fr) minmax(0,1.5fr) minmax(0,1fr);gap:0 clamp(28px,3vw,52px);align-items:start;padding-bottom:clamp(36px,3.6vw,56px);border-bottom:2px solid #111}
+.pf3 .ph{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;display:block}
+.pf3 .who{align-self:end}
+.pf3 .who .tag{font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:#5c5c5c;margin:0 0 8px}
+.pf3 .who .ko-name{font-size:clamp(40px,3.6vw,56px);font-weight:700;line-height:1.05;margin:0}
+.pf3 .pf-item .when{font-size:13.5px;color:#777}
+.pf3 .pf-item .what{font-size:17px;font-weight:700;margin-top:2px}
+.pf3 .pf-item ul{list-style:none;margin:6px 0 0;padding:0;font-size:14.5px;line-height:1.8}
+.pf3 .pf-item .o{font-size:13.5px;color:#777}
+.pf3 .pf-item+.pf-item{margin-top:16px}
+.pf3 .p3-body{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0 clamp(36px,4vw,72px);padding-top:clamp(36px,3.6vw,56px)}
+.pf3 .p3-body>.p3yt{display:block;padding-left:clamp(36px,4vw,72px);border-left:1px solid #ddd}
+.pf3 .sec+.sec{margin-top:44px}
+.pf3 .p3-head .sec{margin-top:0}
+.pf3 .p3-body{align-items:start}
+.pf3 .sk{list-style:none;margin:0;padding:0}
+.pf3 .sk li{padding:13px 0;border-bottom:1px solid #e3e3e3}
+.pf3 .sk li:first-child{padding-top:0}
+.pf3 .sk b{display:block;font-size:15.5px;font-weight:700;margin-bottom:4px}
+.pf3 .sk p{margin:0;font-size:14px;line-height:1.7;color:#555}
+.pf3 .pf-tools .grp+.grp{margin-top:16px}
+.pf3 .pf-tools .lb{font-size:13.5px;color:#777;margin-bottom:8px}
+.pf3 .pf-tools ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.pf3 .pf-tools li{background:#f4f4f4;padding:8px 12px;font-size:14px;line-height:1}
+.pf3 .ch+.ch{margin-top:40px}
+.pf3 .ch .nm{font-size:18px;font-weight:700;color:#111;text-decoration:none;display:inline-flex;align-items:center}
+.pf3 .ch .nm i{font-style:normal;margin-left:6px;font-size:.8em}
+.pf3 .ch .h{font-size:13px;color:#777;margin-left:8px}
+.pf3 .ch p{font-size:14.5px;line-height:1.8;margin:8px 0 14px;color:#333}
+.pf3 .ch-v{display:grid;gap:10px}
+.pf3 .ch-v.w4,.pf3 .ch-v.s4{grid-template-columns:repeat(4,minmax(0,1fr))}.pf3 .ch-v.w2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pf3 .ch-v a{display:block}
+.pf3 .ch-v .im{display:block;overflow:hidden;background:#000}
+.pf3 .ch-v img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.pf3 .ch-v.s4 img{aspect-ratio:9/16}
+@media (max-width:1100px){.pf3 .p3-head{grid-template-columns:140px minmax(0,1fr);gap:28px}.pf3 .p3-head .sec{grid-column:1/-1}.pf3 .p3-body{grid-template-columns:1fr}.pf3 .p3-body>.p3yt{display:block;padding-left:0;border-left:0;margin-top:44px}}
 /* 분류 페이지: 소개처럼 가운데 적당한 폭 */
 .v2 .lst{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
 .v2 .lst .banner{margin:0 0 28px}
@@ -807,25 +847,26 @@ function buildApp(root,opt){
   function intro(){
     const P=PROFILE, NM=opt.live?'h1':'div';
     const th=(v,sh)=>`<a href="https://www.youtube.com/${sh?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener"><span class="im"><img src="https://i.ytimg.com/vi/${v[0]}/${sh?'oar2':'maxresdefault'}.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'" alt="" loading="lazy"></span><span class="t">${v[1]}</span></a>`;
-    return `<div class="pf pf2">
-      <section class="bx pf-top">
+    return `<div class="pf pf3"><div class="bx">
+      <div class="p3-head">
         <img class="ph" src="${P.photo}" alt="${P.nameKo} 프로필 사진">
-        <${NM} class="ko-name">${P.nameKo}</${NM}>
-        <p class="tag">${P.tagline.replace(/<br\s*\/?>/g,' ')}</p>
-        <div class="sec car"><h2>경력</h2>${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}</div>
-        <div class="sec cer"><h2>자격증</h2>${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div>
-      </section>
-      <section class="bx pf-skills">
-        <div class="sec"><h2>핵심 보유 기술</h2><ul class="sk">${P.skills.map(k=>`<li><b>${k[0]}</b><p>${k[1]}</p></li>`).join('')}</ul></div>
-        <div class="sec pf-tools"><h2>사용 가능 툴</h2>
-          <div class="grp"><div class="lb">디자인 · 편집</div><ul>${P.tools.map(t=>`<li>${t}</li>`).join('')}</ul></div>
-          <div class="grp"><div class="lb">AI</div><ul>${P.ai.map(t=>`<li>${t}</li>`).join('')}</ul></div></div>
-      </section>
-      <section class="bx pf-yt"><h2 class="yt-h"><svg class="ytl big" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>유튜브 채널</h2>
-        ${P.youtube.map(c=>`<div class="ch"><a class="nm" href="${c.url}" target="_blank" rel="noopener"><svg class="ytl" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>${c.name}<i aria-hidden="true">↗</i></a><span class="h">${c.handle}</span><p>${c.desc}</p>
-          <div class="ch-v ${c.shorts?'s4':c.videos.length>2?'w4':'w2'}">${c.videos.map(v=>th(v,c.shorts)).join('')}</div></div>`).join('')}
-      </section>
-    </div>`;
+        <div class="who"><p class="tag">${P.tagline}</p><${NM} class="ko-name">${P.nameKo}</${NM}></div>
+        <div class="sec"><h2>경력</h2>${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}</div>
+        <div class="sec"><h2>자격증</h2>${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div>
+      </div>
+      <div class="p3-body">
+        <div>
+          <div class="sec"><h2>핵심 보유 기술</h2><ul class="sk">${P.skills.map(k=>`<li><b>${k[0]}</b><p>${k[1]}</p></li>`).join('')}</ul></div>
+          <div class="sec pf-tools"><h2>사용 가능 툴</h2>
+            <div class="grp"><div class="lb">디자인 · 편집</div><ul>${P.tools.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+            <div class="grp"><div class="lb">AI</div><ul>${P.ai.map(t=>`<li>${t}</li>`).join('')}</ul></div></div>
+        </div>
+        <div class="sec p3yt"><h2><svg class="ytl big" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>유튜브 채널</h2>
+          ${P.youtube.map(c=>`<div class="ch"><a class="nm" href="${c.url}" target="_blank" rel="noopener"><svg class="ytl" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>${c.name}<i aria-hidden="true">↗</i></a><span class="h">${c.handle}</span><p>${c.desc}</p>
+            <div class="ch-v ${c.shorts?'s4':c.videos.length>2?'w4':'w2'}">${c.videos.map(v=>th(v,c.shorts)).join('')}</div></div>`).join('')}
+        </div>
+      </div>
+    </div></div>`;
   }
   function pane(){
     const w=st.cur;
