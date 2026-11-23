@@ -513,11 +513,16 @@ const CATS=[
 //    state: 'wip' 제작 중 / 'soon' 준비 중
 const T=['#111111','#262626','#1C1C1C','#2E2E2E','#161616','#222222'];   // 썸네일 없을 때 쓰는 임시 색
 const WORKS=[
-  {id:'ad1',cats:['ad'],title:'황태와 북어 광고',en:'AD 1',time:'',yt:'c7c-Irp63t4'},
-  {id:'ad2',cats:['ad'],title:'AI 영상제작업체 홍보 광고',en:'AD 2',time:'',yt:'CBYNkkowSlM'},
-  {id:'ad3',cats:['ad'],title:'구독 가상업체 광고',en:'AD 3',time:'',yt:'0KsKN15YoDM',story:'구독 서비스를 하는 가상 업체의 광고예요.'},
-  {id:'ad4',cats:['ad'],title:'치즈 광고 3부작',en:'AD 4',time:'',yt:'hOen1WB81lI'},
-  {id:'ad5',cats:['ad'],title:'새롭게 만나는 경주',en:'AD 5',time:'',yt:'-1pifLVP5Q4'},
+  {id:'ad1',cats:['ad'],title:'황태포 북어포 광고',en:'',time:'',yt:'c7c-Irp63t4',
+   feature:{title:'황태포 북어포 광고',synopsis:['황태포와 북어포를 알리는 광고입니다. 황태의 입장에서 혹독하고 긴 시련을 거친 뒤에야 우리에게 오는 정성스러운 제품이라는 점을 보여 주는 것으로 영상의 의도를 잡았습니다.'],content:['내용을 구상한 뒤 스토리보드를 짜고, Google Flow를 활용해 영상을 만들었습니다. 황태 편 3개와 북어 편 3개를 제작해 Premiere Pro에서 편집했습니다.'],process:['내용을 구상하고 스토리보드를 만들었습니다.','Google Flow로 황태 편 3개, 북어 편 3개의 영상을 제작했습니다.','Premiere Pro에서 편집했습니다.'],tools:['Google Flow','Premiere Pro']}},
+  {id:'ad2',cats:['ad'],title:'부모님의 환갑을 기념하며',en:'',time:'',yt:'CBYNkkowSlM',
+   feature:{title:'부모님의 환갑을 기념하며',synopsis:['상상스튜디오라는 가상의 AI 영상 제작 업체를 설정해 홈페이지를 만들고, 회사 포트폴리오 페이지에 올릴 영상을 한 사람당 4편씩 제작한 학원 팀 프로젝트의 작품입니다.','부모님의 환갑을 맞아 축하 자리에서 보여 줄 영상을 업체에 의뢰했다는 가상의 설정으로 만들었습니다.'],content:['스토리보드와 내레이션 원고는 ChatGPT와 의견을 주고받으며 다듬어 정리했습니다. Higgsfield의 GPT Image 2로 스토리보드 그리드를 만들고, 이를 바탕으로 Higgsfield의 Seedance 2.0으로 영상을 만들었습니다. 내레이션은 ElevenLabs로 제작했습니다.'],process:['ChatGPT와 의견을 주고받으며 스토리보드와 내레이션 원고를 정리했습니다.','GPT Image 2로 스토리보드 그리드를 만들었습니다.','Seedance 2.0으로 영상을 만들었습니다.','ElevenLabs로 내레이션을 만들었습니다.','Premiere Pro에서 컷 편집했습니다.'],tools:['ChatGPT','GPT Image 2','Higgsfield','Seedance 2.0','ElevenLabs','Premiere Pro']}},
+  {id:'ad3',cats:['ad'],title:'우리들의 구독',en:'',time:'',yt:'0KsKN15YoDM',
+   feature:{title:'우리들의 구독',synopsis:['상상스튜디오라는 가상의 AI 영상 제작 업체를 설정해 홈페이지를 만들고, 회사 포트폴리오 페이지에 올릴 영상을 한 사람당 4편씩 제작한 학원 팀 프로젝트의 작품입니다.','구독 서비스를 전문으로 하는 「우리들의 구독」이라는 가상 업체가 상상스튜디오에 광고를 의뢰했다는 설정으로 제작했습니다.'],content:['구독은 할부처럼 느껴지기도 하고, 매달 의무적으로 받아야 하는 느낌도 있습니다. 저는 구독이 선물이 될 수 있고, 가족 한 사람 한 사람에게 저마다 다른 의미가 있다는 점을 영상에 담고 싶었습니다.'],process:['ChatGPT로 프롬프트를 정리했습니다.','Gemini로 장면 이미지를 만들었습니다.','Google Flow로 영상을 만들었습니다.','ElevenLabs로 내레이션을 만들고, Pixabay에서 음악을 골랐습니다.','Premiere Pro에서 컷 편집했습니다.'],tools:['ChatGPT','Gemini','Google Flow','ElevenLabs','Pixabay','Premiere Pro']}},
+  {id:'ad4',cats:['ad'],title:'치즈 광고 3부작',en:'',time:'',yt:'hOen1WB81lI',
+   feature:{title:'치즈 광고 3부작',synopsis:['사람들이 노란 고양이를 「치즈냥이」라고 부르는 데서 출발해, 진짜 몸이 치즈로 된 고양이라면 어떨까 하는 상상으로 만든 3부작 광고입니다.'],content:['고양이는 귀여워서 무슨 짓을 해도 사랑받는 존재이기 때문에, 거대한 고양이가 도시를 부수며 장난치는 느낌으로 만들었습니다.','일반 치즈냥이, 냄새가 심한 고르곤졸라 치즈냥이, 매끄럽고 하얀 부라타 치즈냥이, 선탠한 것 같은 스모크 치즈냥이가 등장합니다.'],process:['Gemini로 장면 이미지를 만들었습니다.','Google Flow로 영상을 만들었습니다.','Premiere Pro에서 컷 편집했습니다.'],tools:['Gemini','Google Flow','Premiere Pro']}},
+  {id:'ad5',cats:['ad'],title:'새롭게 만나는 경주',en:'',time:'',yt:'-1pifLVP5Q4',
+   feature:{title:'새롭게 만나는 경주',synopsis:['상상스튜디오라는 가상의 AI 영상 제작 업체를 설정해 홈페이지를 만들고, 회사 포트폴리오 페이지에 올릴 영상을 한 사람당 4편씩 제작한 학원 팀 프로젝트의 작품입니다.','경주 관광 광고를 의뢰받았다는 설정으로 제작했습니다.'],content:['경주는 수학여행으로 누구나 한 번쯤 가 보지만, 그 뒤로는 잘 찾지 않는 곳입니다. 이 점을 아이디어로 삼아, 젊은 사람들도 충분히 즐기고 쉴 수 있는 곳이 많다는 것을 보여 주고, 하루 더 머물고 싶은 경주의 이미지를 담았습니다.'],process:['ChatGPT로 프롬프트를 정리했습니다.','Gemini로 장면 이미지를 만들었습니다.','Google Flow로 영상을 만들었습니다.','Pixabay에서 음악을 골랐습니다.','Premiere Pro에서 편집했습니다.'],tools:['ChatGPT','Gemini','Google Flow','Pixabay','Premiere Pro']}},
   // 북트레일러 — ratio:'9:16' 을 넣으면 세로 영상 카드(두 줄 높이)로 들어가요. by: 책 지은이
   {id:'bk1',cats:['book'],title:'바람이 분다, 가라',by:'한강',en:'BOOK 1',time:'3:34',tools:'ChatGPT · Google Flow · ElevenLabs · Claude Code · Premiere Pro',yt:'SOr_mlN4ipo',
    feature:{
