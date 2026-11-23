@@ -445,7 +445,7 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf2 .pf-top .cer .pf-item+.pf-item{margin-top:14px}
 @media (max-width:1000px){.pf2 .pf-top{grid-template-columns:120px 1fr}.pf2 .pf-top .ph{grid-row:auto}.pf2 .pf-top .tag,.pf2 .pf-top .car,.pf2 .pf-top .cer{grid-column:1/-1}}
 @media (max-width:1000px){.pf2{grid-template-columns:1fr}.pf2 .pf-hero{width:auto}}
-.ft-tno{text-align:center;font-family:Orbit,sans-serif;font-size:17px;letter-spacing:.06em;margin:0 0 10px;color:#555}
+.ft-tno{text-align:center;font-family:Orbit,sans-serif;font-size:clamp(22px,1.8vw,28px);font-weight:700;margin:0 0 14px;color:#111}
 .team-grp{margin-top:clamp(72px,9vh,120px);padding-top:clamp(40px,5vh,64px);border-top:3px solid #111}
 .team-h{text-align:center;margin:0 0 clamp(36px,5vh,56px);font-family:Orbit,sans-serif}
 .team-h h2{font-size:clamp(30px,2.6vw,42px);font-weight:400;margin:0 0 12px}
@@ -479,7 +479,7 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .pf3 .pf-item ul{list-style:none;margin:10px 0 0;padding:0;font-size:15px;line-height:2}
 .pf3 .pf-item .o{font-size:14px;color:#777;margin-top:2px}
 .pf3 .pf-item+.pf-item{margin-top:28px}
-.pf3 .p3-body{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0 clamp(44px,5vw,88px);padding-top:clamp(56px,5vw,80px)}
+.pf3 .p3-body{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:0 clamp(44px,5vw,88px);padding-top:clamp(56px,5vw,80px)}
 .pf3 .p3-body>.p3yt{display:block;padding-left:clamp(36px,4vw,72px);border-left:1px solid #ddd}
 .pf3 .sec+.sec{margin-top:72px}
 .pf3 .p3-head .sec{margin-top:0}
@@ -534,6 +534,13 @@ body[data-mode="mob"] .pf3 .who .tag{white-space:normal}
 body[data-mode="mob"] .pf3 .p3-body{grid-template-columns:1fr}
 body[data-mode="mob"] .pf3 .p3-body>.p3yt{padding-left:0;border-left:0;margin-top:56px}
 body[data-mode="mob"] .pf3 .bx{padding:24px 16px}
+.ft-head{grid-column:1/-1;text-align:center}
+.ft-head .ft-title{font-size:clamp(46px,4.2vw,70px);white-space:nowrap;margin:0 0 8px}
+.ft-head .ft-title span{white-space:nowrap}
+.pf3 .sk li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:baseline}
+.pf3 .sk b{margin-bottom:0}
+body[data-mode="mob"] .ft-head .ft-title{font-size:26px;white-space:normal}
+body[data-mode="mob"] .pf3 .sk li{grid-template-columns:1fr;gap:6px}
 </style>
 </head>
 <body data-mode="pc">
@@ -831,7 +838,8 @@ function buildApp(root,opt){
     const F=w.feature||{}, syn=F.synopsis||[], tools=F.tools||(w.tools?w.tools.split(' · '):[]);
     const sec=(h,body)=>body?`<section class="ft-sec"><h3>${h}</h3>${body}</section>`:'';
     const ps=a=>(a||[]).map(t=>`<p class="ft-body">${t}</p>`).join('');
-    const toolbox=tools.length?`<div class="ft-toolbox"><h4>사용 툴</h4><ul>${tools.map(t=>`<li>${t}</li>`).join('')}</ul></div>`:'';
+    const KO={"Illustrator": "일러스트레이터", "After Effects": "애프터이펙트", "Premiere Pro": "프리미어 프로", "Photoshop": "포토샵", "ChatGPT": "챗GPT", "Canva": "캔바", "Google Flow": "구글 플로우", "ElevenLabs": "일레븐랩스", "ElevenLabs Music": "일레븐 뮤직", "Claude Code": "클로드 코드", "Gemini": "제미나이", "Vrew": "브루", "CapCut": "캡컷", "Higgsfield": "힉스필드", "Seedance 2.5": "시댄스 2.5", "Seedance 2.0": "시댄스 2.0", "GPT Image 2": "GPT 이미지 2", "Pixabay": "픽사베이", "Codex": "코덱스", "Duik Angela": "듀이크 앤젤라", "Notion": "노션", "GitHub": "깃허브", "Naver MYBOX": "네이버 마이박스"};
+    const toolbox=tools.length?`<div class="ft-toolbox"><h4>사용 툴</h4><ul>${tools.map(t=>`<li>${KO[t.trim()]||t}</li>`).join('')}</ul></div>`:'';
     const steps=F.process?`<ol class="ft-steps">${F.process.map(t=>`<li>${t}</li>`).join('')}</ol>${F.shot?`<figure class="ft-shot"><img src="${F.shot}" alt="${F.shotCap}" loading="lazy"><figcaption>${F.shotCap}</figcaption></figure>`:''}`:'';
     const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
     const play=`<button class="ft-play ${tall(w)?'tall':''} ${w.mp4?'sq':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>`;
@@ -855,7 +863,7 @@ function buildApp(root,opt){
         +toolbox;
     }
     const scenes=F.scenes?`<section class="ft-scenes"><h3>장면 구성</h3><ol>${F.scenes.map((t,n)=>`<li><img src="img/knight/scenes/${String(n+1).padStart(2,'0')}.jpg" alt="${t}" loading="lazy"><span><b>${String(n+1).padStart(2,'0')}</b>${t}</span></li>`).join('')}</ol></section>`:'';
-    return `<article class="ft-page" id="w-${w.id}"><div class="ft-grid ${F.chars?'':'txt'}"><div>${left.replace('@@SCENES@@',scenes)}</div><div>${right}</div></div></article>`;
+    return `<article class="ft-page" id="w-${w.id}"><div class="ft-grid ${F.chars?'':'txt'}"><header class="ft-head">${title}</header><div>${left.replace('@@SCENES@@',scenes).replace(title,'')}</div><div>${right}</div></div></article>`;
   }
 
   function intro(){
