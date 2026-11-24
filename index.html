@@ -762,6 +762,9 @@ body[data-mode="mob"] .mono-end .end-vid{width:100%}
 .ft-gal img:hover{transform:scale(1.04)}
 .ft-grid .ft-extra{max-width:none;margin-top:36px}
 body[data-mode="mob"] .ft-gal{grid-template-columns:1fr 1fr}
+.ft-gal{display:flex!important;flex-wrap:wrap;gap:8px!important}
+.ft-gal .gl-k{flex:0 0 100%}
+.ft-gal img{width:auto!important;height:96px!important;aspect-ratio:16/9!important;object-position:center!important}
 </style>
 </head>
 <body data-mode="pc">
@@ -951,7 +954,7 @@ const WORKS=[
      process:['95일 동안 만든 작업물을 날짜순으로 모았습니다.','Claude Code로 타임라인 화면을 구성하고 영상으로 만들었습니다.'],
      tools:['Claude Code']}},
   {id:'sangsang',skill:'웹 기획 / 웹 디자인 / 퍼블리싱 / GitHub 관리',group:'team',teamNo:2,cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'4인 팀 프로젝트 · 1인 1페이지 (2026.10.13 ~ 10.22)',yt:'',
-   site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png', gallery:[['main-1','ABOUT US'],['main-2','ABOUT US'],['main-3','ABOUT US'],['main-4','ABOUT US'],['main-5','ABOUT US'],['main-6','ABOUT US'],['aivideo-1','AI VIDEO'],['aivideo-2','AI VIDEO'],['aivideo-3','AI VIDEO'],['aivideo-4','AI VIDEO'],['aivideo-5','AI VIDEO'],['aivideo-6','AI VIDEO'],['portfolio-1','PORTFOLIO'],['portfolio-2','PORTFOLIO'],['portfolio-3','PORTFOLIO'],['portfolio-4','PORTFOLIO'],['contact-1','CONTACT'],['contact-2','CONTACT'],['contact-3','CONTACT'],['contact-4','CONTACT'],['member-1','MEMBER'],['cart-1','CART']],   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
+   site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png', gallery:[['about-1','ABOUT US'],['about-2','ABOUT US'],['about-3','ABOUT US'],['aivideo-1','AI VIDEO'],['portfolio-1','PORTFOLIO'],['portfolio-2','PORTFOLIO']],   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    feature:{
      synopsis:['가상의 AI 영상 제작사 「STUDIO 상상」의 홈페이지입니다. 회사 소개, 제작 방식, 포트폴리오, 제작 문의까지 실제 영상 제작사 홈페이지처럼 구성했습니다.','화면을 누르면 홈페이지를 직접 스크롤하고 눌러 볼 수 있습니다.'],
      content:['저는 영상 제작을 의뢰하는 고객이 실제로 만나는 CONTACT(견적·상담) 페이지를 맡았습니다. 개인과 기업 문의를 버튼 하나로 바꿀 수 있게 하고, 상품을 고르면 견적이 자동으로 계산되도록 만들었습니다.',
@@ -1092,8 +1095,8 @@ function buildApp(root,opt){
     const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
     const play=`<button class="ft-play ${tall(w)?'tall':''} ${w.mp4?'sq':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>`;
     const fk=w.yt||(w.mp4?w.mp4.split('/').pop().replace('.mp4',''):'');   // 영상 중간 장면 5컷 → 대각선 필름
-    const FN={"-1pifLVP5Q4": 10, "0KsKN15YoDM": 10, "CBYNkkowSlM": 10, "D7FgB9M5_n8": 8, "IAx_crw2Qdg": 10, "IlkGxsPnnGU": 10, "SOr_mlN4ipo": 10, "ani-insta": 5, "c7c-Irp63t4": 10, "class-course": 10, "f8bngEEk3xY": 10, "hOen1WB81lI": 10, "hZVVFRppHfk": 8, "jhCq0QwulHA": 10, "tf5FNmodBmU": 10}[fk]||0, per=tall(w)?8:5, ang=[-3,3,-3,3,-3,3];   // 남는 여백만큼 대각선 필름을 여러 줄 (넘치는 건 잘려요)
-    const film=FN&&(st.cat!=='school'||['course','present'].includes(w.id))?`<div class="film-wrap" aria-hidden="true">${ang.slice(0,Math.min({bk2:1,bk3:1,lint:2,lintchar:2}[w.id]||6,Math.floor(FN/per))).map((a,r)=>`<div class="film ${tall(w)?'v':''}" style="--a:${a}deg">${Array.from({length:per},(_,n)=>`<img src="img/frames/${fk}-${(r*per+n)%FN+1}.jpg?v=3" alt="" loading="lazy">`).join('')}</div>`).join('')}</div>`:'';
+    const FN={"-1pifLVP5Q4": 10, "0KsKN15YoDM": 10, "CBYNkkowSlM": 10, "D7FgB9M5_n8": 9, "IAx_crw2Qdg": 10, "IlkGxsPnnGU": 10, "SOr_mlN4ipo": 10, "ani-insta": 5, "c7c-Irp63t4": 10, "class-course": 10, "f8bngEEk3xY": 10, "hOen1WB81lI": 10, "hZVVFRppHfk": 10, "jhCq0QwulHA": 10, "tf5FNmodBmU": 10}[fk]||0, per=tall(w)?8:5, ang=[-3,3,-3,3,-3,3];   // 남는 여백만큼 대각선 필름을 여러 줄 (넘치는 건 잘려요)
+    const film=FN&&(st.cat!=='school'||['course','present'].includes(w.id))?`<div class="film-wrap" aria-hidden="true">${ang.slice(0,Math.min({bk2:2,bk3:2,lint:2,lintchar:2}[w.id]||6,Math.floor(FN/per))).map((a,r)=>`<div class="film ${tall(w)?'v':''}" style="--a:${a}deg">${Array.from({length:Math.max(0,Math.min(per,FN-r*per))},(_,n)=>`<img src="img/frames/${fk}-${(r*per+n)%FN+1}.jpg?v=4" alt="" loading="lazy">`).join('')}</div>`).join('')}</div>`:'';
     const tno=w.teamNo?`<p class="ft-tno">팀 프로젝트 ${w.teamNo}</p>`:'';
     const title=tno+`<h2 class="ft-title">${F.title||(w.by?`「${w.title}」 <span>${w.by}</span>`:w.title)}</h2>`;
     let left, right;
