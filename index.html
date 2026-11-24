@@ -558,6 +558,25 @@ body[data-mode="mob"] .pf3 .sk li{grid-template-columns:1fr;gap:6px}
 .v2 .nav button:hover{transform:translateY(-3px)}
 body[data-mode="mob"] .ft-page::before,body[data-mode="mob"] .pf3 .bx::before{left:-18px;width:40px;background-size:40px 21px}
 .fts .ft-page:first-child,.pf3>.bx{margin-top:-30px}
+
+/* ===== 연습장 (예시 이미지 기준): 보라 배경 · 미색 종이 · 검은 스프링 · 파스텔 마스킹테이프 ===== */
+html,body,#app,.v2,.v2 .main,.v2 .top{background:#ebe8f4!important}
+.ft-grid,.pf3 .bx{border:0!important;border-image:none!important;background:#fbfaf7!important;border-radius:10px;
+  box-shadow:0 1px 0 #e4e1ea,3px 4px 0 -1px #f4f2f6,3px 4px 0 0 #dcd8e3,6px 8px 0 -1px #f1eff4,6px 8px 0 0 #d6d2de,10px 16px 28px rgba(60,50,90,.16)}
+.ft-page::before,.pf3 .bx::before{left:-46px!important;top:30px!important;bottom:30px!important;width:90px!important;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2790%27%20height%3D%2762%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%238a8a8a%27/%3E%3Cstop%20offset%3D%27.3%27%20stop-color%3D%27%232a2a2a%27/%3E%3Cstop%20offset%3D%27.75%27%20stop-color%3D%27%230a0a0a%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23444%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cellipse%20cx%3D%2772%27%20cy%3D%2731%27%20rx%3D%277%27%20ry%3D%276%27%20fill%3D%27%23cfcbd8%27/%3E%3Cellipse%20cx%3D%2772%27%20cy%3D%2732%27%20rx%3D%274.5%27%20ry%3D%273.6%27%20fill%3D%27%236d6a74%27/%3E%3Cpath%20d%3D%27M72%2028%20C64%2016%2036%2014%2018%2017%20C6%2019%204%2027%208%2034%20C12%2040%2026%2042%2040%2041%27%20fill%3D%27none%27%20stroke%3D%27url%28%23g%29%27%20stroke-width%3D%279%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M62%2021%20C50%2016%2032%2016%2018%2019%27%20fill%3D%27none%27%20stroke%3D%27%23d0d0d0%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20opacity%3D%27.7%27/%3E%3C/svg%3E") 0 0/90px 62px repeat-y!important;filter:drop-shadow(1px 2px 1.5px rgba(0,0,0,.3))!important}
+.fts{padding-left:clamp(56px,4.4vw,80px)!important}
+.pf3{padding-left:clamp(56px,4.4vw,80px)!important}
+.ft-page+.ft-page{margin-top:clamp(64px,8vh,110px)}
+/* 탭: 반투명 마스킹테이프, 연습장 윗면에 붙임 */
+.v2 .nav{background:transparent!important;padding-top:14px!important}
+.v2 .nav::after{left:calc(24px + clamp(56px,4.4vw,80px))!important;background:#fbfaf7!important;border:0!important;border-image:none!important;border-radius:10px 10px 0 0;height:22px!important;bottom:-20px!important;box-shadow:0 -1px 0 #e4e1ea}
+.v2 .nav button{opacity:.78!important;mix-blend-mode:multiply;padding:12px clamp(20px,2.4vw,40px) 30px!important;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.v2 .nav button>span{transform:none!important;font-weight:700;color:#333;font-size:clamp(17px,1.4vw,22px)}
+.v2 .nav button[aria-current="true"]{opacity:1!important;filter:saturate(1.5)}
+.v2 .nav button[aria-current="true"]>span{color:#4b2a8a}
+.fts .ft-page:first-child,.pf3>.bx{margin-top:-24px!important}
+body[data-mode="mob"] .fts,body[data-mode="mob"] .pf3{padding-left:34px!important}
+body[data-mode="mob"] .ft-page::before,body[data-mode="mob"] .pf3 .bx::before{left:-30px!important;width:60px!important;background-size:60px 41px!important}
 </style>
 </head>
 <body data-mode="pc">
@@ -639,7 +658,6 @@ const CATS=[
   {id:'ad',    name:'광고제작물',   en:'Commercial',   icon:'ad',   banner:''},
   {id:'ani',   name:'애니메이션',   en:'Animation',    icon:'film', banner:''},
   {id:'school',name:'학원제작물',   en:'Class Work',   icon:'cap',  banner:''},
-  {id:'practice',name:'연습장',   en:'Practice',     icon:'cap',  banner:''},
 ];
 
 // 4) 작품 — yt: 유튜브 영상 ID (youtube.com/watch?v=이부분). 넣으면 썸네일과 재생이 연결돼요
@@ -771,12 +789,12 @@ const WORKS=[
      more:[['어려웠던 점',`<p class="ft-body">2~3등신의 짧은 팔다리 때문에 리깅이 부자연스러워, 초안보다 팔다리를 조금 늘려 다시 그렸습니다. 두꺼운 검은 외곽선이 관절에서 겹쳐 보이는 문제도 있었지만, 제작 기간이 부족해 끝내 해결하지 못했습니다. 시간이 조금 더 있었다면 더 자연스럽게 다듬을 수 있었을 것 같아 아쉬움이 남습니다.</p>`],
            ['팀 협업',`<ul class="ft-team"><li><b>노션</b>회의록, 일정, 작업 현황 정리 · <a href="https://app.notion.com/p/3ff93a4ee7a5813c9405da9e15df7880?source=copy_link" target="_blank" rel="noopener">노션 바로가기 ↗</a></li><li><b>깃허브</b>코드와 문서 버전 관리</li><li><b>네이버 마이박스</b>작업 파일 공유와 버전 관리</li></ul>`]],
      scenes:['오프닝 (3D)','면접','합격 문자','합격의 기쁨','첫 출근','퇴근 5분 전','쌓인 서류','약속 취소 카카오톡','명절 선물 차별','스팸 세트의 분노','빼앗긴 아이디어','바뀐 작성자','타오르는 분노','잘못된 발주','떠넘겨진 책임','시말서','버스 정류장','퇴근 버스','카드대금 문자','재계약','근로계약서 서명','쿠키 영상 (3D)']}},
-  {id:'palace',cats:['practice'],title:'멀티미디어콘텐츠제작전문가 실기 대비',en:'PALACE',time:'0:29',year:2026,yt:'',mp4:'video/palace.mp4',poster:'img/palace.jpg',
+  {id:'palace',cats:['school'],title:'멀티미디어콘텐츠제작전문가 실기 대비',en:'PALACE',time:'0:29',year:2026,yt:'',mp4:'video/palace.mp4',poster:'img/palace.jpg',
    feature:{title:'멀티미디어콘텐츠제작전문가 <span>실기 대비 「궁궐」</span>',
      synopsis:['멀티미디어콘텐츠제작전문가 실기 시험을 준비하며, 학원 애프터이펙트 강의 시간에 만든 영상입니다.'],
      process:['포토샵으로 이미지 색을 보정하고 필요한 부분을 잘라 냈습니다.','애프터이펙트에서 모션그래픽을 넣어 완성했습니다.'],
      tools:['포토샵','애프터이펙트']}},
-  {id:'americano',cats:['practice'],title:'아메리카노',en:'AMERICANO',time:'0:10',year:2026,ratio:'9:16',yt:'',mp4:'video/americano.mp4',poster:'img/americano.jpg',
+  {id:'americano',cats:['school'],title:'아메리카노',en:'AMERICANO',time:'0:10',year:2026,ratio:'9:16',yt:'',mp4:'video/americano.mp4',poster:'img/americano.jpg',
    feature:{title:'아메리카노 <span>모션그래픽 과제</span>',
      synopsis:['학원 애프터이펙트 강의 시간에 만든 모션그래픽 과제입니다.'],
      process:['일러스트레이터로 커피잔을 그렸습니다.','애프터이펙트에서 모션그래픽을 넣었습니다.'],
