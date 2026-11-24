@@ -544,19 +544,19 @@ body[data-mode="mob"] .pf3 .sk li{grid-template-columns:1fr;gap:6px}
 
 /* ===== 연습장 콘셉트: 큰 상자 = 스프링 연습장, 메뉴 = 오른쪽에 붙인 테이프 인덱스 ===== */
 .ft-page,.pf3 .bx{position:relative}
-.ft-page::before,.pf3 .bx::before{content:"";position:absolute;left:-14px;top:26px;bottom:26px;width:40px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='28'%3E%3Ccircle cx='27' cy='14' r='4.2' fill='%23fff' stroke='%23333' stroke-width='1.6'/%3E%3Cpath d='M27 10.5 C16 9 3 9 3 14 C3 19 16 19 27 17.5' fill='none' stroke='%23333' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") 0 0/40px 28px repeat-y;z-index:2;pointer-events:none}
+.ft-page::before,.pf3 .bx::before{content:"";position:absolute;left:-30px;top:34px;bottom:34px;width:64px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2764%27%20height%3D%2740%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23777%27/%3E%3Cstop%20offset%3D%27.4%27%20stop-color%3D%27%231a1a1a%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23050505%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2724%27%20r%3D%274.5%27%20fill%3D%27%23cfcfcf%27%20stroke%3D%27%23888%27%20stroke-width%3D%27.8%27/%3E%3Cpath%20d%3D%27M50%2022%20C46%2010%2030%207%2016%209%20C6%2011%203%2019%207%2026%20C10%2031%2018%2032%2026%2031%27%20fill%3D%27none%27%20stroke%3D%27url%28%23g%29%27%20stroke-width%3D%276.5%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M44%2014%20C36%2010%2024%2010%2016%2012%27%20fill%3D%27none%27%20stroke%3D%27%23bbb%27%20stroke-width%3D%271.5%27%20stroke-linecap%3D%27round%27%20opacity%3D%27.75%27/%3E%3C/svg%3E") 0 0/64px 40px repeat-y;z-index:2;pointer-events:none;filter:drop-shadow(1px 2px 1px rgba(0,0,0,.25))}
 .v2 .top{position:sticky!important;top:0;z-index:40;background:#fff;padding:0!important;margin:0!important}
 .v2 .nav{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(8px,1vw,16px);max-width:calc(1560px + 48px);margin:0 auto;padding:18px calc(24px + clamp(16px,2.6vw,48px)) 0;background:#fff}
-.v2 .nav::after{content:"";position:absolute;left:calc(24px + clamp(16px,2.6vw,48px));right:calc(24px + clamp(16px,2.6vw,48px));bottom:-4px;height:18px;background:#fff;border-bottom:3px solid #111;z-index:2;pointer-events:none;
+.v2 .nav::after{content:"";position:absolute;left:calc(24px + clamp(16px,2.6vw,48px));right:calc(24px + clamp(16px,2.6vw,48px));bottom:-16px;height:26px;background:#fff;border-bottom:3px solid #111;z-index:2;pointer-events:none;
   -webkit-mask:none;border-image:url("img/brush/frame.png") 28 / 0 0 9px 0 / 0 stretch;border-style:solid;border-width:0 0 9px 0}
-.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;z-index:1;padding:12px clamp(16px,2vw,30px) 26px;margin-bottom:-4px;background:var(--tc);opacity:.85;
+.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;z-index:1;padding:12px clamp(16px,2vw,30px) 30px;margin-bottom:-16px;background:var(--tc);opacity:.85;
   clip-path:polygon(0 4%,3% 0,7% 5%,11% 1%,16% 4%,22% 0,28% 3%,35% 0,42% 4%,50% 1%,58% 4%,65% 0,72% 3%,79% 0,85% 4%,91% 1%,96% 4%,100% 0,98% 50%,100% 100%,0 100%,2% 50%);transform:rotate(-1deg);transition:transform .15s}
 .v2 .nav button:nth-child(even){transform:rotate(1.2deg)}
 .v2 .nav button::before,.v2 .nav button::after{display:none}
 .v2 .nav button>span{display:inline-block;transform:scaleX(.82);font-size:clamp(17px,1.4vw,22px);font-weight:700;color:#222;letter-spacing:0}
-.v2 .nav button[aria-current="true"]{z-index:3;opacity:1;background:var(--tc);color:#111;transform:rotate(0) translateY(-6px);padding-bottom:20px;box-shadow:none}
+.v2 .nav button[aria-current="true"]{z-index:3;opacity:1;background:var(--tc);color:#111;transform:rotate(0) translateY(-4px);padding-bottom:30px;margin-bottom:-26px;box-shadow:none}
 .v2 .nav button:hover{transform:translateY(-3px)}
-body[data-mode="mob"] .ft-page::before,body[data-mode="mob"] .pf3 .bx::before{left:-10px;width:30px;background-size:30px 21px}
+body[data-mode="mob"] .ft-page::before,body[data-mode="mob"] .pf3 .bx::before{left:-18px;width:40px;background-size:40px 21px}
 .fts .ft-page:first-child,.pf3>.bx{margin-top:-30px}
 </style>
 </head>
