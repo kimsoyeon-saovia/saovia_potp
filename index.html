@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap&text=%EA%B3%84%EC%86%8D%EB%A7%8C%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4.%EB%82%98%EB%8F%84%2C%EC%98%81%EC%83%81%20" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap&text=%E2%80%9C%E2%80%9D%ED%87%B4%EC%82%AC%EB%8A%94%ED%95%98%EA%B3%A0%EC%8B%B6%EC%A7%80%EB%A7%8C%2C%ED%95%A0%EB%B6%80%EA%B0%80%EB%82%A8%EC%95%98%EB%8B%A4.%20">
@@ -770,6 +771,17 @@ body[data-mode="mob"] .ft-gal{grid-template-columns:1fr 1fr}
 .pf3>section.p3-inner{background:var(--surface);box-shadow:0 0 0 100vmax var(--surface);clip-path:inset(0 -100vmax)}
 .p3-band{background:var(--bg)!important}
 .v2 .top{background:transparent!important}
+
+/* 푸터: 문장 | 영상 | 연락처 */
+.mono-end{grid-template-columns:minmax(0,1.4fr) auto minmax(0,.8fr)!important;align-items:center!important;gap:clamp(24px,3vw,56px)!important;padding:clamp(16px,1.6vw,24px) clamp(24px,4vw,72px)!important;background:#000!important}
+.end-say{margin:0;font-family:"Noto Serif KR",serif;font-weight:500;font-size:clamp(24px,2.6vw,42px);letter-spacing:-.01em;color:#fff;text-align:center}
+.mono-end .end-vid{width:min(20vw,320px)!important}
+.end-info{padding:14px 20px!important;background:#111;justify-self:end}
+.end-info a{font-size:clamp(14px,1vw,16px)!important;padding:6px 0!important;letter-spacing:0!important}
+.end-info a:first-child{text-decoration:underline}
+body[data-mode="mob"] .mono-end{grid-template-columns:1fr!important;justify-items:center}
+body[data-mode="mob"] .mono-end .end-vid{width:100%!important}
+body[data-mode="mob"] .end-info{justify-self:stretch}
 </style>
 </head>
 <body data-mode="pc">
@@ -1037,7 +1049,7 @@ const metaOf=w=>spans([w.by,w.year,w.team]);   // 제목 아래 왼쪽: 지은�
 const timeOf=w=>w.state==='soon'?'<span class="time wait">준비 중</span>':w.time?`<span class="time num">${w.time}</span>`:'';   // 오른쪽: 재생 시간
 const BADGE={"포토샵": ["Ps", "#001e36", "#31a8ff"], "일러스트레이터": ["Ai", "#330000", "#ff9a00"], "애프터이펙트": ["Ae", "#00005b", "#9999ff"], "프리미어 프로": ["Pr", "#00005b", "#9999ff"], "인디자인": ["Id", "#49021f", "#ff3366"], "캡컷": ["Cc", "#111", "#fff"], "브루": ["Vr", "#3b3bf0", "#fff"], "챗GPT": ["GPT", "#0f0f0f", "#fff"], "GPT 이미지 2": ["Img", "#0f0f0f", "#fff"], "구글 플로우": ["Fl", "#1a73e8", "#fff"], "제미나이": ["Gm", "#4f6ef7", "#fff"], "일레븐랩스": ["11", "#111", "#fff"], "일레븐 뮤직": ["11♪", "#111", "#fff"], "힉스필드": ["Hf", "#c6ff3d", "#111"], "시댄스 2.5": ["Sd", "#7b2ff7", "#fff"], "시댄스 2.0": ["Sd", "#7b2ff7", "#fff"], "클로드 코드": ["CC", "#d97757", "#fff"], "클로드": ["Cl", "#d97757", "#fff"], "코덱스": ["Cx", "#111", "#fff"], "캔바": ["Cv", "#00c4cc", "#fff"], "픽사베이": ["Px", "#2ec66d", "#fff"], "듀이크 앤젤라": ["Du", "#2b2b2b", "#ffcc00"], "노션": ["N", "#fff", "#111"], "깃허브": ["Gh", "#24292f", "#fff"], "네이버 마이박스": ["MB", "#03c75a", "#fff"], "HTML": ["H5", "#e34c26", "#fff"], "CSS": ["C3", "#2965f1", "#fff"], "JavaScript": ["JS", "#f7df1e", "#111"], "Firebase": ["Fb", "#ffca28", "#111"]};
 const tbadge=(n,big)=>{const b=BADGE[n]||[n.slice(0,2),'#222','#fff'];return `<span class="tb ${big?'big':''}" style="--bg:${b[1]};--fg:${b[2]}" aria-hidden="true">${b[0]}</span>`};
-const FOOT=`<footer class="mono-end"><div class="end-vid"><video src="video/end-loop.mp4" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="end-info"><a href="mailto:ksy880426@gmail.com">ksy880426@gmail.com</a><a href="tel:01037315235">010-3731-5235</a></div></footer>`;
+const FOOT=`<footer class="mono-end"><p class="end-say">계속 만들어 갑니다. 나도, 영상도</p><div class="end-vid"><video src="video/end-loop.mp4" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="end-info"><a href="mailto:ksy880426@gmail.com">ksy880426@gmail.com</a><a href="tel:01037315235">010-3731-5235</a></div></footer>`;
 const tall=w=>w.ratio==='9:16';   // 세로 영상(쇼츠)
 const badge=w=>w.state==='wip'?'<span class="bdg">제작 중</span>':w.state==='soon'?'<span class="bdg">준비 중</span>':'';
 function thumb(w,tag='div',attrs=''){
