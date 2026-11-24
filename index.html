@@ -712,6 +712,46 @@ body[data-mode="mob"] .ft-extra{max-width:none}
 .end-info a:hover{text-decoration:underline}
 body[data-mode="mob"] .mono-top,body[data-mode="mob"] .p3-chs,body[data-mode="mob"] .mono-end{grid-template-columns:1fr}
 body[data-mode="mob"] .mono-name{font-size:17vw!important;white-space:normal}
+
+/* 홈 아이콘 */
+.v2 .top::before{content:none!important;display:none!important}
+.home-ic{all:unset;cursor:pointer;width:40px;height:40px;display:grid;place-items:center;color:var(--ink);margin-left:-8px}
+.home-ic svg{width:26px;height:26px}
+.home-ic:hover{color:var(--accent)}
+.home-ic:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* 소개: 경력 · 사용 가능 툴 · 핵심 보유 기술 — 같은 크기의 칸 */
+.p3-about3{display:grid;grid-template-columns:200px minmax(0,1.25fr) minmax(0,1fr);gap:clamp(32px,3.6vw,64px);align-items:start}
+.p3-about3 .p3-photo{width:100%}
+.p3-about3 .p3-sec{background:var(--surface);padding:clamp(24px,2.4vw,40px);align-self:stretch}
+.p3-skills3{grid-column:1/-1}
+.p3-about3 h2{margin:0 0 22px!important}
+.cv-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:0 0 12px;font-size:18px;color:var(--ink)}
+.cv-head span{font-size:14px;color:var(--ink)}
+.cv-list{list-style:none;margin:0;padding:0}
+.cv-list li{position:relative;padding:5px 0 5px 20px;font-size:15.5px;line-height:1.6;color:var(--ink)}
+.cv-list li::before{content:"";position:absolute;left:4px;top:15px;width:6px;height:6px;background:var(--ink);border-radius:50%}
+.cv-h2{margin-top:36px!important}
+.cv-cert li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.cv-cert span{font-size:14px;color:#444}
+.tl-k{margin:0 0 10px;font-size:14px;font-weight:700;color:var(--ink)}
+.tl-k+ul{margin-bottom:26px}
+.tl-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tl-list li{background:#fff;padding:8px 13px;font-size:14.5px;line-height:1;color:var(--ink)}
+.sk3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 40px}
+.sk3-i b{display:block;font-size:16px;margin-bottom:6px;color:var(--ink)}
+.sk3-i p{margin:0;font-size:14.5px;line-height:1.65;color:#333}
+body[data-mode="mob"] .p3-about3{grid-template-columns:1fr}
+body[data-mode="mob"] .p3-about3 .p3-photo{width:160px}
+body[data-mode="mob"] .sk3{grid-template-columns:1fr}
+.mono-end{padding:0!important;align-items:center!important;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)!important}
+.end-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.end-info{padding:0 clamp(16px,2.2vw,32px)}
+.end-info a{font-family:"Hanken Grotesk",Orbit,sans-serif;font-size:clamp(28px,3vw,52px)!important;letter-spacing:-.02em;padding:8px 0!important}
+body[data-mode="mob"] .end-info{padding:28px 16px}
+.mono-end{grid-template-columns:auto minmax(0,1fr)!important}
+.mono-end .end-vid{width:min(30vw,520px)}
+body[data-mode="mob"] .mono-end .end-vid{width:100%}
+.p3-about3 h2.cv-h2{margin:40px 0 18px!important}
 </style>
 </head>
 <body data-mode="pc">
@@ -979,7 +1019,7 @@ const metaOf=w=>spans([w.by,w.year,w.team]);   // 제목 아래 왼쪽: 지은�
 const timeOf=w=>w.state==='soon'?'<span class="time wait">준비 중</span>':w.time?`<span class="time num">${w.time}</span>`:'';   // 오른쪽: 재생 시간
 const BADGE={"포토샵": ["Ps", "#001e36", "#31a8ff"], "일러스트레이터": ["Ai", "#330000", "#ff9a00"], "애프터이펙트": ["Ae", "#00005b", "#9999ff"], "프리미어 프로": ["Pr", "#00005b", "#9999ff"], "인디자인": ["Id", "#49021f", "#ff3366"], "캡컷": ["Cc", "#111", "#fff"], "브루": ["Vr", "#3b3bf0", "#fff"], "챗GPT": ["GPT", "#0f0f0f", "#fff"], "GPT 이미지 2": ["Img", "#0f0f0f", "#fff"], "구글 플로우": ["Fl", "#1a73e8", "#fff"], "제미나이": ["Gm", "#4f6ef7", "#fff"], "일레븐랩스": ["11", "#111", "#fff"], "일레븐 뮤직": ["11♪", "#111", "#fff"], "힉스필드": ["Hf", "#c6ff3d", "#111"], "시댄스 2.5": ["Sd", "#7b2ff7", "#fff"], "시댄스 2.0": ["Sd", "#7b2ff7", "#fff"], "클로드 코드": ["CC", "#d97757", "#fff"], "클로드": ["Cl", "#d97757", "#fff"], "코덱스": ["Cx", "#111", "#fff"], "캔바": ["Cv", "#00c4cc", "#fff"], "픽사베이": ["Px", "#2ec66d", "#fff"], "듀이크 앤젤라": ["Du", "#2b2b2b", "#ffcc00"], "노션": ["N", "#fff", "#111"], "깃허브": ["Gh", "#24292f", "#fff"], "네이버 마이박스": ["MB", "#03c75a", "#fff"], "HTML": ["H5", "#e34c26", "#fff"], "CSS": ["C3", "#2965f1", "#fff"], "JavaScript": ["JS", "#f7df1e", "#111"], "Firebase": ["Fb", "#ffca28", "#111"]};
 const tbadge=(n,big)=>{const b=BADGE[n]||[n.slice(0,2),'#222','#fff'];return `<span class="tb ${big?'big':''}" style="--bg:${b[1]};--fg:${b[2]}" aria-hidden="true">${b[0]}</span>`};
-const FOOT=`<footer class="mono-end"><div class="end-vid"><iframe src="https://www.youtube-nocookie.com/embed/Uk06Fqh8uho?autoplay=1&mute=1&loop=1&playlist=Uk06Fqh8uho&controls=0&rel=0&playsinline=1&modestbranding=1" title="KIM SO YEON 영상" loading="lazy" allow="autoplay; encrypted-media" tabindex="-1"></iframe></div><div class="end-info"><p class="end-name">KIM SO YEON</p><a href="mailto:ksy880426@gmail.com">ksy880426@gmail.com</a><a href="tel:01037315235">010-3731-5235</a></div></footer>`;
+const FOOT=`<footer class="mono-end"><div class="end-vid"><video src="video/end-loop.mp4" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="end-info"><a href="mailto:ksy880426@gmail.com">ksy880426@gmail.com</a><a href="tel:01037315235">010-3731-5235</a></div></footer>`;
 const tall=w=>w.ratio==='9:16';   // 세로 영상(쇼츠)
 const badge=w=>w.state==='wip'?'<span class="bdg">제작 중</span>':w.state==='soon'?'<span class="bdg">준비 중</span>':'';
 function thumb(w,tag='div',attrs=''){
@@ -1011,7 +1051,7 @@ function buildApp(root,opt){
   let wide=false, H='div';   // 화면 제목(h1)은 지금 보이는 배치에 하나만 둬요
   const pick=()=>{wide=root.offsetWidth>=900;H=opt.live&&!wide?'h1':'div'};
   root.innerHTML=`<div class="shell v2">
-    <header class="top"><nav class="nav" aria-label="분류"></nav></header>
+    <header class="top"><button class="home-ic" data-act="home" aria-label="처음 화면으로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg></button><nav class="nav" aria-label="분류"></nav></header>
     <main class="main"></main>
     <div class="modal" hidden></div></div>`;
   const $=s=>root.querySelector(s);
@@ -1077,23 +1117,19 @@ function buildApp(root,opt){
         <${NM} class="mono-name">KIM SO YEON</${NM}>
       </section>
       <section class="p3-inner">
-        <div class="p3-about">
-          <div>
-            <img class="p3-photo" src="${P.photo}" alt="${P.nameKo} 프로필 사진">
-            <dl class="p3-facts">
-              ${P.careers.map(c=>`<div><dt>경력 · ${c.when}</dt><dd>${c.what}</dd>${c.items.map(t=>`<dd class="sm">${t}</dd>`).join('')}</div>`).join('')}
-              ${P.certs.map(h=>`<div><dt>자격증 · ${h[0]}</dt><dd>${h[1].split(' · ')[0]} <span class="sm">${h[1].split(' · ')[1]||''}</span></dd></div>`).join('')}
-            </dl>
-            <div class="p3-sec p3-tools"><h2>사용 가능 툴</h2>
-              ${row('디자인 · 편집',P.tools.join(' / '))}
-              ${row('AI',P.ai.join(' / '))}
-            </div>
+        <div class="p3-about3">
+          <img class="p3-photo" src="${P.photo}" alt="${P.nameKo} 프로필 사진">
+          <div class="p3-sec p3-career"><h2>경력</h2>
+            ${P.careers.map(c=>`<div class="cv-item"><p class="cv-head"><b>${c.what}</b><span>${c.when}</span></p><ul class="cv-list">${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}
+            <h2 class="cv-h2">자격증</h2>
+            <ul class="cv-list cv-cert">${P.certs.map(h=>`<li><b>${h[1].split(' · ')[0]}</b><span>${h[1].split(' · ')[1]||''} · ${h[0]}</span></li>`).join('')}</ul>
           </div>
-          <div class="p3-sec"><h2>핵심 보유 기술</h2>
-            <div class="p3-cols">
-              <div>${P.skills.slice(0,Math.ceil(P.skills.length/2)).map(k=>row(k[0],k[1])).join('')}</div>
-              <div>${P.skills.slice(Math.ceil(P.skills.length/2)).map(k=>row(k[0],k[1])).join('')}</div>
-            </div>
+          <div class="p3-sec p3-tools3"><h2>사용 가능 툴</h2>
+            <p class="tl-k">디자인 · 편집</p><ul class="tl-list">${P.tools.map(t=>`<li>${t}</li>`).join('')}</ul>
+            <p class="tl-k">AI</p><ul class="tl-list">${P.ai.map(t=>`<li>${t}</li>`).join('')}</ul>
+          </div>
+          <div class="p3-sec p3-skills3"><h2>핵심 보유 기술</h2>
+            <div class="sk3">${P.skills.map(k=>`<div class="sk3-i"><b>${k[0]}</b><p>${k[1]}</p></div>`).join('')}</div>
           </div>
         </div>
       </section>
