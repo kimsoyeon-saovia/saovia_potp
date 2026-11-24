@@ -542,36 +542,48 @@ body[data-mode="mob"] .ft-head .ft-title{font-size:26px;white-space:normal}
 body[data-mode="mob"] .pf3 .sk li{grid-template-columns:1fr;gap:6px}
 
 
-/* ===== 붓 테두리 상자 + 붓 느낌 스프링 + 오른쪽 마스킹테이프 메뉴 + 위로 버튼 ===== */
-.ft-page,.pf3 .bx{position:relative}
-.ft-page::before,.pf3 .bx::before{content:"";position:absolute;left:-38px;top:36px;bottom:36px;width:70px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2770%27%20height%3D%2746%27%3E%3Cfilter%20id%3D%27r%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.9%27%20numOctaves%3D%272%27%20seed%3D%273%27/%3E%3CfeDisplacementMap%20in%3D%27SourceGraphic%27%20scale%3D%272.6%27/%3E%3C/filter%3E%3Cg%20filter%3D%27url%28%23r%29%27%3E%3Ccircle%20cx%3D%2754%27%20cy%3D%2725%27%20r%3D%274.2%27%20fill%3D%27%23111%27/%3E%3Cpath%20d%3D%27M54%2022%20C47%2011%2026%209%2013%2012%20C4%2014%203%2022%207%2028%20C10%2033%2020%2034%2030%2033%27%20fill%3D%27none%27%20stroke%3D%27%23111%27%20stroke-width%3D%275.5%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M50%2018%20C42%2013%2028%2012%2017%2014%27%20fill%3D%27none%27%20stroke%3D%27%23111%27%20stroke-width%3D%271.6%27%20stroke-linecap%3D%27round%27%20opacity%3D%27.55%27/%3E%3C/g%3E%3C/svg%3E") 0 0/70px 46px repeat-y;z-index:2;pointer-events:none}
-.fts,.pf3{padding-left:clamp(52px,4vw,72px);padding-right:clamp(76px,5.5vw,100px)}
-.v2 .main{padding-top:clamp(36px,6vh,72px)}
-/* 메뉴: 오른쪽, 상자 옆면에 붙인 테이프 (세로 글씨) */
-.v2 .top{position:static;padding:0;height:0;overflow:visible}
-.v2 .nav{position:fixed;z-index:40;top:clamp(120px,16vh,170px);right:clamp(30px,2.6vw,48px);display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:none;padding:0;max-width:none;margin:0}
+/* ===== 깔끔한 포트폴리오 레이아웃 (참고 사이트 방향): 흰 바탕 · 위 헤더 · 작품 한 줄씩 · 기술부분 ===== */
+html,body,#app,.v2,.v2 .main{background:#fff!important}
+.v2 .main{padding:0 0 120px!important}
+.v2 .top{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;height:76px;padding:0 clamp(20px,5vw,80px)!important;background:rgba(255,255,255,.96);border-bottom:1px solid #e6e6e6;margin:0!important}
+.v2 .top::before{content:"K I M   S O   Y E O N";white-space:pre;font-family:Orbit,sans-serif;font-size:18px;letter-spacing:.12em;color:#111}
+.v2 .nav{all:unset;display:flex;gap:clamp(18px,2.6vw,44px)}
 .v2 .nav::after{display:none}
-.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;width:80px;padding:12px 0 12px 30px;display:flex;justify-content:center;background:var(--tc);opacity:.85;
-  clip-path:polygon(0 0,100% 0,100% 6%,96% 12%,100% 20%,96% 30%,100% 40%,96% 50%,100% 60%,96% 70%,100% 80%,96% 90%,100% 100%,0 100%);transition:transform .15s}
-.v2 .nav button::before{content:"";position:absolute;left:0;top:0;bottom:0;width:30px;background:rgba(255,255,255,.45)}
-.v2 .nav button>span{writing-mode:vertical-rl;transform:none;font-size:15px;font-weight:700;letter-spacing:.02em;color:#222;line-height:1}
-.v2 .nav button[aria-current="true"]{opacity:1;transform:translateX(14px)}
-.v2 .nav button:hover{transform:translateX(8px)}
-.v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:2px}
+.v2 .nav button{all:unset;cursor:pointer;position:relative;padding:6px 0;font-size:15px;color:#888;letter-spacing:.04em}
+.v2 .nav button>span{transform:none!important;writing-mode:horizontal-tb}
+.v2 .nav button::before,.v2 .nav button::after{display:none}
+.v2 .nav button[aria-current="true"]{color:#111;font-weight:700}
+.v2 .nav button[aria-current="true"]::after{display:block;content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#111}
+.v2 .nav button:hover{color:#111}
+.v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:4px}
+/* 작품: 테두리 없이 한 줄씩, 얇은 선으로 구분 */
+.fts{max-width:1280px!important;margin:0 auto!important;padding:0 clamp(20px,5vw,80px)!important}
+.ft-page::before,.pf3 .bx::before{display:none!important}
+.ft-page+.ft-page{margin-top:0!important}
+.ft-grid{border:0!important;border-image:none!important;background:none!important;padding:clamp(64px,9vh,110px) 0!important;border-bottom:1px solid #e6e6e6!important;gap:clamp(28px,4vw,64px)!important;border-radius:0!important;box-shadow:none!important}
+.fts .ft-page:first-child,.pf3>.bx{margin-top:0!important}
+.ft-head .ft-title{font-size:clamp(30px,2.6vw,42px)!important;margin:0 0 6px!important}
+.ft-tno{font-size:15px!important;color:#888!important;font-weight:400!important;letter-spacing:.06em}
+.ft-grid h3{font-size:19px!important}
+.ft-spec{margin:36px 0 0;padding:20px 0 0;border-top:1px solid #e6e6e6;display:grid;grid-template-columns:84px minmax(0,1fr);gap:10px 16px;font-size:14.5px;line-height:1.7}
+.ft-spec dt{color:#888}
+.ft-spec dd{margin:0;color:#222}
+/* 소개 */
+.pf3{max-width:1280px;margin:0 auto;padding:clamp(56px,8vh,96px) clamp(20px,5vw,80px) 0!important}
+.pf3 .bx{border:0!important;border-image:none!important;background:none!important;padding:0!important;box-shadow:none!important}
 /* 위로 버튼 */
 #toTop{position:fixed;right:24px;bottom:28px;z-index:60;width:54px;height:54px;border-radius:50%;border:2.5px solid #111;background:#fff;color:#111;display:grid;place-items:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s,transform .15s}
 #toTop.on{opacity:1;pointer-events:auto}
 #toTop:hover{transform:translateY(-3px)}
 #toTop svg{width:22px;height:22px}
 /* 휴대폰 */
-body[data-mode="mob"] .v2 .top{height:auto}
-body[data-mode="mob"] .v2 .nav{position:static;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:6px;padding:12px 8px}
-body[data-mode="mob"] .v2 .nav button{width:auto;padding:10px 12px;clip-path:none}
-body[data-mode="mob"] .v2 .nav button::before{display:none}
-body[data-mode="mob"] .v2 .nav button>span{writing-mode:horizontal-tb;font-size:13.5px}
-body[data-mode="mob"] .v2 .nav button[aria-current="true"]{transform:translateY(-3px)}
-body[data-mode="mob"] .fts,body[data-mode="mob"] .pf3{padding-left:32px}
-body[data-mode="mob"] .ft-page::before,body[data-mode="mob"] .pf3 .bx::before{left:-26px;width:48px;background-size:48px 32px}
+body[data-mode="mob"] .v2 .top{flex-direction:column;height:auto;padding:14px 12px!important;gap:10px}
+body[data-mode="mob"] .v2 .nav{flex-wrap:wrap;justify-content:center;gap:14px}
+body[data-mode="mob"] .v2 .nav button{font-size:13.5px}
+body[data-mode="mob"] .ft-spec{grid-template-columns:70px minmax(0,1fr)}
+.pf3 .sec>h2::after{display:none!important}.pf3 .sec>h2{padding-bottom:0!important}
+.pf3 .p3-head{border-bottom:1px solid #e6e6e6!important}
+.pf3 .p3-body>.p3yt{border-left-color:#e6e6e6!important}
 </style>
 </head>
 <body data-mode="pc">
@@ -660,18 +672,18 @@ const CATS=[
 //    state: 'wip' 제작 중 / 'soon' 준비 중
 const T=['#111111','#262626','#1C1C1C','#2E2E2E','#161616','#222222'];   // 썸네일 없을 때 쓰는 임시 색
 const WORKS=[
-  {id:'ad1',cats:['ad'],title:'황태포 북어포 광고',en:'',time:'',yt:'c7c-Irp63t4',
+  {id:'ad1',skill:'기획 / 디자인 / 편집',cats:['ad'],title:'황태포 북어포 광고',en:'',time:'',yt:'c7c-Irp63t4',
    feature:{title:'황태포 북어포 광고',synopsis:['황태포와 북어포를 알리는 광고입니다. 황태의 입장에서 혹독하고 긴 시련을 거친 뒤에야 우리에게 오는 정성스러운 제품이라는 점을 보여 주는 것으로 영상의 의도를 잡았습니다.'],content:['내용을 구상한 뒤 스토리보드를 짜고, Google Flow를 활용해 영상을 만들었습니다. 황태 편 3개와 북어 편 3개를 제작해 Premiere Pro에서 편집했습니다.'],process:['내용을 구상하고 스토리보드를 만들었습니다.','Google Flow로 황태 편 3개, 북어 편 3개의 영상을 제작했습니다.','Premiere Pro에서 편집했습니다.'],tools:['Google Flow','Premiere Pro']}},
-  {id:'ad2',cats:['ad'],title:'부모님의 환갑을 기념하며',en:'',time:'',yt:'CBYNkkowSlM',
+  {id:'ad2',skill:'기획 / 디자인 / 편집 / 사운드',cats:['ad'],title:'부모님의 환갑을 기념하며',en:'',time:'',yt:'CBYNkkowSlM',
    feature:{title:'부모님의 환갑을 기념하며',synopsis:['상상스튜디오라는 가상의 AI 영상 제작 업체를 설정해 홈페이지를 만들고, 회사 포트폴리오 페이지에 올릴 영상을 한 사람당 4편씩 제작한 학원 팀 프로젝트의 작품입니다.','부모님의 환갑을 맞아 축하 자리에서 보여 줄 영상을 업체에 의뢰했다는 가상의 설정으로 만들었습니다.'],content:['스토리보드와 내레이션 원고는 ChatGPT와 의견을 주고받으며 다듬어 정리했습니다. Higgsfield의 GPT Image 2로 스토리보드 그리드를 만들고, 이를 바탕으로 Higgsfield의 Seedance 2.0으로 영상을 만들었습니다. 내레이션은 ElevenLabs로 제작했습니다.'],process:['ChatGPT와 의견을 주고받으며 스토리보드와 내레이션 원고를 정리했습니다.','GPT Image 2로 스토리보드 그리드를 만들었습니다.','Seedance 2.0으로 영상을 만들었습니다.','ElevenLabs로 내레이션을 만들었습니다.','Premiere Pro에서 컷 편집했습니다.'],tools:['ChatGPT','GPT Image 2','Higgsfield','Seedance 2.0','ElevenLabs','Premiere Pro']}},
-  {id:'ad3',cats:['ad'],title:'우리들의 구독',en:'',time:'',yt:'0KsKN15YoDM',
+  {id:'ad3',skill:'기획 / 디자인 / 편집 / 사운드',cats:['ad'],title:'우리들의 구독',en:'',time:'',yt:'0KsKN15YoDM',
    feature:{title:'우리들의 구독',synopsis:['상상스튜디오라는 가상의 AI 영상 제작 업체를 설정해 홈페이지를 만들고, 회사 포트폴리오 페이지에 올릴 영상을 한 사람당 4편씩 제작한 학원 팀 프로젝트의 작품입니다.','구독 서비스를 전문으로 하는 「우리들의 구독」이라는 가상 업체가 상상스튜디오에 광고를 의뢰했다는 설정으로 제작했습니다.'],content:['구독은 할부처럼 느껴지기도 하고, 매달 의무적으로 받아야 하는 느낌도 있습니다. 저는 구독이 선물이 될 수 있고, 가족 한 사람 한 사람에게 저마다 다른 의미가 있다는 점을 영상에 담고 싶었습니다.'],process:['ChatGPT로 프롬프트를 정리했습니다.','Gemini로 장면 이미지를 만들었습니다.','Google Flow로 영상을 만들었습니다.','ElevenLabs로 내레이션을 만들고, Pixabay에서 음악을 골랐습니다.','Premiere Pro에서 컷 편집했습니다.'],tools:['ChatGPT','Gemini','Google Flow','ElevenLabs','Pixabay','Premiere Pro']}},
-  {id:'ad4',cats:['ad'],title:'치즈 광고 3부작',en:'',time:'',yt:'hOen1WB81lI',
+  {id:'ad4',skill:'기획 / 디자인 / 편집',cats:['ad'],title:'치즈 광고 3부작',en:'',time:'',yt:'hOen1WB81lI',
    feature:{title:'치즈 광고 3부작',synopsis:['사람들이 노란 고양이를 「치즈냥이」라고 부르는 데서 출발해, 진짜 몸이 치즈로 된 고양이라면 어떨까 하는 상상으로 만든 3부작 광고입니다.'],content:['고양이는 귀여워서 무슨 짓을 해도 사랑받는 존재이기 때문에, 거대한 고양이가 도시를 부수며 장난치는 느낌으로 만들었습니다.','일반 치즈냥이, 냄새가 심한 고르곤졸라 치즈냥이, 매끄럽고 하얀 부라타 치즈냥이, 선탠한 것 같은 스모크 치즈냥이가 등장합니다.'],process:['Gemini로 장면 이미지를 만들었습니다.','Google Flow로 영상을 만들었습니다.','Premiere Pro에서 컷 편집했습니다.'],tools:['Gemini','Google Flow','Premiere Pro']}},
-  {id:'ad5',cats:['ad'],title:'새롭게 만나는 경주',en:'',time:'',yt:'-1pifLVP5Q4',
+  {id:'ad5',skill:'기획 / 디자인 / 편집 / 사운드',cats:['ad'],title:'새롭게 만나는 경주',en:'',time:'',yt:'-1pifLVP5Q4',
    feature:{title:'새롭게 만나는 경주',synopsis:['상상스튜디오라는 가상의 AI 영상 제작 업체를 설정해 홈페이지를 만들고, 회사 포트폴리오 페이지에 올릴 영상을 한 사람당 4편씩 제작한 학원 팀 프로젝트의 작품입니다.','경주 관광 광고를 의뢰받았다는 설정으로 제작했습니다.'],content:['경주는 수학여행으로 누구나 한 번쯤 가 보지만, 그 뒤로는 잘 찾지 않는 곳입니다. 이 점을 아이디어로 삼아, 젊은 사람들도 충분히 즐기고 쉴 수 있는 곳이 많다는 것을 보여 주고, 하루 더 머물고 싶은 경주의 이미지를 담았습니다.'],process:['ChatGPT로 프롬프트를 정리했습니다.','Gemini로 장면 이미지를 만들었습니다.','Google Flow로 영상을 만들었습니다.','Pixabay에서 음악을 골랐습니다.','Premiere Pro에서 편집했습니다.'],tools:['ChatGPT','Gemini','Google Flow','Pixabay','Premiere Pro']}},
   // 북트레일러 — ratio:'9:16' 을 넣으면 세로 영상 카드(두 줄 높이)로 들어가요. by: 책 지은이
-  {id:'bk1',cats:['book'],title:'바람이 분다, 가라',by:'한강',en:'BOOK 1',time:'3:34',tools:'ChatGPT · Google Flow · ElevenLabs · Claude Code · Premiere Pro',yt:'SOr_mlN4ipo',
+  {id:'bk1',skill:'기획 / 디자인 / 편집 / 사운드',cats:['book'],title:'바람이 분다, 가라',by:'한강',en:'BOOK 1',time:'3:34',tools:'ChatGPT · Google Flow · ElevenLabs · Claude Code · Premiere Pro',yt:'SOr_mlN4ipo',
    feature:{
      title:'「바람이 분다, 가라」 <span>한강</span>',
      synopsis:['한강 작가의 장편소설 『바람이 분다, 가라』를 소개하는 북트레일러입니다. 과거와 현재를 오가며 진실을 좇는 소설의 구조를 수묵 느낌의 애니메이션으로 담았습니다.'],
@@ -679,7 +691,7 @@ const WORKS=[
      process:['ChatGPT로 장면 이미지를 만들었습니다.','Google Flow로 이미지에 움직임을 입혔습니다.','ElevenLabs로 화자의 목소리를 더빙했습니다.','Claude Code로 마지막 책 소개 영상을 만들었습니다.','Premiere Pro로 전체 영상을 편집했습니다.'],
      content:['장면 이미지는 ChatGPT로 만들고, Google Flow로 이미지에 움직임을 입혔습니다. 화자의 목소리는 ElevenLabs로 더빙했고, 마지막 책 소개 영상은 Claude Code를 사용해 만들었습니다. 전체 영상은 Premiere Pro로 편집했습니다.',
               '가장 어려웠던 부분은 스토리보드 계획이었습니다. 영상 중간중간 과거 1·2와 현재 1·2를 오가는 구성이라, 시간대가 바뀌는 장면들이 자연스럽게 이어지도록 연결하는 데 많은 고민이 필요했습니다.']}},
-  {id:'bk2',cats:['book'],title:'아르테미스',by:'앤디 위어',en:'BOOK 2',time:'1:47',tools:'ChatGPT · Canva · Premiere Pro',ratio:'9:16',yt:'D7FgB9M5_n8',
+  {id:'bk2',skill:'기획 / 디자인 / 편집 / 사운드',cats:['book'],title:'아르테미스',by:'앤디 위어',en:'BOOK 2',time:'1:47',tools:'ChatGPT · Canva · Premiere Pro',ratio:'9:16',yt:'D7FgB9M5_n8',
    feature:{
      title:'「아르테미스」 <span>앤디 위어</span>',
      synopsis:['『프로젝트 헤일메리』의 작가 앤디 위어의 장편소설 『아르테미스』를 소개하는 북트레일러입니다. 달에 세워진 최초의 도시 아르테미스를 배경으로, 군더더기 없이 깔끔하고 재미있게 흘러가는 이야기가 좋아서 직접 만들어 보았습니다.'],
@@ -687,7 +699,7 @@ const WORKS=[
      content:['장면 이미지는 ChatGPT로 만들었고, 이 이미지를 Canva에 넣어 5초 길이의 영상 클립을 여러 개 생성했습니다. 생성한 클립을 Premiere Pro에서 컷 편집해 한 편의 예고편으로 완성했습니다.','내레이션은 제 목소리로 직접 녹음한 뒤 Premiere Pro에서 음성을 변조해 더빙했습니다.'],
      process:['ChatGPT로 장면 이미지를 만들었습니다.','Canva에서 이미지를 5초 영상 클립으로 생성했습니다.','Premiere Pro에서 클립을 컷 편집했습니다.','제 목소리로 녹음한 내레이션을 Premiere Pro에서 변조해 더빙했습니다.'],
      shot:'img/artemis-canva.jpg',shotCap:'Canva에서 작업한 아르테미스 이미지와 5초 클립들'}},
-  {id:'bk3',cats:['book'],title:'모순',by:'양귀자',en:'BOOK 3',time:'1:55',tools:'Google Flow · Premiere Pro · Pixabay',ratio:'9:16',yt:'hZVVFRppHfk',
+  {id:'bk3',skill:'기획 / 디자인 / 편집 / 사운드',cats:['book'],title:'모순',by:'양귀자',en:'BOOK 3',time:'1:55',tools:'Google Flow · Premiere Pro · Pixabay',ratio:'9:16',yt:'hZVVFRppHfk',
    feature:{
      title:'「모순」 <span>양귀자</span>',
      synopsis:['양귀자 작가의 장편소설 『모순』을 소개하는 북트레일러입니다. 같은 얼굴을 한 쌍둥이 자매가 전혀 다른 삶을 살아가는 이야기를 세로형 쇼츠로 담았습니다.'],
@@ -696,7 +708,7 @@ const WORKS=[
      content:['선화 느낌의 애니메이션으로, 인물에게 눈코입을 그리지 않는 연출을 선택했습니다. 표정 대신 장면과 문장으로 인물의 삶을 읽게 하고 싶었습니다.',
               '처음에는 Canva로 제작하려 했지만, 눈코입이 없는 인물을 만들고 싶어도 Canva에서는 계속 이목구비가 생겨 원하는 그림을 얻기가 무척 어려웠습니다.',
               '그래서 Google Flow로 도구를 바꿔 약 15개의 영상 클립을 생성하고, Premiere Pro에서 컷 편집해 한 편으로 이었습니다. 배경 음악은 Pixabay의 음원을 사용했습니다.','내레이션은 제 목소리로 직접 녹음한 뒤 Premiere Pro에서 음성을 변조해 더빙했습니다.']}},
-  {id:'bk4',cats:['book'],title:'프로젝트 헤일메리',by:'앤디 위어',en:'BOOK 4',time:'0:57',tools:'Gemini · Vrew · CapCut',yt:'tf5FNmodBmU',
+  {id:'bk4',skill:'기획 / 디자인 / 편집',cats:['book'],title:'프로젝트 헤일메리',by:'앤디 위어',en:'BOOK 4',time:'0:57',tools:'Gemini · Vrew · CapCut',yt:'tf5FNmodBmU',
    feature:{
      title:'「프로젝트 헤일메리」 <span>앤디 위어</span>',
      synopsis:['『마션』의 작가 앤디 위어의 장편소설 『프로젝트 헤일메리』를 소개하는 북트레일러입니다. 영화로도 제작된 작품으로, 이야기가 무척 재미있어 직접 예고편으로 만들어 보고 싶었습니다.',
@@ -705,7 +717,7 @@ const WORKS=[
      process:['Gemini로 장면 이미지를 만들었습니다.','영상 앞부분을 Vrew로 편집했습니다.','나머지 장면을 CapCut으로 편집했습니다.'],
      content:['학원 수업 중에 제작한 영상입니다. 장면 이미지는 Gemini로 만들었고, 영상의 앞부분은 Vrew로, 나머지는 CapCut으로 편집했습니다.',
               '가장 공을 들인 장면은 주인공이 돌처럼 생긴 외계인 로키를 처음 보고 깜짝 놀라는 순간입니다. 놀람의 타이밍과 움직임을 CapCut만으로 표현하느라 꽤 많이 고생했지만, 그만큼 기억에 남는 장면이 되었습니다.']}},
-  {id:'lint',cats:['ani'],
+  {id:'lint',skill:'기획 / 캐릭터 디자인 / 편집 / 사운드',cats:['ani'],
    feature:{
      title:'「린트」 <span>애니메이션</span>',
      synopsis:['3대가 살고 있는 3층집에는 사람 손가락만 한 존재들이 살고 있습니다. 먼지, 머리카락, 양말, 면봉, 단추와 동전. 사람이 흘리고 잊은 것들이 동물의 모습을 얻어 함께 살아갑니다.',
@@ -725,7 +737,7 @@ const WORKS=[
    story:'음치 파피가 열창하는 사이 페니가 뛰어다니다 노견을 깨우고, 헤어리는 인상을 쓰고 와비는 시큰둥, 토토는 해맑고 린트는 벌벌 떨어요. 린트 친구들의 성격이 한눈에 보이는 오프닝이에요.',
    intent:'직접 그린 일러스트 캐릭터 디자인을 바탕으로, AI 도구로 캐릭터의 생김새를 그대로 살린 오프닝을 만들었어요.',
    process:[['캐릭터 디자인','일러스트레이터로 그린 초기 캐릭터 디자인에서 시작했어요.'],['이미지','GPT Image 2로 캐릭터를 살린 장면 이미지를 만들었어요.'],['영상','힉스필드의 Seedance 2.5로 움직임을 입혔어요.'],['음악 · 편집','ElevenLabs Music으로 노래를 만들고 자막과 이름표를 넣어 완성했어요.']]},
-  {id:'lintchar',cats:['ani'],title:'린트 캐릭터 소개',en:'LINT CHARACTERS',time:'1:19',year:2026,tools:'Illustrator · After Effects',yt:'IlkGxsPnnGU',
+  {id:'lintchar',skill:'캐릭터 디자인 / 모션 / 편집',cats:['ani'],title:'린트 캐릭터 소개',en:'LINT CHARACTERS',time:'1:19',year:2026,tools:'Illustrator · After Effects',yt:'IlkGxsPnnGU',
    feature:{
      title:'「린트」 <span>캐릭터 소개</span>',
      synopsis:['침대 밑 먼지 세계에 사는 여섯 친구를 한 명씩 소개하는 영상입니다. 먼지 갈기 사자, 머리카락 캥거루, 양말 기린, 면봉 부엉이, 단추와 동전 아르마딜로 쌍둥이가 각자의 소재와 성격에 맞는 짧은 동작과 함께 등장합니다.',
@@ -741,7 +753,7 @@ const WORKS=[
      process:['일러스트레이터로 여섯 캐릭터를 그렸습니다.','After Effects로 등장 모션과 자막을 만들었습니다.','ElevenLabs Music으로 배경 음악을 만들었습니다.','Premiere Pro로 편집해 완성했습니다.'],
      content:['여섯 캐릭터가 차례로 등장해 각자의 소재와 성격을 보여 주고, 마지막에 모두 모여 침대 밑 세계를 소개합니다.',
               '일러스트레이터로 캐릭터를 직접 그리고, 애프터이펙트로 등장 모션과 자막을 더해 편집했습니다. 배경 음악은 오프닝과 같은 곡 「숨바꼭질 친구들」로, ElevenLabs Music으로 제작했습니다. 영상에서 AI를 활용한 부분은 이 음악뿐이며, 캐릭터 일러스트는 툰 연재의 기본 디자인으로 이어집니다.']}},
-  {id:'insta1',cats:['ani'],title:'사오정의 하루',en:'INSTAGRAM',time:'1:05',year:2026,yt:'',mp4:'video/ani-insta.mp4',poster:'img/ani-insta.jpg',tools:'ChatGPT · Canva · Premiere Pro',
+  {id:'insta1',skill:'기획 / 디자인 / 편집',cats:['ani'],title:'사오정의 하루',en:'INSTAGRAM',time:'1:05',year:2026,yt:'',mp4:'video/ani-insta.mp4',poster:'img/ani-insta.jpg',tools:'ChatGPT · Canva · Premiere Pro',
    feature:{
      title:'「사오정의 하루」 <span>애니메이션</span>',
      synopsis:['학원 수업과 자격증 공부를 함께 하던 시기, 필기시험 공부에 몰두하다 보니 매일 쓰던 프로그램 사용법이 머릿속에서 하나둘 사라지는 것 같았습니다. 그때의 불안한 마음을 담아 만든 짧은 애니메이션입니다.',
@@ -752,7 +764,7 @@ const WORKS=[
               '인스타그램에 올리기 위해 만든 영상으로, 시험 기간의 불안을 무겁지 않게 보여 주고 싶었습니다.'],
      process:['ChatGPT로 장면마다 첫 프레임 이미지를 만들었습니다.','이미지를 Canva에 넣어 5초 길이의 영상 클립을 여러 개 생성했습니다.','생성한 클립을 Premiere Pro에서 컷 편집해 한 편의 이야기로 이었습니다.'],
      shot:'img/insta-canva.jpg',shotCap:'Canva에서 생성한 5초 클립들'}},
-  {id:'course',cats:['school'],title:'학원 수업 과정 (760시간 타임라인)',en:'CLASS COURSE',time:'2:28',year:2026,yt:'',mp4:'video/class-course.mp4',poster:'img/class-course.jpg',
+  {id:'course',skill:'기획 / 편집',cats:['school'],title:'학원 수업 과정 (760시간 타임라인)',en:'CLASS COURSE',time:'2:28',year:2026,yt:'',mp4:'video/class-course.mp4',poster:'img/class-course.jpg',
    feature:{title:'학원 수업 과정 <span>760시간</span>',
      synopsis:['학원에서 보낸 95일, 760시간 동안 만든 작업을 차례대로 담은 타임라인 영상입니다. 영상은 Claude Code로 제작했습니다.'],
      content:['학원에 오기 전의 저는 간판집에서 일러스트레이터를 그림판처럼 쓰던 것이 전부였습니다. 이 영상은 그런 제가 처음 제대로 배우기 시작한 순간부터 시작합니다.',
@@ -760,12 +772,12 @@ const WORKS=[
               '한때 돌아섰던 영상 제작의 길을 다시 찾아 걸은 시간이었습니다. 저에게는 큰 도전이었던 95일이었습니다.'],
      process:['95일 동안 만든 작업물을 날짜순으로 모았습니다.','Claude Code로 타임라인 화면을 구성하고 영상으로 만들었습니다.'],
      tools:['Claude Code']}},
-  {id:'sangsang',group:'team',teamNo:2,cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'팀',yt:'',
+  {id:'sangsang',group:'team',teamNo:2,cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'팀 프로젝트',yt:'',
    site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png',   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    story:'AI 영상 제작 스튜디오 「상상」의 홈페이지입니다. 화면을 누르면 홈페이지를 직접 스크롤하고 눌러 볼 수 있습니다.',
    feature:{more:[['팀 협업',`<ul class="ft-team"><li><b>노션</b><a href="https://app.notion.com/p/3ff93a4ee7a581eeafbaf8f34d0e239b?source=copy_link" target="_blank" rel="noopener">노션 바로가기 ↗</a></li><li><b>깃허브</b><a href="https://github.com/kimsoyeon-saovia/ksy999" target="_blank" rel="noopener">깃허브 바로가기 ↗</a></li></ul>`]]}},
   {id:'present',group:'team',teamNo:2,cats:['school'],title:'STUDIO 상상 최종 발표 영상',en:'PRESENTATION',time:'',year:2026,yt:'f8bngEEk3xY'},
-  {id:'knight',group:'team',teamNo:1,cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,team:'4인 팀',yt:'jhCq0QwulHA',
+  {id:'knight',skill:'캐릭터 디자인 / 리깅 / 애니메이션',group:'team',teamNo:1,cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,team:'4인 팀',yt:'jhCq0QwulHA',
    feature:{
      title:'「흑기사의 직장생활」 <span>퇴사와 할부 사이</span>',
      synopsis:['정규직 전환을 꿈꾸던 계약직 신입사원 흑기사가 야근과 부당한 대우를 견디지만, 프로젝트 성과를 빼앗기고 남의 실수까지 떠안은 끝에 생계 때문에 다시 계약직으로 남는 오피스 블랙코미디입니다.',
@@ -785,12 +797,12 @@ const WORKS=[
      more:[['어려웠던 점',`<p class="ft-body">2~3등신의 짧은 팔다리 때문에 리깅이 부자연스러워, 초안보다 팔다리를 조금 늘려 다시 그렸습니다. 두꺼운 검은 외곽선이 관절에서 겹쳐 보이는 문제도 있었지만, 제작 기간이 부족해 끝내 해결하지 못했습니다. 시간이 조금 더 있었다면 더 자연스럽게 다듬을 수 있었을 것 같아 아쉬움이 남습니다.</p>`],
            ['팀 협업',`<ul class="ft-team"><li><b>노션</b>회의록, 일정, 작업 현황 정리 · <a href="https://app.notion.com/p/3ff93a4ee7a5813c9405da9e15df7880?source=copy_link" target="_blank" rel="noopener">노션 바로가기 ↗</a></li><li><b>깃허브</b>코드와 문서 버전 관리</li><li><b>네이버 마이박스</b>작업 파일 공유와 버전 관리</li></ul>`]],
      scenes:['오프닝 (3D)','면접','합격 문자','합격의 기쁨','첫 출근','퇴근 5분 전','쌓인 서류','약속 취소 카카오톡','명절 선물 차별','스팸 세트의 분노','빼앗긴 아이디어','바뀐 작성자','타오르는 분노','잘못된 발주','떠넘겨진 책임','시말서','버스 정류장','퇴근 버스','카드대금 문자','재계약','근로계약서 서명','쿠키 영상 (3D)']}},
-  {id:'palace',cats:['school'],title:'멀티미디어콘텐츠제작전문가 실기 대비',en:'PALACE',time:'0:29',year:2026,yt:'',mp4:'video/palace.mp4',poster:'img/palace.jpg',
+  {id:'palace',skill:'디자인 / 효과',cats:['school'],title:'멀티미디어콘텐츠제작전문가 실기 대비',en:'PALACE',time:'0:29',year:2026,yt:'',mp4:'video/palace.mp4',poster:'img/palace.jpg',
    feature:{title:'멀티미디어콘텐츠제작전문가 <span>실기 대비 「궁궐」</span>',
      synopsis:['멀티미디어콘텐츠제작전문가 실기 시험을 준비하며, 학원 애프터이펙트 강의 시간에 만든 영상입니다.'],
      process:['포토샵으로 이미지 색을 보정하고 필요한 부분을 잘라 냈습니다.','애프터이펙트에서 모션그래픽을 넣어 완성했습니다.'],
      tools:['포토샵','애프터이펙트']}},
-  {id:'americano',cats:['school'],title:'아메리카노',en:'AMERICANO',time:'0:10',year:2026,ratio:'9:16',yt:'',mp4:'video/americano.mp4',poster:'img/americano.jpg',
+  {id:'americano',skill:'디자인 / 효과',cats:['school'],title:'아메리카노',en:'AMERICANO',time:'0:10',year:2026,ratio:'9:16',yt:'',mp4:'video/americano.mp4',poster:'img/americano.jpg',
    feature:{title:'아메리카노 <span>모션그래픽 과제</span>',
      synopsis:['학원 애프터이펙트 강의 시간에 만든 모션그래픽 과제입니다.'],
      process:['일러스트레이터로 커피잔을 그렸습니다.','애프터이펙트에서 모션그래픽을 넣었습니다.'],
@@ -881,7 +893,7 @@ function buildApp(root,opt){
     const sec=(h,body)=>body?`<section class="ft-sec"><h3>${h}</h3>${body}</section>`:'';
     const ps=a=>(a||[]).map(t=>`<p class="ft-body">${t}</p>`).join('');
     const KO={"Illustrator": "일러스트레이터", "After Effects": "애프터이펙트", "Premiere Pro": "프리미어 프로", "Photoshop": "포토샵", "ChatGPT": "챗GPT", "Canva": "캔바", "Google Flow": "구글 플로우", "ElevenLabs": "일레븐랩스", "ElevenLabs Music": "일레븐 뮤직", "Claude Code": "클로드 코드", "Gemini": "제미나이", "Vrew": "브루", "CapCut": "캡컷", "Higgsfield": "힉스필드", "Seedance 2.5": "시댄스 2.5", "Seedance 2.0": "시댄스 2.0", "GPT Image 2": "GPT 이미지 2", "Pixabay": "픽사베이", "Codex": "코덱스", "Duik Angela": "듀이크 앤젤라", "Notion": "노션", "GitHub": "깃허브", "Naver MYBOX": "네이버 마이박스"};
-    const toolbox=tools.length?`<div class="ft-toolbox"><h4>사용 툴</h4><ul>${tools.map(t=>`<li>${KO[t.trim()]||t}</li>`).join('')}</ul></div>`:'';
+    const toolbox=(tools.length||w.skill)?`<dl class="ft-spec">${tools.length?`<dt>프로그램</dt><dd>${tools.map(t=>KO[t.trim()]||t).join(' / ')}</dd>`:''}${w.skill?`<dt>기술부분</dt><dd>${w.skill}</dd>`:''}${w.team?`<dt>참여</dt><dd>${w.team}</dd>`:''}</dl>`:'';
     const steps=F.process?`<ol class="ft-steps">${F.process.map(t=>`<li>${t}</li>`).join('')}</ol>${F.shot?`<figure class="ft-shot"><img src="${F.shot}" alt="${F.shotCap}" loading="lazy"><figcaption>${F.shotCap}</figcaption></figure>`:''}`:'';
     const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
     const play=`<button class="ft-play ${tall(w)?'tall':''} ${w.mp4?'sq':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>`;
