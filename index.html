@@ -542,41 +542,36 @@ body[data-mode="mob"] .ft-head .ft-title{font-size:26px;white-space:normal}
 body[data-mode="mob"] .pf3 .sk li{grid-template-columns:1fr;gap:6px}
 
 
-/* ===== 연습장 콘셉트: 큰 상자 = 스프링 연습장, 메뉴 = 오른쪽에 붙인 테이프 인덱스 ===== */
+/* ===== 붓 테두리 상자 + 붓 느낌 스프링 + 오른쪽 마스킹테이프 메뉴 + 위로 버튼 ===== */
 .ft-page,.pf3 .bx{position:relative}
-.ft-page::before,.pf3 .bx::before{content:"";position:absolute;left:-30px;top:34px;bottom:34px;width:64px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2764%27%20height%3D%2740%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23777%27/%3E%3Cstop%20offset%3D%27.4%27%20stop-color%3D%27%231a1a1a%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23050505%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2724%27%20r%3D%274.5%27%20fill%3D%27%23cfcfcf%27%20stroke%3D%27%23888%27%20stroke-width%3D%27.8%27/%3E%3Cpath%20d%3D%27M50%2022%20C46%2010%2030%207%2016%209%20C6%2011%203%2019%207%2026%20C10%2031%2018%2032%2026%2031%27%20fill%3D%27none%27%20stroke%3D%27url%28%23g%29%27%20stroke-width%3D%276.5%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M44%2014%20C36%2010%2024%2010%2016%2012%27%20fill%3D%27none%27%20stroke%3D%27%23bbb%27%20stroke-width%3D%271.5%27%20stroke-linecap%3D%27round%27%20opacity%3D%27.75%27/%3E%3C/svg%3E") 0 0/64px 40px repeat-y;z-index:2;pointer-events:none;filter:drop-shadow(1px 2px 1px rgba(0,0,0,.25))}
-.v2 .top{position:sticky!important;top:0;z-index:40;background:#fff;padding:0!important;margin:0!important}
-.v2 .nav{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(8px,1vw,16px);max-width:calc(1560px + 48px);margin:0 auto;padding:18px calc(24px + clamp(16px,2.6vw,48px)) 0;background:#fff}
-.v2 .nav::after{content:"";position:absolute;left:calc(24px + clamp(16px,2.6vw,48px));right:calc(24px + clamp(16px,2.6vw,48px));bottom:-16px;height:26px;background:#fff;border-bottom:3px solid #111;z-index:2;pointer-events:none;
-  -webkit-mask:none;border-image:url("img/brush/frame.png") 28 / 0 0 9px 0 / 0 stretch;border-style:solid;border-width:0 0 9px 0}
-.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;z-index:1;padding:12px clamp(16px,2vw,30px) 30px;margin-bottom:-16px;background:var(--tc);opacity:.85;
-  clip-path:polygon(0 4%,3% 0,7% 5%,11% 1%,16% 4%,22% 0,28% 3%,35% 0,42% 4%,50% 1%,58% 4%,65% 0,72% 3%,79% 0,85% 4%,91% 1%,96% 4%,100% 0,98% 50%,100% 100%,0 100%,2% 50%);transform:rotate(-1deg);transition:transform .15s}
-.v2 .nav button:nth-child(even){transform:rotate(1.2deg)}
-.v2 .nav button::before,.v2 .nav button::after{display:none}
-.v2 .nav button>span{display:inline-block;transform:scaleX(.82);font-size:clamp(17px,1.4vw,22px);font-weight:700;color:#222;letter-spacing:0}
-.v2 .nav button[aria-current="true"]{z-index:3;opacity:1;background:var(--tc);color:#111;transform:rotate(0) translateY(-4px);padding-bottom:30px;margin-bottom:-26px;box-shadow:none}
-.v2 .nav button:hover{transform:translateY(-3px)}
-body[data-mode="mob"] .ft-page::before,body[data-mode="mob"] .pf3 .bx::before{left:-18px;width:40px;background-size:40px 21px}
-.fts .ft-page:first-child,.pf3>.bx{margin-top:-30px}
-
-/* ===== 연습장 (예시 이미지 기준): 보라 배경 · 미색 종이 · 검은 스프링 · 파스텔 마스킹테이프 ===== */
-html,body,#app,.v2,.v2 .main,.v2 .top{background:#ebe8f4!important}
-.ft-grid,.pf3 .bx{border:0!important;border-image:none!important;background:#fbfaf7!important;border-radius:10px;
-  box-shadow:0 1px 0 #e4e1ea,3px 4px 0 -1px #f4f2f6,3px 4px 0 0 #dcd8e3,6px 8px 0 -1px #f1eff4,6px 8px 0 0 #d6d2de,10px 16px 28px rgba(60,50,90,.16)}
-.ft-page::before,.pf3 .bx::before{left:-46px!important;top:30px!important;bottom:30px!important;width:90px!important;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2790%27%20height%3D%2762%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%238a8a8a%27/%3E%3Cstop%20offset%3D%27.3%27%20stop-color%3D%27%232a2a2a%27/%3E%3Cstop%20offset%3D%27.75%27%20stop-color%3D%27%230a0a0a%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23444%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cellipse%20cx%3D%2772%27%20cy%3D%2731%27%20rx%3D%277%27%20ry%3D%276%27%20fill%3D%27%23cfcbd8%27/%3E%3Cellipse%20cx%3D%2772%27%20cy%3D%2732%27%20rx%3D%274.5%27%20ry%3D%273.6%27%20fill%3D%27%236d6a74%27/%3E%3Cpath%20d%3D%27M72%2028%20C64%2016%2036%2014%2018%2017%20C6%2019%204%2027%208%2034%20C12%2040%2026%2042%2040%2041%27%20fill%3D%27none%27%20stroke%3D%27url%28%23g%29%27%20stroke-width%3D%279%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M62%2021%20C50%2016%2032%2016%2018%2019%27%20fill%3D%27none%27%20stroke%3D%27%23d0d0d0%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20opacity%3D%27.7%27/%3E%3C/svg%3E") 0 0/90px 62px repeat-y!important;filter:drop-shadow(1px 2px 1.5px rgba(0,0,0,.3))!important}
-.fts{padding-left:clamp(56px,4.4vw,80px)!important}
-.pf3{padding-left:clamp(56px,4.4vw,80px)!important}
-.ft-page+.ft-page{margin-top:clamp(64px,8vh,110px)}
-/* 탭: 반투명 마스킹테이프, 연습장 윗면에 붙임 */
-.v2 .nav{background:transparent!important;padding-top:14px!important}
-.v2 .nav::after{left:calc(24px + clamp(56px,4.4vw,80px))!important;background:#fbfaf7!important;border:0!important;border-image:none!important;border-radius:10px 10px 0 0;height:22px!important;bottom:-20px!important;box-shadow:0 -1px 0 #e4e1ea}
-.v2 .nav button{opacity:.78!important;mix-blend-mode:multiply;padding:12px clamp(20px,2.4vw,40px) 30px!important;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.v2 .nav button>span{transform:none!important;font-weight:700;color:#333;font-size:clamp(17px,1.4vw,22px)}
-.v2 .nav button[aria-current="true"]{opacity:1!important;filter:saturate(1.5)}
-.v2 .nav button[aria-current="true"]>span{color:#4b2a8a}
-.fts .ft-page:first-child,.pf3>.bx{margin-top:-24px!important}
-body[data-mode="mob"] .fts,body[data-mode="mob"] .pf3{padding-left:34px!important}
-body[data-mode="mob"] .ft-page::before,body[data-mode="mob"] .pf3 .bx::before{left:-30px!important;width:60px!important;background-size:60px 41px!important}
+.ft-page::before,.pf3 .bx::before{content:"";position:absolute;left:-38px;top:36px;bottom:36px;width:70px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2770%27%20height%3D%2746%27%3E%3Cfilter%20id%3D%27r%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.9%27%20numOctaves%3D%272%27%20seed%3D%273%27/%3E%3CfeDisplacementMap%20in%3D%27SourceGraphic%27%20scale%3D%272.6%27/%3E%3C/filter%3E%3Cg%20filter%3D%27url%28%23r%29%27%3E%3Ccircle%20cx%3D%2754%27%20cy%3D%2725%27%20r%3D%274.2%27%20fill%3D%27%23111%27/%3E%3Cpath%20d%3D%27M54%2022%20C47%2011%2026%209%2013%2012%20C4%2014%203%2022%207%2028%20C10%2033%2020%2034%2030%2033%27%20fill%3D%27none%27%20stroke%3D%27%23111%27%20stroke-width%3D%275.5%27%20stroke-linecap%3D%27round%27/%3E%3Cpath%20d%3D%27M50%2018%20C42%2013%2028%2012%2017%2014%27%20fill%3D%27none%27%20stroke%3D%27%23111%27%20stroke-width%3D%271.6%27%20stroke-linecap%3D%27round%27%20opacity%3D%27.55%27/%3E%3C/g%3E%3C/svg%3E") 0 0/70px 46px repeat-y;z-index:2;pointer-events:none}
+.fts,.pf3{padding-left:clamp(52px,4vw,72px);padding-right:clamp(76px,5.5vw,100px)}
+.v2 .main{padding-top:clamp(36px,6vh,72px)}
+/* 메뉴: 오른쪽, 상자 옆면에 붙인 테이프 (세로 글씨) */
+.v2 .top{position:static;padding:0;height:0;overflow:visible}
+.v2 .nav{position:fixed;z-index:40;top:clamp(120px,16vh,170px);right:clamp(30px,2.6vw,48px);display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:none;padding:0;max-width:none;margin:0}
+.v2 .nav::after{display:none}
+.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;width:80px;padding:12px 0 12px 30px;display:flex;justify-content:center;background:var(--tc);opacity:.85;
+  clip-path:polygon(0 0,100% 0,100% 6%,96% 12%,100% 20%,96% 30%,100% 40%,96% 50%,100% 60%,96% 70%,100% 80%,96% 90%,100% 100%,0 100%);transition:transform .15s}
+.v2 .nav button::before{content:"";position:absolute;left:0;top:0;bottom:0;width:30px;background:rgba(255,255,255,.45)}
+.v2 .nav button>span{writing-mode:vertical-rl;transform:none;font-size:15px;font-weight:700;letter-spacing:.02em;color:#222;line-height:1}
+.v2 .nav button[aria-current="true"]{opacity:1;transform:translateX(14px)}
+.v2 .nav button:hover{transform:translateX(8px)}
+.v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:2px}
+/* 위로 버튼 */
+#toTop{position:fixed;right:24px;bottom:28px;z-index:60;width:54px;height:54px;border-radius:50%;border:2.5px solid #111;background:#fff;color:#111;display:grid;place-items:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s,transform .15s}
+#toTop.on{opacity:1;pointer-events:auto}
+#toTop:hover{transform:translateY(-3px)}
+#toTop svg{width:22px;height:22px}
+/* 휴대폰 */
+body[data-mode="mob"] .v2 .top{height:auto}
+body[data-mode="mob"] .v2 .nav{position:static;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:6px;padding:12px 8px}
+body[data-mode="mob"] .v2 .nav button{width:auto;padding:10px 12px;clip-path:none}
+body[data-mode="mob"] .v2 .nav button::before{display:none}
+body[data-mode="mob"] .v2 .nav button>span{writing-mode:horizontal-tb;font-size:13.5px}
+body[data-mode="mob"] .v2 .nav button[aria-current="true"]{transform:translateY(-3px)}
+body[data-mode="mob"] .fts,body[data-mode="mob"] .pf3{padding-left:32px}
+body[data-mode="mob"] .ft-page::before,body[data-mode="mob"] .pf3 .bx::before{left:-26px;width:48px;background-size:48px 32px}
 </style>
 </head>
 <body data-mode="pc">
@@ -596,6 +591,7 @@ body[data-mode="mob"] .ft-page::before,body[data-mode="mob"] .pf3 .bx::before{le
 
 <!-- 보기 화면: PC 보기는 화면 가득, 모바일 보기는 휴대폰 폭 -->
 <div id="stage"><div class="app" id="app"></div></div>
+<button id="toTop" aria-label="맨 위로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <button id="backMob" onclick="setMode('mob')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>모바일 보기로 돌아가기</button>
 
 <!-- 연락 문의 창 -->
@@ -1029,6 +1025,9 @@ function showOpening(){document.body.setAttribute('data-open','');stageEl.inert=
 function enter(m){setMode(m);document.body.removeAttribute('data-open');stageEl.inert=false}
 
 setMode(isPhone?'mob':'pc');
+(function(){const b=document.getElementById('toTop');const sc=()=>document.querySelector('.v2 .main');
+  document.addEventListener('scroll',e=>{const m=sc();if(m&&e.target===m)b.classList.toggle('on',m.scrollTop>400)},true);
+  b.onclick=()=>{const m=sc();if(m)m.scrollTo({top:0,behavior:'smooth'})}})();
 const HC=location.hash.slice(1), hasHC=CATS.some(c=>c.id===HC);   // 주소 끝 #book 등 → 그 분류로 바로 열기 (새로고침해도 그대로)
 buildApp(appEl,{live:true,cat:hasHC?HC:CATS.some(c=>c.id===Q.get('cat'))?Q.get('cat'):'intro'});
 if(['mob','pc'].includes(Q.get('mode')))enter(Q.get('mode')); else if(hasHC)enter(isPhone?'mob':'pc'); else showOpening();
