@@ -806,10 +806,20 @@ const WORKS=[
               '한때 돌아섰던 영상 제작의 길을 다시 찾아 걸은 시간이었습니다. 저에게는 큰 도전이었던 95일이었습니다.'],
      process:['95일 동안 만든 작업물을 날짜순으로 모았습니다.','Claude Code로 타임라인 화면을 구성하고 영상으로 만들었습니다.'],
      tools:['Claude Code']}},
-  {id:'sangsang',group:'team',teamNo:2,cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'팀 프로젝트',yt:'',
+  {id:'sangsang',skill:'웹 기획 / 웹 디자인 / 퍼블리싱 / GitHub 관리',group:'team',teamNo:2,cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'4인 팀 프로젝트 · 1인 1페이지 (2026.10.13 ~ 10.22)',yt:'',
    site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png',   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
-   story:'AI 영상 제작 스튜디오 「상상」의 홈페이지입니다. 화면을 누르면 홈페이지를 직접 스크롤하고 눌러 볼 수 있습니다.',
-   feature:{more:[['팀 협업',`<ul class="ft-team"><li><b>노션</b><a href="https://app.notion.com/p/3ff93a4ee7a581eeafbaf8f34d0e239b?source=copy_link" target="_blank" rel="noopener">노션 바로가기 ↗</a></li><li><b>깃허브</b><a href="https://github.com/kimsoyeon-saovia/ksy999" target="_blank" rel="noopener">깃허브 바로가기 ↗</a></li></ul>`]]}},
+   feature:{
+     synopsis:['가상의 AI 영상 제작사 「STUDIO 상상」의 홈페이지입니다. 회사 소개, 제작 방식, 포트폴리오, 제작 문의까지 실제 영상 제작사 홈페이지처럼 구성했습니다.','화면을 누르면 홈페이지를 직접 스크롤하고 눌러 볼 수 있습니다.'],
+     content:['저는 영상 제작을 의뢰하는 고객이 실제로 만나는 CONTACT(견적·상담) 페이지를 맡았습니다. 개인과 기업 문의를 버튼 하나로 바꿀 수 있게 하고, 상품을 고르면 견적이 자동으로 계산되도록 만들었습니다.',
+              '기업 상품 카드에서는 샘플 영상을 바로 재생해 볼 수 있게 했고, 상품 이름이 한 글자씩 올라오는 효과와 테두리가 빛나는 이벤트 배너처럼 영상 제작사다운 움직임을 더했습니다.',
+              '팀 페이지를 하나로 합친 뒤에는 회원가입부터 장바구니, 주문까지 이어지는 흐름을 추가했고, 회원 정보가 어느 기기에서든 그대로 유지되도록 데이터를 Firebase로 옮겼습니다.'],
+     process:['팀이 함께 디자인 기준을 정했습니다. 서울알림체, 흰 바탕에 검은 글자, 포인트 컬러는 라임(#E0FF4F)과 파랑(#1647FF)입니다.',
+              '각자 브랜치에서 페이지를 만들고 Pull Request로 서로 확인한 뒤 합쳤습니다. 저는 GitHub 관리를 맡았습니다.',
+              '노션으로 할 일 보드, 회의록, 프롬프트 기록, 일정표를 정리했습니다.',
+              'Codex와 Claude Code로 코드를 작성하고 GitHub Pages로 배포했습니다.',
+              '휴대폰에서도 장면 단위로 부드럽게 넘어가도록 모바일 화면을 다듬었습니다.'],
+     tools:['HTML','CSS','JavaScript','Codex','Claude Code','GitHub','Notion','Firebase'],
+     more:[['팀 협업',`<ul class="ft-team"><li><b>노션</b><a href="https://app.notion.com/p/3ff93a4ee7a581eeafbaf8f34d0e239b?source=copy_link" target="_blank" rel="noopener">노션 바로가기 ↗</a></li><li><b>깃허브</b><a href="https://github.com/kimsoyeon-saovia/ksy999" target="_blank" rel="noopener">깃허브 바로가기 ↗</a></li></ul>`]]}},
   {id:'present',group:'team',teamNo:2,cats:['school'],title:'STUDIO 상상 최종 발표 영상',en:'PRESENTATION',time:'',year:2026,yt:'f8bngEEk3xY'},
   {id:'knight',skill:'캐릭터 디자인 / 리깅 / 애니메이션',group:'team',teamNo:1,cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,team:'4인 팀',yt:'jhCq0QwulHA',
    feature:{
@@ -870,7 +880,7 @@ const ytFrame=(id,q,title)=>`<iframe src="https://www.youtube.com/embed/${id}?${
 const spans=a=>a.filter(Boolean).map(x=>`<span>${x}</span>`).join('');
 const metaOf=w=>spans([w.by,w.year,w.team]);   // 제목 아래 왼쪽: 지은이 · 연도 · 팀
 const timeOf=w=>w.state==='soon'?'<span class="time wait">준비 중</span>':w.time?`<span class="time num">${w.time}</span>`:'';   // 오른쪽: 재생 시간
-const BADGE={"포토샵": ["Ps", "#001e36", "#31a8ff"], "일러스트레이터": ["Ai", "#330000", "#ff9a00"], "애프터이펙트": ["Ae", "#00005b", "#9999ff"], "프리미어 프로": ["Pr", "#00005b", "#9999ff"], "인디자인": ["Id", "#49021f", "#ff3366"], "캡컷": ["Cc", "#111", "#fff"], "브루": ["Vr", "#3b3bf0", "#fff"], "챗GPT": ["GPT", "#0f0f0f", "#fff"], "GPT 이미지 2": ["Img", "#0f0f0f", "#fff"], "구글 플로우": ["Fl", "#1a73e8", "#fff"], "제미나이": ["Gm", "#4f6ef7", "#fff"], "일레븐랩스": ["11", "#111", "#fff"], "일레븐 뮤직": ["11♪", "#111", "#fff"], "힉스필드": ["Hf", "#c6ff3d", "#111"], "시댄스 2.5": ["Sd", "#7b2ff7", "#fff"], "시댄스 2.0": ["Sd", "#7b2ff7", "#fff"], "클로드 코드": ["CC", "#d97757", "#fff"], "클로드": ["Cl", "#d97757", "#fff"], "코덱스": ["Cx", "#111", "#fff"], "캔바": ["Cv", "#00c4cc", "#fff"], "픽사베이": ["Px", "#2ec66d", "#fff"], "듀이크 앤젤라": ["Du", "#2b2b2b", "#ffcc00"], "노션": ["N", "#fff", "#111"], "깃허브": ["Gh", "#24292f", "#fff"], "네이버 마이박스": ["MB", "#03c75a", "#fff"]};
+const BADGE={"포토샵": ["Ps", "#001e36", "#31a8ff"], "일러스트레이터": ["Ai", "#330000", "#ff9a00"], "애프터이펙트": ["Ae", "#00005b", "#9999ff"], "프리미어 프로": ["Pr", "#00005b", "#9999ff"], "인디자인": ["Id", "#49021f", "#ff3366"], "캡컷": ["Cc", "#111", "#fff"], "브루": ["Vr", "#3b3bf0", "#fff"], "챗GPT": ["GPT", "#0f0f0f", "#fff"], "GPT 이미지 2": ["Img", "#0f0f0f", "#fff"], "구글 플로우": ["Fl", "#1a73e8", "#fff"], "제미나이": ["Gm", "#4f6ef7", "#fff"], "일레븐랩스": ["11", "#111", "#fff"], "일레븐 뮤직": ["11♪", "#111", "#fff"], "힉스필드": ["Hf", "#c6ff3d", "#111"], "시댄스 2.5": ["Sd", "#7b2ff7", "#fff"], "시댄스 2.0": ["Sd", "#7b2ff7", "#fff"], "클로드 코드": ["CC", "#d97757", "#fff"], "클로드": ["Cl", "#d97757", "#fff"], "코덱스": ["Cx", "#111", "#fff"], "캔바": ["Cv", "#00c4cc", "#fff"], "픽사베이": ["Px", "#2ec66d", "#fff"], "듀이크 앤젤라": ["Du", "#2b2b2b", "#ffcc00"], "노션": ["N", "#fff", "#111"], "깃허브": ["Gh", "#24292f", "#fff"], "네이버 마이박스": ["MB", "#03c75a", "#fff"], "HTML": ["H5", "#e34c26", "#fff"], "CSS": ["C3", "#2965f1", "#fff"], "JavaScript": ["JS", "#f7df1e", "#111"], "Firebase": ["Fb", "#ffca28", "#111"]};
 const tbadge=(n,big)=>{const b=BADGE[n]||[n.slice(0,2),'#222','#fff'];return `<span class="tb ${big?'big':''}" style="--bg:${b[1]};--fg:${b[2]}" aria-hidden="true">${b[0]}</span>`};
 const tall=w=>w.ratio==='9:16';   // 세로 영상(쇼츠)
 const badge=w=>w.state==='wip'?'<span class="bdg">제작 중</span>':w.state==='soon'?'<span class="bdg">준비 중</span>':'';
