@@ -752,6 +752,16 @@ body[data-mode="mob"] .end-info{padding:28px 16px}
 .mono-end .end-vid{width:min(30vw,520px)}
 body[data-mode="mob"] .mono-end .end-vid{width:100%}
 .p3-about3 h2.cv-h2{margin:40px 0 18px!important}
+
+.p3-about3 .p3-sec{background:none!important;padding:0!important}
+.end-info{padding-left:clamp(20px,2.4vw,40px)!important}
+.ft-gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:36px}
+.ft-gal .gl-k{grid-column:1/-1;margin:14px 0 2px;font-size:14px;font-weight:700}
+.ft-gal .gl-k:first-child{margin-top:0}
+.ft-gal img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block;transition:transform .2s}
+.ft-gal img:hover{transform:scale(1.04)}
+.ft-grid .ft-extra{max-width:none;margin-top:36px}
+body[data-mode="mob"] .ft-gal{grid-template-columns:1fr 1fr}
 </style>
 </head>
 <body data-mode="pc">
@@ -933,7 +943,7 @@ const WORKS=[
      process:['ChatGPT로 장면마다 첫 프레임 이미지를 만들었습니다.','이미지를 Canva에 넣어 5초 길이의 영상 클립을 여러 개 생성했습니다.','생성한 클립을 Premiere Pro에서 컷 편집해 한 편의 이야기로 이었습니다.'],
      shot:'img/insta-canva.jpg',shotCap:'Canva에서 생성한 5초 클립들'}},
   {id:'course',skill:'기획 / 편집',cats:['school'],title:'학원 수업 과정 (760시간 타임라인)',en:'CLASS COURSE',time:'2:28',year:2026,yt:'',mp4:'video/class-course.mp4',poster:'img/class-course.jpg',
-   feature:{title:'학원 수업 과정 <span>760시간</span>',
+   feature:{title:'학원 수업 과정을 영상으로 <span>760시간</span>',
      synopsis:['학원에서 보낸 95일, 760시간 동안 만든 작업을 차례대로 담은 타임라인 영상입니다. 영상은 Claude Code로 제작했습니다.'],
      content:['학원에 오기 전의 저는 간판집에서 일러스트레이터를 그림판처럼 쓰던 것이 전부였습니다. 이 영상은 그런 제가 처음 제대로 배우기 시작한 순간부터 시작합니다.',
               '수업을 들으며 포토샵과 일러스트레이터, 프리미어 프로와 애프터이펙트, 그리고 여러 AI 영상 툴을 하나씩 익혔습니다. 매주 결과물을 만들며 조금씩 성장했고, 자격증 시험까지 준비했습니다.',
@@ -941,7 +951,7 @@ const WORKS=[
      process:['95일 동안 만든 작업물을 날짜순으로 모았습니다.','Claude Code로 타임라인 화면을 구성하고 영상으로 만들었습니다.'],
      tools:['Claude Code']}},
   {id:'sangsang',skill:'웹 기획 / 웹 디자인 / 퍼블리싱 / GitHub 관리',group:'team',teamNo:2,cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'4인 팀 프로젝트 · 1인 1페이지 (2026.10.13 ~ 10.22)',yt:'',
-   site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png',   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
+   site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png', gallery:[['main-1','ABOUT US'],['main-2','ABOUT US'],['main-3','ABOUT US'],['main-4','ABOUT US'],['main-5','ABOUT US'],['main-6','ABOUT US'],['aivideo-1','AI VIDEO'],['aivideo-2','AI VIDEO'],['aivideo-3','AI VIDEO'],['aivideo-4','AI VIDEO'],['aivideo-5','AI VIDEO'],['aivideo-6','AI VIDEO'],['portfolio-1','PORTFOLIO'],['portfolio-2','PORTFOLIO'],['portfolio-3','PORTFOLIO'],['portfolio-4','PORTFOLIO'],['contact-1','CONTACT'],['contact-2','CONTACT'],['contact-3','CONTACT'],['contact-4','CONTACT'],['member-1','MEMBER'],['cart-1','CART']],   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    feature:{
      synopsis:['가상의 AI 영상 제작사 「STUDIO 상상」의 홈페이지입니다. 회사 소개, 제작 방식, 포트폴리오, 제작 문의까지 실제 영상 제작사 홈페이지처럼 구성했습니다.','화면을 누르면 홈페이지를 직접 스크롤하고 눌러 볼 수 있습니다.'],
      content:['저는 영상 제작을 의뢰하는 고객이 실제로 만나는 CONTACT(견적·상담) 페이지를 맡았습니다. 개인과 기업 문의를 버튼 하나로 바꿀 수 있게 하고, 상품을 고르면 견적이 자동으로 계산되도록 만들었습니다.',
@@ -957,7 +967,7 @@ const WORKS=[
   {id:'present',skill:'기획 / 편집 / 발표',group:'team',teamNo:2,cats:['school'],title:'상상 홈페이지 팀 프로젝트 발표 영상',en:'PRESENTATION',time:'',year:2026,yt:'f8bngEEk3xY',team:'4인 팀 프로젝트 · 개인 발표 부분',
    extra:{yt:'fz2a4bN1cz4',label:'반응형 발표 자료 영상'},
    feature:{title:'상상 홈페이지 팀 프로젝트 발표 영상 <span>개인 부분</span>',
-     synopsis:['STUDIO 상상 홈페이지에서 제가 만든 부분을 발표하기 위해, PPT 대신 영상으로 만든 발표 자료입니다.','아래 영상은 휴대폰 화면에 맞춘 반응형 화면을 보여 주는 발표 자료입니다.']}},
+     synopsis:['STUDIO 상상 홈페이지에서 제가 만든 부분을 발표하기 위해, PPT 대신 영상으로 만든 발표 자료입니다.','오른쪽 아래 영상은 휴대폰 화면에 맞춘 반응형 화면을 보여 주는 발표 자료입니다.']}},
   {id:'knight',skill:'캐릭터 디자인 / 리깅 / 애니메이션',group:'team',teamNo:1,cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,team:'4인 팀',yt:'jhCq0QwulHA',
    feature:{
      title:'「흑기사의 직장생활」 <span>퇴사와 할부 사이</span>',
@@ -1082,8 +1092,8 @@ function buildApp(root,opt){
     const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
     const play=`<button class="ft-play ${tall(w)?'tall':''} ${w.mp4?'sq':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>`;
     const fk=w.yt||(w.mp4?w.mp4.split('/').pop().replace('.mp4',''):'');   // 영상 중간 장면 5컷 → 대각선 필름
-    const FN={"-1pifLVP5Q4": 10, "0KsKN15YoDM": 10, "CBYNkkowSlM": 10, "D7FgB9M5_n8": 8, "IAx_crw2Qdg": 10, "IlkGxsPnnGU": 10, "SOr_mlN4ipo": 10, "ani-insta": 5, "c7c-Irp63t4": 10, "class-course": 12, "f8bngEEk3xY": 12, "hOen1WB81lI": 10, "hZVVFRppHfk": 8, "jhCq0QwulHA": 10, "tf5FNmodBmU": 10}[fk]||0, per=tall(w)?8:5, ang=[-3,3,-3,3,-3,3];   // 남는 여백만큼 대각선 필름을 여러 줄 (넘치는 건 잘려요)
-    const film=FN&&st.cat!=='school'?`<div class="film-wrap" aria-hidden="true">${ang.slice(0,Math.min({bk2:1,bk3:1,lint:2,lintchar:2}[w.id]||6,Math.floor(FN/per))).map((a,r)=>`<div class="film ${tall(w)?'v':''}" style="--a:${a}deg">${Array.from({length:per},(_,n)=>`<img src="img/frames/${fk}-${(r*per+n)%FN+1}.jpg?v=3" alt="" loading="lazy">`).join('')}</div>`).join('')}</div>`:'';
+    const FN={"-1pifLVP5Q4": 10, "0KsKN15YoDM": 10, "CBYNkkowSlM": 10, "D7FgB9M5_n8": 8, "IAx_crw2Qdg": 10, "IlkGxsPnnGU": 10, "SOr_mlN4ipo": 10, "ani-insta": 5, "c7c-Irp63t4": 10, "class-course": 10, "f8bngEEk3xY": 10, "hOen1WB81lI": 10, "hZVVFRppHfk": 8, "jhCq0QwulHA": 10, "tf5FNmodBmU": 10}[fk]||0, per=tall(w)?8:5, ang=[-3,3,-3,3,-3,3];   // 남는 여백만큼 대각선 필름을 여러 줄 (넘치는 건 잘려요)
+    const film=FN&&(st.cat!=='school'||['course','present'].includes(w.id))?`<div class="film-wrap" aria-hidden="true">${ang.slice(0,Math.min({bk2:1,bk3:1,lint:2,lintchar:2}[w.id]||6,Math.floor(FN/per))).map((a,r)=>`<div class="film ${tall(w)?'v':''}" style="--a:${a}deg">${Array.from({length:per},(_,n)=>`<img src="img/frames/${fk}-${(r*per+n)%FN+1}.jpg?v=3" alt="" loading="lazy">`).join('')}</div>`).join('')}</div>`:'';
     const tno=w.teamNo?`<p class="ft-tno">팀 프로젝트 ${w.teamNo}</p>`:'';
     const title=tno+`<h2 class="ft-title">${F.title||(w.by?`「${w.title}」 <span>${w.by}</span>`:w.title)}</h2>`;
     let left, right;
@@ -1092,8 +1102,8 @@ function buildApp(root,opt){
       right=sec('등장인물',`<div class="ft-chars">${F.chars.map(c=>`<div class="ft-c ${c.cut?'cut':''}"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div>`)
         +sec('영상 내용',ps(F.content))+sec(F.processH||'제작 과정',steps)+(F.more||[]).map(m=>sec(m[0],m[1])).join('')+toolbox;
     }else{   // 등장인물이 없는 작품: 왼쪽 영상·제목 / 오른쪽에 글을 모두 (빈 곳 없이)
-      left=title+play+(w.extra?`<div class="ft-extra"><p>${w.extra.label}</p><div class="ft-player sm"><iframe src="https://www.youtube-nocookie.com/embed/${w.extra.yt}?rel=0&playsinline=1" title="${w.extra.label}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>`:'')+film;
-      right=sec('작품 소개',ps(syn.length?syn:(w.story?[w.story]:[])))
+      left=title+play+(w.gallery?`<div class="ft-gal">${w.gallery.map((g,i)=>`${i===0||w.gallery[i-1][1]!==g[1]?`<p class="gl-k">${g[1]}</p>`:''}<img src="img/sangsang/${g[0]}.jpg" alt="STUDIO 상상 ${g[1]} 화면" loading="lazy">`).join('')}</div>`:'')+(w.extra&&false?`<div class="ft-extra"><p>${w.extra.label}</p><div class="ft-player sm"><iframe src="https://www.youtube-nocookie.com/embed/${w.extra.yt}?rel=0&playsinline=1" title="${w.extra.label}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>`:'')+film;
+      right=(w.extra?'':'')+sec('작품 소개',ps(syn.length?syn:(w.story?[w.story]:[])))+(w.extra?`<div class="ft-extra"><p>${w.extra.label}</p><div class="ft-player sm"><iframe src="https://www.youtube-nocookie.com/embed/${w.extra.yt}?rel=0&playsinline=1" title="${w.extra.label}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>`:'')
         +sec('제작 이야기',ps(F.content))
         +sec('기획 의도',w.intent?ps([w.intent]):'')
         +sec('제작 과정',steps||(w.process?w.process.map(p=>`<p class="ft-body"><b>${p[0]}</b> · ${p[1]}</p>`).join(''):''))
@@ -1201,7 +1211,7 @@ function buildApp(root,opt){
     else if(a==='back'){closeWork()}
     else if(a==='tab'){st.tab=id;pane()}
     else if(a==='contact'){openContact(b.dataset.about||'')}
-    else if(a==='home'){closeWork();st.cat='intro';render();if(opt.live)history.pushState(null,'',location.pathname+location.search);showOpening()}   // 처음으로 = 오프닝 화면
+    else if(a==='home'){closeWork();st.cat='intro';render();if(opt.live)history.pushState(null,'',location.pathname+location.search);const mm=document.querySelector('.v2 .main');if(mm)mm.scrollTo({top:0,behavior:'smooth'})}   // 처음으로 = 오프닝 화면
     else if(a==='view'){setMode(document.body.dataset.mode==='pc'?'mob':'pc')}
   });
   if(opt.live)new ResizeObserver(()=>{const was=wide;pick();if(was!==wide)render()}).observe(root);
@@ -1244,7 +1254,7 @@ setMode(isPhone?'mob':'pc');
   b.onclick=()=>{const m=sc();if(m)m.scrollTo({top:0,behavior:'smooth'})}})();
 const HC=location.hash.slice(1), hasHC=CATS.some(c=>c.id===HC);   // 주소 끝 #book 등 → 그 분류로 바로 열기 (새로고침해도 그대로)
 buildApp(appEl,{live:true,cat:hasHC?HC:CATS.some(c=>c.id===Q.get('cat'))?Q.get('cat'):'intro'});
-if(['mob','pc'].includes(Q.get('mode')))enter(Q.get('mode')); else if(hasHC)enter(isPhone?'mob':'pc'); else showOpening();
+enter(['mob','pc'].includes(Q.get('mode'))?Q.get('mode'):(isPhone?'mob':'pc'));
 </script>
 </body>
 </html>
