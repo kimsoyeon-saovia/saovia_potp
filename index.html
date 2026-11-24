@@ -677,6 +677,11 @@ body[data-mode="mob"] .p3-mono{min-height:auto;padding-top:48px;padding-bottom:4
 .p3-row{display:grid!important;grid-template-columns:140px minmax(0,1fr);gap:16px}
 .p3-row span:last-child{text-align:left!important;color:#444!important}
 .p3-row span:first-child{white-space:normal!important}
+.ft-extra{margin-top:36px;max-width:62%}
+.ft-extra p{margin:0 0 10px;font-size:15px;font-weight:700}
+.ft-player.sm{aspect-ratio:16/9}
+.ft-tno{font-size:clamp(17px,1.3vw,20px)!important}
+body[data-mode="mob"] .ft-extra{max-width:none}
 </style>
 </head>
 <body data-mode="pc">
@@ -879,7 +884,10 @@ const WORKS=[
               '휴대폰에서도 장면 단위로 부드럽게 넘어가도록 모바일 화면을 다듬었습니다.'],
      tools:['HTML','CSS','JavaScript','Codex','Claude Code','GitHub','Notion','Firebase'],
      more:[['팀 협업',`<ul class="ft-team"><li><b>노션</b><a href="https://app.notion.com/p/3ff93a4ee7a581eeafbaf8f34d0e239b?source=copy_link" target="_blank" rel="noopener">노션 바로가기 ↗</a></li><li><b>깃허브</b><a href="https://github.com/kimsoyeon-saovia/ksy999" target="_blank" rel="noopener">깃허브 바로가기 ↗</a></li></ul>`]]}},
-  {id:'present',group:'team',teamNo:2,cats:['school'],title:'STUDIO 상상 최종 발표 영상',en:'PRESENTATION',time:'',year:2026,yt:'f8bngEEk3xY'},
+  {id:'present',skill:'기획 / 편집 / 발표',group:'team',teamNo:2,cats:['school'],title:'상상 홈페이지 팀 프로젝트 발표 영상',en:'PRESENTATION',time:'',year:2026,yt:'f8bngEEk3xY',team:'4인 팀 프로젝트 · 개인 발표 부분',
+   extra:{yt:'fz2a4bN1cz4',label:'반응형 발표 자료 영상'},
+   feature:{title:'상상 홈페이지 팀 프로젝트 발표 영상 <span>개인 부분</span>',
+     synopsis:['STUDIO 상상 홈페이지에서 제가 만든 부분을 발표하기 위해, PPT 대신 영상으로 만든 발표 자료입니다.','아래 영상은 휴대폰 화면에 맞춘 반응형 화면을 보여 주는 발표 자료입니다.']}},
   {id:'knight',skill:'캐릭터 디자인 / 리깅 / 애니메이션',group:'team',teamNo:1,cats:['ani','school'],title:'흑기사의 직장생활',en:'BLACK KNIGHT',time:'3:20',year:2026,team:'4인 팀',yt:'jhCq0QwulHA',
    feature:{
      title:'「흑기사의 직장생활」 <span>퇴사와 할부 사이</span>',
@@ -1005,7 +1013,7 @@ function buildApp(root,opt){
     const fk=w.yt||(w.mp4?w.mp4.split('/').pop().replace('.mp4',''):'');   // 영상 중간 장면 5컷 → 대각선 필름
     const FN={"-1pifLVP5Q4": 10, "0KsKN15YoDM": 10, "CBYNkkowSlM": 10, "D7FgB9M5_n8": 8, "IAx_crw2Qdg": 10, "IlkGxsPnnGU": 10, "SOr_mlN4ipo": 10, "ani-insta": 5, "c7c-Irp63t4": 10, "class-course": 12, "f8bngEEk3xY": 12, "hOen1WB81lI": 10, "hZVVFRppHfk": 8, "jhCq0QwulHA": 10, "tf5FNmodBmU": 10}[fk]||0, per=tall(w)?8:5, ang=[-3,3,-3,3,-3,3];   // 남는 여백만큼 대각선 필름을 여러 줄 (넘치는 건 잘려요)
     const film=FN&&st.cat!=='school'?`<div class="film-wrap" aria-hidden="true">${ang.slice(0,Math.min({bk2:1,bk3:1,lint:2,lintchar:2}[w.id]||6,Math.floor(FN/per))).map((a,r)=>`<div class="film ${tall(w)?'v':''}" style="--a:${a}deg">${Array.from({length:per},(_,n)=>`<img src="img/frames/${fk}-${(r*per+n)%FN+1}.jpg?v=3" alt="" loading="lazy">`).join('')}</div>`).join('')}</div>`:'';
-    const tno=st.cat==='school'&&w.teamNo?`<p class="ft-tno">팀 프로젝트 ${w.teamNo}</p>`:'';
+    const tno=w.teamNo?`<p class="ft-tno">팀 프로젝트 ${w.teamNo}</p>`:'';
     const title=tno+`<h2 class="ft-title">${F.title||(w.by?`「${w.title}」 <span>${w.by}</span>`:w.title)}</h2>`;
     let left, right;
     if(F.chars){   // 등장인물이 있는 작품: 왼쪽 영상·제목·줄거리·툴 / 오른쪽 등장인물·영상 내용·제작 과정
@@ -1013,7 +1021,7 @@ function buildApp(root,opt){
       right=sec('등장인물',`<div class="ft-chars">${F.chars.map(c=>`<div class="ft-c ${c.cut?'cut':''}"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div>`)
         +sec('영상 내용',ps(F.content))+sec(F.processH||'제작 과정',steps)+(F.more||[]).map(m=>sec(m[0],m[1])).join('')+toolbox;
     }else{   // 등장인물이 없는 작품: 왼쪽 영상·제목 / 오른쪽에 글을 모두 (빈 곳 없이)
-      left=title+play+film;
+      left=title+play+(w.extra?`<div class="ft-extra"><p>${w.extra.label}</p><div class="ft-player sm"><iframe src="https://www.youtube-nocookie.com/embed/${w.extra.yt}?rel=0&playsinline=1" title="${w.extra.label}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>`:'')+film;
       right=sec('작품 소개',ps(syn.length?syn:(w.story?[w.story]:[])))
         +sec('제작 이야기',ps(F.content))
         +sec('기획 의도',w.intent?ps([w.intent]):'')
