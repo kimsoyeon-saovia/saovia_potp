@@ -290,10 +290,9 @@ dialog .btn{width:100%;height:46px;margin-top:16px}
 .v2 .nav{all:unset;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(16px,2.4vw,40px)}
 .v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;padding:10px 22px;font-size:clamp(18px,1.5vw,23px);color:#111;text-align:center;background:#fff;border:9px solid transparent;border-image:url("img/brush/frame.png") 28 / 9px / 0 stretch}
 .v2 .nav button>span{display:inline-block;transform:scaleX(.78);transform-origin:center;letter-spacing:0}
-.v2 .nav button[aria-current="true"]{background:#111;color:#fff}
 .v2 .nav button:hover{opacity:.75}
 .v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:3px}
-.v2 .main{grid-area:main;overflow:auto;padding:clamp(36px,6vh,72px) 24px 96px;background:transparent}
+.v2 .main{grid-area:main;overflow:auto;padding:0 24px 96px;background:transparent}
 .v2 .modal{grid-area:1/1/-1/-1}
 /* 소개 — 이력서 한 장처럼: 회색 면 안에서 왼쪽 제목 칸(200px) · 오른쪽 내용 칸으로 모든 줄을 맞춰요 */
 .v2 .main{padding-left:0;padding-right:0;padding-top:clamp(28px,4vh,48px)}
@@ -542,13 +541,23 @@ body[data-mode="mob"] .pf3 .bx{padding:24px 16px}
 body[data-mode="mob"] .ft-head .ft-title{font-size:26px;white-space:normal}
 body[data-mode="mob"] .pf3 .sk li{grid-template-columns:1fr;gap:6px}
 
-/* 연습장: 상자 오른쪽 끝에 붙여서 밖으로 삐져나온 컬러 인덱스 포스트잇 (세로 글씨) */
-.v2 .nav button.postit{position:fixed;top:clamp(170px,20vh,220px);right:calc((100vw - min(100vw,1560px))/2 + clamp(16px,2.6vw,48px) - 48px);z-index:30;width:82px;height:128px;border:0;border-image:none;padding:0 0 0 30px;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(90deg,rgba(255,138,170,.45) 0 30px,#ff8aaa 30px);box-shadow:2px 3px 6px rgba(0,0,0,.15);border-radius:0 5px 5px 0}
-.v2 .nav button.postit>span{writing-mode:vertical-rl;transform:none;font-size:19px;letter-spacing:.25em;color:#111}
-.v2 .nav button.postit[aria-current="true"]{background:linear-gradient(90deg,rgba(255,80,130,.5) 0 30px,#ff5c8c 30px)}
-.v2 .nav button.postit[aria-current="true"]>span{color:#fff}
-body[data-mode="mob"] .v2 .nav button.postit{position:static;transform:rotate(2deg);flex:1 1 100%;padding:12px}
+
+/* ===== 연습장 콘셉트: 큰 상자 = 스프링 연습장, 메뉴 = 오른쪽에 붙인 테이프 인덱스 ===== */
+.ft-page,.pf3 .bx{position:relative}
+.ft-page::before,.pf3 .bx::before{content:"";position:absolute;left:-14px;top:26px;bottom:26px;width:40px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='28'%3E%3Ccircle cx='27' cy='14' r='4.2' fill='%23fff' stroke='%23333' stroke-width='1.6'/%3E%3Cpath d='M27 10.5 C16 9 3 9 3 14 C3 19 16 19 27 17.5' fill='none' stroke='%23333' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") 0 0/40px 28px repeat-y;z-index:2;pointer-events:none}
+.v2 .top{position:sticky!important;top:0;z-index:40;background:#fff;padding:0!important;margin:0!important}
+.v2 .nav{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(8px,1vw,16px);max-width:calc(1560px + 48px);margin:0 auto;padding:18px calc(24px + clamp(16px,2.6vw,48px)) 0;background:#fff}
+.v2 .nav::after{content:"";position:absolute;left:calc(24px + clamp(16px,2.6vw,48px));right:calc(24px + clamp(16px,2.6vw,48px));bottom:-4px;height:18px;background:#fff;border-bottom:3px solid #111;z-index:2;pointer-events:none;
+  -webkit-mask:none;border-image:url("img/brush/frame.png") 28 / 0 0 9px 0 / 0 stretch;border-style:solid;border-width:0 0 9px 0}
+.v2 .nav button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;z-index:1;padding:12px clamp(16px,2vw,30px) 26px;margin-bottom:-4px;background:var(--tc);opacity:.85;
+  clip-path:polygon(0 4%,3% 0,7% 5%,11% 1%,16% 4%,22% 0,28% 3%,35% 0,42% 4%,50% 1%,58% 4%,65% 0,72% 3%,79% 0,85% 4%,91% 1%,96% 4%,100% 0,98% 50%,100% 100%,0 100%,2% 50%);transform:rotate(-1deg);transition:transform .15s}
+.v2 .nav button:nth-child(even){transform:rotate(1.2deg)}
+.v2 .nav button::before,.v2 .nav button::after{display:none}
+.v2 .nav button>span{display:inline-block;transform:scaleX(.82);font-size:clamp(17px,1.4vw,22px);font-weight:700;color:#222;letter-spacing:0}
+.v2 .nav button[aria-current="true"]{z-index:3;opacity:1;background:var(--tc);color:#111;transform:rotate(0) translateY(-6px);padding-bottom:20px;box-shadow:none}
+.v2 .nav button:hover{transform:translateY(-3px)}
+body[data-mode="mob"] .ft-page::before,body[data-mode="mob"] .pf3 .bx::before{left:-10px;width:30px;background-size:30px 21px}
+.fts .ft-page:first-child,.pf3>.bx{margin-top:-30px}
 </style>
 </head>
 <body data-mode="pc">
@@ -838,7 +847,7 @@ function buildApp(root,opt){
   const $=s=>root.querySelector(s);
 
   function nav(){
-    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" ${c.id==='practice'?'class="postit"':''} aria-current="${c.id===st.cat}"><span>${c.name}</span></button>`).join('');
+    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" style="--tc:${({intro:'#d9c3f5',book:'#c4e0f2',ad:'#f6cddb',ani:'#c9ead8',school:'#c8d0ea',practice:'#f7e3b5'})[c.id]}" aria-current="${c.id===st.cat}"><span>${c.name.replace(/&nbsp;/g,'')}</span></button>`).join('');
   }
   function banner(c){
     const label=c.id==='all'?'소개 영상':c.name+' 배너 영상';
