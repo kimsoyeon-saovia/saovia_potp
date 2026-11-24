@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap&text=%EA%B3%84%EC%86%8D%EB%A7%8C%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4.%EB%82%98%EB%8F%84%2C%EC%98%81%EC%83%81%20" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400&display=swap&text=%EB%82%98%EC%9E%90%EC%8B%A0%EB%8F%84%EC%98%81%EC%83%81%EA%B3%84%EC%86%8D%EB%A7%8C%EB%93%A4%EC%96%B4%EA%B0%91%EB%8B%88%EB%8B%A4%20" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap&text=%E2%80%9C%E2%80%9D%ED%87%B4%EC%82%AC%EB%8A%94%ED%95%98%EA%B3%A0%EC%8B%B6%EC%A7%80%EB%A7%8C%2C%ED%95%A0%EB%B6%80%EA%B0%80%EB%82%A8%EC%95%98%EB%8B%A4.%20">
@@ -824,6 +824,18 @@ body[data-mode="mob"] .mono-end{flex-direction:column}
 .home-ic.on~.nav button[data-id="intro"]{color:var(--muted)!important}
 .p3-ch p{text-align:left!important}
 .v2 .top{background:#f2f2f2!important}
+
+.v2 .top{background:#fff!important;justify-content:flex-end!important}
+.ft-url{font-size:clamp(17px,1.3vw,20px)!important;margin-top:14px!important}
+.ft-fullrow{display:flex;justify-content:flex-end;margin:14px 0 0}
+.end-say{font-family:"Noto Serif KR",serif!important;font-weight:400!important;flex:0 0 auto;min-width:22ch;padding-left:clamp(60px,9vw,180px)!important}
+.end-say .type::after{content:"";display:inline-block;width:2px;height:.9em;background:#fff;margin-left:4px;vertical-align:-.1em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+body.at-home .v2 .nav button[data-id="intro"],body.at-intro .v2 .nav button[data-id="home"]{color:var(--muted)!important}
+body.at-home .v2 .nav button[data-id="intro"]::after,body.at-intro .v2 .nav button[data-id="home"]::after{display:none!important}
+body.at-home .v2 .nav button[data-id="home"],body.at-intro .v2 .nav button[data-id="intro"]{color:var(--ink)!important}
+body.at-home .v2 .nav button[data-id="home"]::after,body.at-intro .v2 .nav button[data-id="intro"]::after{display:block!important;content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--accent)}
 </style>
 </head>
 <body data-mode="pc">
@@ -901,6 +913,7 @@ const PROFILE={
 // 3) 분류 — banner: 그 분류 맨 위 16:9 배너에 틀 영상의 유튜브 ID (전체의 banner가 소개 영상이에요)
 //    banner를 비워 두면 그 자리에 제목 화면이 떠요. en: 제목 화면에 크게 들어가는 영어 이름
 const CATS=[
+  {id:'home',  name:'홈',   en:'',  icon:'user', banner:''},
   {id:'intro', name:'소&nbsp;&nbsp;&nbsp;개',   en:'',             icon:'user', banner:''},
   {id:'book',  name:'북트레일러',   en:'Book Trailer', icon:'book', banner:''},
   {id:'ad',    name:'광고제작물',   en:'Commercial',   icon:'ad',   banner:''},
@@ -1013,7 +1026,7 @@ const WORKS=[
      process:['95일 동안 만든 작업물을 날짜순으로 모았습니다.','Claude Code로 타임라인 화면을 구성하고 영상으로 만들었습니다.'],
      tools:['Claude Code']}},
   {id:'sangsang',skill:'웹 기획 / 웹 디자인 / 퍼블리싱 / GitHub 관리',group:'team',teamNo:2,cats:['school'],title:'STUDIO 상상 홈페이지',en:'SANGSANG',time:'',year:2026,team:'4인 팀 프로젝트 · 1인 1페이지 (2026.10.13 ~ 10.22)',yt:'',
-   site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang.png', gallery:[['contact-1','견적서'],['my-p1','견적서'],['my-p2','견적서'],['my-p3','견적서'],['my-p4','견적서'],['corp-1','견적서'],['corp-2','견적서'],['my-c2','견적서'],['my-c3','견적서'],['my-m1','로그인 · 회원가입'],['my-m0','로그인 · 회원가입'],['my-m2','마이페이지'],['my-m3','관리자 모드']],   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
+   site:'https://kimsoyeon-saovia.github.io/ksy999/', shot:'img/sangsang-cover.jpg', gallery:[['contact-1','견적서'],['my-p1','견적서'],['my-p2','견적서'],['my-p3','견적서'],['my-p4','견적서'],['corp-1','견적서'],['corp-2','견적서'],['my-c2','견적서'],['my-c3','견적서'],['my-m1','로그인 · 회원가입'],['my-m0','로그인 · 회원가입'],['my-m2','마이페이지'],['my-m3','관리자 모드']],   // 웹사이트 작업: site = 주소, shot = 썸네일 스크린샷
    feature:{
      url:'https://kimsoyeon-saovia.github.io/ksy999/',
      synopsis:['가상의 AI 영상 제작사 「STUDIO 상상」의 홈페이지입니다. 회사 소개, 제작 방식, 포트폴리오, 제작 문의까지 실제 영상 제작사 홈페이지처럼 구성했습니다.','화면을 누르면 홈페이지를 직접 스크롤하고 눌러 볼 수 있습니다.'],
@@ -1092,7 +1105,7 @@ const metaOf=w=>spans([w.by,w.year,w.team]);   // 제목 아래 왼쪽: 지은�
 const timeOf=w=>w.state==='soon'?'<span class="time wait">준비 중</span>':w.time?`<span class="time num">${w.time}</span>`:'';   // 오른쪽: 재생 시간
 const BADGE={"포토샵": ["Ps", "#001e36", "#31a8ff"], "일러스트레이터": ["Ai", "#330000", "#ff9a00"], "애프터이펙트": ["Ae", "#00005b", "#9999ff"], "프리미어 프로": ["Pr", "#00005b", "#9999ff"], "인디자인": ["Id", "#49021f", "#ff3366"], "캡컷": ["Cc", "#111", "#fff"], "브루": ["Vr", "#3b3bf0", "#fff"], "챗GPT": ["GPT", "#0f0f0f", "#fff"], "GPT 이미지 2": ["Img", "#0f0f0f", "#fff"], "구글 플로우": ["Fl", "#1a73e8", "#fff"], "제미나이": ["Gm", "#4f6ef7", "#fff"], "일레븐랩스": ["11", "#111", "#fff"], "일레븐 뮤직": ["11♪", "#111", "#fff"], "힉스필드": ["Hf", "#c6ff3d", "#111"], "시댄스 2.5": ["Sd", "#7b2ff7", "#fff"], "시댄스 2.0": ["Sd", "#7b2ff7", "#fff"], "클로드 코드": ["CC", "#d97757", "#fff"], "클로드": ["Cl", "#d97757", "#fff"], "코덱스": ["Cx", "#111", "#fff"], "캔바": ["Cv", "#00c4cc", "#fff"], "픽사베이": ["Px", "#2ec66d", "#fff"], "듀이크 앤젤라": ["Du", "#2b2b2b", "#ffcc00"], "노션": ["N", "#fff", "#111"], "깃허브": ["Gh", "#24292f", "#fff"], "네이버 마이박스": ["MB", "#03c75a", "#fff"], "HTML": ["H5", "#e34c26", "#fff"], "CSS": ["C3", "#2965f1", "#fff"], "JavaScript": ["JS", "#f7df1e", "#111"], "Firebase": ["Fb", "#ffca28", "#111"]};
 const tbadge=(n,big)=>{const b=BADGE[n]||[n.slice(0,2),'#222','#fff'];return `<span class="tb ${big?'big':''}" style="--bg:${b[1]};--fg:${b[2]}" aria-hidden="true">${b[0]}</span>`};
-const FOOT=`<footer class="mono-end"><p class="end-say">나 자신도 영상도 계속 만들어 갑니다</p><div class="end-vid"><video src="video/end-loop.mp4" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="end-info"><a href="mailto:ksy880426@gmail.com">ksy880426@gmail.com</a><a href="tel:01037315235">010-3731-5235</a></div></footer>`;
+const FOOT=`<footer class="mono-end"><p class="end-say"><span class="type" data-t="나 자신도 영상도 계속 만들어 갑니다"></span></p><div class="end-vid"><video src="video/end-loop.mp4" autoplay muted loop playsinline aria-hidden="true"></video></div><div class="end-info"><a href="mailto:ksy880426@gmail.com">ksy880426@gmail.com</a><a href="tel:01037315235">010-3731-5235</a></div></footer>`;
 const tall=w=>w.ratio==='9:16';   // 세로 영상(쇼츠)
 const badge=w=>w.state==='wip'?'<span class="bdg">제작 중</span>':w.state==='soon'?'<span class="bdg">준비 중</span>':'';
 function thumb(w,tag='div',attrs=''){
@@ -1124,7 +1137,7 @@ function buildApp(root,opt){
   let wide=false, H='div';   // 화면 제목(h1)은 지금 보이는 배치에 하나만 둬요
   const pick=()=>{wide=root.offsetWidth>=900;H=opt.live&&!wide?'h1':'div'};
   root.innerHTML=`<div class="shell v2">
-    <header class="top"><button class="home-ic" data-act="home" aria-label="홈"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg><span>홈</span></button><nav class="nav" aria-label="분류"></nav></header>
+    <header class="top"><nav class="nav" aria-label="분류"></nav></header>
     <main class="main"></main>
     <div class="modal" hidden></div></div>`;
   const $=s=>root.querySelector(s);
@@ -1159,14 +1172,15 @@ function buildApp(root,opt){
     const film=FN&&(st.cat!=='school'||['course','present'].includes(w.id))?`<div class="film-wrap" aria-hidden="true">${ang.slice(0,Math.min({bk2:2,bk3:2,lint:2,lintchar:2}[w.id]||6,Math.ceil(FN/per))).map((a,r)=>`<div class="film ${tall(w)?'v':''}" style="--a:${a}deg">${Array.from({length:Math.max(0,Math.min(per,FN-r*per))},(_,n)=>`<img src="img/frames/${fk}-${(r*per+n)%FN+1}.jpg?v=4" alt="" loading="lazy">`).join('')}</div>`).join('')}</div>`:'';
     const tno=w.teamNo?`<p class="ft-tno">팀 프로젝트 ${w.teamNo}</p>`:'';
     const title=tno+`<h2 class="ft-title">${F.title||(w.by?`「${w.title}」 <span>${w.by}</span>`:w.title)}</h2>`;
-    const urlbar=F.url?`<p class="ft-url"><a href="${F.url}" target="_blank" rel="noopener">${F.url.replace('https://','')}</a><a class="ft-full" href="${F.url}" target="_blank" rel="noopener">전체 화면으로 보기 ↗</a></p>`:'';
+    const urlbar=F.url?`<p class="ft-url"><a href="${F.url}" target="_blank" rel="noopener">${F.url}</a></p>`:'';
+    const fullbtn=F.url?`<p class="ft-fullrow"><a class="ft-full" href="${F.url}" target="_blank" rel="noopener">전체 화면으로 보기 ↗</a></p>`:'';
     let left, right;
     if(F.chars){   // 등장인물이 있는 작품: 왼쪽 영상·제목·줄거리·툴 / 오른쪽 등장인물·영상 내용·제작 과정
       left=title+play+syn.map(t=>`<p class="ft-syn">${t}</p>`).join('')+(F.scenes?'@@SCENES@@':film);
       right=sec('등장인물',`<div class="ft-chars">${F.chars.map(c=>`<div class="ft-c ${c.cut?'cut':''}"><img src="${c.img}" alt="${c.name}"><div><b>${c.name}</b><span class="m">${c.kind}</span><p>${c.desc}</p></div></div>`).join('')}</div>`)
         +sec('영상 내용',ps(F.content))+sec(F.processH||'제작 과정',steps)+(F.more||[]).map(m=>sec(m[0],m[1])).join('')+toolbox;
     }else{   // 등장인물이 없는 작품: 왼쪽 영상·제목 / 오른쪽에 글을 모두 (빈 곳 없이)
-      left=title+play+(w.gallery?`<div class="ft-gal"><p class="gl-h">맡아서 작업한 페이지</p>${w.gallery.map((g,i)=>`${i===0||w.gallery[i-1][1]!==g[1]?`<p class="gl-k">${g[1]}</p>`:''}<img src="img/sangsang/${g[0]}.jpg?v=2" alt="STUDIO 상상 ${g[1]} 화면" loading="lazy">`).join('')}</div>`:'')+(w.extra&&false?`<div class="ft-extra"><p>${w.extra.label}</p><div class="ft-player sm"><iframe src="https://www.youtube-nocookie.com/embed/${w.extra.yt}?rel=0&playsinline=1" title="${w.extra.label}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>`:'')+film;
+      left=title+play+fullbtn+(w.gallery?`<div class="ft-gal"><p class="gl-h">맡아서 작업한 페이지</p>${w.gallery.map((g,i)=>`${i===0||w.gallery[i-1][1]!==g[1]?`<p class="gl-k">${g[1]}</p>`:''}<img src="img/sangsang/${g[0]}.jpg?v=2" alt="STUDIO 상상 ${g[1]} 화면" loading="lazy">`).join('')}</div>`:'')+(w.extra&&false?`<div class="ft-extra"><p>${w.extra.label}</p><div class="ft-player sm"><iframe src="https://www.youtube-nocookie.com/embed/${w.extra.yt}?rel=0&playsinline=1" title="${w.extra.label}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>`:'')+film;
       right=(w.extra?'':'')+sec('작품 소개',ps(syn.length?syn:(w.story?[w.story]:[])))+(w.extra?`<div class="ft-extra"><p>${w.extra.label}</p><div class="ft-player sm"><iframe src="https://www.youtube-nocookie.com/embed/${w.extra.yt}?rel=0&playsinline=1" title="${w.extra.label}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div>`:'')
         +sec('제작 이야기',ps(F.content))
         +sec('기획 의도',w.intent?ps([w.intent]):'')
@@ -1267,7 +1281,8 @@ function buildApp(root,opt){
     if(e.target.classList.contains('modal')){closeWork();return}
     const b=e.target.closest('[data-act]'); if(!b||b.disabled)return;
     const a=b.dataset.act, id=b.dataset.id;
-    if(a==='cat'){closeWork();st.cat=id;render();if(opt.live&&location.hash!=='#'+id)history.pushState(null,'','#'+id);scrollTo(0,0)}
+    if(a==='cat'){closeWork();const toIntro=id==='home'||id==='intro';const same=st.cat==='intro'&&toIntro;st.cat=toIntro?'intro':id;if(!same)render();if(opt.live&&location.hash!=='#'+id)history.pushState(null,'','#'+id);
+      const m=document.querySelector('.v2 .main');if(m){const h=document.querySelector('.p3-mono');m.scrollTo({top:id==='intro'&&h?h.offsetHeight:0,behavior:same?'smooth':'auto'})}}
     else if(a==='sitehome'){const f=$('.player.site iframe');if(f)f.src=st.cur.site}
     else if(a==='open'){openWork(byId(id))}
     else if(a==='play'){const w=byId(id);   // 그 자리에서 재생
@@ -1313,12 +1328,13 @@ function showOpening(){document.body.setAttribute('data-open','');stageEl.inert=
 function enter(m){setMode(m);document.body.removeAttribute('data-open');stageEl.inert=false}
 
 setMode(isPhone?'mob':'pc');
-(function(){const upd=()=>{const m=document.querySelector('.v2 .main'),h=document.querySelector('.home-ic'),n=document.querySelector('.v2 .nav button[data-id="intro"]'),hero=document.querySelector('.p3-mono');if(!m||!h||!n)return;const atHome=!!hero&&m.scrollTop<hero.offsetHeight*0.6;h.classList.toggle('on',atHome);if(hero)n.setAttribute('aria-current',String(!atHome))};
+(function(){let busy=false;const run=()=>{document.querySelectorAll('.end-say .type').forEach(el=>{if(el.dataset.done)return;const r=el.getBoundingClientRect();if(r.top>innerHeight||r.bottom<0)return;el.dataset.done=1;const t=el.dataset.t;let i=0;const tick=()=>{el.textContent=t.slice(0,++i);if(i<t.length)setTimeout(tick,110)};if(matchMedia('(prefers-reduced-motion: reduce)').matches)el.textContent=t;else tick()})};document.addEventListener('scroll',run,true);document.addEventListener('click',()=>setTimeout(run,300));setTimeout(run,800)})();
+(function(){const upd=()=>{const m=document.querySelector('.v2 .main'),h=document.querySelector('.v2 .nav button[data-id="home"]'),n=document.querySelector('.v2 .nav button[data-id="intro"]'),hero=document.querySelector('.p3-mono');if(!m)return;const atHome=!!hero&&m.scrollTop<hero.offsetHeight*0.6;document.body.classList.toggle('at-home',atHome);document.body.classList.toggle('at-intro',!!hero&&!atHome)};setInterval(upd,300);
   document.addEventListener('scroll',upd,true);document.addEventListener('click',()=>setTimeout(upd,60));setTimeout(upd,400)})();
 (function(){const b=document.getElementById('toTop');const sc=()=>document.querySelector('.v2 .main');
   document.addEventListener('scroll',e=>{const m=sc();if(m&&e.target===m)b.classList.toggle('on',m.scrollTop>400)},true);
   b.onclick=()=>{const m=sc();if(m)m.scrollTo({top:0,behavior:'smooth'})}})();
-const HC=location.hash.slice(1), hasHC=CATS.some(c=>c.id===HC);   // 주소 끝 #book 등 → 그 분류로 바로 열기 (새로고침해도 그대로)
+const HC0=location.hash.slice(1), HC=HC0==='home'?'intro':HC0, hasHC=CATS.some(c=>c.id===HC);   // 주소 끝 #book 등 → 그 분류로 바로 열기 (새로고침해도 그대로)
 buildApp(appEl,{live:true,cat:hasHC?HC:CATS.some(c=>c.id===Q.get('cat'))?Q.get('cat'):'intro'});
 enter(['mob','pc'].includes(Q.get('mode'))?Q.get('mode'):(isPhone?'mob':'pc'));
 </script>
