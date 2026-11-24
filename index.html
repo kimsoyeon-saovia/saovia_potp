@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap&text=%E2%80%9C%E2%80%9D%ED%87%B4%EC%82%AC%EB%8A%94%ED%95%98%EA%B3%A0%EC%8B%B6%EC%A7%80%EB%A7%8C%2C%ED%95%A0%EB%B6%80%EA%B0%80%EB%82%A8%EC%95%98%EB%8B%A4.%20">
 <style>
@@ -542,82 +543,116 @@ body[data-mode="mob"] .ft-head .ft-title{font-size:26px;white-space:normal}
 body[data-mode="mob"] .pf3 .sk li{grid-template-columns:1fr;gap:6px}
 
 
-/* ===== 깔끔한 포트폴리오 레이아웃 (참고 사이트 방향): 흰 바탕 · 위 헤더 · 작품 한 줄씩 · 기술부분 ===== */
-html,body,#app,.v2,.v2 .main{background:#fff!important}
-.v2 .main{padding:0 0 120px!important}
-.v2 .top{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;height:76px;padding:0 clamp(20px,5vw,80px)!important;background:rgba(255,255,255,.96);border-bottom:1px solid #e6e6e6;margin:0!important}
-.v2 .top::before{content:"K I M   S O   Y E O N";white-space:pre;font-family:Orbit,sans-serif;font-size:18px;letter-spacing:.12em;color:#111}
-.v2 .nav{all:unset;display:flex;gap:clamp(18px,2.6vw,44px)}
+/* ===== 컨택트 시트 디렉션: 흑연 바탕 · 밝은 회색 글자 · 오렌지 하나 · 영상 스틸이 곧 화면 ===== */
+:root{--bg:#18191b;--surface:#222427;--ink:#eff0f1;--muted:#a3a5aa;--accent:#ff4a1f;--accent-ink:#18191b}
+html,body,#app,.v2,.v2 .main,#stage{background:var(--bg)!important;color:var(--ink)}
+.v2 .main{padding:0!important}
+.v2 .top{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 clamp(16px,2.2vw,32px)!important;background:var(--bg)!important;border-top:6px solid var(--accent);margin:0!important}
+.v2 .top::before{content:"KIM SO YEON";font-family:"Libre Franklin",Orbit,sans-serif;font-weight:700;font-size:17px;letter-spacing:-.01em;color:var(--ink)}
+.v2 .nav{all:unset;display:flex;gap:clamp(18px,2.4vw,40px)}
 .v2 .nav::after{display:none}
-.v2 .nav button{all:unset;cursor:pointer;position:relative;padding:6px 0;font-size:15px;color:#888;letter-spacing:.04em}
+.v2 .nav button{all:unset;cursor:pointer;position:relative;padding:6px 0;font-size:15px;color:var(--muted)}
 .v2 .nav button>span{transform:none!important;writing-mode:horizontal-tb}
-.v2 .nav button::before,.v2 .nav button::after{display:none}
-.v2 .nav button[aria-current="true"]{color:#111;font-weight:700}
-.v2 .nav button[aria-current="true"]::after{display:block;content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#111}
-.v2 .nav button:hover{color:#111}
-.v2 .nav button:focus-visible{outline:2px solid #111;outline-offset:4px}
-/* 작품: 테두리 없이 한 줄씩, 얇은 선으로 구분 */
-.fts{max-width:1280px!important;margin:0 auto!important;padding:0 clamp(20px,5vw,80px)!important}
+.v2 .nav button::before,.v2 .nav button::after{display:none!important}
+.v2 .nav button[aria-current="true"]{color:var(--ink)}
+.v2 .nav button[aria-current="true"]::after{display:block!important;content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--accent)}
+.v2 .nav button:hover{color:var(--ink)}
+.v2 .nav button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+/* 작품: 상자 없이 한 작품 = 한 띠, 바탕 톤을 번갈아 */
+.fts{max-width:none!important;margin:0!important;padding:0!important}
 .ft-page::before,.pf3 .bx::before{display:none!important}
-.ft-page+.ft-page{margin-top:0!important}
-.ft-grid{border:0!important;border-image:none!important;background:none!important;padding:clamp(64px,9vh,110px) 0!important;border-bottom:1px solid #e6e6e6!important;gap:clamp(28px,4vw,64px)!important;border-radius:0!important;box-shadow:none!important}
-.fts .ft-page:first-child,.pf3>.bx{margin-top:0!important}
-.ft-head .ft-title{font-size:clamp(30px,2.6vw,42px)!important;margin:0 0 6px!important}
-.ft-tno{font-size:15px!important;color:#888!important;font-weight:400!important;letter-spacing:.06em}
-.ft-grid h3{font-size:19px!important}
-.ft-spec{margin:36px 0 0;padding:20px 0 0;border-top:1px solid #e6e6e6;display:grid;grid-template-columns:84px minmax(0,1fr);gap:10px 16px;font-size:14.5px;line-height:1.7}
-.ft-spec dt{color:#888}
-.ft-spec dd{margin:0;color:#222}
+.ft-page{margin:0!important}
+.ft-page:nth-child(even){background:var(--surface)}
+.ft-grid{max-width:1360px;margin:0 auto!important;border:0!important;border-image:none!important;background:none!important;border-radius:0!important;box-shadow:none!important;padding:clamp(80px,10vh,140px) clamp(16px,2.2vw,32px)!important;color:var(--ink);grid-template-columns:minmax(0,7fr) minmax(0,5fr)!important;gap:clamp(32px,4vw,72px)!important}
+.ft-head{text-align:left!important;padding:0!important;margin:0 0 8px!important;border:0!important}
+.ft-head .ft-title{font-family:"Libre Franklin",Orbit,sans-serif;font-weight:700;font-size:clamp(34px,3.4vw,56px)!important;letter-spacing:-.03em;line-height:1.05;text-align:left!important;color:var(--ink);white-space:normal!important;margin:0!important}
+.ft-head .ft-title span{color:var(--muted);font-size:.5em!important;letter-spacing:0;margin-left:14px;font-weight:400}
+.ft-tno{text-align:left!important;color:var(--accent)!important;font-size:15px!important;font-weight:700!important;margin:0 0 10px!important;letter-spacing:0}
+.ft-play,.ft-player{border-radius:0!important}
+.ft-play .pb{background:var(--accent)!important;color:var(--accent-ink)!important}
+.ft-grid h3{font-size:15px!important;font-weight:700!important;color:var(--accent)!important;margin:0 0 12px!important;letter-spacing:0}
+.ft-sec+.ft-sec{margin-top:36px!important}
+.ft-body,.ft-syn,.ft-c p,.ft-steps li,.ft-c b{color:var(--ink)!important}
+.ft-body,.ft-syn,.ft-steps li{font-size:16px!important;line-height:1.7!important}
+.ft-syn{margin-top:28px}
+.ft-c .m{color:var(--muted)!important}
+.ft-c img{background:var(--surface)!important}
+.ft-c.cut img{background:#fff!important;border:0!important}
+/* 필름 대신 컨택트 시트 */
+.film-wrap{display:flex!important;flex-wrap:wrap;gap:8px!important;margin-top:36px!important;padding:0!important;overflow:visible!important;flex-direction:row!important}
+.film{all:unset!important;display:contents!important}
+.film::before,.film::after{display:none!important}
+.film img{flex:none!important;height:96px!important;width:auto!important;aspect-ratio:16/9!important;object-fit:cover;transition:filter .2s,transform .2s}
+.film.v img{aspect-ratio:9/16!important;height:150px!important}
+.film-wrap:hover img{filter:brightness(.45)}
+.film-wrap img:hover{filter:none!important;transform:scale(1.05)}
+/* 프로그램 · 기술부분: 상자·아이콘 없이 양끝 정렬 줄 */
+.ft-spec{all:unset;display:block!important;margin-top:44px!important}
+.sp-row{display:flex!important;justify-content:space-between;gap:24px;padding:11px 0}
+.sp-k{color:var(--muted)!important;font-size:14px;padding:0!important;flex:none}
+.sp-v{font-size:15px;padding:0!important;text-align:right}
+.tbs,.pills{all:unset;display:block;text-align:right;font-size:15px;line-height:1.6;color:var(--ink)}
+.tbs li,.pills li{all:unset;display:inline}
+.tbs li .tb{display:none!important}
+.tbs li+li::before,.pills li+li::before{content:" / ";color:var(--muted)}
+.ft-team a{color:var(--ink)!important}
+.ft-team li b{color:var(--muted)}
+.ft-scenes h3{color:var(--accent)}
+.ft-scenes img{border:0!important}
+.ft-scenes span,.ft-scenes b{color:var(--muted)!important}
+.ft-quote{color:var(--ink)}
+.ft-shot figcaption{color:var(--muted)}
 /* 소개 */
-.pf3{max-width:1280px;margin:0 auto;padding:clamp(56px,8vh,96px) clamp(20px,5vw,80px) 0!important}
-.pf3 .bx{border:0!important;border-image:none!important;background:none!important;padding:0!important;box-shadow:none!important}
+.pf3{--ink:#eff0f1;--muted:#a3a5aa;--mute:#a3a5aa;--g:transparent;max-width:none!important;margin:0!important;padding:0!important;color:var(--ink)}
+.p3-ring{position:relative;height:min(92vh,880px);min-height:620px;overflow:hidden;background:var(--bg)}
+.p3-ring a{position:absolute;display:block;transform:translate(-50%,-50%) rotate(var(--r));width:var(--w);transition:filter .2s}
+.p3-ring a img{display:block;width:100%;aspect-ratio:var(--ar);object-fit:cover}
+.p3-ring:has(a:hover) a:not(:hover){filter:brightness(.4)}
+.p3-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,80vw);text-align:center;z-index:2}
+.p3-core h1{font-family:Orbit,sans-serif;font-weight:700;font-size:clamp(54px,5.6vw,88px);letter-spacing:-.03em;line-height:1;margin:0;color:var(--ink)}
+.p3-core p{font-size:18px;line-height:1.55;color:var(--ink);margin:22px auto 0;max-width:34ch}
+.p3-core .go{display:inline-block;margin-top:26px;background:var(--accent);color:var(--accent-ink);padding:14px 26px;font-weight:700;text-decoration:none;cursor:pointer;border:0;font:inherit;font-weight:700}
+.p3-inner{max-width:1360px;margin:0 auto;padding:clamp(100px,12vh,160px) clamp(16px,2.2vw,32px)}
+.p3-about{display:grid;grid-template-columns:minmax(0,34fr) minmax(0,66fr);gap:40px}
+.p3-photo{width:170px;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;display:block}
+.p3-facts{margin:24px 0 0;display:grid;gap:18px}
+.p3-facts dt{font-size:14px;color:var(--muted)}
+.p3-facts dd{margin:2px 0 0;font-size:15px}
+.p3-lead{font-size:clamp(20px,1.7vw,26px);line-height:1.5;margin:0 0 64px;max-width:36em}
+.p3-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px 64px}
+.p3-sec h2{font-size:15px;font-weight:700;color:var(--accent);margin:0 0 14px}
+.p3-row{display:flex;justify-content:space-between;gap:20px;padding:9px 0;font-size:15px;line-height:1.5}
+.p3-row span:first-child{flex:none;white-space:nowrap;font-weight:700}
+.p3-row span:last-child{color:var(--muted);text-align:right}
+.p3-band{background:var(--surface)}
+.p3-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,110px)}
+.p3-ch+.p3-ch{margin-top:56px}
+.p3-ch a.nm{color:var(--ink);text-decoration:none;font-size:20px;font-weight:700}
+.p3-ch .h{color:var(--muted);font-size:14px;margin-left:10px}
+.p3-ch p{color:var(--ink);font-size:16px;line-height:1.7;margin:10px 0 16px}
+.p3-ch .ch-v{display:flex;flex-wrap:wrap;gap:8px}
+.p3-ch .ch-v a{display:block}
+.p3-ch .ch-v .im{display:block}
+.p3-ch .ch-v img{height:96px;width:auto;aspect-ratio:16/9;object-fit:cover;display:block}
+.p3-ch .ch-v.s4 img{height:150px;aspect-ratio:9/16}
+.p3-ch .ch-v.w2 img{height:150px}
+.p3-ch .ch-v a:hover img{transform:scale(1.04)}
+.p3-ch .ch-v img{transition:transform .2s}
 /* 위로 버튼 */
 #toTop{position:fixed;right:24px;bottom:28px;z-index:60;width:54px;height:54px;border-radius:50%;border:2.5px solid #111;background:#fff;color:#111;display:grid;place-items:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s,transform .15s}
 #toTop.on{opacity:1;pointer-events:auto}
 #toTop:hover{transform:translateY(-3px)}
 #toTop svg{width:22px;height:22px}
+@media (prefers-reduced-motion:reduce){.film img,.p3-ring a,.p3-ch .ch-v img{transition:none}}
 /* 휴대폰 */
-body[data-mode="mob"] .v2 .top{flex-direction:column;height:auto;padding:14px 12px!important;gap:10px}
+body[data-mode="mob"] .v2 .top{flex-direction:column;height:auto;padding:12px!important;gap:8px}
 body[data-mode="mob"] .v2 .nav{flex-wrap:wrap;justify-content:center;gap:14px}
-body[data-mode="mob"] .v2 .nav button{font-size:13.5px}
-body[data-mode="mob"] .ft-spec{grid-template-columns:70px minmax(0,1fr)}
-.pf3 .sec>h2::after{display:none!important}.pf3 .sec>h2{padding-bottom:0!important}
-.pf3 .p3-head{border-bottom:1px solid #e6e6e6!important}
-.pf3 .p3-body>.p3yt{border-left-color:#e6e6e6!important}
-/* ===== 카드형 디자인 ===== */
-html,body,#app,.v2,.v2 .main{background:#f2f2ef!important}
-.v2 .top{background:rgba(255,255,255,.97)!important}
-.ft-page+.ft-page{margin-top:40px!important}
-.fts{padding-top:48px!important}
-.ft-grid{background:#fff!important;border:1px solid #e3e3df!important;border-radius:20px!important;padding:clamp(36px,4vw,64px)!important;box-shadow:0 1px 2px rgba(0,0,0,.03),0 12px 32px -18px rgba(0,0,0,.12)!important}
-.ft-head{padding-bottom:clamp(24px,3vw,40px);margin-bottom:clamp(8px,1vw,16px);border-bottom:1px solid #ececea}
-.ft-play,.ft-player{border-radius:12px;overflow:hidden}
-.pf3 .bx{background:#fff!important;border:1px solid #e3e3df!important;border-radius:20px!important;padding:clamp(36px,4vw,64px)!important;box-shadow:0 12px 32px -18px rgba(0,0,0,.12)!important}
-.pf3{padding-top:48px!important}
-/* 툴 배지 */
-.tb{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:8px;background:var(--bg);color:var(--fg);font:700 13px/1 Arial,sans-serif;letter-spacing:-.02em;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
-.tb.big{width:54px;height:54px;border-radius:12px;font-size:21px}
-.ft-spec{margin-top:40px!important;padding:24px!important;border:0!important;background:#f6f6f3;border-radius:14px;display:flex!important;flex-direction:column;gap:18px}
-.sp-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;align-items:start}
-.sp-k{font-size:13.5px;color:#888;padding-top:8px}
-.sp-v{font-size:14.5px;padding-top:7px}
-.tbs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 16px}
-.tbs li{display:flex;align-items:center;gap:8px;font-size:14px;color:#222}
-.pills{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.pills li{padding:7px 14px;border-radius:999px;background:#111;color:#fff;font-size:13.5px}
-.tool-cards{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.tool-cards li{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:18px;border:1px solid #e6e6e3;border-radius:14px;background:#fafaf8}
-.tool-cards b{font-size:16px}
-.tool-cards span{font-size:13.5px;line-height:1.6;color:#666}
-.pf3 .pf-tools .lb{margin:28px 0 14px;font-size:14px;color:#888}
-.tbs.ai{gap:12px 18px}
-body[data-mode="mob"] .tool-cards{grid-template-columns:1fr 1fr}
-body[data-mode="mob"] .ft-grid{padding:22px 16px!important;border-radius:14px!important}
-.pf3 .p3-tools{margin-top:clamp(48px,5vw,72px);padding-top:clamp(40px,4vw,60px);border-top:1px solid #e6e6e6}
-.pf3 .pf-tools ul.tool-cards{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
-.pf3 .pf-tools .tool-cards li{background:#fafaf8!important;padding:18px!important;font-size:inherit;line-height:1.4}
-.pf3 .pf-tools ul.tbs.ai li{background:none!important;padding:0!important}
-body[data-mode="mob"] .pf3 .pf-tools ul.tool-cards{grid-template-columns:1fr 1fr}
+body[data-mode="mob"] .ft-grid{grid-template-columns:1fr!important;padding:56px 16px!important}
+body[data-mode="mob"] .film img{height:60px!important}
+body[data-mode="mob"] .film.v img{height:110px!important}
+body[data-mode="mob"] .p3-ring{height:620px;min-height:0}
+body[data-mode="mob"] .p3-core h1{font-size:11vw}
+body[data-mode="mob"] .p3-about,body[data-mode="mob"] .p3-cols,body[data-mode="mob"] .p3-two{grid-template-columns:1fr}
 </style>
 </head>
 <body data-mode="pc">
@@ -968,29 +1003,48 @@ function buildApp(root,opt){
 
   function intro(){
     const P=PROFILE, NM=opt.live?'h1':'div';
-    const th=(v,sh)=>`<a href="https://www.youtube.com/${sh?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener"><span class="im"><img src="https://i.ytimg.com/vi/${v[0]}/${sh?'oar2':'maxresdefault'}.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'" alt="" loading="lazy"></span><span class="t">${v[1]}</span></a>`;
-    return `<div class="pf pf3"><div class="bx">
-      <div class="p3-head">
-        <img class="ph" src="${P.photo}" alt="${P.nameKo} 프로필 사진">
-        <div class="who"><p class="tag">${P.tagline.replace(/<br\s*\/?>/g,' ')}</p><${NM} class="ko-name">${P.nameKo}</${NM}></div>
-        <div class="sec"><h2>경력</h2>${P.careers.map(c=>`<div class="pf-item"><div class="when">${c.when}</div><div class="what">${c.what}</div><ul>${c.items.map(t=>`<li>${t}</li>`).join('')}</ul></div>`).join('')}</div>
-        <div class="sec"><h2>자격증</h2>${P.certs.map(h=>`<div class="pf-item"><div class="when">${h[0]}</div><div class="what">${h[1].split(' · ')[0]}</div><div class="o">${h[1].split(' · ')[1]||''}</div></div>`).join('')}</div>
-      </div>
-      <div class="p3-body">
-        <div>
-          <div class="sec"><h2>핵심 보유 기술</h2><ul class="sk">${P.skills.map(k=>`<li><b>${k[0]}</b><p>${k[1]}</p></li>`).join('')}</ul></div>
-
+    const th=(v,sh)=>`<a href="https://www.youtube.com/${sh?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener"><span class="im"><img src="https://i.ytimg.com/vi/${v[0]}/${sh?'oar2':'hqdefault'}.jpg" alt="${v[1]||''}" loading="lazy"></span></a>`;
+    // 영상 스틸 22장을 타원에 둘러 배치 (위는 작게, 아래·양끝은 크게 → 기울어진 고리)
+    const RING=[['SOr_mlN4ipo-4','book'],['IAx_crw2Qdg-2','ani'],['c7c-Irp63t4-1','ad'],['D7FgB9M5_n8-5','book'],['CBYNkkowSlM-3','ad'],['jhCq0QwulHA-4','ani'],['hOen1WB81lI-2','ad'],['SOr_mlN4ipo-7','book'],
+      ['IlkGxsPnnGU-3','ani'],['-1pifLVP5Q4-6','ad'],['tf5FNmodBmU-9','book'],['hZVVFRppHfk-2','book'],['IAx_crw2Qdg-7','ani'],['0KsKN15YoDM-4','ad'],['jhCq0QwulHA-8','ani'],['c7c-Irp63t4-7','ad'],
+      ['ani-insta-4','ani'],['CBYNkkowSlM-7','ad'],['tf5FNmodBmU-3','book'],['hOen1WB81lI-9','ad'],['IAx_crw2Qdg-10','ani'],['D7FgB9M5_n8-2','book']];
+    const tallK=k=>/^(D7FgB9M5_n8|hZVVFRppHfk)/.test(k);
+    const ring=RING.map((f,i)=>{const a=i/RING.length*2*Math.PI-Math.PI/2, x=50+39*Math.cos(a), y=50+35*Math.sin(a), sz=0.5+0.5*(Math.sin(a)+1)/2, tl=tallK(f[0]);
+      const w=Math.round((tl?70:118)+(tl?40:70)*sz), r=Math.max(-28,Math.min(28,Math.round(Math.cos(a)*-18)));
+      return `<a href="#${f[1]}" data-act="cat" data-id="${f[1]}" style="left:${x.toFixed(2)}%;top:${y.toFixed(2)}%;--w:${w}px;--r:${r}deg;--ar:${tl?'9/16':'16/9'}" aria-label="${f[1]} 작품 보기"><img src="img/frames/${f[0]}.jpg?v=3" alt="" loading="lazy"></a>`}).join('');
+    const row=(a,b)=>`<div class="p3-row"><span>${a}</span><span>${b}</span></div>`;
+    return `<div class="pf pf3">
+      <section class="p3-ring" aria-label="소개">
+        ${ring}
+        <div class="p3-core"><${NM}>${P.nameKo}</${NM}><p>${P.tagline.replace(/<br\s*\/?>/g,' ')}입니다. 책과 광고, 캐릭터 애니메이션을 영상으로 만듭니다.</p><button class="go" data-act="cat" data-id="book">작업 보러 가기</button></div>
+      </section>
+      <section class="p3-inner">
+        <div class="p3-about">
+          <div><img class="p3-photo" src="${P.photo}" alt="${P.nameKo} 프로필 사진">
+            <dl class="p3-facts">${P.careers.map(c=>`<div><dt>경력 · ${c.when}</dt><dd>${c.what}</dd></div>`).join('')}${P.certs.map(h=>`<div><dt>자격증 · ${h[0]}</dt><dd>${h[1].split(' · ')[0]} <span style="color:var(--muted)">${h[1].split(' · ')[1]||''}</span></dd></div>`).join('')}</dl></div>
+          <div>
+            <p class="p3-lead">${P.careers.map(c=>c.items.join(' ')).join(' ')}</p>
+            <div class="p3-cols">
+              <div class="p3-sec"><h2>핵심 보유 기술</h2>${P.skills.slice(0,Math.ceil(P.skills.length/2)).map(k=>row(k[0],k[1])).join('')}</div>
+              <div class="p3-sec"><h2>&nbsp;</h2>${P.skills.slice(Math.ceil(P.skills.length/2)).map(k=>row(k[0],k[1])).join('')}</div>
+            </div>
+          </div>
         </div>
-        <div class="sec p3yt"><h2><svg class="ytl big" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>유튜브 채널</h2>
-          ${P.youtube.map(c=>`<div class="ch"><a class="nm" href="${c.url}" target="_blank" rel="noopener"><svg class="ytl" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>${c.name}<i aria-hidden="true">↗</i></a><span class="h">${c.handle}</span><p>${c.desc}</p>
+      </section>
+      <section class="p3-band"><div class="p3-inner p3-two">
+        <div class="p3-sec"><h2>사용 가능 툴</h2>
+          ${row('디자인 · 편집',P.tools.join(' / '))}
+          ${row('AI',P.ai.join(' / '))}
+          ${row('포토샵','사진 보정 · 합성 · 홍보 이미지')}${row('일러스트레이터','벡터 · 캐릭터 · 리깅 파츠')}${row('애프터이펙트','모션그래픽 · 리깅 애니메이션')}${row('프리미어 프로','영상 편집 · 자막 · 사운드')}
+        </div>
+        <div class="p3-sec"><h2>유튜브 채널</h2>
+          ${P.youtube.map(c=>`<div class="p3-ch"><a class="nm" href="${c.url}" target="_blank" rel="noopener">${c.name} ↗</a><span class="h">${c.handle}</span><p>${c.desc}</p>
             <div class="ch-v ${c.shorts?'s4':c.videos.length>2?'w4':'w2'}">${c.videos.map(v=>th(v,c.shorts)).join('')}</div></div>`).join('')}
         </div>
-      </div>
-      <div class="p3-tools"><div class="sec pf-tools"><h2>사용 가능 툴</h2>
-            <ul class="tool-cards">${[['포토샵','사진 보정 · 합성 · 홍보 이미지'],['일러스트레이터','벡터 · 캐릭터 · 리깅 파츠'],['애프터이펙트','모션그래픽 · 리깅 애니메이션'],['프리미어 프로','영상 편집 · 자막 · 사운드'],['인디자인','책자 · 브로슈어 편집'],['캡컷','숏폼 편집']].map(t=>`<li>${tbadge(t[0],1)}<b>${t[0]}</b><span>${t[1]}</span></li>`).join('')}</ul>
-            <div class="lb">AI 툴</div><ul class="tbs ai">${P.ai.map(n=>`<li>${tbadge(n)}<span>${n}</span></li>`).join('')}</ul></div></div>
-    </div></div>`;
+      </div></section>
+    </div>`;
   }
+
   function pane(){
     const w=st.cur;
     root.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.id===st.tab));
