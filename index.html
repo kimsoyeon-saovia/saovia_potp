@@ -584,6 +584,40 @@ body[data-mode="mob"] .ft-spec{grid-template-columns:70px minmax(0,1fr)}
 .pf3 .sec>h2::after{display:none!important}.pf3 .sec>h2{padding-bottom:0!important}
 .pf3 .p3-head{border-bottom:1px solid #e6e6e6!important}
 .pf3 .p3-body>.p3yt{border-left-color:#e6e6e6!important}
+/* ===== 카드형 디자인 ===== */
+html,body,#app,.v2,.v2 .main{background:#f2f2ef!important}
+.v2 .top{background:rgba(255,255,255,.97)!important}
+.ft-page+.ft-page{margin-top:40px!important}
+.fts{padding-top:48px!important}
+.ft-grid{background:#fff!important;border:1px solid #e3e3df!important;border-radius:20px!important;padding:clamp(36px,4vw,64px)!important;box-shadow:0 1px 2px rgba(0,0,0,.03),0 12px 32px -18px rgba(0,0,0,.12)!important}
+.ft-head{padding-bottom:clamp(24px,3vw,40px);margin-bottom:clamp(8px,1vw,16px);border-bottom:1px solid #ececea}
+.ft-play,.ft-player{border-radius:12px;overflow:hidden}
+.pf3 .bx{background:#fff!important;border:1px solid #e3e3df!important;border-radius:20px!important;padding:clamp(36px,4vw,64px)!important;box-shadow:0 12px 32px -18px rgba(0,0,0,.12)!important}
+.pf3{padding-top:48px!important}
+/* 툴 배지 */
+.tb{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:8px;background:var(--bg);color:var(--fg);font:700 13px/1 Arial,sans-serif;letter-spacing:-.02em;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.tb.big{width:54px;height:54px;border-radius:12px;font-size:21px}
+.ft-spec{margin-top:40px!important;padding:24px!important;border:0!important;background:#f6f6f3;border-radius:14px;display:flex!important;flex-direction:column;gap:18px}
+.sp-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;align-items:start}
+.sp-k{font-size:13.5px;color:#888;padding-top:8px}
+.sp-v{font-size:14.5px;padding-top:7px}
+.tbs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 16px}
+.tbs li{display:flex;align-items:center;gap:8px;font-size:14px;color:#222}
+.pills{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pills li{padding:7px 14px;border-radius:999px;background:#111;color:#fff;font-size:13.5px}
+.tool-cards{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tool-cards li{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:18px;border:1px solid #e6e6e3;border-radius:14px;background:#fafaf8}
+.tool-cards b{font-size:16px}
+.tool-cards span{font-size:13.5px;line-height:1.6;color:#666}
+.pf3 .pf-tools .lb{margin:28px 0 14px;font-size:14px;color:#888}
+.tbs.ai{gap:12px 18px}
+body[data-mode="mob"] .tool-cards{grid-template-columns:1fr 1fr}
+body[data-mode="mob"] .ft-grid{padding:22px 16px!important;border-radius:14px!important}
+.pf3 .p3-tools{margin-top:clamp(48px,5vw,72px);padding-top:clamp(40px,4vw,60px);border-top:1px solid #e6e6e6}
+.pf3 .pf-tools ul.tool-cards{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.pf3 .pf-tools .tool-cards li{background:#fafaf8!important;padding:18px!important;font-size:inherit;line-height:1.4}
+.pf3 .pf-tools ul.tbs.ai li{background:none!important;padding:0!important}
+body[data-mode="mob"] .pf3 .pf-tools ul.tool-cards{grid-template-columns:1fr 1fr}
 </style>
 </head>
 <body data-mode="pc">
@@ -836,6 +870,8 @@ const ytFrame=(id,q,title)=>`<iframe src="https://www.youtube.com/embed/${id}?${
 const spans=a=>a.filter(Boolean).map(x=>`<span>${x}</span>`).join('');
 const metaOf=w=>spans([w.by,w.year,w.team]);   // 제목 아래 왼쪽: 지은이 · 연도 · 팀
 const timeOf=w=>w.state==='soon'?'<span class="time wait">준비 중</span>':w.time?`<span class="time num">${w.time}</span>`:'';   // 오른쪽: 재생 시간
+const BADGE={"포토샵": ["Ps", "#001e36", "#31a8ff"], "일러스트레이터": ["Ai", "#330000", "#ff9a00"], "애프터이펙트": ["Ae", "#00005b", "#9999ff"], "프리미어 프로": ["Pr", "#00005b", "#9999ff"], "인디자인": ["Id", "#49021f", "#ff3366"], "캡컷": ["Cc", "#111", "#fff"], "브루": ["Vr", "#3b3bf0", "#fff"], "챗GPT": ["GPT", "#0f0f0f", "#fff"], "GPT 이미지 2": ["Img", "#0f0f0f", "#fff"], "구글 플로우": ["Fl", "#1a73e8", "#fff"], "제미나이": ["Gm", "#4f6ef7", "#fff"], "일레븐랩스": ["11", "#111", "#fff"], "일레븐 뮤직": ["11♪", "#111", "#fff"], "힉스필드": ["Hf", "#c6ff3d", "#111"], "시댄스 2.5": ["Sd", "#7b2ff7", "#fff"], "시댄스 2.0": ["Sd", "#7b2ff7", "#fff"], "클로드 코드": ["CC", "#d97757", "#fff"], "클로드": ["Cl", "#d97757", "#fff"], "코덱스": ["Cx", "#111", "#fff"], "캔바": ["Cv", "#00c4cc", "#fff"], "픽사베이": ["Px", "#2ec66d", "#fff"], "듀이크 앤젤라": ["Du", "#2b2b2b", "#ffcc00"], "노션": ["N", "#fff", "#111"], "깃허브": ["Gh", "#24292f", "#fff"], "네이버 마이박스": ["MB", "#03c75a", "#fff"]};
+const tbadge=(n,big)=>{const b=BADGE[n]||[n.slice(0,2),'#222','#fff'];return `<span class="tb ${big?'big':''}" style="--bg:${b[1]};--fg:${b[2]}" aria-hidden="true">${b[0]}</span>`};
 const tall=w=>w.ratio==='9:16';   // 세로 영상(쇼츠)
 const badge=w=>w.state==='wip'?'<span class="bdg">제작 중</span>':w.state==='soon'?'<span class="bdg">준비 중</span>':'';
 function thumb(w,tag='div',attrs=''){
@@ -893,7 +929,7 @@ function buildApp(root,opt){
     const sec=(h,body)=>body?`<section class="ft-sec"><h3>${h}</h3>${body}</section>`:'';
     const ps=a=>(a||[]).map(t=>`<p class="ft-body">${t}</p>`).join('');
     const KO={"Illustrator": "일러스트레이터", "After Effects": "애프터이펙트", "Premiere Pro": "프리미어 프로", "Photoshop": "포토샵", "ChatGPT": "챗GPT", "Canva": "캔바", "Google Flow": "구글 플로우", "ElevenLabs": "일레븐랩스", "ElevenLabs Music": "일레븐 뮤직", "Claude Code": "클로드 코드", "Gemini": "제미나이", "Vrew": "브루", "CapCut": "캡컷", "Higgsfield": "힉스필드", "Seedance 2.5": "시댄스 2.5", "Seedance 2.0": "시댄스 2.0", "GPT Image 2": "GPT 이미지 2", "Pixabay": "픽사베이", "Codex": "코덱스", "Duik Angela": "듀이크 앤젤라", "Notion": "노션", "GitHub": "깃허브", "Naver MYBOX": "네이버 마이박스"};
-    const toolbox=(tools.length||w.skill)?`<dl class="ft-spec">${tools.length?`<dt>프로그램</dt><dd>${tools.map(t=>KO[t.trim()]||t).join(' / ')}</dd>`:''}${w.skill?`<dt>기술부분</dt><dd>${w.skill}</dd>`:''}${w.team?`<dt>참여</dt><dd>${w.team}</dd>`:''}</dl>`:'';
+    const toolbox=(tools.length||w.skill)?`<div class="ft-spec">${tools.length?`<div class="sp-row"><span class="sp-k">프로그램</span><ul class="tbs">${tools.map(t=>{const n=KO[t.trim()]||t;return `<li>${tbadge(n)}<span>${n}</span></li>`}).join('')}</ul></div>`:''}${w.skill?`<div class="sp-row"><span class="sp-k">기술부분</span><ul class="pills">${w.skill.split(' / ').map(x=>`<li>${x}</li>`).join('')}</ul></div>`:''}${w.team?`<div class="sp-row"><span class="sp-k">참여</span><span class="sp-v">${w.team}</span></div>`:''}</div>`:'';
     const steps=F.process?`<ol class="ft-steps">${F.process.map(t=>`<li>${t}</li>`).join('')}</ol>${F.shot?`<figure class="ft-shot"><img src="${F.shot}" alt="${F.shotCap}" loading="lazy"><figcaption>${F.shotCap}</figcaption></figure>`:''}`:'';
     const cover=w.site?`<img src="${w.shot}" alt="">`:w.mp4?`<img src="${w.poster}" alt="">`:w.yt?`<img src="https://i.ytimg.com/vi/${w.yt}/maxresdefault.jpg" onload="if(this.naturalWidth<=120){this.onload=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'}" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${w.yt}/hqdefault.jpg'" alt="">`:'';
     const play=`<button class="ft-play ${tall(w)?'tall':''} ${w.mp4?'sq':''}" data-act="play" data-id="${w.id}" aria-label="${w.title} 재생">${cover}<span class="pb">${PLAY}</span></button>`;
@@ -933,15 +969,16 @@ function buildApp(root,opt){
       <div class="p3-body">
         <div>
           <div class="sec"><h2>핵심 보유 기술</h2><ul class="sk">${P.skills.map(k=>`<li><b>${k[0]}</b><p>${k[1]}</p></li>`).join('')}</ul></div>
-          <div class="sec pf-tools"><h2>사용 가능 툴</h2>
-            <div class="grp"><div class="lb">디자인 · 편집</div><ul>${P.tools.map(t=>`<li>${t}</li>`).join('')}</ul></div>
-            <div class="grp"><div class="lb">AI</div><ul>${P.ai.map(t=>`<li>${t}</li>`).join('')}</ul></div></div>
+
         </div>
         <div class="sec p3yt"><h2><svg class="ytl big" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>유튜브 채널</h2>
           ${P.youtube.map(c=>`<div class="ch"><a class="nm" href="${c.url}" target="_blank" rel="noopener"><svg class="ytl" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg>${c.name}<i aria-hidden="true">↗</i></a><span class="h">${c.handle}</span><p>${c.desc}</p>
             <div class="ch-v ${c.shorts?'s4':c.videos.length>2?'w4':'w2'}">${c.videos.map(v=>th(v,c.shorts)).join('')}</div></div>`).join('')}
         </div>
       </div>
+      <div class="p3-tools"><div class="sec pf-tools"><h2>사용 가능 툴</h2>
+            <ul class="tool-cards">${[['포토샵','사진 보정 · 합성 · 홍보 이미지'],['일러스트레이터','벡터 · 캐릭터 · 리깅 파츠'],['애프터이펙트','모션그래픽 · 리깅 애니메이션'],['프리미어 프로','영상 편집 · 자막 · 사운드'],['인디자인','책자 · 브로슈어 편집'],['캡컷','숏폼 편집']].map(t=>`<li>${tbadge(t[0],1)}<b>${t[0]}</b><span>${t[1]}</span></li>`).join('')}</ul>
+            <div class="lb">AI 툴</div><ul class="tbs ai">${P.ai.map(n=>`<li>${tbadge(n)}<span>${n}</span></li>`).join('')}</ul></div></div>
     </div></div>`;
   }
   function pane(){
