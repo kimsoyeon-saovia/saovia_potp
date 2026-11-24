@@ -541,6 +541,14 @@ body[data-mode="mob"] .pf3 .bx{padding:24px 16px}
 .pf3 .sk b{margin-bottom:0}
 body[data-mode="mob"] .ft-head .ft-title{font-size:26px;white-space:normal}
 body[data-mode="mob"] .pf3 .sk li{grid-template-columns:1fr;gap:6px}
+
+/* 연습장: 상자 오른쪽 끝에 붙여서 밖으로 삐져나온 컬러 인덱스 포스트잇 (세로 글씨) */
+.v2 .nav button.postit{position:fixed;top:clamp(170px,20vh,220px);right:calc((100vw - min(100vw,1560px))/2 + clamp(16px,2.6vw,48px) - 48px);z-index:30;width:82px;height:128px;border:0;border-image:none;padding:0 0 0 30px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(90deg,rgba(255,138,170,.45) 0 30px,#ff8aaa 30px);box-shadow:2px 3px 6px rgba(0,0,0,.15);border-radius:0 5px 5px 0}
+.v2 .nav button.postit>span{writing-mode:vertical-rl;transform:none;font-size:19px;letter-spacing:.25em;color:#111}
+.v2 .nav button.postit[aria-current="true"]{background:linear-gradient(90deg,rgba(255,80,130,.5) 0 30px,#ff5c8c 30px)}
+.v2 .nav button.postit[aria-current="true"]>span{color:#fff}
+body[data-mode="mob"] .v2 .nav button.postit{position:static;transform:rotate(2deg);flex:1 1 100%;padding:12px}
 </style>
 </head>
 <body data-mode="pc">
@@ -622,6 +630,7 @@ const CATS=[
   {id:'ad',    name:'광고제작물',   en:'Commercial',   icon:'ad',   banner:''},
   {id:'ani',   name:'애니메이션',   en:'Animation',    icon:'film', banner:''},
   {id:'school',name:'학원제작물',   en:'Class Work',   icon:'cap',  banner:''},
+  {id:'practice',name:'연습장',   en:'Practice',     icon:'cap',  banner:''},
 ];
 
 // 4) 작품 — yt: 유튜브 영상 ID (youtube.com/watch?v=이부분). 넣으면 썸네일과 재생이 연결돼요
@@ -753,14 +762,14 @@ const WORKS=[
      more:[['어려웠던 점',`<p class="ft-body">2~3등신의 짧은 팔다리 때문에 리깅이 부자연스러워, 초안보다 팔다리를 조금 늘려 다시 그렸습니다. 두꺼운 검은 외곽선이 관절에서 겹쳐 보이는 문제도 있었지만, 제작 기간이 부족해 끝내 해결하지 못했습니다. 시간이 조금 더 있었다면 더 자연스럽게 다듬을 수 있었을 것 같아 아쉬움이 남습니다.</p>`],
            ['팀 협업',`<ul class="ft-team"><li><b>노션</b>회의록, 일정, 작업 현황 정리 · <a href="https://app.notion.com/p/3ff93a4ee7a5813c9405da9e15df7880?source=copy_link" target="_blank" rel="noopener">노션 바로가기 ↗</a></li><li><b>깃허브</b>코드와 문서 버전 관리</li><li><b>네이버 마이박스</b>작업 파일 공유와 버전 관리</li></ul>`]],
      scenes:['오프닝 (3D)','면접','합격 문자','합격의 기쁨','첫 출근','퇴근 5분 전','쌓인 서류','약속 취소 카카오톡','명절 선물 차별','스팸 세트의 분노','빼앗긴 아이디어','바뀐 작성자','타오르는 분노','잘못된 발주','떠넘겨진 책임','시말서','버스 정류장','퇴근 버스','카드대금 문자','재계약','근로계약서 서명','쿠키 영상 (3D)']}},
-  {id:'palace',cats:['school'],title:'멀티미디어콘텐츠제작전문가 실기 대비',en:'PALACE',time:'0:29',year:2026,yt:'',mp4:'video/palace.mp4',poster:'img/palace.jpg',
+  {id:'palace',cats:['practice'],title:'멀티미디어콘텐츠제작전문가 실기 대비',en:'PALACE',time:'0:29',year:2026,yt:'',mp4:'video/palace.mp4',poster:'img/palace.jpg',
    feature:{title:'멀티미디어콘텐츠제작전문가 <span>실기 대비 「궁궐」</span>',
-     synopsis:['멀티미디어콘텐츠제작전문가 실기 시험을 준비하며, 학원 선생님께 배운 내용으로 만든 영상입니다.'],
+     synopsis:['멀티미디어콘텐츠제작전문가 실기 시험을 준비하며, 학원 애프터이펙트 강의 시간에 만든 영상입니다.'],
      process:['포토샵으로 이미지 색을 보정하고 필요한 부분을 잘라 냈습니다.','애프터이펙트에서 모션그래픽을 넣어 완성했습니다.'],
      tools:['포토샵','애프터이펙트']}},
-  {id:'americano',cats:['school'],title:'아메리카노',en:'AMERICANO',time:'0:10',year:2026,ratio:'9:16',yt:'',mp4:'video/americano.mp4',poster:'img/americano.jpg',
+  {id:'americano',cats:['practice'],title:'아메리카노',en:'AMERICANO',time:'0:10',year:2026,ratio:'9:16',yt:'',mp4:'video/americano.mp4',poster:'img/americano.jpg',
    feature:{title:'아메리카노 <span>모션그래픽 과제</span>',
-     synopsis:['학원에서 배운 내용으로 만든 모션그래픽 과제입니다.'],
+     synopsis:['학원 애프터이펙트 강의 시간에 만든 모션그래픽 과제입니다.'],
      process:['일러스트레이터로 커피잔을 그렸습니다.','애프터이펙트에서 모션그래픽을 넣었습니다.'],
      tools:['일러스트레이터','애프터이펙트']}},
 ];
@@ -829,7 +838,7 @@ function buildApp(root,opt){
   const $=s=>root.querySelector(s);
 
   function nav(){
-    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" aria-current="${c.id===st.cat}"><span>${c.name}</span></button>`).join('');
+    $('.nav').innerHTML=CATS.map(c=>`<button data-act="cat" data-id="${c.id}" ${c.id==='practice'?'class="postit"':''} aria-current="${c.id===st.cat}"><span>${c.name}</span></button>`).join('');
   }
   function banner(c){
     const label=c.id==='all'?'소개 영상':c.name+' 배너 영상';
