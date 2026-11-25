@@ -843,6 +843,23 @@ body.at-home .v2 .nav button[data-id="home"]::after,body.at-intro .v2 .nav butto
 .cv-cert li::before{display:none}
 .cv-cert b{font-size:16px}
 body[data-mode="mob"] .p3-career .cv-list li{white-space:normal}
+.mono-end{display:grid!important;grid-template-columns:minmax(0,1fr) 320px minmax(200px,.45fr)!important;align-items:end!important;gap:44px!important;padding:28px clamp(24px,4vw,72px)!important;justify-content:stretch!important}
+.end-say{align-self:center!important;margin:0!important;padding-left:clamp(24px,12vw,240px)!important;min-width:0!important;font-size:clamp(22px,2vw,40px)!important;white-space:nowrap}
+.end-vid{width:320px!important;aspect-ratio:16/9}
+.end-vid video{width:100%;height:100%;object-fit:cover;display:block}
+.end-info{padding:0 0 10px!important}
+.end-info a{font-size:15px!important}
+body[data-mode="mob"] .mono-end{grid-template-columns:1fr!important;justify-items:center;text-align:center;padding:40px 16px!important;gap:24px!important}
+body[data-mode="mob"] .end-say{padding-left:0!important;white-space:normal;font-size:24px!important;text-align:center}
+body[data-mode="mob"] .end-vid{width:100%!important;max-width:360px}
+@media(max-width:1100px){.mono-end{grid-template-columns:1fr!important;justify-items:center}.end-say{padding-left:0!important;white-space:normal;text-align:center}}
+body[data-mode="mob"] .nav{flex-wrap:nowrap!important;overflow-x:auto;gap:14px!important;scrollbar-width:none}
+body[data-mode="mob"] .nav button{white-space:nowrap;font-size:14px!important;flex:none}
+body[data-mode="mob"] .p3-about3 .p3-career{max-width:none}
+body[data-mode="mob"] .p3-about3{grid-template-columns:1fr!important}
+body[data-mode="mob"] .p3-career .cv-list li{white-space:normal!important}
+body[data-mode="mob"] .cv-cert li{min-width:0;flex:1 1 140px}
+.cv-cert li,.cv-list li{text-align:left!important}
 </style>
 </head>
 <body data-mode="pc">
@@ -902,7 +919,7 @@ const PROFILE={
      videos:[['jhCq0QwulHA','[팀플 애니메이션] 흑기사의 직장생활'],['c7c-Irp63t4','북어포 · 황태포 AI 광고 합본'],['0KsKN15YoDM','촬영 없이 AI로 30초 브랜드 광고 만들기'],['-1pifLVP5Q4','새롭게 만나는 경주 | AI 지역 홍보 영상'],['CBYNkkowSlM','부모님 환갑 영상을 AI로 만들어 봤습니다'],['hOen1WB81lI','Cheese Cheese Cheese Cat'],['Uk06Fqh8uho','코드로 3D 원기옥 영상 만들기'],['SOr_mlN4ipo','『바람이 분다, 가라』 수묵 애니메이션']]}
   ],   // 유튜브 채널들
   nameKo:'김소연', nameEn:'kim so yeon', tagline:'이야기를 전하는<br>영상 디자이너',
-  careers:[{when:'2026.06.15 — 2026.11.02',what:'MBC아카데미컴퓨터교육센터',items:['AI 활용 뉴미디어 광고기획 · 제작 과정 수료 (760시간)','영상 편집, 모션그래픽, 그래픽 디자인','모범상 수상']}],
+  careers:[{when:'2026.06.15 — 2026.11.02',what:'MBC아카데미컴퓨터교육센터',items:['AI 활용 뉴미디어 광고기획 · 제작 과정 수료 (760시간)','모범상 수상']}],
   skills:[
     ['그래픽 디자인','Adobe Illustrator · Photoshop을 활용한 벡터 디자인, 이미지 보정 · 합성 및 홍보 콘텐츠 제작'],
     ['인쇄 · 편집 디자인','Adobe InDesign을 활용한 책자 · 브로슈어 편집, 레이아웃 구성 및 인쇄용 파일 제작'],
